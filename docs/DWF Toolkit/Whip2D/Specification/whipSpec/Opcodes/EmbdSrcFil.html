@@ -1,0 +1,86 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Embed Source File</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Embed Source File</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Embed Source File</b> function allows the source file from which
+the WHIP! data was created to be embedded (or referenced) inside the WHIP! data, thus
+allowing smart drag-and-drop operations.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="41%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>(Embed</font></font></td>
+
+<td VALIGN=TOP WIDTH="41%"><b><font face="Courier New"><font size=-2>&lt;ws>(&lt;T<sub>Type</sub>>/&lt;T<sub>Subtype</sub>>;[&lt;T<sub>options</sub>>])&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;T<sub>desc</sub>>)&lt;ws>(&lt;T<sub>Filename</sub>>)&lt;ws>(&lt;T<sub>URL</sub>>))</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="26%"><font face="Arial"><font size=-2>Reference to
+a source file</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>(EmbedFile</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;ws>(&lt;T<sub>Type</sub>>/&lt;T<sub>Subtype</sub>>;[&lt;T<sub>options</sub>>])&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;T<sub>Desc</sub>>)&lt;ws>(&lt;T<sub>Filename</sub>>)&lt;ws>{&lt;D<sub>Data</sub>>})</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Embedded source file</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Type</i>&nbsp;&nbsp; A standard MIME (Multipurpose Internet Mail
+Extension) specification type field of the data being embedded
+<p><i>Subtype</i>&nbsp;&nbsp; The MIME subtype of the data being embedded
+<p><i>Options</i>&nbsp;&nbsp; The MIME options field
+<p><i>Desc</i>&nbsp;&nbsp; A general description of the embedded file or
+of the link (argument is normally ignored)
+<p><i>URL</i>&nbsp;&nbsp; A universal resource locator specification of
+the source file being referenced
+<p><i>Filename</i>&nbsp;&nbsp; The file name of the source file being embedded
+<p><i>Data</i>&nbsp;&nbsp; The binary data of the source file being embedded</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>After viewing WHIP! data in an Internet browser, a user may
+wish to edit the illustration using both the original program and the original
+source file that the WHIP! data was created from. The embed opcode
+allows the source file that was used to create the WHIP! data to
+be referenced or embedded inside the WHIP! data.
+<p>For example, a user might perform a drag-and-drop operation by dragging
+from a WHIP! data being viewed in an Internet browser and dropping into a CAD
+application like AutoCAD. Because WHIP! data is essentially an electronic
+printout, they are designed mainly for viewing not editing (much of the
+application-specific information is not contained in the WHIP! data).
+Rather than dropping the WHIP! data into the CAD application, the Internet
+WHIP! data viewer can drop the embedded native CAD source file, for example, an
+AutoCAD <i>.dxf</i> file. The embed opcode can be used as follows:
+<ul>
+<pre><font face="Courier New">(Embed (image/autocad-dxf;) () () (http://www.autodesk.com/house.dxf))</font></pre>
+</ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

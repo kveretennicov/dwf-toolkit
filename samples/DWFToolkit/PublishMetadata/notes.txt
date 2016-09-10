@@ -1,0 +1,2 @@
+This is a enhanced sample of 3DPulish. In this sample, users can learn how to publish a 3D DWF or DWFx file. The scene in this sample is more complex
+ than that in 3DPulish. It contains more kinds of objects, such as light and color, many presnetation data and metadata of the segments.

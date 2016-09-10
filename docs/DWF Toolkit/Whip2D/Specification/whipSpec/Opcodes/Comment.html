@@ -1,0 +1,77 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Comment</title>
+ 
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Comment[s]</font></i></b>
+<br>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>The <b>Comment[s]</b> function allows generic comments to be added
+to the file that are ignored by the file reading application.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="654" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>(Comment</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Comment</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>An
+internal comment only visible to someone looking at WHIP! data using some
+form of WHIP! data editor. Can occur multiple times within WHIP! data.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>(Comments</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Comments</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>An
+external comment, e.g. description of WHIP! data, that is intended to be
+shown as part of viewing the WHIP! data. Occurs only once within WHIP! data.</font></font></td>
+</tr>
+</table></center>
+
+<dir><i>Comment</i> A string representing a comment that is normally ignored
+by the file reading application</dir>
+<font face="Arial Black"><font size=-1>Details</font></font> 
+<dir>Some WHIP! data users can directly investigate WHIP! data using a simple 
+  text editor. The WHIP! data writing application can add comments for such users that 
+  are otherwise ignored by WHIP! data reading applications. The Comment[s] opcode provides 
+  this ability: 
+  <dir> 
+    <pre><font face="Courier New">(Comment 'To Do: Please see Fred before making changes to this drawing.')
+(Comments 'This WHIP! data reflects the floor plan as of the August 14th meeting.')</font></pre>
+  </dir>
+  <font face="Arial Black"><font size=-1>Notes</font></font> 
+  <dir>WHIP! data reading applications typically show the Comments opcode. A WHIP! data reading application 
+    can provide an option to the user to view the comments contained in the Comment opcode.</dir>
+  <hr>
+  <hr WIDTH="100%">
+</dir>
+
+</body>
+</html>

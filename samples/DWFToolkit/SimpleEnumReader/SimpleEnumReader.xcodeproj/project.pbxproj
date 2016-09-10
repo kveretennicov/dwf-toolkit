@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		B89D09D50F245C3B00CFB804 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B89D09D40F245C3B00CFB804 /* stdafx.cpp */; };
+		B89D09D70F245C4100CFB804 /* SimpleEnumReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B89D09D60F245C4100CFB804 /* SimpleEnumReader.cpp */; };
+		B89D09D90F245C7500CFB804 /* libDWFToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D09D80F245C7500CFB804 /* libDWFToolkit.a */; };
+		B89D09DB0F245C8400CFB804 /* libDWFCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D09DA0F245C8400CFB804 /* libDWFCore.a */; };
+		BB21597D13E12433004CF889 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		BB21597F13E12433004CF889 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B89D09D40F245C3B00CFB804 /* stdafx.cpp */; };
+		BB21598013E12433004CF889 /* SimpleEnumReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B89D09D60F245C4100CFB804 /* SimpleEnumReader.cpp */; };
+		BB21598213E12433004CF889 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		BB21598C13E1247B004CF889 /* DWFCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB21598A13E1247B004CF889 /* DWFCore.framework */; };
+		BB21598D13E1247B004CF889 /* DWFToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB21598B13E1247B004CF889 /* DWFToolkit.framework */; };
+		BB21598F13E12489004CF889 /* DWFCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB21598A13E1247B004CF889 /* DWFCore.framework */; };
+		BB21599013E12489004CF889 /* DWFToolkit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB21598B13E1247B004CF889 /* DWFToolkit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB21598E13E12481004CF889 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB21598F13E12489004CF889 /* DWFCore.framework in CopyFiles */,
+				BB21599013E12489004CF889 /* DWFToolkit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0867D6ABFE840B52C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		32DBCF6D0370B57F00C91783 /* SimpleEnumReader_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleEnumReader_Prefix.pch; sourceTree = "<group>"; };
+		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D0C4E970486CD37000505A6 /* SimpleEnumReader static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleEnumReader static.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B89D09D30F245C3B00CFB804 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
+		B89D09D40F245C3B00CFB804 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
+		B89D09D60F245C4100CFB804 /* SimpleEnumReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleEnumReader.cpp; sourceTree = "<group>"; };
+		B89D09D80F245C7500CFB804 /* libDWFToolkit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFToolkit.a; path = "../../../develop/global/build/XCode 3.1/DWFToolkit/build/UninstalledProducts/libDWFToolkit.a"; sourceTree = SOURCE_ROOT; };
+		B89D09DA0F245C8400CFB804 /* libDWFCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFCore.a; path = "../../../develop/global/build/XCode 3.1/DWFCore/build/UninstalledProducts/libDWFCore.a"; sourceTree = SOURCE_ROOT; };
+		BB21598813E12433004CF889 /* SimpleEnumReader share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimpleEnumReader share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB21598A13E1247B004CF889 /* DWFCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFCore.framework; path = ../../../develop/global/lib/release/DWFCore.framework; sourceTree = "<group>"; };
+		BB21598B13E1247B004CF889 /* DWFToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFToolkit.framework; path = ../../../develop/global/lib/release/DWFToolkit.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D0C4E910486CD37000505A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
+				B89D09D90F245C7500CFB804 /* libDWFToolkit.a in Frameworks */,
+				B89D09DB0F245C8400CFB804 /* libDWFCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB21598113E12433004CF889 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB21598C13E1247B004CF889 /* DWFCore.framework in Frameworks */,
+				BB21598D13E1247B004CF889 /* DWFToolkit.framework in Frameworks */,
+				BB21598213E12433004CF889 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		195DF8CFFE9D517E11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E970486CD37000505A6 /* SimpleEnumReader static.app */,
+				BB21598813E12433004CF889 /* SimpleEnumReader share.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20286C29FDCF999611CA2CEA /* SimpleEnumReader */ = {
+			isa = PBXGroup;
+			children = (
+				BB21598A13E1247B004CF889 /* DWFCore.framework */,
+				BB21598B13E1247B004CF889 /* DWFToolkit.framework */,
+				20286C2AFDCF999611CA2CEA /* Sources */,
+				20286C2CFDCF999611CA2CEA /* Resources */,
+				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
+				195DF8CFFE9D517E11CA2CBB /* Products */,
+			);
+			name = SimpleEnumReader;
+			sourceTree = "<group>";
+		};
+		20286C2AFDCF999611CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B89D09D60F245C4100CFB804 /* SimpleEnumReader.cpp */,
+				B89D09D30F245C3B00CFB804 /* stdafx.h */,
+				B89D09D40F245C3B00CFB804 /* stdafx.cpp */,
+				32DBCF6D0370B57F00C91783 /* SimpleEnumReader_Prefix.pch */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		20286C2CFDCF999611CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E960486CD37000505A6 /* Info.plist */,
+				0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B89D09DA0F245C8400CFB804 /* libDWFCore.a */,
+				B89D09D80F245C7500CFB804 /* libDWFToolkit.a */,
+				20286C33FDCF999611CA2CEA /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D0C4E890486CD37000505A6 /* SimpleEnumReader static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "SimpleEnumReader static" */;
+			buildPhases = (
+				8D0C4E8C0486CD37000505A6 /* Resources */,
+				8D0C4E8F0486CD37000505A6 /* Sources */,
+				8D0C4E910486CD37000505A6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SimpleEnumReader static";
+			productInstallPath = "$(HOME)/Applications";
+			productName = SimpleEnumReader;
+			productReference = 8D0C4E970486CD37000505A6 /* SimpleEnumReader static.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB21597B13E12433004CF889 /* SimpleEnumReader share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB21598513E12433004CF889 /* Build configuration list for PBXNativeTarget "SimpleEnumReader share" */;
+			buildPhases = (
+				BB21597C13E12433004CF889 /* Resources */,
+				BB21597E13E12433004CF889 /* Sources */,
+				BB21598113E12433004CF889 /* Frameworks */,
+				BB21598E13E12481004CF889 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SimpleEnumReader share";
+			productInstallPath = "$(HOME)/Applications";
+			productName = SimpleEnumReader;
+			productReference = BB21598813E12433004CF889 /* SimpleEnumReader share.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20286C28FDCF999611CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "SimpleEnumReader" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20286C29FDCF999611CA2CEA /* SimpleEnumReader */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D0C4E890486CD37000505A6 /* SimpleEnumReader static */,
+				BB21597B13E12433004CF889 /* SimpleEnumReader share */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D0C4E8C0486CD37000505A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB21597C13E12433004CF889 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB21597D13E12433004CF889 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D0C4E8F0486CD37000505A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B89D09D50F245C3B00CFB804 /* stdafx.cpp in Sources */,
+				B89D09D70F245C4100CFB804 /* SimpleEnumReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB21597E13E12433004CF889 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB21597F13E12433004CF889 /* stdafx.cpp in Sources */,
+				BB21598013E12433004CF889 /* SimpleEnumReader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0867D6ABFE840B52C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB21598613E12433004CF889 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SimpleEnumReader_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "SimpleEnumReader share";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BB21598713E12433004CF889 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SimpleEnumReader_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "SimpleEnumReader share";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C0E91AC608A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SimpleEnumReader_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "SimpleEnumReader static";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C0E91AC708A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SimpleEnumReader_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "SimpleEnumReader static";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C0E91ACA08A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C0E91ACB08A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB21598513E12433004CF889 /* Build configuration list for PBXNativeTarget "SimpleEnumReader share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB21598613E12433004CF889 /* Debug */,
+				BB21598713E12433004CF889 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "SimpleEnumReader static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91AC608A95435008D54AB /* Debug */,
+				C0E91AC708A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "SimpleEnumReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91ACA08A95435008D54AB /* Debug */,
+				C0E91ACB08A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20286C28FDCF999611CA2CEA /* Project object */;
+}

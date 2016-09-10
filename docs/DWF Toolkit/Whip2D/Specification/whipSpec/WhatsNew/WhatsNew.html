@@ -1,0 +1,141 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Richard Weiss">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>What's New in the WHIP! data format</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;WhatsNewHd.html&quot;">
+&nbsp;
+<br><b><font face="Arial,Helvetica"><font size=+2>What's New in the WHIP! data format</font></font></b>
+<br>
+<hr WIDTH="100%">
+<br>Version 6.0
+<br>March, 2003
+<br>&nbsp;
+<br><b>THE NAME HAS CHANGED!</b><br>
+<br>
+The data formerly known as the DWF file format has been renamed the WHIP! data format.
+As of version 6.0, the DWF name has been rebranded and now applies to the new package 
+format which is explained in the DWF specification document accompanying this distribution.
+WHIP! data refers specifically to 2D vector file resources which reside within the DWF package.
+WHIP! data of version 0.55 and before can (and will) be referred to as a DWF file.<br>
+
+<ul><b><font face="Arial,Helvetica">New since version 0.55</font></b>
+<br><i>Due to the new DWF package architecture, it made sense to move all of the metadata
+and many structural opcodes out of the WHIP! data and into the DWF package.  This essentially
+reverts most of the WHIP! format back to version 0.50, with a few exceptions. See the DWF 
+specification and the WHIP! Toolkit document for information regarding the disposition of the 
+following deprecated opcodes.</i><br>
+<br>
+The following opcodes were deprecated:
+    <blockquote>Alignment, Author, Background, BlockRef, Block_Meaning, Comments, Copyright, 
+        Creation_Time, Creator, Description, Directory, Encryption, FileTime, Group_Begin, 
+        Group_End, Inked_Area, Keywords, Marker_Size, Marker_Symbol, Modification_Time, 
+        Orientation, Password, Plot_Info, SignData, Source_Creation_Time, Source_Filename, 
+        Source_Modification_Time, Subject, Title, and Trusted_Font_List.
+    </blockquote>
+
+The following opcodes were added to version 6.0:
+    <ul><b><a href="../Opcodes/ObjectNode.html">ObjectNode</a></b>
+    <br>Replaces the Group_Begin/Group_End, and constitutes an new, efficient method of 
+    grouping objects together (for use by rendering applications for such things as selection,
+    metadata association, etc.)</ul>
+</ul>
+<br>
+<ul><b><font face="Arial,Helvetica">New since version 0.50</font></b>
+<br>The following opcodes were added to DWF version 0.55:
+<ul><b><a href="../Opcodes/BlockRef.html">BlockRef</a></b>
+<br>DWF files can store DWF data in "blocks", each of which is separately
+compressed and uniquely identified with some meta-data.
+<br><b><a href="../Opcodes/DefDwgInfoBlk.html">Drawing Information
+Block</a></b>
+<br>Acts as a container for other drawing information opcodes.
+<br><b><a href="../Opcodes/DefKeywords.html">Keywords</a></b>
+<br>Allows a list of keywords to be added to the file that is ignored by
+the file reading application.
+<br><b><a href="../Opcodes/DefMrkrGlph.html">Marker Glyph</a></b>
+<br>Adds a new glyph or redefines an existing glyph to the table of marker
+glyphs.
+<br><b><a href="../Opcodes/DefWT_Alignment.html">Alignment</a></b>
+<br>Represents the alignment of all graphics in the graphic block, in a
+certain format, on the paper plot.
+<br><b><a href="../Opcodes/DefWT_Block_Meaning.html">Block Meaning</a></b>
+<br>Definition field of the <a href="../Opcodes/BlockRef.html">BlockRef</a>
+opcode, that distinguishes one overlay block from the other — by attaching
+different block meaning.
+<br><b><a href="../Opcodes/DefWT_Embedded_Font.html">Embedded Font</a></b>
+<br>A wrapper-extended binary opcode intended to hold the subsetted embedded
+font information as a byte stream.
+<br><b><a href="../Opcodes/DefWT_Encryption.html">Encryption</a></b>
+<br>Identifies the type of encryption — if&nbsp; DWF data is encrypted.
+<br><b><a href="../Opcodes/DefWT_FileTime.html">FileTime</a></b>
+<br>A generic way of timestamp representation as part of other opcodes.
+<br><b><a href="../Opcodes/DefWT_Font_Extension.html">Font Extension</a></b>
+<br>Accounts for the limitation of the existing Set Font opcode which does
+not store the canonical name.
+<br><b><a href="../Opcodes/DefWT_Guid.html">Guid</a></b>
+<br>A Block Guid will uniquely identify each of the blocks in a block structured
+<i>DWF</i>
+file.
+<br><b><a href="../Opcodes/DefWT_Guid_List.html">Guid List</a></b>
+<br>A helper opcode used to serialize and materialize a linked list of
+<a href="../Opcodes/DefWT_Guid.html">Guid</a>
+opcodes.
+<br><b><a href="../Opcodes/DefWT_Orientation.html">Orientation</a></b>
+<br>represents the relationship between the paper and image orientation
+of the graphics block that the opcode represents.
+<br><b><a href="../Opcodes/DefWT_Password.html">Password</a></b>
+<br>Overlay blocks like 'Seals' and 'Stamps' may optionally be password
+protected.
+<br><b><a href="../Opcodes/DefWT_SignData.html">SignData</a></b>
+<br>Adds support for digital signatures in <i>DWF</i> files.
+<br><b><a href="../Opcodes/DefWT_Trusted_Font_List.html">Trusted Font List</a></b>
+<br>List of all "trusted" non-standard fonts for embedding subsetted information
+on fonts used in the current <i>DWF</i> file or on the target system,&nbsp;
+using the <a href="../Opcodes/DefWT_Embedded_Font.html">Embedded Font</a>
+opcode
+<br><b><a href="../Opcodes/DefWT_UserData.html">UserData</a></b>
+<br>A binary opcode wrapper storing user specific data in <i>DWF</i> files.
+<br><b><a href="../Opcodes/Directory.html">Directory</a></b>
+<br>Serves as a directory of blocks contained in a <i>DWF</i> file.
+<br><b><a href="../Opcodes/EmbdSrcFil.html">Embed Source File</a></b>
+<br>Allows smart drag-and-drop operations.
+<br><b><a href="../Opcodes/WT_PenPat_Options.html">Pen Pattern Options</a></b>
+<br>Makes it possible to save penset options in a <i>DWF</i> file.</ul>
+<b><font face="Arial,Helvetica"></font></b>
+
+<p><br><b><font face="Arial,Helvetica">New since version 0.40</font></b>
+<br>The following opcodes were added to DWF version 0.50:
+<ul><b><a href="../Opcodes/OptimizedForPlotting.html">Optimized For Plotting</a></b>
+<br>Gives the DWF generators the ability to choose whether to optimize
+the <i>dwf</i> file for display or plotting.
+<br><b><a href="../Opcodes/MergeControl.html">Merge Control</a></b>
+<br>Signifies to the viewer that, a raster op has to be performed on drawables
+in order to merge objects, whenever the drawables overlap.
+<br><b><a href="../Opcodes/InkArea.html">Inked_Area</a></b>
+<br>Specifies a rectangle, in logical coordinates, in which all of the
+<i>.dwf</i>
+file’s geometric primitives fit tightly inside.
+<br><b><a href="../Opcodes/DrwPNGGroup4Img.html">Draw Group4 PNG Image</a></b>
+<br>Draws PNG or Group4 formatted images either in a one- or two-dimensional
+array of pixels. Also, the "Group4X_Mapped" image format extends the <b>Group4
+PNG Image</b> opcode to indicate whether the background pixels of a G4
+raster are transparent.
+<br><b><a href="../Opcodes/GroupEnd.html">Group End</a></b>
+<br>Marks the end of a set of drawing objects that are treated as a group.
+<br><b><a href="../Opcodes/GroupBegin.html">Group Begin</a></b>
+<br>Marks the beginning of a set of drawing objects that are treated as
+a group.
+<br><b><a href="../Opcodes/SetFillPattern.html">Set Fill Pattern</a></b>
+<br>Enables the DWF generator to specify the 'filling patterns' for drawables
+as rendition attributes. The viewer can then stroke the patterns for drawables.
+<br><b><a href="../Opcodes/SetLinPat.html">Set Line Pattern</a></b>
+<br>Specifies the repeating pattern with which lines are rendered. The
+opcode was extended to include ISO line types.</ul>
+<hr WIDTH="100%">
+<br>
+<hr WIDTH="100%">
+</body>
+</html>

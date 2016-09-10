@@ -1,0 +1,170 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Define Embedded Font</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Embedded Font</font></i></b>
+<br>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir><b>Define Embedded Font</b> is a wrapper-extended binary opcode
+intended to hold the subsetted embedded font information as a byte stream.
+This opcode, using Microsoft's Open Type Font Embedding SDK, also stores
+the <i>Privilege</i> with which the font information was embedded.
+<p>The embedded-font information is usually compressed and encrypted.
+<br>&nbsp;</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="654" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>(Embedded_Font</font></font></td>
+
+<td VALIGN=TOP WIDTH="50%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">request</font></sub><font face="Courier New">>&nbsp;</font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">privilege</font></sub><font face="Courier New">>&nbsp;</font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">character
+code type</font></sub><font face="Courier New">>&nbsp;</font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">font
+name string length</font></sub><font face="Courier New">>&nbsp;</font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;font name> (&lt;UL</font><sub><font face="Courier New,Courier">font
+information data length</font></sub><font face="Courier New">> &lt;embedded
+font information></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="15%" HEIGHT="26"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="25%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+Binary</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font size=-2><font face="Courier New">{&lt;US</font><sub><font face="Courier New,Courier">B
+13E (hex)</font></sub><font face="Courier New">></font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">B
+opcode size</font></sub><font face="Courier New">></font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">B
+request type</font></sub><font face="Courier New">></font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;Byte</font><sub><font face="Courier New,Courier">B
+privilege</font></sub><font face="Courier New">>&lt;Byte</font><sub><font face="Courier New,Courier">B
+character set type</font></sub><font face="Courier New">>&lt;UL</font><sub><font face="Courier New,Courier">B
+font name string length</font></sub><font face="Courier New">>&lt;B font
+name as string></font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;B embedded font stream
+byte length>&lt;B font stream>}</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+</table></center>
+
+<ul><b><i>Request</i></b> — A signed-integer value denoting the request
+by which the font information was embedded. This field could be one or
+more of the following <i>Request</i> values by which font information would
+have been embedded by Microsoft's Open Type Font Embedding SDK:
+<ul><tt>TTEMBED_RAW</tt> — Returns a font structure containing the full
+character set, non-compressed. This is the default behavior of the function.
+<br><tt>TTEMBED_SUBSET</tt> — Returns a subsetted font containing only
+the glyphs indicated by <tt>pusCharCodeSet</tt>. These character codes
+must be denoted as 16-bit Unicode values.
+<br><tt>TTEMBED_TTCOMPRESSED</tt> — Returns a compressed font structure.
+<br><tt>TTEMBED_FAILIFVARIATIONSIMULATED</tt> — In some cases, a client
+will want to avoid embedding simulated fonts, especially if the normal
+instance of the typeface is being embedded. If this flag is set and the
+font in the DC is simulated, <tt>TTEmbedFont( )</tt> will fail, generating
+an error. <tt>TTEMBED_EMBEDEUDC</tt> — Embed EUDC font. If there is typeface
+EUDC embed it; otherwise, embed system EUDC.
+<br><tt>TTEMBED_VALIDATIONTESTS</tt> — Confirms validity of the font file
+before embedding.
+<br><tt>TTEMBED_WEBOBJECT</tt> — Clients embedding fonts for the web must
+use this flag to create valid web objects. Clients embedding fonts in their
+own document files do not use this flag.
+<br><tt>TTEMBED_ENCRYPTDATA</tt> — Causes font data in the embedded object
+to be additionally encrypted when compression is being performed.
+<p><b>Note:</b> For more detailed information, please refer to the Microsoft
+Font Embedding SDK documentation.
+<br>&nbsp;</ul>
+<i><b>Privilege</b> </i>— A flag indicating the embedding privileges of
+the font. This flag can have one of the following values:
+<ul><tt>EMBED_PREVIEWPRINT </tt>— Preview and Print Embedding.
+<br><tt>EMBED_EDITABLE</tt> — Editable Embedding.
+<br><tt>EMBED_INSTALLABLE</tt> — Installable Embedding.
+<br><tt>EMBED_NOEMBEDDING</tt> — Restricted License Embedding</ul>
+
+<p><br><i><b>Character code</b> </i>— A flag specifying the character set
+of the font to be embedded. This flag can have one of the following values:
+<ul><tt>CHARSET_UNICODE</tt> — A Unicode character set, requiring 16-bit
+character encoding.
+<br><tt>CHARSET_SYMBOL</tt> — A symbol character set, requiring 16-bit
+character encoding.
+<br><tt>CHARSET_GLYPHIDX</tt> — Indicates that subset values passed are
+to be interpreted as glyph id’s (rather than unicode values).</ul>
+
+<p><br><b><i>Canonical Font name string</i></b> — This is the full descriptive
+font name.
+<p><b><i>Canonical Font name</i></b> — Canonical name’s string length.
+<p><b><i>LogFont name string</i></b> — A shorter logfont name (32 byte
+character length restriction applies).
+<p><b><i>LogFont name </i></b>— The logfont name length.
+<p><b><i>Font information data length</i></b> — The length of the subsetted
+embedded font byte stream.
+<p><b><i>Font information</i></b> — The imbedded font byte stream.
+<br>&nbsp;</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>True type text is currently handled in WHIP! data by putting
+the name of the font into the file along with text position, size and the
+text string. If the user viewing the WHIP! data doesn't have the same
+font used by the creator of the WHIP! data, unpredictable output could
+be the result. In order to make WHIP! data truly "plot ready," that
+is, to display and plot text with the intended font, it is necessary to
+embed information about the non-standard (standard fonts are the fonts
+which are installed by either Autocad or Windows) fonts in WHIP! data.
+Non-standard fonts are categorized into fonts that are "trusted" to be
+present on the target system (Non-Standard-non-embedded font) and fonts
+whose information is captured in WHIP! data either by embedding or
+by tessellation.
+<p>Sample:
+<dir>
+<pre>(Embedded_Font 268435461 3 1 14 Aabced Regular 6 Aabced (data_size&nbsp;
+data))</pre>
+where:
+<br><tt>Request </tt>field<tt> </tt>has a value of<tt> 268435461.</tt>
+<br><tt>Privilege </tt>field<tt> </tt>has a value of <tt>3</tt>, <tt>EMBED_INSTALLABLE</tt>,
+which means that the font is installable on the target system.
+<br><tt>Character Code </tt>field has a value of <tt>‘1’</tt> which means<tt>
+CHARSET_UNICODE.</tt>
+<br><tt>Canonical font name</tt> length is <tt>14</tt> characters.
+<br><tt>Canonical font name </tt>is <tt>“Aabced Regular”.</tt>
+<br><tt>Logfont name </tt>length is&nbsp; <tt>6.</tt>
+<br><tt>Logfont name </tt>is<tt> “Aabced”.</tt>
+<br><tt>Data_size </tt>specifies the length in bytes of the subsetted embedded
+font information.
+<br><tt>Data </tt>specifies the actual subsetted embedded font stream.</dir>
+</dir>
+<font face="Arial Black"><font size=-1>See Also</font></font>
+<blockquote>For more information, see <b>Blockref</b>, <a href="BlockRef.html#EmbddFntBlkRef">Embedded
+Font</a> and <b><a href="DefWT_Trusted_Font_List.html">Trusted Font List</a></b>.</blockquote>
+
+<p><br>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

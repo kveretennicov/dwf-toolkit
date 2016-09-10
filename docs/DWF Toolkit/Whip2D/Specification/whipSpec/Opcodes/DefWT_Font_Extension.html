@@ -1,0 +1,71 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Define Font Extension</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Font Extension</font></i></b>
+<br>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<blockquote>The <b>Font Extension</b> opcode is&nbsp; an extension of
+the existing <b><a href="SetFnt.html">Set Font</a></b> opcode. <b>Font Extension</b>
+accounts for the limitation of the existing <b>Set Font</b> opcode which
+does not store the canonical name<i> </i>— instead it stores only the shorter
+logfont name. It is important that the viewers know both the canonical
+as well as the logfont name&nbsp;<i> </i>— especially when fonts are embedded.
+<p>This opcode is a rendition attribute serialized with two string
+fields. The first field stands for the shorter logfont name of the currently
+selected font in the rendition. The second one is the larger canonical
+name for the same font. WHIP! data generators should change this rendition attribute
+as well whenever the font rendition attribute changes.</blockquote>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="613" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="56%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Courier New"><font size=-2>(FontExtension</font></font></td>
+
+<td VALIGN=TOP WIDTH="56%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>'logfont
+name' 'canonical name'&lt;ws>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+</table></center>
+
+<ul>&nbsp;</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>For example,
+<pre>(FontExtension 'Aabced' 'Aabced Regular')</pre>
+
+<p><br>where 'Aabced' is the short logfont name of the current selected
+font in the rendition, 'Aabced Regular' is the bigger canonical name for
+the same font.
+<br>&nbsp;</dir>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<blockquote>This opcode is serialized just before the <b>Set Font</b> opcode
+so that the canonical name is available before the actual font.</blockquote>
+
+<p><br>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

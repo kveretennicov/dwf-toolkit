@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'Strings' target in the 'Strings' project.
+//
+
+#include <Carbon/Carbon.h>

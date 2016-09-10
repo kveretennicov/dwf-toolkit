@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		B86CA7D30F145ADF0028327C /* libDWFCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B86CA7D10F145ADF0028327C /* libDWFCore.a */; };
+		B86CA7D40F145ADF0028327C /* libDWFToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B86CA7D20F145ADF0028327C /* libDWFToolkit.a */; };
+		B86CA7D60F145AFA0028327C /* Aggregate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B86CA7D50F145AFA0028327C /* Aggregate.cpp */; };
+		BB2158DF13E110E9004CF889 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		BB2158E113E110E9004CF889 /* Aggregate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B86CA7D50F145AFA0028327C /* Aggregate.cpp */; };
+		BB2158E313E110E9004CF889 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		BB2158ED13E1114F004CF889 /* DWFCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2158EB13E1114F004CF889 /* DWFCore.framework */; };
+		BB2158EE13E1114F004CF889 /* DWFToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2158EC13E1114F004CF889 /* DWFToolkit.framework */; };
+		BB2158F013E11161004CF889 /* DWFCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB2158EB13E1114F004CF889 /* DWFCore.framework */; };
+		BB2158F113E11161004CF889 /* DWFToolkit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB2158EC13E1114F004CF889 /* DWFToolkit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB2158EF13E11158004CF889 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB2158F013E11161004CF889 /* DWFCore.framework in CopyFiles */,
+				BB2158F113E11161004CF889 /* DWFToolkit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0867D6ABFE840B52C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		32DBCF6D0370B57F00C91783 /* Aggregate_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aggregate_Prefix.pch; sourceTree = "<group>"; };
+		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D0C4E970486CD37000505A6 /* Aggregate_Static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aggregate_Static.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B86CA7D10F145ADF0028327C /* libDWFCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFCore.a; path = ../../../develop/global/lib/debug/libDWFCore.a; sourceTree = SOURCE_ROOT; };
+		B86CA7D20F145ADF0028327C /* libDWFToolkit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFToolkit.a; path = ../../../develop/global/lib/debug/libDWFToolkit.a; sourceTree = SOURCE_ROOT; };
+		B86CA7D50F145AFA0028327C /* Aggregate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Aggregate.cpp; sourceTree = "<group>"; };
+		BB2158E913E110E9004CF889 /* Aggregate_Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aggregate_Share.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2158EB13E1114F004CF889 /* DWFCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFCore.framework; path = ../../../develop/global/lib/release/DWFCore.framework; sourceTree = "<group>"; };
+		BB2158EC13E1114F004CF889 /* DWFToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFToolkit.framework; path = ../../../develop/global/lib/release/DWFToolkit.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D0C4E910486CD37000505A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
+				B86CA7D30F145ADF0028327C /* libDWFCore.a in Frameworks */,
+				B86CA7D40F145ADF0028327C /* libDWFToolkit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB2158E213E110E9004CF889 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB2158ED13E1114F004CF889 /* DWFCore.framework in Frameworks */,
+				BB2158EE13E1114F004CF889 /* DWFToolkit.framework in Frameworks */,
+				BB2158E313E110E9004CF889 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		195DF8CFFE9D517E11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E970486CD37000505A6 /* Aggregate_Static.app */,
+				BB2158E913E110E9004CF889 /* Aggregate_Share.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20286C29FDCF999611CA2CEA /* Aggregate */ = {
+			isa = PBXGroup;
+			children = (
+				BB2158EB13E1114F004CF889 /* DWFCore.framework */,
+				BB2158EC13E1114F004CF889 /* DWFToolkit.framework */,
+				20286C2AFDCF999611CA2CEA /* Sources */,
+				20286C2CFDCF999611CA2CEA /* Resources */,
+				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
+				195DF8CFFE9D517E11CA2CBB /* Products */,
+			);
+			name = Aggregate;
+			sourceTree = "<group>";
+		};
+		20286C2AFDCF999611CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B86CA7D50F145AFA0028327C /* Aggregate.cpp */,
+				32DBCF6D0370B57F00C91783 /* Aggregate_Prefix.pch */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		20286C2CFDCF999611CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E960486CD37000505A6 /* Info.plist */,
+				0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B86CA7D10F145ADF0028327C /* libDWFCore.a */,
+				B86CA7D20F145ADF0028327C /* libDWFToolkit.a */,
+				20286C33FDCF999611CA2CEA /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D0C4E890486CD37000505A6 /* Aggregate_Static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "Aggregate_Static" */;
+			buildPhases = (
+				8D0C4E8C0486CD37000505A6 /* Resources */,
+				8D0C4E8F0486CD37000505A6 /* Sources */,
+				8D0C4E910486CD37000505A6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aggregate_Static;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Aggregate;
+			productReference = 8D0C4E970486CD37000505A6 /* Aggregate_Static.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB2158DD13E110E9004CF889 /* Aggregate_Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB2158E613E110E9004CF889 /* Build configuration list for PBXNativeTarget "Aggregate_Share" */;
+			buildPhases = (
+				BB2158DE13E110E9004CF889 /* Resources */,
+				BB2158E013E110E9004CF889 /* Sources */,
+				BB2158E213E110E9004CF889 /* Frameworks */,
+				BB2158EF13E11158004CF889 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aggregate_Share;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Aggregate;
+			productReference = BB2158E913E110E9004CF889 /* Aggregate_Share.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20286C28FDCF999611CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
+			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "Aggregate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20286C29FDCF999611CA2CEA /* Aggregate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D0C4E890486CD37000505A6 /* Aggregate_Static */,
+				BB2158DD13E110E9004CF889 /* Aggregate_Share */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D0C4E8C0486CD37000505A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB2158DE13E110E9004CF889 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB2158DF13E110E9004CF889 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D0C4E8F0486CD37000505A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B86CA7D60F145AFA0028327C /* Aggregate.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB2158E013E110E9004CF889 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB2158E113E110E9004CF889 /* Aggregate.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0867D6ABFE840B52C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB2158E713E110E9004CF889 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Aggregate_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = Aggregate_Share;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BB2158E813E110E9004CF889 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Aggregate_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = Aggregate_Share;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C0E91AC608A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Aggregate_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = Aggregate_Static;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C0E91AC708A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Aggregate_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = Aggregate_Static;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C0E91ACA08A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C0E91ACB08A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB2158E613E110E9004CF889 /* Build configuration list for PBXNativeTarget "Aggregate_Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB2158E713E110E9004CF889 /* Debug */,
+				BB2158E813E110E9004CF889 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "Aggregate_Static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91AC608A95435008D54AB /* Debug */,
+				C0E91AC708A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "Aggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91ACA08A95435008D54AB /* Debug */,
+				C0E91ACB08A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20286C28FDCF999611CA2CEA /* Project object */;
+}

@@ -1,0 +1,1929 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (WinNT; U) [Netscape]">
+   <title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#FFFFFF">
+<h2>
+<font face="arial,helvetica,sans-serif"><font color="#0000A0">File Version
+Information</font></font></h2>
+<font face="arial,helvetica,sans-serif">As reviewed in the File Architecture
+document, the beginning of an HSF file must contain a file header, which
+consists of a TK_Comment opcode with contents that are specially formatted
+to contain the file version information.&nbsp; <b>The current version of
+the HSF specification is associated with version number 10.00</b>&nbsp;&nbsp;
+Therefore the TK_Comment opcode representing the file header would be formatted
+as follows:</font>
+<br>&nbsp;
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="500" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="50" BGCOLOR="#0000A0"><font face="Arial"><font color="#FFFFFF"><font size=-1>Byte</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>1</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>2</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1><center>3</center></font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>4</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>5</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>6</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>7</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>8</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Arial"><font size=-1>9</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="50" BGCOLOR="#0000A0"><font face="Arial"><font color="#FFFFFF"><font size=-1>Character</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>H</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>F</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>(space)&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>V</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>1</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>.</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="50"><font face="Courier New,Courier,typewriter"><font size=-1>0</font></font></td>
+</tr>
+</table></center>
+<font face="Arial,Helvetica"></font>
+<p><font face="Arial,Helvetica">The opcode definitions contain details
+on any version specific formatting.&nbsp; For example, if you wanted to
+write out an older version of the file, you would need to format all opcodes
+accordingly.</font>
+<p><font face="Arial,Helvetica">If an opcode definition does not contain
+any version information, then there is only one version of the opcode and
+it is supported in all versions of the HSF specification.</font>
+<p><font face="Arial,Helvetica">(Note:&nbsp; because this is the first
+version of the HSF specification, none of the opcode definitions contain
+version information.)</font>
+<p>
+
+<font face="arial, helvetica" size="3">
+The table below is provided so developers can quickly determine what opcodes have been added or 
+modified in a specific release.  To provide a valid HSF reader you must support all opcodes 
+in all their various forms.
+<p><br><p>
+          <table width=250 cellpadding="5" border="0">
+            <tr> 
+              <td colspan="3"> 
+                <div align="center"><b><font face="arial, helvetica" size="3">Opcodes Status Table</font></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="3">Opcode</font></b></div>
+              </td>
+              <td width=50"> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Version 630</font></b></div>
+              </td>
+              <td width=50> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Version 700</font></b></div>
+              </td>
+              <td width=50> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Version 800</font></b></div>
+              </td>
+              <td width=50> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Version 900</font></b></div>
+              </td>
+              <td width=50> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Version 1000</font></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Area_Light</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Bounding</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Bounding_Info</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Callback</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Camera</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Circle</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Circular_Arc</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Circular_Chord</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Circular_Wedge</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Clipping_Rectangle</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Clipping_Region</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Close_Segment</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Color</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Color_By_FIndex</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Color_By_Index</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Color_By_Index_16</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Color_By_Value</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Color_Map</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Color_RGB</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Comment</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Cutting_Plane</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Cylinder</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Dictionary</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Distant_Light</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Edge_Pattern</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Edge_Weight</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Ellipse</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Elliptical_Arc</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_External_Reference</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Face_Pattern</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_File_Info</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Font</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Grid</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Handedness</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Heuristics</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Image</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Include_Segment</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Line</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Line_Pattern</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Line_Weight</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Local_Light</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_LOD</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Marker_Size</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Marker_Symbol</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Mesh</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Modelling_Matrix</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_NURBS_Curve</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_NURBS_Surface</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Open_Segment</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Pause</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_PolyCylinder</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Polygon</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Polyline</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_PolyPolyline</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Rendering_Options</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Renumber_Key_Global</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Renumber_Key_Local</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Reopen_Segment</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Repeat_Object</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Selectability</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Shell</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Spot_Light</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Start_User_Data</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Start_Compression</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Stop_User_Data</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Stop_Compression</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Style_Segment</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Tag_Explicit</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Tag_Implicit</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Termination</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Text</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Text_With_Encoding</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Text_Alignment</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Text_Font</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Text_Path</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Text_Spacing</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Texture</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Texture_Matrix</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Unicode_Options</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_URL</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_User_Index</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_User_Value</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_View</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Visibility</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Window</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Window_Frame</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_Window_Pattern</font></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="yellow"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=150> 
+                <div align="center"><b><font face="arial, helvetica" size="1">TKE_XML</font></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="gray"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="blue"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+              <td width=50 bgcolor="lime"> 
+                <div align="center"><b></b></div>
+              </td>
+            </tr>
+          </table>
+		  <br><p><br>
+
+		  <table width=150 cellpadding="5" border="0">
+            <td colspan="3"> 
+                <div align="center"><b><font face="arial, helvetica" size="2">Color Codings</font></b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width=90"> 
+                <div align="center"><b><font face="arial, helvetica" size="1">New</font></b></div>
+              </td>
+              <td bgcolor="blue" width=60> 
+                <div align="center"><b><font face="arial, helvetica" size="1"></font></b></div>
+              </td>
+            </tr>
+			<tr> 
+              <td width=90"> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Modified</font></b></div>
+              </td>
+              <td bgcolor="yellow" width=60> 
+                <div align="center"><b><font face="arial, helvetica" size="1"></font></b></div>
+              </td>
+            </tr>
+			<tr> 
+              <td width=90"> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Unchanged</font></b></div>
+              </td>
+              <td bgcolor="lime" width=60> 
+                <div align="center"><b><font face="arial, helvetica" size="1"></font></b></div>
+              </td>
+            </tr>
+			<tr>
+              <td width=90"> 
+                <div align="center"><b><font face="arial, helvetica" size="1">Did not Exist</font></b></div>
+              </td>
+              <td bgcolor="gray" width=60> 
+                <div align="center"><b><font face="arial, helvetica" size="1"></font></b></div>
+              </td>
+            </tr>
+			</table>
+			<center>
+</font>
+<hr WIDTH="100%"></td>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

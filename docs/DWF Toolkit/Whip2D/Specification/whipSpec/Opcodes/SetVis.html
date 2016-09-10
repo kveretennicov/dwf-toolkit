@@ -1,0 +1,70 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Visibility</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Visibility</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Visibility</b> function selects whether subsequent geometric
+primitives are rendered.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="642" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="19%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="24%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="37%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>Single-byte,
+readable operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="19%"><font face="Courier New"><font size=-2>[V] (56)</font></font></td>
+
+<td VALIGN=TOP WIDTH="24%"><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td VALIGN=TOP WIDTH="37%"><font face="Arial"><font size=-2>Turn Visibility
+on</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>[v] (76)</font></font></td>
+
+<td><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td><font face="Arial"><font size=-2>Turn Visibility off</font></font></td>
+</tr>
+</table></center>
+
+<p><font face="Arial Black"><font size=-1>Details</font></font>
+<ul>A URL may be attached to a set of geometric primitives that you do
+not want to be drawn on the screen, but that you want the user to be able
+to select. The "Set Visibility" attribute allows you to disable the rendering
+of subsequent geometric primitives.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>For information on additional control over the visibility of geometric
+primitives, see the <b>Set Layer</b> opcode.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the "visibility" attribute is "on" such that primitives
+are rendered, which is the equivalent of executing the following opcode:
+<ul><font face="Courier New"><font size=-1>V</font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

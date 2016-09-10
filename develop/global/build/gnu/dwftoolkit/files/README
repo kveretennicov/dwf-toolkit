@@ -1,0 +1,33 @@
+Setup:
+
+$/dwfcore -             the project root for the GNU make system as well as the KDevelop project
+$/dwfcore/src -         the start of the source tree for the project
+$/dwfcore/src/dwfcore - a SYMBOLIC LINK to the real source base at $/Bianchi/develop/global/src/dwfcore
+
+Depending on how you got your distribution this link might be missing or broken, please confirm its existance and create it if necessary.
+
+Within each of the real source code folders are two files that MUST NOT BE DELETED:
+    Makefile.in
+    Makefile.am
+
+If configure fails with:
+    permission denied or similar - chmod +x ./configure
+    already configured; run 'make distclean' - but you can't and seem stuck forever, rm config.status
+
+
+Build notes:
+
+There are two build configurations:
+debug - enables full debugging and no optimization
+optimized - O2 level optimizations plus others, for a more finely tuned build, try -march=pentium4 (e.g.)
+
+ZLIB - by default, libdwfcore is built using the system zlib. there is an internal zlib that can be turned on by defining -DDWFCORE_BUILD_ZLIB.  If defined, the -lz LDFLAG must be removed.
+
+
+libdwfcore will be installed to /usr/local/lib by default
+and header will be installed to /usr/local/include/dwfcore by default.
+
+
+Read the INSTALL file.
+After installing libdwfcore, you may need to run ldconfig before linking.
+use libtool to link against the shared library simply by adding -ldwfcore to your LDFLAGS

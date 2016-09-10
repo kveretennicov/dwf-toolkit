@@ -1,0 +1,103 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Initial View</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Initial View</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Initial View</b> function indicates to the WHIP! data reading
+application what portion of the logical coordinate space should initially
+be viewed.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="50%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="11%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="29%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="42%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>(View</font></font></td>
+
+<td VALIGN=TOP WIDTH="29%"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>]['&lt;T<sub>Name</sub>>'][&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="42%"><font face="Arial"><font size=-2>Indicates an
+area of the logical coordinate space to view</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>X1,Y1</i> The logical coordinates of the lower-left corner of the
+area to be viewed
+<p><i>X2,Y2</i> The logical coordinates of the upper-right corner of the
+area to be viewed
+<p><i>Name</i> A quoted view name as defined by <b><a href="DefNamedVw.html">Define
+Named View</a></b>.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Define Initial View</b> opcode tells the WHIP! data reading application
+what area of the drawing’s logical coordinate space should initially be
+viewed. This can be used when you want the user’s initial view of a drawing
+to be a small subset of the entire logical coordinate drawing area.
+<p>This opcode can also be used when a WHIP! data drawing does not fully fill
+the logical coordinate space. Although the WHIP! data reading application may
+compute the extent of all graphic primitives in the scene and automatically
+set the view to tightly fit the scene, this requires that the entire scene
+be transmitted and parsed before rendering may begin with the correct view.
+Indicating an initial view near the start of the WHIP! data allows
+a WHIP! data reading application to render the scene while it is being transmitted
+and parsed.
+<p>Note that the view may be specified either as two logical points, or
+as a quoted ASCII view name as found in the active named view list (see
+<b><a href="DefNamedVw.html">Define
+Named View</a></b>).</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>WHIP! data reading applications may receive multiple conflicting view instructions,
+and therefore should select a view based on the following precedence:</ul>
+
+<ol>
+<ol>
+<li>
+If this WHIP! data was loaded by the execution of a URL, and the
+URL indicated a view, use it,</li>
+
+<li>
+else if the WHIP! data contains a <font face="Courier New">view</font>
+opcode, execute it,</li>
+
+<li>
+else if the WHIP! data contained a <b><a href="InkArea.html#DefineDrawingBounds">Define
+Drawing Bounds</a></b> or <b><a href="InkArea.html">Inked Area</a></b>&nbsp;
+opcode, use the drawing extents as the view,</li>
+
+<li>
+else if all of the WHIP! data has been transmitted and parsed, compute
+the extents of all geometric primitives in the scene and use that as the
+view,</li>
+
+<li>
+else set the view to the entire logical coordinate space.</li>
+</ol>
+WHIP! data reading applications may receive view information from the execution
+of URLs. The specification of this behavior is to be determined (TBD).
+<p>It is possible that WHIP! data will have multiple view opcodes
+which can be used to animate the drawing while the file is being parsed.
+However, only the first view opcode, normally found in the <b><a href="DefDwgInfoBlk.html">Define
+Drawing Information Block</a></b> block, is the official "initial" view.</ol>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the initial view is the full 31-bit logical coordinate space.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

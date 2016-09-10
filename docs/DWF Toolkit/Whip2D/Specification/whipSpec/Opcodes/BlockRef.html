@@ -1,0 +1,5432 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>BlockRef - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">BlockRef - DEPRECATED</font></i></b>
+<br>
+<hr>
+<p><font size=+1><b>BlockRefs are only available when reading/writing vesion 00.55, they were a short-lived 
+architectural solution that has been deprecated in deference to the DWF 6 package 
+format structure.</b></font><br>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>
+In WHIP! version 0.55, data could be stored in "blocks", 
+each of which is separately compressed and uniquely identified with some 
+meta-data. When serialized, the <b>BlockRef</b> opcode will signal the beginning 
+of a block of WHIP! data. Opcodes that follow a <b>BlockRef </b>(up until the next
+<b>BlockRef</b>) constitute a block of WHIP! data. Block information can be either 
+in compressed or uncompressed or ASCII format, although the <b>BlockRef</b> opcode 
+will always stay uncompressed. <p><b>Block_Ref </b>holds meta-data pertaining 
+to the block of WHIP! data that follows it (up until the next <b>BlockRef</b> opcode 
+is encountered in theWHIP! data). Since <b>BlockRef</b> seems to hold attributes 
+pertaining to a block, it was added as a rendition attribute.
+<br>&nbsp;</dir>
+
+<a NAME="Syntax"></a><font face="Arial Black"><font size=-1>Syntax</font></font>
+<center><table BORDER CELLSPACING=3 CELLPADDING=9 WIDTH="100%" >
+<tr VALIGN=BOTTOM>
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><font color="#FFFFFF">Opcode
+format</font></span><span style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="64%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'>Opcode</span><span 
+  style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="64%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'>Operand
+Format</span><span style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="12%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'>Comments</span><span 
+  style='font-size:12.0pt'></span></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="9%" class="Normal"><span style='font-size:8pt;font-family:Arial'>Extended
+ASCII</span><span style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="11%" class="Normal"><span style='font-size:8pt;font-family:"Courier New"'>(BlockRef</span><span 
+  style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="64%" class="Normal"><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;T<sub><a href="#Format">format</a></sub>>&lt;UL<sub><a href="#FileOffset">file_offset</a></sub>>&lt;UL<sub><a href="#BlockSize">block_size</a></sub>>(&lt;Guid<sub><a href="#BlkGuid">block_guid</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>(&lt;FileTime<sub><a href="#BlckCreatTime">block_creation_time</a></sub>>)(&lt;FileTime<sub><a href="#BlckModTime">block_modification_time</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>(&lt;Encryption<sub><a href="#BlkEncryption">encryption</a></sub>>)
+&lt;B<sub><a href="#BlockValidity">block_validity</a></sub>>&lt;B<sub><a href="#BlockVisibility">block_visibility</a></sub>>\
+(&lt;Block_Meaning<sub><a href="#BlkMeaning">block_meaning</a></sub>>)\
+(&lt;Guid<sub><a href="#ParentBlockGuid">parent_block_guid</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>(&lt;Guid<sub><a href="#RelOverlayHdrBlkGuid">related_overlay_header_block_guid</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;L<sub><a href="#SheetPrntSeq">sheet_print_sequence</a></sub>>(&lt;FileTime<sub><a href="#SheetPrntSeqModTme">print_sequence_modification_time</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>(&lt;Guid<sub><a href="#SynchronizationGuid">synchronization_guid</a></sub>>)(&lt;FileTime<sub><a href="#LastSyncTme">last_sync_time</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;B<sub><a href="#MiniDWFlg">flag_for_mini_dwf</a></sub>>(&lt;FileTime<sub><a href="#BlockRef ModTme">this_block_modification_time</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>(&lt;Guid<sub><a href="#DWFContGuid">dwf_container_guid</a></sub>>)(&lt;FileTime<sub><a href="#DWFContModTme">dwf_container_modification_time</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>(&lt;Guid<sub><a href="#DWFDiscpGuid">dwf_discipline_guid</a></sub>>)(&lt;FileTime<sub><a href="#DWFDiscpModTme">dwf_discipline_modification_time</a></sub>>)\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;L<sub><a href="#ZValue">block_zValue</a></sub>>&lt;B<sub><a href="#ScanFlag">scan_flag</a></sub>>&lt;B<sub><a href="#MirFlag">mirror_flag</a></sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;B<sub><a href="#InversFag">inversion_flag</a></sub>>&lt;D<sub><a href="#PaperScle">paper_scale</a></sub>>(&lt;Orientation<sub><a href="#Orientation">orientation</a></sub>>)&lt;S<sub><a href="#Rotation">rotation</a></sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>(&lt;Alignment<sub><a href="#Alignment">alignment</a></sub>>)&lt;D<sub><a href="#Inked_Area_Width">inked_area_width</a></sub>>&lt;D<sub><a href="#Inked_Area_Height">inked_area_height</a></sub>>&lt;S<sub><a href="#DPIRes">dpi_resolution</a></sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;D<sub><a href="#Left_Paper_Offset">paper_offset_left_value</a>]</sub>>&lt;D<sub><a href="#Top_Paper_Offset">paper_offset_top_value</a></sub>>&lt;LogicalPoint<sub><a href="#Clipping_Rectangle">left_top_of_clip_rectangle</a></sub>>\</b></span>
+<p>&lt;<span style='font-size:8pt;'><b>LogicalPoint</span><sub><a href="#Clipping_Rectangle">right_bottom_of_clip_rectangl</a></sub></b><sub><a href="#Clipping_Rectangle">e</a></sub><b>>(&lt;<span style='font-size:8pt;font-family:"Courier New";"Times New Roman"'>Password</span><sub><a href="#Password">password</a></sub>>)\</b>
+<p>&lt;<span style='font-size:8pt;"Courier New"'><b>L</span></b><sub>i<b>mage_height</b></sub><b>>&lt;<span 
+  style='font-size:8pt;font-family:"Courier New"'>L</span><sub>image_width</sub>>&lt;<span 
+  style='font-size:8pt;"Courier New"'>L</span><sub>image_color_depth</sub>>\</b>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;D<sub>[4x4=16
+double values for <a href="#RelTargPositMtrx">target matrix representation</a>]</sub>><sup>
++</sup>)</b></span></td>
+
+<td VALIGN=TOP WIDTH="12%" class="Normal">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="9%" class="Normal"><a NAME="ExtendBin"></a><span style='font-size:8pt;font-family:Arial'>Extended
+Binary</span><span style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="11%" class="Normal"><span style='font-size:8pt;font-family:"Courier New"'>0x015D</span><span 
+  style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="64%" class="Normal"><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;US<sub>format</sub>>&lt;UL<sub>file_offset</sub>>&lt;UL<sub>block_size</sub>>&lt;Guid<sub>block_guid</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;FileTime<sub>block_creation_time</sub>>&lt;FileTime<sub>block_modification_time</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;Encryption<sub>encryption</sub>>&lt;B<sub>block_validity</sub>>&lt;B<sub>block_visibility</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;Block_Meaning<sub>block_meaning</sub>>&lt;Guid<sub>parent_block_guid</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;Guid<sub>related_overlay_header_block_guid</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;L<sub>sheet_print_sequence</sub>>&lt;FileTime<sub>print_sequence_modification_time</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;Guid<sub>synchronization_guid</sub>>&lt;FileTime<sub>last_sync_time</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;B<sub>flag_for_mini_dwf</sub>>&lt;FileTime<sub>this_block_modification_time</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;Guid<sub>dwf_container_guid</sub>>&lt;FileTime<sub>dwf_container_modification_time</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;Guid<sub>dwf_discipline_guid</sub>>&lt;FileTime<sub>dwf_discipline_modification_time</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;L<sub>block_zValue</sub>>&lt;B<sub>scan_flag</sub>>&lt;B<sub>mirror_flag</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;B<sub>inversion_flag</sub>>&lt;D<sub>paper_scale</sub>>&lt;Orientation<sub>orientation</sub>>&lt;S<sub>rotation</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;Alignment<sub>alignment</sub>>&lt;D<sub>inked_area_width</sub>>&lt;D<sub>inked_area_height</sub>>&lt;S<sub>dpi_resolution</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;D<sub>paper_offset_left_value]</sub>>&lt;D<sub>paper_offset_top_value</sub>>&lt;LogicalPoint<sub>left_top_of_clip_rectangle</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;LogicalPoint<sub>right_bottom_of_clip_rectangle</sub>>&lt;Password<sub>password</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;L<sub>image_height</sub>>&lt;L<sub>image_width</sub>>&lt;L<sub>image_color_depth</sub>>\</b></span>
+<p><span style='font-size:8pt;font-family:"Courier New"'><b>&lt;D<sub>[4x4=16
+double values for target matrix representation]</sub>><sup> +</sup>}</b></span><span 
+  style='font-size:12.0pt'></span></td>
+
+<td VALIGN=TOP WIDTH="12%" class="Normal">&nbsp;</td>
+</tr>
+</table></center>
+<a NAME="FielDefs"></a>
+<br><b>Note:</b> The field definitions appear in alphabetical order.
+<ul><a NAME="Alignment"></a><b><i>Alignment</i></b> —
+<br><a href="DefWT_Alignment.html">Alignment</a> – Represents
+the alignment of the represented graphic or overlay graphic block. 
+<p><a NAME="BlckCreatTime"></a><b><i>Block Creation Time</i></b> —
+<br><a href="DefWT_FileTime.html">FileTime</a> – block creation
+time as a filetime, not a systemtime. 
+<p><a NAME="BlkEncryption"></a><b><i>Block Encryption</i></b> —
+<br><a href="DefWT_Encryption.html">Encryption</a> – The encryption
+opcode field is used to identify the type of encryption, if the WHIP! data
+is actually encrypted. This opcode is primarily added for future
+data encryption support. It will always be 'None' for the immediate future.
+<p><a NAME="BlkGuid"></a><b><i>Block Guid</i></b> —
+<br><a href="DefWT_Guid.html">Guid</a> – stands for the identity
+of the block. Each block is referred by a block reference opcode, <b>BlockRef</b>,
+each of which is uniquely identified by a GUID, hence the actual block.
+<p><a NAME="BlkMeaning"></a><b><i>Block Meaning</i></b> —
+<br><a href="DefWT_Block_Meaning.html">Block Meaning</a> –
+The attached meaning of the overlay block. Look at the <b>Block_Meaning_Description</b>
+field of the <b>Block_Meaning</b> opcode for details on the enumeration of 
+block-meaning values.
+<p><a NAME="BlckModTime"></a><b><i>Block Modification Time</i></b> —
+<br><a href="DefWT_FileTime.html">FileTime</a> – block modification
+time as a filetime, not a systemtime.
+<p><a NAME="BlockRef ModTme"></a><b><i>BlockRef Modification Time</i></b>
+—
+<br><a href="DefWT_FileTime.html">FileTime</a> – The modification
+time of all or any of the <b>BlockRef</b> value.&nbsp; Currently this field
+is global to WHIP! data.
+<p><a NAME="BlockSize"></a><b><i>Block Size</i></b> —
+<br>The value represents the size of the block. If you skipped by this
+value, you would go past the current block data on to the next block information.
+A new blockref signals the end of the previous block.&nbsp; In extended-ASCII
+mode, this is written to a maximum byte length of 11 bytes. In extended-binary
+mode, this is represented by a unsigned long value.
+<p><a NAME="BlockValidity"></a><b><i>Block Validity</i></b> —
+<br>Boolean – If true, the referenced block should be displayed
+or plotted. If false, the block should be exempted from display or plot.
+Set this flag to false to signify a deleted block.
+<p>Normally, if a block has been invalidated, an additional valid instance
+of the block will have been appended to the WHIP! data. This process
+of invalidating and appending is done by applications that wish to avoid
+the overhead of rewriting all of the WHIP! data when updating metadata
+or an overlay block. The preferred practice is to rewrite the WHIP! data
+so that it contains only valid blocks.
+<p><a NAME="BlockVisibility"></a><b><i>Block Visibility</i></b> —
+<br>Boolean – Certain blocks could purely be for an informational
+purpose alone. Such blocks will be at an invisible state.
+<p><a NAME="Clipping_Rectangle"></a><b><i>Clipping_Rectangle</i></b> —
+<br>Two points represent the integer pair values of the clipping rectangle 
+of the graphics/overlay block. The clipping rectangle for the main graphics 
+block is in WHIP! data pixel units, with the origin at the lower left corner of the 
+page. The first point is the lower left corner and the second point is the 
+upper right corner of the clipping rectangle. 
+<p><a NAME="DPIRes"></a><b><i>DPI Resolution</i></b> —
+<br>An integer value representing the dpi resolution of the
+overlay graphics, if it is originated through a scanner. In extended-ASCII
+mode, this is written to a maximum byte length of 11 bytes. In extended
+binary mode, this is represented by a short value.
+<p><a NAME="DWFContGuid"></a><i><b>Container Guid</b> </i>—
+<br><a href="DefWT_Guid.html">Guid</a> – The container
+guid to which the WHIP! data belongs — container identifier to which the
+data may belong.
+<p><a NAME="DWFContModTme"></a><b><i>Container Modification Time</i></b>
+—
+<br><a href="DefWT_FileTime.html">FileTime</a> – The time at
+which the container information was last modified. 
+<br><a NAME="DWFDiscpGuid"></a>
+<br><b><i>Discipline Guid</i></b> —
+<br><a href="DefWT_Guid.html">Guid</a> – The discipline
+guid.&nbsp; WHIP! data can be categorized to one or more disciplines. This
+will be a NULL GUID if no discipline has been assigned.
+<p><a NAME="DWFDiscpModTme"></a><b><i>Discipline Modification Time</i></b>
+—
+<br><a href="DefWT_FileTime.html">FileTime</a> – The time at
+which the discipline information was last modified.
+<p><a NAME="FileOffset"></a><b><i>File offset</i></b> —
+<br>The value represents the beginning file offset of a block. That is,
+the start byte of the <b>BlockRef</b> opcode information. In extended-ASCII
+mode, <i>File offset</i> is written to a maximum byte length of 11 bytes.
+In extended-binary mode, this is represented by an unsigned long value.
+<p><a NAME="Format"></a><i><b>Format</b> </i>—
+<br>The following represents potential block types:
+<ul>
+<li>
+Graphics_Hdr — header block for a graphic block.</li>
+
+<li>
+Overlay_Hdr — header block for overlay graphics.</li>
+
+<li>
+Redline_Hdr — header block for redline graphics.</li>
+
+<li>
+Thumbnail — block containing thumbnail image.</li>
+
+<li>
+Preview&nbsp; — block containing preview image.</li>
+
+<li>
+Overlay_Preview — block containing preview image for overlay graphics.</li>
+
+<li>
+EmbedFont — block containing embedded font.</li>
+
+<li>
+Graphics — main graphics block.</li>
+
+<li>
+Overlay — overlay blocks like stamps, seals and so forth.</li>
+
+<li>
+Redline — block containing redlining info.</li>
+
+<li>
+User — user specific block.</li>
+
+<li>
+Null — Grouped drawable block that is not part of any other block
+other than the main WHIP! data block.</li>
+
+<li>
+Global_Sheet — block info common to a single sheet.</li>
+
+<li>
+Global — block info common to multi- sheet.</li>
+
+<li>
+Signature — block containing signature info.</li>
+</ul>
+Each of the preceding formats is an ASCII string in extended-ASCII mode
+and is an unsigned short value in extended-binary mode.
+<p><a NAME="Inked_Area_Height"></a><b><i>Inked_Area_Height</i></b> —
+<br>Double – A double value, in WHIP! data pixels, representing the height
+of the maximum inked area of the block. This value might be required for
+aligning the graphic block on the paper plot. In the ASCII mode, this is
+serialized to a maximum byte length of 11 bytes; in binary mode, to a length
+of 8 bytes.
+<p><a NAME="Inked_Area_Width"></a><i><b>Inked_Area_Width</b> </i>—
+<br>Double – A double value, in WHIP! data pixels, representing the width
+of the maximum inked area of the block. This value might be required for
+aligning the graphic block on the paper plot. In the ASCII mode, this is
+serialized to a maximum byte length of 11 bytes; in binary mode, to a length
+of 8 bytes.
+<p><a NAME="InversFag"></a><b><i>Inversion&nbsp; flag</i></b> —
+<br>Boolean – If true, this signals that the graphics will
+be printed, plotted or viewed as the negative of the image data represented
+in the block. For plotted WHIP! data, this value defaults to false.
+<p><a NAME="LastSyncTme"></a><b><i>Last Sync Time</i></b> —
+<br><a href="DefWT_FileTime.html">FileTime</a> – The time at
+which the WHIP! data was last synchronized to an external database or server 
+Typically, this value will be zero for freshly generated WHIP! data.  A 
+meaningful time stamp can be attached during a synchronization operation.
+<p><a NAME="Left_Paper_Offset"></a><b><i>Left_Paper_Offset</i></b> —
+<br>Double – A double value representing the left Offset of the
+graphics/overlay block on the paper (from the lower left corner <i>x,y</i>
+of the sheet of paper). In the ASCII mode, this is serialized to a maximum
+byte length of 11 bytes; in binary mode, to a length of 8 bytes.
+<p><a NAME="MiniDWFlg"></a><b><i>Mini WHIP! flag</i></b> —
+<br>Boolean – A Boolean value representing that the WHIP! data’s graphic 
+contents was stripped off for compactness (in which case, the related parent 
+guid value is irrelevant). 
+<p><a NAME="MirFlag"></a><b><i>Mirroring flag</i></b> —
+<br>Boolean – The flag for whether to mirror this graphics
+block or not. Typically, this is used for correcting a mis-scanned stamp
+or seal in order to make it right-side up. Mirroring is always done around
+the <i>Y
+</i>axis and “in place” so that the apparent position of the
+stamp does not change. 
+<p>Mirroring for a graphics block is done along the <i>Y </i>axis with
+block center as the origin. This procedure is based on the assumption that
+the WHIP! data creator will write the <b><a href="InkArea.html">Inked Area</a></b>
+opcode as part of the OverlayHdr's compressed block. The Inked Area
+information in the blockref specifies only the height and width in WHIP! data
+units and not the bounding box. Since the blockref is involved in computing
+the center of a graphics block without the bounding box (as specified in
+WHIP! data coordinates), it is understood that there is an agreement
+between the WHIP! data creator and the WHIP! data viewer that every OverlayHdr
+will have a corresponding Inked Area information (that specifies
+a bounding box in WHIP! data coordinates) in the compressed form.
+<p><a NAME="Orientation"></a><b><i>Orientation</i></b> —
+<br><a href="DefWT_Orientation.html">Orientation</a> – This
+represents the relationship between the paper and image orientation of
+the block. For example, if it is formatted
+<tt>Always_In_Sync</tt>, then
+a portrait paper orientation will always force portrait graphics orientation
+and a Landscape paper orientation will always force landscape graphics
+orientation. By default, the orientation will be <tt>Decoupled</tt> which
+would mean that the user has not selected a relationship between media
+and image orientation that persists through paper size changes.
+<p><a NAME="PaperScle"></a><b><i>Paper Scale</i></b> —
+<br>A double value representing the scale factor to be applied
+to the block (that is, WHIP! data to paper scale ratio). In extended-ASCII mode,
+this is written to a maximum byte length of 11 bytes. In extended binary
+mode, this is represented by a double. The paper scale is set to the same
+value as the 0,0 value of the PlotInfo matrix. This is a scale factor from
+WHIP! data to paper units, assuming the current units of measurement (either inches
+or MM). The current units are used to avoid tiny errors due to conversion.
+These units are available in PlotInfo.
+<p><a NAME="ParentBlockGuid"></a><b><i>Parent Block Guid</i></b> —
+<br><a href="DefWT_Guid.html">Guid</a> – The related parent
+block. For example, an overlay block is a child of the main graphics block
+and can cite it as its parent.
+<p><a NAME="Password"></a><b><i>Password</i></b> —
+<br><a href="DefWT_Password.html">Password</a> – Used for secure
+stamps. This is a fixed length (32 char) blob of binary data wrapped in
+the opcode form. It is the encrypted "magic word" that can re-activate
+a disabled stamp.
+<p><a NAME="RelOverlayHdrBlkGuid"></a><b><i>Related Overlay Header Block
+Guid</i></b> —
+<br><a href="DefWT_Guid.html">Guid</a> – Several overlay graphics
+could share the same header block by just writing another <b>BlockRef</b>
+and setting this field to the related overlay header <i>Block Guid</i>.
+<p><a NAME="RelTargPositMtrx"></a><b><i>Relative Targeted Position Matrix</i></b>
+—
+<br>A 4x4 (= 16 double values) transformation matrix positioning
+the overlay graphics in relation to the sheet transformation. Each of the
+double values is written to a maximum byte length of 11 bytes in ASCII
+format and to a length of 8 bytes in binary mode.
+<p>Usually the relative targeted position matrix is set to <tt>identity</tt>
+for the main graphic block preview and thumbnail. However, the thumbnails
+and previews of overlay blocks are more likely to have non-identity matrices
+since they will often be offset, scaled and rotated.
+<p><a NAME="Rotation"></a><b><i>Rotation</i></b> —
+<br>An integer value representing the rotation of the graphics
+block relative to the original graphic orientation. In extended-ASCII mode,
+this is written to a maximum byte length of 11 bytes. In extended binary
+mode, this is represented by a short value.
+<p>Rotation is measured in degrees counterclockwise.  Typical values for 
+rotation are 0, 90, 180 and 270
+<p><a NAME="ScanFlag"></a><b><i>Scan flag</i></b> —
+<br>Boolean – A Scanned flag that tells if the drawing was
+scanned in from a paper document. 
+<p><a NAME="SheetPrntSeq"></a><b><i>Sheet Print Sequence</i></b> —
+<br>An integer value representing the order in which each
+WHIP! data sheet should be printed or plotted in a multisheets scenario.
+In extended-ASCII mode, this is written to a maximum byte length of 11
+bytes. In extended-binary mode, this is represented by a long value.
+<p><a NAME="SheetPrntSeqModTme"></a><b><i>Sheet Print Sequence Modification
+Time</i></b> —
+<br><a href="DefWT_FileTime.html">FileTime</a> – The time at
+which sheet print sequence value was last modified — as file time and not
+as system time.
+<p><a NAME="SynchronizationGuid"></a><b><i>Synchronization Guid</i></b> —
+<br><a href="DefWT_Guid.html">Guid</a> – Guid of the WHIP! data in 
+an external database or server (such as the Autodesk Plans and Specs website)
+used to uniquely identify each sheet during a synchronization operation.
+<p><a NAME="ThumbPrvwImage_Rep"></a><b><i>Thumbnail_Preview_Image_Representation</i></b>
+—
+<br>Three integer values represent the height, width and
+colordepth of the thumbnail or preview block image. In extended-ASCII mode,
+each integer value is written to a maximum byte length of 11 bytes. In
+extended binary mode, each integer value is represented by a long value.
+<p>The color depth value in the image representation array value for the
+main graphics thumbnail and preview is set to the number of colors or gray
+shades in the image. Thus, for example, a 16 gray shade thumbnail has <tt>16</tt>
+in this field.
+<p><a NAME="Top_Paper_Offset"></a><b><i>Top_Paper_Offset</i></b> —
+<br>Double – A double value representing the top Offset of the
+graphics/overlay block on the paper (from the lower left corner <i>x,y</i>
+of the sheet of paper). In the ASCII mode, this is serialized to a maximum
+byte length of 11 bytes; in binary mode, to a length of 8 bytes.
+<p><b>Note:</b> The non-zero values for units, rotation and direction are
+currently deferred, as the offset is 0,0.  For example, a file that has been 
+modified on Buzzsaw's web site may have non-zero values here if an "A" size 
+WHIP! data stream is rotated and placed on an E size sheet. 
+<p>Paper offset is in current units (from PlotInfo which may be in mm or
+inches) denoting the offset of the drawing from the lower left corner of
+the sheet of virtual paper to the corner of the printable area. If the
+offset is <i>(0,0)</i>, the WHIP! data will plot just as it was created. If the
+<i>X</i>
+offset is <tt>10</tt>, the entire drawing should be shifted over 10 mm
+— if the current unit is in mm.  WHIP! data that has been edited subsequently 
+after generation might have non-zero values in cases where an "A" size WHIP! data 
+is rotated and placed on an "E" size sheet.
+<p><a NAME="ZValue"></a><i><b>ZValue</b> </i>—
+<br>An integer value representing the plot/print order of
+the block in relation to other blocks contained in WHIP! data. In extended-ASCII
+mode, this is written to a maximum byte length of 11 bytes. In extended
+binary mode, this is represented by a long value. By default, for a graphics
+block, this value will be <tt>1</tt> in freshly plotted WHIP! data,
+indicating that the main graphics block is printed first, before any overlay
+blocks that might be added later. A reasonable and typical value for the
+ZValue of an overlay is a number such as 2, 3 or 4. For example, the main
+graphic block is always number 1 in ZValue. If there are two stamp overlays
+on top of it, they will be 2 and 3 in ZValue.
+<br>&nbsp;</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<dir><b>Transformations</b>
+<p>Preferably, the transformations in the BlockRef fields should be specified
+in this order:
+<ol>
+<li>
+Mirror the drawing.</li>
+
+<li>
+Rotate the drawing around the center of the drawing. The offset should
+always refer to the center of the drawing.</li>
+
+<li>
+If an alignment is specified, apply it last, overriding any offset.</li>
+</ol>
+
+<p><br>Not all of the fields should be serialized while writing formatted <b>BlockRefs</b>.
+Only relevant fields should be serialized and materialized. The following tables, 
+1a and 1b, detail the relevant fields for each one of the 14 different block types.
+<b>Blockrefs</b>.
+<p><a NAME="HdrBlk&InkdArea"></a><b>Header Block and Inked Area</b>
+<br>Every header block must have an <a href="InkArea.html">Inked Area</a>
+opcode returned as part of the header blockref representing the inked area
+of the corresponding graphic block. For more information, see the <a href="BlockRef.html#GraphicHdr">Graphic
+Header</a>, <a href="BlockRef.html#OverlayHdr">Overlay Header</a> and <a href="BlockRef.html#RedlineHdr">Redline
+Header</a> BlockRefs.
+<p><b>Relevant Fields for Block Types</b>
+<br>Table 1a and 1b show the relevant fields for various block types.<a NAME="Tbl2a-RelFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 1a. Relevant fields for block
+types</font></i></center>
+
+<center><table BORDER CELLPADDING=3 WIDTH="64%" >
+<tr>
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Fields</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Graphic_hdr</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Overlay_hdr</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Redline_Hdr</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>thumbnail</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>preview</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Overlay_preview</b></span></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>File_Offset&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Size&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Creation_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Encryption&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Validity_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Visibility_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Meaning&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Parent_Block_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Related_Overlay_Header_Block_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Sheet_Print_Sequence&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Print_Sequence_Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Synchronization_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Last_Sync_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Getting_Mini_Dwf_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Modified_TimeStamp&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Container_Id&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Container_Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Discipline_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Discipline_Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>ZValue&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Scan_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Mirror_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Inversion_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Paper_Scale&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Orientation&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Paper_Rotation&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Alignment&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Inked_Area&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dpi_Resolution&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Paper_Offset&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Clipping_Rectangle&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Password&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Image_Size_Representation</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM NOWRAP class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Targeted_Matrix_Representation</span></td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+</table></center>
+<a NAME="Tbl2b-RelFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 1b. Relevant fields for block
+types</font></i></center>
+
+<center><table BORDER CELLPADDING=3 WIDTH="64%" >
+<tr>
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Fields</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Font</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Graphics</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Overlay</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Redline</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>User</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Other</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Global_sheet</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Global</b></span></td>
+
+<td VALIGN=TOP WIDTH="9%" BGCOLOR="#000080" class="Normal"><span style='font-size:8pt;font-family:Arial;color:white'><b>Signature</b></span></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>File_Offset</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'><u>1</u></span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Size</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'><u>1</u></span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'><u>1</u></span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Creation_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Encryption&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Validity_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'><u>1</u></span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Visibility_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Meaning&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Parent_Block_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'><u>1</u></span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Related_Overlay_Header_Block_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Sheet_Print_Sequence&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Print_Sequence_Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Synchronization_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Last_Sync_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Getting_Mini_Dwf_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Block_Modified_TimeStamp&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Container_Id&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Container_Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Discipline_Guid&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dwf_Discipline_Modification_Time&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>ZValue&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>1</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Scan_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Mirror_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Inversion_Flag&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Paper_Scale&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Orientation&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Paper_Rotation&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Alignment&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Inked_Area&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Dpi_Resolution&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Paper_Offset&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Clipping_Rectangle&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Password&nbsp;</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Image_Size_Representation</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="227" class="Normal"><span style='font-size:8.0pt;font-family:Arial'>Targeted_Matrix_Representation</span></td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="29" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="30" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="90" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="45" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+
+<td VALIGN=BOTTOM NOWRAP WIDTH="60" class="Normal">
+<div align=right><span 
+  style='font-size:8.0pt;font-family:Arial'>0</span></div>
+</td>
+</tr>
+</table></center>
+
+<p><b>Table Notes:</b> Get or Set methods are provided to get or set relevant
+fields for relevant <b>BlockRef</b> formats. The entries in the preceding
+tables are in the same order as the fields would appear for each of the
+14 different block types in the <i>DWF</i> file.
+<p><font face="Arial Black"><font size=-1>Details for each BlockRef</font></font>
+<dir>&nbsp;
+<br><a NAME="GraphicHdr"></a><b>Graphic Header BlockRef</b>
+<br>Every graphic block-header must have an <a href="InkArea.html">Inked
+Area</a> opcode returned as part of the header blockref representing the
+inked area of the corresponding graphic block.
+<p>Following are some sample field values for a graphic block-header blockref
+using "real world" PlotInfo values.
+<br>For more information on these values, see the <b><a href="DefPltInf.html#PltInfoExmpl">Define
+PlotInfo</a></b> opcode.
+<dir>&nbsp;
+<br><b>Sample BlockRef </b>— <b>as represented in ASCII DWF format :</b>
+<p><tt>(BlockRef 'Graphics_Hdr' 00000003698 00000000574</tt>
+<br><tt>&nbsp;&nbsp; (Guid 3066176738 52653 17731</tt>
+<br><tt>&nbsp;A0B4ADDB1606CD0A )</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1 1 1&nbsp;
+0 0 0 0.0025</tt>
+<br><tt>&nbsp;&nbsp; (Orientation 'Decoupled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+') 0</tt>
+<br><tt>&nbsp;&nbsp; (Alignment 'Align_None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+') 1541 1730 400 0.0 0.0 12,12 4387,3387)</tt></dir>
+<a NAME="Tbl3GraphHdrFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 2. Graphic Header BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="44%" >
+<tr>
+<td WIDTH="50%" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="50%" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000003698</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000574</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 3066176738 52653 17731
+A0B4ADDB1606CD0A )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>encryption</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>validity</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>visibility</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_zValue</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>scan_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>mirror_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>inversion_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>paper_scale</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>.0025</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>orientation</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Orientation 'Decoupled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>rotation</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>alignment</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Alignment 'Align_None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>inked_area</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1541 1730&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>dpi_resolution</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>400</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>paper_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0.0 0.0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>clip_rectangle</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>12,12 4387,3387</tt></div>
+</td>
+</tr>
+</table></center>
+
+<p><a NAME="OverlayHdr"></a><b>Overlay Header BlockRef</b>
+<br>Every overlay block-header must have an <a href="InkArea.html">Inked
+Area</a> opcode returned as part of the header blockref representing the
+inked area of the corresponding graphic block.
+<p>Sample:
+<dir><tt>(BlockRef 'Overlay_Hdr' 00000002987 00000000711</tt>
+<br><tt>&nbsp;&nbsp; (Guid 1807036243 46869 19746</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; AB36A2A2CAC25375 )</tt>
+<br><tt>&nbsp;&nbsp; (Time&nbsp; 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time&nbsp; 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1 1</tt>
+<br><tt>&nbsp;&nbsp; (BlockMeaning 'Stamp&nbsp;&nbsp;&nbsp; ')</tt>
+<br><tt>&nbsp;&nbsp; (Guid 580671832 30809 18942</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; A2B1B3555AE629C0 ) 2 1 0 0 0.0025</tt>
+<br><tt>&nbsp;&nbsp; (Orientation 'Decoupled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')&nbsp; 0</tt>
+<br><tt>&nbsp;&nbsp; (Alignment 'Align_Left&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+') 00000108.24 00000109.25&nbsp; 400 00000018.24 00000019.25 12,12 4387,3387</tt>
+<br><tt>&nbsp;&nbsp; (Psswd '98765432109876543210987654321012') )</tt></dir>
+<a NAME="Tbl3OvrlayHdFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 3. Overlay Header BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="44%" >
+<tr>
+<td WIDTH="50%" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="50%" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000002987</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000711</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 1807036243 46869 19746
+AB36A2A2CAC25375 )&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time&nbsp; 01616921476
+00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time&nbsp; 01616921476
+00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>encryption</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>validity</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>visibility</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_meaning</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(BlockMeaning 'Stamp&nbsp;&nbsp;&nbsp;
+')&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>parent_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 580671832 30809 18942
+A2B1B3555AE629C0 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_zValue</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>2</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>scan_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>mirror_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>inversion_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>paper_scale</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>.0025</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>orientation</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Orientation 'Decoupled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>rotation</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>alignment</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Alignment 'Align_Left&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>inked_area</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000108.24 00000109.25</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>dpi_resolution</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>400</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>paper_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000018.24 00000019.25</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>clip_rectangle</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>12,12 4387,3387</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Password</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Psswd '98765432109876543210987654321012')</tt></div>
+</td>
+</tr>
+</table></center>
+<a NAME="RedlineHdr"></a>
+<br><b>Redline Header BlockRef</b>
+<br>Every redline&nbsp; block-header must have an <a href="InkArea.html">Inked
+Area</a> opcode returned as part of the header blockref representing the
+inked area of the corresponding graphic block.
+<p>Sample:
+<dir><tt>(BlockRef 'Redline_Hdr' 00000017437 00000000530</tt>
+<br><tt>&nbsp;&nbsp; (Guid 3470372517 35997 17586</tt>
+<br><tt>&nbsp;95993C98BE337DD8 )</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1 1</tt>
+<br><tt>&nbsp;&nbsp; (Guid 2365419389 1115 17309</tt>
+<br><tt>&nbsp;AB885866DE02CBA5 ) 3 0 0 0 000000.0025</tt>
+<br><tt>&nbsp;&nbsp; (Orientation 'Always_In_Sync&nbsp; ')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</tt>
+<br><tt>&nbsp;&nbsp; (Alignment 'Align_None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+') 00000000765 00000000055&nbsp;&nbsp;&nbsp; 399 000.0312505 00000.03125
+02147479958,00000003088 02147480723,00000003143</tt>
+<br><tt>&nbsp;&nbsp; (Psswd '(&igrave;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+') )</tt></dir>
+<a NAME="Tbl4RedLnBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 4. Redline Header BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="44%" >
+<tr>
+<td WIDTH="50%" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="50%" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000017437</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000530</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 3470372517 35997 17586&nbsp;</tt>
+<br><tt>&nbsp;95993C98BE337DD8 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>encryption</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>validity</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>visibility</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>parent_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 2365419389 1115 17309&nbsp;</tt>
+<br><tt>&nbsp;AB885866DE02CBA5 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_zValue</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>3</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>scan_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>mirror_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>inversion_flag</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>paper_scale</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>000000.0025</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>orientation</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Orientation 'Always_In_Sync&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>rotation</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>0</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>alignment</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Alignment 'Align_None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>inked_area</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000765 00000000055</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>dpi_resolution</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>399</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>paper_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>000.0312505 00000.03125</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>clip_rectangle</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>02147479958,00000003088
+02147480723,00000003143</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>password</tt></td>
+
+<td VALIGN=TOP WIDTH="600" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Psswd '(&igrave;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+')-</tt></div>
+</td>
+</tr>
+</table></center>
+<a NAME="ThumbnailBlkRef"></a>
+<br><b>Thumbnail BlockRef</b>
+<br>Sample:
+<dir><tt>(BlockRef 'Thumbnail' 00000000901 00000000674</tt>
+<br><tt>&nbsp;&nbsp; (Guid 1517816498 31788 19366</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 9D0F6F834463595B )</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1</tt>
+<br><tt>&nbsp;&nbsp; (Guid 2108214659 54156 18420</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; ADFD538338956F06 ) 3 170 219 256</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((1000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0100)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0010)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0001)) )</tt></dir>
+<a NAME="TblThmbFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 5. Thumbnail BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="801" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000901</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000674</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 1517816498 31788 19366
+9D0F6F834463595B )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>encryption</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>parent_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 2108214659 54156 18420
+ADFD538338956F06 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>block_zValue</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>3</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>image_representation</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>170 219 256&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="224" class="Normal"><tt>targeted_matrix_rep</tt></td>
+
+<td VALIGN=TOP WIDTH="574" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(1000) (0100) (0010) (0001)</tt></div>
+</td>
+</tr>
+</table></center>
+<a NAME="PreviewBlkRef"></a>
+<br><b>Preview BlockRef</b>
+<br>Sample:
+<dir><tt>(BlockRef 'Preview' 00000000199 00000000702</tt>
+<br><tt>&nbsp;&nbsp; (Guid 578256271 20671 17924</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; A3D6352DD02B1861 )</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1</tt>
+<br><tt>&nbsp;&nbsp; (Guid 1000497035 4640 17162</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp; 9EAA607AFB0E6375 ) 2 438 566 256</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((1000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0100)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0010)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0001)) )</tt></dir>
+<a NAME="Tbl5PrvwBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 6. Preview BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000199</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000702</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 578256271 20671 17924
+A3D6352DD02B1861 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>encryption</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp;
+')</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>parent_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 1000497035 4640 17162
+9EAA607AFB0E6375 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_zValue</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>2</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>image_representation</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>438 566 256&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>targeted_matrix_rep</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(1000) (0100) (0010) (0001)</tt></div>
+</td>
+</tr>
+</table></center>
+<a NAME="EmbddFntBlkRef"></a>
+<br><b>Embedded Font BlockRef</b>
+<br>For fonts such as "Arial Narrow", "Avante Garde" and "Century Gothic"
+the bold and italic type comes in a separate <i>ttf</i> file, each of which
+is identified by a separate typeface name. At the ePlot driver and DWF
+font engine level there could be two names attached with each font. One
+is called a full name or a canonical name and the other a fontname. <b><a href="DefWT_Font_Extension.html">Font Extension</a></b>
+accounts for the limitation of the existing <b><a href="SetFnt.html">Set
+Font</a></b> opcode which does not store the canonical name. It is important
+that the viewers know both the canonical as well as the logfont name&nbsp;
+— especially when fonts are embedded. When the ePlot driver embeds fonts
+inside <i>DWF</i> files it serializes both canonical and fontname in the
+<i>DWF</i>
+file as part of&nbsp; the <b><a href="DefWT_Embedded_Font.html">Embedded Font</a></b>
+opcode. Two fields are provided for both the canonical name as well as
+the canonical name length — see sample 1, following.
+<p>Sample 1:
+<dir>
+<pre><tt>(Embedded_Font 5 2 1 33 Americana Extra Bold Condensed BT 18 Americana XBdCn BT ((15945))</tt></pre>
+</dir>
+
+<p><br>Sample 2:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'EmbedFont' 00000003624 00000000323</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 3302729191 16338
+16601</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; BA408FA204DB41A6
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+1 )</tt></div>
+</dir>
+<a NAME="Tbl7EmbdFntBlkRf"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 7. Embedded Font BlockRef Applicable
+Fields - sample 2</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000003624</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000323</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 3302729191 16338 16601
+BA408FA204DB41A6 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>1</tt></td>
+</tr>
+</table></center>
+<a NAME="GrphcsBlkRef"></a>
+<br><b>Graphics BlockRef</b>
+<br>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Graphics' 00000003947 00000000320</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 226574724 1572 19764</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; B6C390351BAA2512
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+1 )</tt></div>
+</dir>
+<a NAME="Tbl8GrphcsBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 8. Graphics BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000003947</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000320</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 226574724 1572 19764
+B6C390351BAA2512 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>1</tt></td>
+</tr>
+</table></center>
+<a NAME="OvrlyBlkRef"></a>
+<br><b>Overlay BlockRef</b>
+<p>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Overlay' 00000004267 00000000321</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 3904197955 34472
+18263</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; AB69F93A7E74C31E
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+1 )</tt></div>
+</dir>
+<a NAME="Tbl9OvrlyBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 9. Overlay BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000004267</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000321</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 3904197955 34472 18263
+AB69F93A7E74C31E )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>1</tt></td>
+</tr>
+</table></center>
+<a NAME="RdlinBlkRef"></a>
+<br><b>Redline BlockRef</b>
+<br>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Redline' 00000017967 00000000438</tt>
+<br><tt>&nbsp;&nbsp; (Guid 2365419389 1115 17309</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AB885866DE02CBA5 )</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669) 1 )</tt></div>
+</dir>
+<a NAME="Tbl10RdlnBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 10. Redline BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000017967</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000438</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>Guid 2365419389 1115 17309&nbsp;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AB885866DE02CBA5 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal"><tt>1</tt></td>
+</tr>
+</table></center>
+<a NAME="UsrBlkRef"></a>
+<br><b>User BlockRef</b>
+<br>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'User' 00000006306 00000000377</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 2418647273 27090
+17633</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; B6001E7CC4E2D0EF
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+1</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 2418647273 27090
+17633 B6001E7CC4E2D0EF )</tt>
+<br><tt>&nbsp;&nbsp; (Guid 1357828497 27357 19892</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; 81C1264D53E7FC33
+) )</tt></div>
+</dir>
+<a NAME="Tbl11UsrBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 11. User BlockRef Applicable Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000006306</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000377</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>validity</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 2418647273 27090 17633
+B6001E7CC4E2D0EF )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>parent_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Guid 1357828497 27357 19892 81C1264D53E7FC33
+)</tt></div>
+</td>
+</tr>
+</table></center>
+
+<p>See Also — <a href="DefWT_UserData.html">Define UserData</a>
+<br><a NAME="NulBlkRef"></a>
+<br><b>Null BlockRef</b>
+<br>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Null' 00000006683 00000000191
+1 0 )</tt></div>
+</dir>
+<a NAME="Tbl12NulBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 12. Null BlockRef Applicable Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000006683</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000191</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>Visibility</tt></td>
+
+<td VALIGN=TOP WIDTH="585" class="Normal">
+<div class="MsoBodyTextIndent"><tt>0</tt></div>
+</td>
+</tr>
+</table></center>
+<a NAME="GlblSht BlkRef"></a>
+<br><b>GlobalSheet BlockRef</b>
+<br>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Global_Sheet' 00000005929
+00000000377</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 1655585211 25604
+17236</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; A93788395C6939D3
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+1 5</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+)</tt></div>
+</dir>
+<a NAME="Tbl13GlblShtBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 13. GlobalSheet BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000005929</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000377</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 1655585211 25604 17236
+A93788395C6939D3 )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal"><tt>(Time 01616921476 00029425669)</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>validity</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal">
+<div class="MsoBodyTextIndent"><tt>1&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>sheet_print_sequence</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal"><tt>5</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="255" class="Normal"><tt>print_sequence_modified_time</tt></td>
+
+<td VALIGN=TOP WIDTH="570" class="Normal"><tt>(Time 01616921476 00029425669)</tt></td>
+</tr>
+</table></center>
+<a NAME="GlblBlockRef"></a>
+<br><b>Global BlockRef</b>
+<br>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Global' 00000005288 00000000641</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 1798500130 65014
+16637</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; B3C3015C52959165
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+1</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 1331353981 13700
+20128</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; BE264BC155D6134E
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+0</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 4239237296 12493
+17224</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; 86321BCF40EECCA0
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 3440072857 52196
+20171</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; 9BCE55FF304E9F1E
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+)</tt></div>
+</dir>
+<a NAME="Tbl14GlblBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 14. Global BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000005288</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000641</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 1798500130 65014 16637
+B3C3015C52959165 )&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>(Time 01616921476 00029425669)</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>synchronization_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>(Guid 1331353981 13700 20128
+BE264BC155D6134E )&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>last_sync_time</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>flag_mini_dwf</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>0</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>modified_block_timestamp</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>dwf_container_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>(Guid 4239237296 12493 17224
+86321BCF40EECCA0 )</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>container_modified_time</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>dwf_discipline_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>(Guid 3440072857 52196 20171
+9BCE55FF304E9F1E )</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>dwf_discipline_modified_time</tt></td>
+
+<td VALIGN=TOP WIDTH="580" class="Normal"><tt>(Time 01616921476 00029425669)</tt></td>
+</tr>
+</table></center>
+<a NAME="SigBlkRef"></a>
+<br><b>Signature BlockRef</b>
+<br>Sample:
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Signature' 00000004908 00000000380</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 1790582318 48002
+20368</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; B7A46F9119EA79EF
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)
+1</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 4163061678 12028
+18631</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; 9E72E3195AF36768
+) )</tt></div>
+</dir>
+<a NAME="Tbl15SigBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 15. Signature BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="615" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000004908</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="615" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000380</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="615" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 1790582318 48002 20368
+B7A46F9119EA79EF )&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="615" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="615" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Time 01616921476 00029425669)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>validity</tt></td>
+
+<td VALIGN=TOP WIDTH="615" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="219" class="Normal"><tt>parent_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="615" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Guid '{4163061678 12028 18631 9E72E3195AF36768}')</tt></div>
+</td>
+</tr>
+</table></center>
+<a NAME="OvrlayPrvwBlockRef"></a>
+<br><b>Overlay_Preview BlockRef</b>
+<br><i>Sample:</i>
+<dir>
+<div class="MsoBodyTextIndent"><tt>(BlockRef 'Overlay_Preview' 00000001575
+00000000736</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 197369769 40802 16545</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; 9477D4BBF344D58E
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp;
+') 1</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 3381040725 21815
+17796</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; 9A491A8FDF8DBCAF
+)</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp; (Guid 2084687833 56155
+18129</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp; 894318AED1F0D80D
+) 3 438 566 256</tt></div>
+
+<div class="MsoBodyTextIndent"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((1000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0100)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0010)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0001)) )</tt></div>
+</dir>
+<a NAME="Tbl16OvrlyPrvwBlkRefFlds"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 16. Overlay_Preview BlockRef Applicable
+Fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="831" >
+<tr>
+<td WIDTH="224" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Applicable
+Fields</font></font></font></b></td>
+
+<td WIDTH="574" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Sample
+Field Values</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>file_offset</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000001575</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_size</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>00000000736</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 197369769 40802 16545
+9477D4BBF344D58E )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>creation_time</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent"><tt>(Time 01616921476 00029425669)&nbsp;</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>modification_time</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal"><tt>(Time 01616921476 00029425669)&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>encryption</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Encryption ‘None&nbsp;&nbsp;&nbsp;&nbsp;
+‘)</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>Validity</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>1</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>parent_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 3381040725 21815 17796
+9A491A8FDF8DBCAF )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>Related_overlay_hdr_block_guid</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(Guid 2084687833 56155 18129
+894318AED1F0D80D )</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>block_zValue</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>3</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>image_representation</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>438 566 256</tt></div>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=BOTTOM WIDTH="254" class="Normal"><tt>targeted_matrix_rep</tt></td>
+
+<td VALIGN=TOP WIDTH="640" class="Normal">
+<div class="MsoBodyTextIndent" style="
+  "><tt>(1000) (0100) (0010) (0001)</tt></div>
+</td>
+</tr>
+</table></center>
+</dir>
+
+<dir>
+<dir>&nbsp;</dir>
+</dir>
+</dir>
+
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Font</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>f</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>66</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>102</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Byte</STRONG>&nbsp;format, 
+      <STRONG>Byte</STRONG>&nbsp;name_length,
+      <STRONG>(</STRONG><EM>name_length</EM><STRONG>)xByte</STRONG>&nbsp;name,
+	  <STRONG>Byte</STRONG>&nbsp;encoding,
+      <STRONG>Byte</STRONG>&nbsp;lookup_length,
+      <STRONG>(</STRONG><EM>lookup_length</EM><STRONG>)xByte</STRONG>&nbsp;lookup,
+      <STRONG>Byte</STRONG>&nbsp;length,
+      <STRONG>(</STRONG><EM>length</EM><STRONG>)xByte</STRONG>&nbsp;data
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<tr>
+	<td WIDTH="131" HEIGHT="21">format</td>
+	<td WIDTH="390" HEIGHT="21">type of font definitions (currently only HOOPS user-defined stroked fonts)</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">name_length</td>
+	<td WIDTH="390" HEIGHT="21">length of name string</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">name</td>
+	<td WIDTH="390" HEIGHT="21">name of the font</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">encoding</td>
+	<td WIDTH="390" HEIGHT="21">scheme for mapping character indices to glyphs</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">lookup_length</td>
+	<td WIDTH="390" HEIGHT="21">length of lookup function name</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">lookup</td>
+	<td WIDTH="390" HEIGHT="21">name of character lookup function</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">length</td>
+	<td WIDTH="390" HEIGHT="21">length of font definition data</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">data</td>
+	<td WIDTH="390" HEIGHT="21">basic font parameters and glyph descriptions</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+<font face="arial,helvetica,sans-serif">This exposes to the 
+      user the ability to&nbsp;define their own <EM>stroked</EM>    fonts to be used when drawing
+text strings.  The format allows data for an individual character glyph to be found directly by index, or (particularly
+for extensive font definitions) using a <em>lookup</em>   function. <em>lookup</em> defines a function which will be used to 
+      draw the text string.
+<p>
+For further details on this specification refer to the <a href = "../../Hoops3DGS/ref_manual/cd.htm#d6">Define_Font</a> section of the HOOPS reference manual for more details.
+
+</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

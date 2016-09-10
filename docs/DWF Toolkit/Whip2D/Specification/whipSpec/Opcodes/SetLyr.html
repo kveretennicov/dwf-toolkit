@@ -1,0 +1,120 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Layer</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Layer</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Layer</b> function is used to delimit a group of opcodes.
+This group can then be operated on as a unit at a later time.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<center><table BORDER CELLPADDING=9 WIDTH="645" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>(Layer</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>LayerNum</sub>>[&lt;ws>&lt;T<sub>LayerName</sub>>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Establishes
+which layer the following primitives will belong to.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Single-byte
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>0xAC</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%"><b><font face="Courier New"><font size=-2>&lt;B<sub>LayerNum</sub>>[&lt;US<sub>Elayernum</sub>>]</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Establishes
+which layer the following primitives will belong to.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>LayerNum</i> The layer number which will be assigned to the geometric
+primitives that are subsequently created. Do not use layer numbers less
+than 1.
+<p><i>Elayernum</i> In the binary form, if the layer number is greater
+than 255, then <i>LayerNum</i> is stored as zero, and a two byte <i>Elayernum</i>
+follows indicating layer numbers from the range 256 to 65791.
+<p><i>LayerName</i> An optional ASCII text string that names the layer
+number specified.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Opcodes in WHIP! data can be assigned to a specific layer,
+which is a grouping of opcodes that can later be turned visible or invisible
+by the WHIP! data reading application. For example, in an architectural drawing,
+multiple layers can be used for the electrical, plumbing, and structural
+parts of building. The user of a WHIP! data reading application can then select
+which layers to view interactively.
+<p>A layer attribute is attached to a specific set of opcodes by surrounding
+them with a pair of <b>Set Layer</b> opcodes: the first with a <i>LayerNum</i>
+specified and the second with a null <i>LayerNum</i>:
+<dir><font face="Courier New"><font size=-1>(Layer 1 Electrical) </font></font>The
+layer will be attached to subsequent geometry<font size=-1>.</font>
+<p><font size=-1><font face="Courier New">L 10,10 35,35</font> </font>This
+line is attached to layer 1, the Electrical layer.
+<p><font size=-1><font face="Courier New">L 0,10 30,30</font> </font>This
+line is attached to layer 1, the Electrical layer<font size=-1>.</font>
+<br>&nbsp;
+<br>&nbsp;</dir>
+As with other attributes, only one layer is active at a time. If a layer
+is active in WHIP! data and a second layer is specified, only the
+later layer applies to subsequent geometric primitives.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>A geometric primitive has a maximum of one layer attached to it.
+<p>By default all layers are on and thus visible. If it is desired that
+a layer be normally off (invisible), then a <b>Set Layer State</b> (TBD)
+opcode should proceed any geometric primitives contained in that layer.
+<p>Layers do <i>not</i> affect the drawing order of geometric primitives.
+It is possible to have two layers where some primitives of the first layer
+are drawn before some primitives of the second layer and vice versa. To
+accomplish this, return to a given layer after selecting another layer.
+For example, three lines are drawn in the order in which they appear in
+the file:
+<dir><font face="Courier New"><font size=-1>(Layer 1 Electrical) </font></font>Layer
+1 is attached to subsequent geometry.
+<p><font size=-1><font face="Courier New">L 10,10 35,35</font> </font>This
+line is attached to layer 1, the Electrical layer.
+<p><font face="Courier New"><font size=-1>(Layer 2 Plumbing) </font></font>Subsequent
+geometry uses layer 2.
+<p><font face="Courier New"><font size=-1>L 0,20 20,20 </font></font>This
+line is on layer 2, the Plumbing layer.
+<p><font face="Courier New"><font size=-1>(Layer 1) </font></font>Return
+to layer 1.
+<p><font size=-1><font face="Courier New">L 10,10 35,35</font> </font>This
+line is attached to layer 1, the Electrical layer.
+<br>&nbsp;
+<br>&nbsp;</dir>
+A URL may be attached to geometric primitives that are invisible—see the
+<b><a href="SetUrlLnk.html">Set
+URL Link</a></b> and <b><a href="SetVis.html">Set Visibility</a></b> functions.
+Although such primitives are not displayed, they may still be selected
+by the user (with the mouse) to execute a URL. However, the state of a
+layer (either on or off, selected by the <b>Set Layer State</b> opcode
+- TBD) takes precedence over the "Visibility" attribute of primitives.
+If a primitive belongs to a layer whose state is off, then the "Visibility"
+attribute does not matter, and the user cannot select these URLs. (Set
+Layer State is still TBD)</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

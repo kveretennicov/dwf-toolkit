@@ -1,0 +1,84 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Define Orientation - DEPRECATED</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Orientation - DEPRECATED</font></i></b>
+<p>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir><b>Define Orientation</b> represents the relationship between the
+paper and image orientation of the graphics block that the opcode represents.
+Currently supported formats are, <tt>Always_In_Sync, Always_Different</tt>
+and <tt>Decoupled</tt>. For example, if the orientation is formatted <tt>Always_In_Sync</tt>,
+then a portrait paper orientation will always force portrait graphics orientation
+and a Landscape paper orientation will always force landscape graphics
+orientation.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="654" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>(Orientation</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;ws>&lt;</font><font face="Courier New,Courier">T<sub>orientation</sub></font><font face="Courier New">></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+Binary</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>0x0145</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">orientation</font></sub><font face="Courier New">></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Orientation</i> — This is one of the following ASCII strings in
+extended ASCII form:
+<ul><tt>"Always_In_Sync"</tt>
+<br><tt>“Always_Different”</tt>
+<br><tt>“Decoupled”</tt></ul>
+
+<ul>&nbsp;
+<br><i>Orientation</i> is one of the following enumerated values in extended
+binary form:
+<br><tt>0  =  Always_In_Sync,</tt>
+<br><tt>1  =  Always_Different</tt>
+<br><tt>2  =  Decoupled</tt></ul>
+</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>This opcode is always serialized as part of the <b><a href="BlockRef.html">BlockRef</a></b>
+opcode and should always be uncompressed. All of the fields are serialized
+to the maximum field-length bytes.</dir>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<dir>By default,&nbsp; <i>Orientation</i> is&nbsp; <tt>Decoupled</tt>.</dir>
+
+<p><br>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

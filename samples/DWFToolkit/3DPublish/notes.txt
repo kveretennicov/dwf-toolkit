@@ -1,0 +1,1 @@
+This sample shows to user the way to publish a simple 3D scene with DWFPublisher in DWFToolkit.

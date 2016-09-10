@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{bc10abc0-6ae9-47a2-a5e9-1f92cad5cdb5}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{ee034d3d-583e-4118-a800-866e5a1f2d0d}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{22d9a842-05c0-4286-9e9d-5a12ae1ce6e6}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{e39f4e75-d94b-4585-8146-3d2980153020}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FontSubset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="obFont.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpcHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestFramework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="W2dTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="color_map.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="contour_set.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="dash_patterns.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="delineate.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="drawing_info.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="embedded_font.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="gouraud_polyline.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="gouraud_polytriangle.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="macro.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="object_node.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="overpost.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="polygon.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="polyline.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="polymarker.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="text.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="text_background.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="text_halign.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="text_valign.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="user_fill_pattern.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="user_hatch_pattern.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="userdata.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fontsub.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="object_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpcHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="t2embapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestFramework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="whip_fill_library.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="whip_hatch_library.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bitonal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="city24.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="city8.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="colors32.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="fax.bit">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="g3test.tif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="g4_instrument.tif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="jeff.rgb">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="jeff.rgba">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="pete.256">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

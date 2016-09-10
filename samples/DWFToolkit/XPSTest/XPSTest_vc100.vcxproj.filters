@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{91aa6e3a-ff6f-4838-875a-58b5e4e489ef}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{dfed783d-e839-4108-bef4-c690ff794c87}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="W2dTest">
+      <UniqueIdentifier>{680085f1-5bdb-47f2-a62a-39a9115b9eef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\W2dTest\FontSubset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="obFont.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpcHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestFramework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XPSTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\color_map.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\contour_set.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\dash_patterns.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\delineate.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\drawing_info.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\embedded_font.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\gouraud_polyline.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\gouraud_polytriangle.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\image.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\macro.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\object_node.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\overpost.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\polygon.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\polyline.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\polymarker.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\text.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\text_background.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\text_halign.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\text_valign.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\user_fill_pattern.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\user_hatch_pattern.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\W2dTest\userdata.cpp">
+      <Filter>W2dTest</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="object_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpcHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestFramework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XPSTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

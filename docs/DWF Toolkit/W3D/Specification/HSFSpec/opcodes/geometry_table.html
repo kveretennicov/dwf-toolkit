@@ -1,0 +1,140 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Geometry Bitfield Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">Geometry bitfields</FONT></H2>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  </FONT></P>
+
+
+<FONT face="arial,helvetica,sans-serif">
+
+Definition of bits used to describe geometry types.  Most common bits are contained in the low byte,
+extra bytes are needed for less common cases. Some bits are reused, depending on the context.<p>
+	
+<table BORDER =1 WIDTH="530">
+ 	<TR>
+	    <TD height=21 width=50>00000001</TD>
+	    <TD height=21 width=390>Faces</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000002</TD>
+	    <TD height=21 width=390>Edges</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000004</TD>
+	    <TD height=21 width=390>Lines</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000008</TD>
+	    <TD height=21 width=390>Markers</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000010</TD>
+	    <TD height=21 width=390>Text</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000020</TD>
+	    <TD height=21 width=390>Windows</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000040</TD>
+	    <TD height=21 width=390>Images</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000080</TD>
+	    <TD height=21 width=390>indicates additional byte(s) required</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000100</TD>
+	    <TD height=21 width=390>Ambient for <em>color</em> settings,
+							    String Cursors otherwise</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000200</TD>
+	    <TD height=21 width=390>Lights for <em>color</em> settings,
+							    Face Lighting otherwise</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000400</TD>
+	    <TD height=21 width=390>Face Contrast for <em>color</em> settings,
+								Edge Lighting otherwise</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00000800</TD>
+	    <TD height=21 width=390>Window Contrast for <em>color</em> settings,
+								Marker Lighting otherwise</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00001000</TD>
+	    <TD height=21 width=390>Front side for <em>color</em> settings,
+								Silhouette Edges otherwise</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00002000</TD>
+	    <TD height=21 width=390>Back side for <em>color</em> settings,
+								Perimeter Edges otherwise</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00004000</TD>
+	    <TD height=21 width=390>Mesh Quad Edges for <em>visibility</em> settings,
+								Vertex otherwise</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00008000</TD>
+	    <TD height=21 width=390>Hard Edges</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00010000</TD>
+	    <TD height=21 width=390>Cutting Planes</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00020000</TD>
+	    <TD height=21 width=390>Shadow Emission</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00040000</TD>
+	    <TD height=21 width=390>Shadow Casting</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00080000</TD>
+	    <TD height=21 width=390>Shadow Receiving</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00100000</TD>
+	    <TD height=21 width=390>Cut Edges</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00200000</TD>
+	    <TD height=21 width=390>Vertex for <em>visibility</em> settings</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>00400000</TD>
+	    <TD height=21 width=390>Cut Faces</TD>
+	</TR>	 	
+</table>
+<p>
+
+<!---------------------------------------------------------------------------->
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

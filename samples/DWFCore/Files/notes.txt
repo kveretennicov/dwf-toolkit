@@ -1,0 +1,7 @@
+This sample shows how to create files and zip package with DWFCore. 
+
+There are  three parts in this sample. The first part shows how to create individual files.
+
+The second part shows how to read the content from existed file and then write them into temp file.
+
+The third part shows how to create and read a zip with a password.

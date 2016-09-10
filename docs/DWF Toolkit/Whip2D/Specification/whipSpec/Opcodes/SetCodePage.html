@@ -1,0 +1,68 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Code Page</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Code Page</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Code Page</b> function associates an operating system multi-byte
+character set to the World Wide Web URLs that follow.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(CodePage</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>value</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>Assigns (or
+removes) a code page.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>value</i>&nbsp;&nbsp; An integer that defines a valid code page
+for the operating system.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>
+  Text is stored in WHIP! data as Unicode. Thus, a code page is not necessary. 
+  URLs are also stored as Unicode, so it may appear that once again the code page 
+  is not necessary. The reason the code page is provided is based on the way internet 
+  browsers and internet servers interact. 
+  <p>The strategy for placing a code page inside WHIP! data is based on 
+    the assumption that WHIP! data generated on one language system will 
+    be hosted on a server of the same langauge. In other words, WHIP! data 
+    generated on a Japanese system will probably be hosted on a internet server 
+    machine that is running Japanese. By having the code page information in the 
+    WHIP! data, viewers can use this information when converting URLs from Unicode 
+    to MCBS, if necessary.
+</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the "Code Page" attribute is 1252 (English) which is equivalent
+to:
+<ul>
+<pre><font face="Courier New">(Code Page 1252)</font></pre>
+</ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

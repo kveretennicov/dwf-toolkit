@@ -1,0 +1,115 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+	<td>
+	<H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Mesh</FONT></H2>
+	<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+	<TABLE border=0 height=90 width=530>   
+		<TR>
+			<TD height=12 width=131>ASCII</TD>
+			<TD height=12 width=390>'M'</TD></TR>
+		<TR>
+			<TD height=12 width=131>Hexadecimal</TD>
+			<TD height=12 width=390>0x4D</TD></TR>
+		<TR>
+			<TD height=12 width=131>Decimal</TD>
+			<TD height=12 width=390>77</TD>
+		</TR>
+	</TABLE></H3>
+	<P>&nbsp;</P></FONT></STRONG>
+	<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+	<P><FONT face="Courier New,Courier,typewriter">
+	<STRONG>Byte</STRONG>&nbsp;suboptions,
+	<STRONG>int</STRONG>&nbsp;rows,
+	<STRONG>int</STRONG>&nbsp;columns,
+	<STRONG>variable</STRONG>&nbsp;points,
+	<STRONG>[variable</STRONG>&nbsp;attributes<STRONG>]</STRONG>
+	</FONT></P>
+
+	<FONT face="arial,helvetica,sans-serif">	  
+	<table BORDER =1 WIDTH="530">
+		<TR>
+		    <TD height=21 width=131>suboptions</TD>
+		    <TD height=21 width=390>information about formatting.  Uses a subset of the bits defined in <A href="TKE_Shell">TKE_Shell</a></TD>
+		</TR>
+		<tr>
+			<td WIDTH="131" HEIGHT="21">rows</td>
+			<td WIDTH="390" HEIGHT="21">the number of rows of vertices in the mesh</td>
+		</tr>		
+		<tr>
+			<td WIDTH="131" HEIGHT="21">columns</td>
+			<td WIDTH="390" HEIGHT="21">the number of columns of vertices in the mesh</td>
+		</tr>
+		<tr>
+			<td WIDTH="131" HEIGHT="21">points</td>
+			<td WIDTH="390" HEIGHT="21">the vertex locations</td>
+		</tr>
+		<tr>
+			<td WIDTH="131" HEIGHT="21">attributes</td>
+			<td WIDTH="390" HEIGHT="21">polyhedron attributes bound to faces, edges or vertices.  Present if and only if suboptions has the TKSH_HAS_OPTIONALS bit set.  See <A href="attributes.html">attributes.html for details.</a></td>
+		</tr>
+		
+	</table>
+      <P><FONT color=#0000a0><STRONG>Suboptions</STRONG> </FONT>
+      <P>
+	
+	As mentioned above, TKE_Mesh suboption share a definition with <A href="TKE_Shell.html">TKE_Shell</a>, and use a subset of its 
+      suboptions bits. The following bits are relevant here:</P>               
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50> 0x01</TD>
+		<TD height=21 width=390>TKSH_COMPRESSED_POINTS -- Points are compressed</TD>
+	</TR>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 0x08</td>
+		<td WIDTH="390" HEIGHT="21">TKSH_HAS_OPTIONALS -- Vertices, edges and/or faces have attributes, and the attributes section of the format exists.  See <A href="attributes.html">attributes.html</a></td>
+	</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 0x80</td>
+		<td WIDTH="390" HEIGHT="21">TKSH_EXPANDED -- Suboptions2 currently has no bits relevant to TKE_Mesh, so this bit will not be set (and thus there is currently no suboptions2)</td>
+	</tr>
+	</table>
+	<p>
+	 
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif"><a name="notes">Notes</a></FONT></H3><FONT face="arial,helvetica,sans-serif">
+
+	A mesh is a rectangular array of faces with implicit regular connectivity.  The Mesh is inserted into the currently opened segment. <p>
+	 
+	As in <A href="TKE_Shell">TKE_Shell</a>, points are either compressed or uncompressed vertex data. Compression status is dictated by the TKSH_COMPRESSED_POINTS bit in the shell suboptions. If uncompressed, it will consist of triples of 32-bit floating point coordinates in the order xyzxyz...  If compressed, it will consist of a compression scheme identifier, followed by data that is specific to that compression scheme.  The specifics of the compressed format are described in <A href="attributes.html">attributes.html</a> in the "<A href="attributes.html#aocf">array of compressed floats</a>" section. <p>
+
+	<FONT color=#0000a0>
+		Points (uncompressed) <br>
+	</FONT>
+    <strong>int</strong>&nbsp;pointcount,
+	<strong>float array</strong>&nbsp; uncompressed triplets of point data, in order xyzxyz... <p>
+
+	<FONT color=#0000a0>
+		Points (compressed)  <br>
+	</FONT>
+    <strong>byte</strong>&nbsp;compression scheme,
+	<strong>int</strong>&nbsp;pointcount,
+    <strong>variable</strong>&nbsp;array of compressed floats.  See the "<A href="attributes.html#aocf">array of compressed floats</a>" section of attributes.html <p>
+	
+
+</FONT><!---------------------------------------------------------------------------->
+<hr WIDTH="100%"></FONT>
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

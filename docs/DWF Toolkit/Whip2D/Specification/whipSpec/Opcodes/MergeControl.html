@@ -1,0 +1,61 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Merge Control</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Merge Control</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul><b>Merge Control</b> affects the behavior of overlapping objects. If
+it is set, the <b>Merge Control</b> opcode signifies to the viewer that,
+a raster op has to be performed on drawables in order to merge objects,
+whenever the drawables overlap.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(LinesOverwrite</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws><sub>'opaque'|'merge'|'transparent</sub></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+</table></center>
+
+<p><font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Currently <b>Merge Control</b> is supported as an enumerated value.
+Three states are supported: "lines overwrite", "lines merge" and "transparent."
+<p>Merge control is set only in the WHIP! data. If set, <b>Merge
+Control</b> state applies to the drawable that follows it. In otherwords,
+<b>Merge
+Control</b> is supported as a rendition attribute for drawables.
+<p>Only Extended&nbsp; ASCII is supported,&nbsp; there is no binary or
+extended binary support.
+<font face="Arial Black"><font size=-1>Use Cases</font></font>
+<blockquote>Draw a few black lines. Then draw a light gray solid over them.
+If the state is "lines overwrite", then the light gray solid will obscure
+the black lines in a gray-scale plot. If&nbsp; the state is "lines merge,"
+the black lines will be visible.</blockquote>
+
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

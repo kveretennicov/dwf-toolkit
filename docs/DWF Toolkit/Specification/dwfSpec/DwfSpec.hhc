@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="FrameName" value="right">
+	<param name="Window Styles" value="0x800025">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Title Page">
+		<param name="Local" value="DwfSpecTitlePage.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="DWF 6 Specification">
+		<param name="Local" value="DWF 6 Specification.htm">
+		<param name="WindowName" value="right">
+		<param name="ImageNumber" value="1">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Introduction">
+			<param name="Local" value="DWF 6 Specification.htm">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Purpose">
+				<param name="Local" value="DWF 6 Specification.htm#Purpose">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Users">
+				<param name="Local" value="DWF 6 Specification.htm#Users">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Design">
+			<param name="Local" value="DWF 6 Specification.htm#Design">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Overview">
+				<param name="Local" value="DWF 6 Specification.htm#Overview">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Minimum DWF Requirements">
+				<param name="Local" value="DWF 6 Specification.htm#MinimumRequirements">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Document Interfaces">
+				<param name="Local" value="DWF 6 Specification.htm#DocumentInterfaces">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="DWF Version Header">
+				<param name="Local" value="DWF 6 Specification.htm#DwfVersion">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Resource Versioning">
+				<param name="Local" value="DWF 6 Specification.htm#ResourceVersioning">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Manifest.xml">
+				<param name="Local" value="DWF 6 Specification.htm#ManifestXml">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Elements">
+					<param name="Local" value="DWF 6 Specification.htm#Elements">
+					<param name="ImageNumber" value="1">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="&lt;Manifest&gt; (Document Element)">
+						<param name="Local" value="DWF 6 Specification.htm#Manifest">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="&lt;Properties&gt;">
+						<param name="Local" value="DWF 6 Specification.htm#Properties">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="&lt;Sections&gt;">
+						<param name="Local" value="DWF 6 Specification.htm#Sections">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+					<UL>
+						<LI> <OBJECT type="text/sitemap">
+							<param name="Name" value="Section subelement: &lt;Source&gt;">
+							<param name="Local" value="DWF 6 Specification.htm#Source">
+							<param name="ImageNumber" value="11">
+							</OBJECT>
+						<LI> <OBJECT type="text/sitemap">
+							<param name="Name" value="Section subelement: &lt;Toc&gt;">
+							<param name="Local" value="DWF 6 Specification.htm#Toc">
+							<param name="ImageNumber" value="11">
+							</OBJECT>
+					</UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="&lt;Dependencies&gt;">
+						<param name="Local" value="DWF 6 Specification.htm#Dependencies">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="&lt;Interfaces&gt;">
+						<param name="Local" value="DWF 6 Specification.htm#Interfaces">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Data Types">
+					<param name="Local" value="DWF 6 Specification.htm#DataTypes">
+					<param name="ImageNumber" value="1">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SimplePropertyType">
+						<param name="Local" value="DWF 6 Specification.htm#SimplePropertyType">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="index">
+						<param name="Local" value="DWF 6 Specification.htm#index">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="uniqueId">
+						<param name="Local" value="DWF 6 Specification.htm#uniqueId">
+						<param name="ImageNumber" value="11">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Descriptor.xml">
+				<param name="Local" value="DWF 6 Specification.htm#DescriptorXml">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Resource Files - Naming Considerations">
+				<param name="Local" value="DWF 6 Specification.htm#ResourceFileNaming">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Hyperlinks and DWF 6">
+			<param name="Local" value="DWF 6 Specification.htm#Hyperlinks">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="External links">
+				<param name="Local" value="DWF 6 Specification.htm#ExternalLinks">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="A standard URL">
+					<param name="Local" value="DWF 6 Specification.htm#StandardUrl">
+					<param name="ImageNumber" value="11">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Arbitrary sections within a DWF package">
+					<param name="Local" value="DWF 6 Specification.htm#SectionsInDwf">
+					<param name="ImageNumber" value="11">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Arbitrary resources within a DWF package (i.e. thumbnails, metadata)">
+					<param name="Local" value="DWF 6 Specification.htm#ResourcesInDwf">
+					<param name="ImageNumber" value="11">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="EPlot specific links">
+					<param name="Local" value="DWF 6 Specification.htm#EPlotSpecific">
+					<param name="ImageNumber" value="11">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Views within a section/resource">
+					<param name="Local" value="DWF 6 Specification.htm#ViewInSection">
+					<param name="ImageNumber" value="11">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Internal links (i.e. within the same DWF package)">
+				<param name="Local" value="DWF 6 Specification.htm#InternalLinks">
+				<param name="ImageNumber" value="11">
+				</OBJECT>
+		</UL>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="EPlot Document Interface">
+		<param name="Local" value="EPlot Specification v1.2.htm">
+		<param name="WindowName" value="right">
+		<param name="ImageNumber" value="1">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Comparison: DWF 0.55 to DWF 6.0">
+		<param name="Local" value="Dwf55 - Dwf60 Comparison.htm">
+		<param name="WindowName" value="right">
+		<param name="ImageNumber" value="11">
+		</OBJECT>
+</UL>
+</BODY></HTML>

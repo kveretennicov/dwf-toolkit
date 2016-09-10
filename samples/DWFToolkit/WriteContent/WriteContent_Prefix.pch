@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'WriteContent' target in the 'WriteContent' project.
+//
+
+#include <Carbon/Carbon.h>

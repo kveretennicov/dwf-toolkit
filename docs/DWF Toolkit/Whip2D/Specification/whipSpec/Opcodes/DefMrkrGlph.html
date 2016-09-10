@@ -1,0 +1,233 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Marker Glyph - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Marker Glyph - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Marker Glyph </b>function adds a new glyph (a collection
+of geometric primitives) or redefines an existing glyph to the table of
+marker glyphs.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="11%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="41%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="32%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="16%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>(Glyph</font></font></td>
+
+<td VALIGN=TOP WIDTH="41%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Index</sub>>&lt;ws>&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;I<sub>unit</sub>>&lt;ws>(&lt;R<sub>definition1</sub>>))</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="32%"><font face="Arial"><font size=-2>Assigns a sequence
+of opcodes to a marker glyph index</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="16%"><font face="Arial"><font size=-2>Extended Binary</font></font></td>
+
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>0x0003</font></font></td>
+
+<td VALIGN=TOP WIDTH="41%"><b><font face="Courier New"><font size=-2>&lt;US<sub>index</sub>>&lt;L<sub>X</sub>>&lt;L<sub>Y</sub>>&lt;UL<sub>Unit</sub>>&lt;R<sub>definition2</sub>>}</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="32%"><font face="Arial"><font size=-2>Assigns a sequence
+of opcodes to a marker glyph index.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Index</i>&nbsp;&nbsp; The index into the marker glyph table of the
+glyph being added or replaced; legal values range from 0 to 65,535
+<p><i>X,Y</i>&nbsp;&nbsp; The logical coordinate origin of the glyph being
+defined
+<p><i>Unit</i>&nbsp;&nbsp; A logical coordinate distance indicating the
+unit size of the glyph
+<p><i>Definition1</i>&nbsp;&nbsp; A nested series of readable ASCII opcodes
+to be stored (rather than rendered) at the position indicated by the <i>index</i>
+argument in the marker glyph table
+<p><i>Definition2</i>&nbsp;&nbsp; A nested series of opcodes to be stored
+(rather than rendered) at the position indicated by the <i>index</i> argument
+in the marker glyph table</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Define Marker Glyph</b> opcode allows a WHIP! data writing application
+to define a pattern of geometric primitives, which may later be reused
+multiple times with the <b><a href="DrwPlymkr.html">Draw Polymarker</a></b>
+opcode. Inside the <b>Define Marker Glyph</b> operand is a nested series
+of opcodes that are stored (rather than rendered) that represent the marker
+glyph being defined. For example, suppose you wanted to represent the illustration
+in figure 1 as WHIP! data.<a NAME="Fig8"></a></ul>
+
+<center><img SRC="Image51.gif" height=240 width=360>
+<p><i><font face="Arial,Helvetica">Figure 1. Glif definition</font></i></center>
+
+<ul>You could define a new glyph for the "star" shape and later use the
+<b>Draw
+Polymarker</b>, the <b><a href="SetMkrGlyph.html">Set Marker Glyph</a></b>,
+and the <b><a href="SetMkrSz.html">Set Marker Size</a></b> opcodes to render
+the six star instances more efficiently.
+<p>When recording the geometric primitives for a glyph, an arbitrary set
+of logical coordinates is used. Later when a glyph is drawn with <b>Draw
+Polymarker</b>, these arbitrary coordinates are related to specific coordinates
+by the <i>Origin</i> and <i>Unit</i> arguments. In this example, a star
+shape is "recorded" at index 12 in the glyph table, centered about the
+arbitrary vertex (300,300), and given a unit size of 100 logical units:
+<ul><font face="Courier New"><font size=-1>(Glyph 12 300,300 100 (</font></font>
+<ul><font face="Courier New"><font size=-1>L 250,300 350,300 (Comment Horizontal
+line)</font></font>
+<p><font face="Courier New"><font size=-1>L 300,250 300,350 (Comment Vertical
+line)</font></font>
+<p><font face="Courier New"><font size=-1>L 250,250 350,350 (Comment right
+angled line)</font></font>
+<p><font face="Courier New"><font size=-1>L 350,250 250,350 (Comment left
+angled line)</font></font></ul>
+<font face="Courier New"><font size=-1>))</font></font></ul>
+When drawn with the <b><a href="DrwPlymkr.html">Draw Polymarker</a></b>
+opcode, the glyph’s origin is translated to the marker’s insertion point,
+and the glyph is scaled such that its unit vector has a length equal to
+the current marker size attribute (in logical space).
+<p>The definition of a glyph may include any sequence of geometric primitives
+(Draw opcodes) and/or attributes (Set opcodes). For many glyphs, as in
+the star example, no attributes are stored, only geometric primitives,
+so that the attributes active at the time <b>Draw Polymarker</b> is executed
+will be used. In this example, you can draw a red and a blue star with
+the following:
+<ul><font face="Courier New"><font size=-1>G 12 (Comment Select the previously
+defined "Star" glyph.)</font></font>
+<p><font face="Courier New"><font size=-1>S 30 (Comment We’ll draw stars
+that are 30 logical units high,</font></font>
+<ul>
+<ul><font face="Courier New"><font size=-1>which is 15 units above and
+below the "origin".)</font></font></ul>
+</ul>
+<font face="Courier New"><font size=-1>(Color 255,0,0,255) (Comment Get
+ready to draw in red.)</font></font>
+<p><font face="Courier New"><font size=-1>M 1 500,400 (Comment Draw one
+red star centered at 500,400.)</font></font>
+<p><font face="Courier New"><font size=-1>(Color 0,0,255,255) (Comment
+Get ready to draw in blue.)</font></font>
+<p><font face="Courier New"><font size=-1>M 1 600,700 (Comment Draw one
+blue star centered at 600,700.)</font></font></ul>
+At other times you may want marker glyphs to be defined with both geometric
+primitives and attributes. For example, to define a multicolored plus sign
+glyph, you can specify
+<dir><font face="Courier New"><font size=-1>(Glyph 17 30,30 10 (</font></font>
+<dir><font face="Courier New"><font size=-1>(Color 255,0,0,255) (Comment
+override current color to red.)</font></font>
+<p><font face="Courier New"><font size=-1>L 25,30 35,30 (Comment Red Horizontal
+line.)</font></font>
+<p><font face="Courier New"><font size=-1>(Color 0,0,255,255) (Comment
+Select blue.)</font></font>
+<p><font face="Courier New"><font size=-1>L 30,25 30,35 (Comment Blue Vertical
+line.)</font></font></dir>
+<font face="Courier New"><font size=-1>))</font></font></dir>
+Immediately before such a recorded glyph is played back with the <b><a href="DrwPlymkr.html">Draw
+Polymarker</a></b> operation, a copy of the current attribute state is
+saved. The state is restored after each marker in the polymarker list completes
+— WHIP! data maintains an attribute <i>scope</i>. In this example, the diagonal
+line is drawn in green rather than the blue from the plus sign glyph:
+<dir><font face="Courier New"><font size=-1>G 17 (Comment Select the previously
+defined "Plus" sign glyph.)</font></font>
+<p><font face="Courier New"><font size=-1>(Color 0,255,0,255) (Comment
+Get ready to draw in green.)</font></font>
+<p><font face="Courier New"><font size=-1>M 1 500,400 (Comment Draw a red
+and blue plus-sign.)</font></font>
+<p><font face="Courier New"><font size=-1>L 250,250 350,350 (Comment A
+*green* diagonal line.)</font></font></dir>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>Any glyph stored in the glyph table may be replaced by reissuing the
+<b>Define
+Marker Glyph</b> opcode with the same <i>index</i> value.
+<p>For many glyphs, as in the previous star example, <i>origin</i> is centered
+inside the glyph’s bounding box and <i>unit</i> is the width or height
+of the bounding box. However, for some glyphs this will not be the desired
+arrangement. For example, the characters of a font could be encoded as
+a set of glyphs (one for each character) containing polygon opcodes. In
+this case, <i>unit</i> would be set to the height of the of the tallest
+character in the font, rather than the height of each character being defined,
+and <i>origin</i> would be positioned at each character’s insertion point,
+as shown in figure 2.<a NAME="Fig9"></a></ul>
+
+<center><img SRC="Image52.gif" height=240 width=360>
+<p><i><font face="Arial,Helvetica">Figure 2. Font characters encoded as
+glyphs</font></i></center>
+
+<ul>In order to achieve the greatest precision of the marker glyph being
+defined, the geometric primitives provided should use a large range of
+logical coordinate space and as a result, a large <i>Unit</i> value.
+<p>By convention, if the extended ASCII version of the <b>Define Marker
+Glyph</b> opcode, "<font face="Courier New"><font size=-1>(Glyph</font></font>",
+is used, then all opcodes contained in <i>Definition</i> should also be
+ASCII opcodes (either single-byte or extended) so that WHIP! data reading applications
+may safely skip the<b> Define Marker Glyph</b> operation. When <i>Definition</i>
+contains binary data, the extended binary version of <b>Define Marker Glyph</b>
+(opcode 0<font face="Courier New">X0003</font> in hex) should be used.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the <i>Glyph</i>’s listed in table 1 are defined initially
+by the WHIP! data reading application.</ul>
+
+<center><a NAME="Tbl8"></a><i><font face="Arial,Helvetica">Table 1. Glyphs
+defined by WHIP!</font></i></center>
+
+<p><br>
+<center><table BORDER CELLPADDING=9 WIDTH="248" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#0000A0"><font face="Courier New"><font color="#FFFFFF"><font size=-1>0</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="83%"><font face="Courier New"><font size=-1>Single
+Pixel</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#0000A0"><font face="Courier New"><font color="#FFFFFF"><font size=-1>1</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="83%"><font face="Courier New"><font size=-1>Plus</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#0000A0"><font face="Courier New"><font color="#FFFFFF"><font size=-1>2</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="83%"><font face="Courier New"><font size=-1>X</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#0000A0"><font face="Courier New"><font color="#FFFFFF"><font size=-1>3</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="83%"><font face="Courier New"><font size=-1>Star</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#0000A0"><font face="Courier New"><font color="#FFFFFF"><font size=-1>4</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="83%"><font face="Courier New"><font size=-1>Hollow
+Circle</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#0000A0"><font face="Courier New"><font color="#FFFFFF"><font size=-1>5</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="83%"><font face="Courier New"><font size=-1>Filled
+Circle</font></font></td>
+</tr>
+</table></center>
+
+<ul><b>Note:</b> The exact definitions of these glyphs is implementation
+specific.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

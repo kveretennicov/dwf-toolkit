@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (Read-Write LIB)|Win32">
+      <Configuration>Debug (Read-Write LIB)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Read-Write LIB)|x64">
+      <Configuration>Debug (Read-Write LIB)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Read-Write WChar DLL)|Win32">
+      <Configuration>Debug (Read-Write WChar DLL)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Read-Write WChar DLL)|x64">
+      <Configuration>Debug (Read-Write WChar DLL)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Read-Write WChar LIB)|Win32">
+      <Configuration>Debug (Read-Write WChar LIB)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug (Read-Write WChar LIB)|x64">
+      <Configuration>Debug (Read-Write WChar LIB)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write LIB)|Win32">
+      <Configuration>Release (Read-Write LIB)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write LIB)|x64">
+      <Configuration>Release (Read-Write LIB)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32">
+      <Configuration>Release (Read-Write WChar DLL SECURE_SCL_DISABLED)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64">
+      <Configuration>Release (Read-Write WChar DLL SECURE_SCL_DISABLED)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write WChar DLL)|Win32">
+      <Configuration>Release (Read-Write WChar DLL)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write WChar DLL)|x64">
+      <Configuration>Release (Read-Write WChar DLL)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write WChar LIB)|Win32">
+      <Configuration>Release (Read-Write WChar LIB)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Read-Write WChar LIB)|x64">
+      <Configuration>Release (Read-Write WChar LIB)</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>DWF XAML (Whip) Toolkit</ProjectName>
+    <ProjectGuid>{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}</ProjectGuid>
+    <RootNamespace>xaml_merged</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Common.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'">../../../lib/static/debug/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'">./obj/static/debug/read-write/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'">../../../lib/x64/static/debug/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'">./obj/x64/static/debug/read-write/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'">../../../lib/static/release/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'">./obj/static/release/read-write/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'">../../../lib/x64/static/release/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'">./obj/x64/static/release/read-write/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'">../../../lib/static/debug/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'">./obj/static/debug/read-write-wt/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'">../../../lib/x64/static/debug/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'">./obj/x64/static/debug/read-write-wt/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'">../../../lib/static/release/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'">./obj/static/release/read-write-wt/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'">../../../lib/x64/static/release/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'">./obj/x64/static/release/read-write-wt/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|Win32'">../../../bin/debug/$(VCVersion)/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|Win32'">./obj/shared/debug/read-write-wt/$(VCVersion)/</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|x64'">../../../bin/x64/debug/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|x64'">./obj/x64/shared/debug/read-write-wt/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|Win32'">../../../bin/release/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|Win32'">./obj/shared/release/read-write-wt/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|x64'">../../../bin/x64/release/$(VCVersion)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|x64'">./obj/x64/shared/release/read-write-wt/$(VCVersion)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32'">../../../bin/release/$(VCVersion)/\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32'">./obj/shared/release/read-write-wt-ns/$(VCVersion)/\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64'">../../../bin/x64/release/$(VCVersion)/\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64'">./obj/x64/shared/release/read-write-wt-ns/$(VCVersion)/\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|Win32'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'">xaml.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'">xaml.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32'">xaml_wt_ns.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|Win32'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'">xaml.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|x64'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'">xaml.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64'">xaml_wt_ns.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|x64'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'">xaml_wt.$(XAMLToolkitVersion)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml.$(XAMLToolkitVersion).lib</OutputFile>
+      <AdditionalOptions>/MACHINE:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml.$(XAMLToolkitVersion).lib</OutputFile>
+      <AdditionalOptions>/MACHINE:X64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml.$(XAMLToolkitVersion).lib</OutputFile>
+      <IgnoreSpecificDefaultLibraries>dwfcore.$(DWFCoreVersion).lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/MACHINE:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml.$(XAMLToolkitVersion).lib</OutputFile>
+      <IgnoreSpecificDefaultLibraries>dwfcore.$(DWFCoreVersion).lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/MACHINE:X64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).lib</OutputFile>
+      <IgnoreSpecificDefaultLibraries>dwfcore.$(DWFCoreVersion).lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/MACHINE:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).lib</OutputFile>
+      <IgnoreSpecificDefaultLibraries>dwfcore.$(DWFCoreVersion).lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/MACHINE:X64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).lib</OutputFile>
+      <IgnoreSpecificDefaultLibraries>dwfcore.$(DWFCoreVersion).lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/MACHINE:X86 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;DWFCORE_STATIC;DWFTK_STATIC;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).lib</OutputFile>
+      <IgnoreSpecificDefaultLibraries>dwfcore.$(DWFCoreVersion).lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/MACHINE:X64 %(AdditionalOptions)</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;WHIPTOOL_CLIENT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dwfcore_wt.$(DWFCoreVersion).lib;whiptk_wt.$(W2DToolkitVersion).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib/shared/debug/$(VCVersion)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>../../../lib/shared/debug/$(VCVersion)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;WIN64;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;WHIPTOOL_CLIENT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dwfcore_wt.$(DWFCoreVersion).lib;whiptk_wt.$(W2DToolkitVersion).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib/x64/shared/debug/$(VCVersion);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>../../../lib/x64/shared/debug/$(VCVersion)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;WHIPTOOL_CLIENT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dwfcore_wt.$(DWFCoreVersion).lib;whiptk_wt.$(W2DToolkitVersion).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib/shared/release/$(VCVersion);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>../../../lib/shared/release/$(VCVersion)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;WIN64;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;WHIPTOOL_CLIENT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dwfcore_wt.$(DWFCoreVersion).lib;whiptk_wt.$(W2DToolkitVersion).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xaml_wt.$(XAMLToolkitVersion).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib/x64/shared/release/$(VCVersion);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>../../../lib/x64/shared/release/$(VCVersion)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;WHIPTOOL_CLIENT;_SECURE_SCL_DISABLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dwfcore_wt_ns.$(DWFCoreVersion).lib;whiptk_wt_ns.$(W2DToolkitVersion).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xaml_wt_ns.$(XAMLToolkitVersion).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib/shared/release/$(VCVersion);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>../../../lib/shared/release/$(VCVersion)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\src;..\..\..\src\dwf;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;WIN64;DWFCORE_BUILD_ZLIB;DWFCORE_BUILD_EXPAT;_CRT_NON_CONFORMING_SWPRINTFS;_CRT_SECURE_NO_DEPRECATE;WHIP_USE_WCHAR_STRINGS;WHIPTOOL_CLIENT;_SECURE_SCL_DISABLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>XAML/pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4290;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dwfcore_wt_ns.$(DWFCoreVersion).lib;whiptk_wt_ns.$(W2DToolkitVersion).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)xaml_wt_ns.$(XAMLToolkitVersion).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../lib/x64/shared/release/$(VCVersion);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>../../../lib/x64/shared/release/$(VCVersion)/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\dwf\XAML\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar DLL)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar DLL)|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlArcSegment.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlAttribute_Url.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlBrushes.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlCanvas.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlClassFactory.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlCode_Page.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlColor.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlColorMap.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlContour_Set.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlContrastColor.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlDashPattern.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlDelineate.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlDrawable.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlDrawableAttributes.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlDwfHeader.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlEllipse.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlEmbed.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlEmbeddedFont.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlFile.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlFill.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlFillPattern.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlFont.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlFontExtension.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlGlyphs.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlGouraud_Polyline.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlGouraud_Polytriangle.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlGraphicsObject.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlImage.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlLayer.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlLinePattern.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlLineStyle.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlLineWeight.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlMacro_Definition.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlMacro_Draw.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlMacro_Index.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlMacro_Scale.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlMerge_Control.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlNamed_View.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlNamed_View_List.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlObject.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlObjectFactory.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlObjectNode.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlOverpost.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlParser.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPath.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPathGeometry.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlPenPattern.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPNGGroup4Image.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPointset.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPolygon.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPolyline.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPolyLineSegment.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPolymarker.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlPolytriangle.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlProjection.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlRendition.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlRenditionPath.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlResource.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlText.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlText_Background.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlText_HAlign.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlText_VAlign.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlUnits.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlUnknown.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\xaml\XamlURL.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlUserData.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlUserFillPattern.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlUserHatchPattern.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlView.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlViewport.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlVisible.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlW2XParser.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\XamlXML.cpp" />
+    <ClCompile Include="..\..\..\src\dwf\XAML\win32\XamlFontUtilImpl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\dwf\XAML\allclass.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\MemoryBuffer.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\OpcResourceMaterializer.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\OpcResourceSerializer.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\pch.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\resource.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlArcSegment.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlAttribute.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlAttribute_Url.h" />
+    <ClInclude Include="..\..\..\src\dwf\xaml\XamlBrushes.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlCanvas.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlClassFactory.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlCode_Page.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlColor.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlColorMap.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlContour_Set.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlContrastColor.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlCore.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlDashPattern.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlDelineate.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlDrawable.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlDrawableAttributes.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlDwfHeader.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlEllipse.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlEmbed.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlEmbeddedFont.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlEndOfDwf.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlFile.h" />
+    <ClInclude Include="..\..\..\src\dwf\xaml\XamlFill.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlFillPattern.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlFont.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlFontExtension.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlFontUtil.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlGlyphs.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlGouraud_Polyline.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlGouraud_Polytriangle.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlGraphicsObject.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlImage.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlLayer.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlLinePattern.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlLineStyle.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlLineWeight.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlMacro_Definition.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlMacro_Draw.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlMacro_Index.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlMacro_Scale.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlMerge_Control.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlNamed_View.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlNamed_View_List.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlObject.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlObject_Node.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlObjectFactory.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlOverpost.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlParser.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPath.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPathGeometry.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPenPattern.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPNGGroup4Image.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPointset.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPolygon.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPolyline.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPolyLineSegment.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPolymarker.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlPolytriangle.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlProjection.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlRendition.h" />
+    <ClInclude Include="..\..\..\src\dwf\xaml\XamlRenditionPath.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlResource.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlText.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlText_Background.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlText_HAlign.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlText_VAlign.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlUnits.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlUnknown.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlURL.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlUserData.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlUserFillPattern.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlUserHatchPattern.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlView.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlViewport.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlVisible.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlW2XParser.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\XamlXML.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\xversion.h" />
+    <ClInclude Include="..\..\..\src\dwf\XAML\win32\XamlFontUtilImpl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\rc\dwf\XAML\XAMLToolkit.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write LIB)|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug (Read-Write WChar LIB)|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write LIB)|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release (Read-Write WChar LIB)|x64'">true</ExcludedFromBuild>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\dwf\XAML\ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

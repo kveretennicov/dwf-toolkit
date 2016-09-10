@@ -1,0 +1,20 @@
+[OPTIONS]
+Binary Index=No
+Compatibility=1.1 or later
+Compiled file=..\out\DwfSpec.chm
+Contents file=DwfSpec.hhc
+Default topic=DwfSpecTitlePage.html
+Display compile progress=No
+Full-text search=Yes
+Language=0x409 English (United States)
+Title=DWF Specification
+
+
+[FILES]
+Dwf55 - Dwf60 Comparison.htm
+DWF 6 Specification.htm
+DwfSpecTitlePage.html
+EPlot Specification v1.2.htm
+
+[INFOTYPES]
+

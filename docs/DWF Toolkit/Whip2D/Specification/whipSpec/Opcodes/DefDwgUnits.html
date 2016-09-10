@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Drawing Units</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Drawing Units</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Drawing Units</b> function describes the real-world scale
+of the WHIP! data’s logical coordinates.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="660" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="13%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="35%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="32%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="13%"><font face="Courier New"><font size=-2>(Units</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Units</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>((&lt;F<sub>M00</sub>>&lt;ws>&lt;F<sub>M01</sub>>&lt;ws>&lt;F<sub>M02</sub>>&lt;ws>&lt;F<sub>M03</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M10</sub>>&lt;ws>&lt;F<sub>M11</sub>>&lt;ws>&lt;F<sub>M12</sub>>&lt;ws>&lt;F<sub>M13</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M20</sub>>&lt;ws>&lt;F<sub>M21</sub>>&lt;ws>&lt;F<sub>M22</sub>>&lt;ws>&lt;F<sub>M23</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M30</sub>>&lt;ws>&lt;F<sub>M31</sub>>&lt;ws>&lt;F<sub>M32</sub>>&lt;ws>&lt;F<sub>M33</sub>>)))</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="32%"><font face="Arial"><font size=-2>Scale of logical
+coordinates</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>M<sub>xy</sub></i>&nbsp;&nbsp; ASCII representation of a floating-point
+or a double-precision floating point number that defines an element of
+the coordinate mapping matrix from "application" coordinates to WHIP! data 
+coordinates.
+<p><i>Units</i>&nbsp;&nbsp; ASCII string label that indicates the unit
+of measure that
+<i>Scale</i> represents when measuring a single logical
+coordinate</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>By defining a "units" transform matrix, the illustrations contained
+in WHIP! data can be related to real-world (native application)
+dimensions. This is useful, for example, when you print a drawing of a
+mechanical part that it appears in its actual size.
+<p>Normally, the WHIP! data reading application does not need to recognize the
+file units or scale. The units as applied to a graph can represent temperature,
+dollars, pressure, and so forth. However, in some cases the viewer application
+may want to know the native application coordinate for a given WHIP! data 
+coordinate. By passing WHIP! data coordinates through the adjoint of the
+Units matrix, the 2D WHIP! data coordinate is mapped to a 3D application
+coordinate.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default, no drawing scale is defined, which is equivalent to
+<ul><font face="Courier New"><font size=-1>(Units 'undefined' ((1.0 0.0
+0.0 0.0)(0.0 1.0 0.0 0.0)(0.0 0.0 1.0 0.0)(0.0 0.0 0.0 1.0)))</font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

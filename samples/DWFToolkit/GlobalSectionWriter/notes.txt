@@ -1,0 +1,1 @@
+This sample tells users how to use GlobalSection to share metadata between 2D Sections.

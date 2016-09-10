@@ -1,0 +1,1398 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Appendix A</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;AppendixAHd.html&quot;">
+<b><font face="Arial"><font size=+2>Appendix A. Opcodes Listed
+by Format</font></font></b>
+<hr>
+<p>This section lists opcodes by single byte, extended ASCII, and extended
+binary formats. It is a convenient, quick reference to the standard opcode
+definitions in the <a href="../OpcodeRef/OpcodeRef.html">Opcode Reference</a>.
+<p><a NAME="Sing"></a><b><font face="Arial"><font size=+1>Single Byte Opcodes</font></font></b>
+<br><a NAME="Tabl9"></a><i><font face="Arial,Helvetica">Table 1. Single
+Byte Formatted Opcodes</font></i>
+<table BORDER CELLPADDING=9 WIDTH="735" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="10%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>ASCII</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="7%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Hex</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="40%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Refer
+to</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-C</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(03)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>R</sub>>&lt;B<sub>G</sub>>&lt;B<sub>B</sub>>&lt;B<sub>A</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetColr.html">Set
+Color</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-F</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(06)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;US<sub>Fields</sub>>[&lt;T<sub>Font</sub>>][&lt;B<sub>Charset</sub>>][&lt;B<sub>Pitch</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Family</sub>>][&lt;B<sub>Style</sub>>][&lt;UL<sub>Height</sub>>][&lt;US<sub>Rotation</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;US<sub>Widthscale</sub>>][&lt;US<sub>Spacing</sub>>]\[&lt;US<sub>Oblique</sub>>][&lt;UL<sub>Flags</sub>>]&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetFnt.html">Set
+Font</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%"><font face="Arial"><font size=-2>Ctrl-G</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%"><font face="Arial"><font size=-2>(07)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>]&lt;S<sub>X1</sub>>&lt;S<sub>Y1</sub>>&lt;UL<sub>C1</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;S<sub>x2</sub>>&lt;S<sub>y2</sub>>&lt;UL<sub>C2</sub>>[&lt;S<sub>xi</sub>>&lt;S<sub>yi</sub>>&lt;UL<sub>Ci</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwGrdPolyt.html">Draw
+Gouraud Polytriangle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%"><font face="Arial"><font size=-2>Ctrl-K</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%"><font face="Arial"><font size=-2>(0B)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>&lt;B<sub>CS-count</sub>>[&lt;US<sub>CS-Ecount</sub>>][&lt;B<sub>P-counti</sub>>[US<sub>P-Ecounti</sub>>]]<sup>+</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;S<sub>x1</sub>>&lt;S<sub>y1</sub>>[&lt;S<sub>xj</sub>>&lt;S<sub>yj</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwContrSet.html">Draw
+Contour Set</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-L</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(0C)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;S<sub>X1</sub>>&lt;S<sub>Y1</sub>>&lt;S<sub>X2</sub>>&lt;S<sub>Y2</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwLine.html">Draw
+Line</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-N</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(0E)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>None</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/ObjectNode.html">Set Object Node</a></font></font></td>
+</tr>
+
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-P</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(10)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>][&lt;S<sub>Xi</sub>>&lt;S<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlylnPlygon.html">Draw
+Polyline</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-R</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(12)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;S<sub>X</sub>>&lt;S<sub>Y</sub>>&lt;US<sub>R</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwCircArcWdg.html">Draw
+Circle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-W</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(17)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;L<sub>Weight</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetLinWgt.html">Set
+Line Weight</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>Ctrl-X</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(18)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;L<sub>x</sub>>&lt;L<sub>y</sub>>&lt;T<sub>Str</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;B<sub>OS-Count</sub>>[&lt;US<sub>OS-Ecount</sub>>][&lt;B<sub>OS-Posi</sub>>[&lt;US<sub>OS-Eposi</sub>>]]<sup>*</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;B<sub>US-Count</sub>>[&lt;US<sub>US-Count</sub>>][&lt;B<sub>US-Posi</sub>>[&lt;US<sub>US-Eposi</sub>>]]<sup>*</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;B<sub>RES-Count</sub>>[&lt;US<sub>RES-Ecount</sub>>][&lt;B<sub>RES-Pos<i>i</i></sub>>[&lt;US<sub>RES-Epos<i>i</i></sub>>]]<sup>*</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;L<sub>P0x</sub>>&lt;L<sub>P0y</sub>>&lt;L<sub>P1x</sub>>&lt;L<sub>P1y</sub>>&lt;L<sub>P2x</sub>>&lt;L<sub>P2y</sub>>&lt;L<sub>P3x</sub>>&lt;L<sub>P3y</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwTxt.html">Draw
+Text</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>C</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(43)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Index</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetColr.html">Set
+Color</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%"><font face="Arial"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%"><font face="Arial"><font size=-2>(45)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;I<sub>Rh</sub>>,&lt;I<sub>Rv</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwElpsArcWdg.html">Draw
+Ellipse</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>F</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(46)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetFilMod.html">Set
+Fill Mode</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>G</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(47)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Index</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetMkrGlyph.html">Set
+Marker Glyph</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>L</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(4C)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwLine.html">Draw
+Line</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>M</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(4D)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlymkr.html">Draw
+Polymarker</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>N</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(4E)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;UL<sub>NodeNum</sub>&gt</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/ObjectNode.html">Set Object Node</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>O</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(4F)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;UL<sub>X</sub>>&lt;UL<sub>Y</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetCurPt.html">Set
+<i>CurrentPoint</i>.</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>P</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(50)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlylnPlygon.html">Draw
+Polyline/Polygon</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>R</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(52)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;I<sub>R</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwCircArcWdg.html">Draw
+Circle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(53)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Size</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetMkrSz.html">Set
+Marker Size</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>T</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(54)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Count</sub>>[&lt;ws>]&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlytringl.html">Draw
+Polytriangle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>V</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(56)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetVis.html">Set
+Visibility</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%"><font face="Arial"><font size=-2>b</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%"><font face="Arial"><font size=-2>(62)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>]&lt;L<sub>Xs</sub>>&lt;L<sub>Ys</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;L<sub>XC1</sub>>&lt;L<sub>YC1</sub>>&lt;L<sub>XC2</sub>>&lt;L<sub>YC2</sub>>&lt;L<sub>Xe</sub>>&lt;L<sub>Ye</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlyBezCrv.html">Draw
+PolyB&eacute;zier curve</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>c</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(63)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>Index</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetColr.html">Set
+Color</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>e</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(65)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;L<sub>X</sub>>&lt;L<sub>Y</sub>>&lt;UL<sub>Rh</sub>>&lt;UL<sub>Rv</sub>>&lt;US<sub>Start</sub>>&lt;US<sub>End</sub>>&lt;US<sub>Tilt</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwElpsArcWdg.html">Draw
+Ellipse</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>f</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(66)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetFilMod.html">Set
+Fill Mode</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%"><font face="Arial"><font size=-2>g</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%"><font face="Arial"><font size=-2>(67)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>]&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;UL<sub>C1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;UL<sub>C2</sub>>[&lt;L<sub>xi</sub>>&lt;L<sub>yi</sub>>&lt;UL<sub>Ci</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwGrdPolyt.html">Draw
+Gouraud Polytriangle</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>k</font></font></td>
+
+<td><font face="Arial"><font size=-2>(6B)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;B<sub>CS-count</sub>>[&lt;US<sub>CS-Ecount</sub>>][&lt;B<sub>P-counti</sub>>[US<sub>P-Ecounti</sub>>]]<sup>+</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;L<sub>x1</sub>>&lt;L<sub>y1</sub>>[&lt;L<sub>xj</sub>>&lt;L<sub>yj</sub>>]<sup>+</sup></font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DrwContrSet.html">Draw
+Contour Set</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>l</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(6C)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwLine.html">Draw
+Line</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>m</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(6D)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>][&lt;L<sub>Xi</sub>>&lt;L<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlymkr.html">Draw
+Polymarker</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>n</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(6E)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;S<sub>NodeNum</sub>&gt;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/ObjectNode.html">Set Object Node</a></font></font></td>
+</tr>
+
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>p</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(70)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>][&lt;L<sub>Xi</sub>>&lt;L<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlylnPlygon.html">Draw
+Polyline</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>r</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(72)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;L<sub>X</sub>>&lt;L<sub>Y</sub>>&lt;UL<sub>R</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwCircArcWdg.html">Draw
+Circle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>s</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(73)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;UL<sub>Size</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetMkrSz.html">Set
+Marker Size</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>t</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(74)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>][&lt;L<sub>Xi</sub>>&lt;L<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlytringl.html">Draw
+Polytriangle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>v</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(76)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetVis.html">Set
+Visibility</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%"><font face="Arial"><font size=-2>w</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%"><font face="Arial"><font size=-2>(77)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>&lt;B>[&lt;US>][&lt;L>&lt;L>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwTxtrdPlytri.html">Draw
+Textured Polytriangle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>x</font></font></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(78)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>&lt;L<sub>x</sub>>&lt;L<sub>y</sub>>&lt;T<sub>Str</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwTxt.html">Draw
+Text</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><i><font face="Arial"><font size=-2>N/A</font></font></i></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(87)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;US<sub>Index</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetMkrGlyph.html">Set
+Marker Glyph</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><i><font face="Arial"><font size=-2>N/A</font></font></i></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(8C)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;S<sub>X1</sub>>&lt;S<sub>Y1</sub>>&lt;S<sub>X2</sub>>&lt;S<sub>Y2</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwLine.html">Draw
+Line</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><i><font face="Arial"><font size=-2>N/A</font></font></i></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(8D)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>][&lt;S<sub>Xi</sub>>&lt;S<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlymkr.html">Draw
+Polymarker</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><i><font face="Arial"><font size=-2>N/A</font></font></i></td>
+
+<td VALIGN=TOP WIDTH="7%" HEIGHT="26"><font face="Arial"><font size=-2>(92)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;L<sub>X</sub>>&lt;L<sub>Y</sub>>&lt;UL<sub>R</sub>>&lt;US<sub>Start</sub>>&lt;US<sub>End</sub>>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="43%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwCircArcWdg.html">Draw
+Circle</a></font></font></td>
+</tr>
+
+<tr>
+<td><i><font face="Arial"><font size=-2>N/A</font></font></i></td>
+
+<td><font face="Arial"><font size=-2>(AC)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;B<sub>LayerNum</sub>>[&lt;US<sub>Elayernum</sub>>]&nbsp;</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/SetLyr.html">Set
+Layer</a></font></font></td>
+</tr>
+</table>
+
+<p><a NAME="Extao"></a><b><font face="Arial"><font size=+1>Extended ASCII
+Opcodes</font></font></b>
+<br><a NAME="Tabl10"></a><i><font face="Arial,Helvetica">Table 2. Extended
+ASCII Formatted Opcodes</font></i>
+<table BORDER CELLPADDING=9 WIDTH="735" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>ASCII
+Extended Opcode</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="60%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Refer
+to</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Alignment</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;ws>&lt;T</font><sub><font face="Courier New,Courier">alignment</font></sub><font face="Courier New">>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefWT_Alignment.html">Define
+Alignment</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Author</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Author</sub>>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgAuth.html">Define
+Drawing Author</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(BlockRef</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New,Courier"><font size=-2><a href="../Opcodes/BlockRef.html#Syntax">&lt;T<sub>format</sub>>&lt;UL<sub>file_offset</sub>>&lt;UL<sub>block_size</sub>>(&lt;Guid<sub>block_guid</sub>>)\</a></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/BlockRef.html">BlockRef</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Background</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>R</sub>>,&lt;I<sub>G</sub>>,&lt;I<sub>B</sub>>,&lt;I<sub>A</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgBack.html">Define
+Drawing Background</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(BlockMeaning</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;ws>&lt;T</font><sub><font face="Courier New,Courier">meaning</font></sub><font face="Courier New">>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Block_Meaning.html">Define Block Meaning</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="33"><font face="Arial"><font size=-2>(Bezier</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="33"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Count</sub>>&lt;ws>&lt;I<sub>Xs</sub>>,&lt;I<sub>Ys</sub>>[&lt;ws>&lt;I<sub>XC1</sub>>,&lt;I<sub>YC1</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;I<sub>XC2</sub>>,&lt;I<sub>YC2</sub>>&lt;ws>&lt;I<sub>Xe</sub>>,&lt;I<sub>Ye</sub>>]<sup>+</sup>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="33"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPlyBezCrv.html">Draw
+PolyBezier curve</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Circle</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;I<sub>R</sub>>&lt;ws>&lt;I<sub>Start</sub>>,&lt;I<sub>End</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwCircArcWdg.html">Draw
+Circle/Circular Arc/Circular Wedge</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(CodePage</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>Value</sub>>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetCodePage.html">Set
+Code Page</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Color</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>R</sub>>,&lt;I<sub>G</sub>>,&lt;I<sub>B</sub>>,&lt;I<sub>A</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetColr.html">Set
+Color</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(ColorMap</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Ri</sub>>,&lt;I<sub>Gi</sub>>,&lt;I<sub>Bi</sub>>,&lt;I<sub>Ai</sub>>]<sup>+</sup>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetColrMap.html">Set
+Color Map</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Comment</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;T<sub>Comment</sub>>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/Comment.html">Comment[s]</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Comments</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;T<sub>Comments</sub>>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/Comment.html">Comment[s]</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Contour</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>CS-count</sub>>[&lt;ws>&lt;I<sub>P-counti</sub>>]<sup>+</sup>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;I<sub>xl</sub>>,&lt;I<sub>yl</sub>>[&lt;ws>&lt;I<sub>xj</sub>>,&lt;I<sub>yj</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwContrSet.html">Draw
+Contour Set</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Copyright</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Notice</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefCopyright.html">Define
+Copyright</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Created</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Time</sub>>&lt;ws>&lt;T<sub>Desc</sub>>&lt;ws>&lt;T<sub>GUID</sub>>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgCreaTim.html">Define
+Drawing Creation Time</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Creator</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;T<sub>Program</sub>>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgCreat.html">Define
+Drawing Creator</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Description</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;T<sub>Desc</sub>>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgDesc.html">Define
+Drawing Description.</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font size=-2><font face="Arial">(</font><font face="Arial,Helvetica">Directory</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;L</font><sub><font face="Courier New,Courier">total_number_of_blocks</font></sub><font face="Courier New">>(&lt;BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)\</font></font></b>
+<br><b><font size=-2><font face="Courier New">(&lt;BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)&lt;more
+blockrefs>\</font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">directory_beginning_file_offset</font></sub><font face="Courier New">>)\</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/Directory.html">Directory</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(DrawingInfo</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;T<sub>Info</sub>>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgInfoBlk.html">Define
+Drawing Information Block</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Ellipse</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;I<sub>Rh</sub>>,&lt;I<sub>Rv</sub>>&lt;ws>&lt;I<sub>Start</sub>>,\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;I<sub>End</sub>>&lt;ws>&lt;I<sub>Tilt</sub>>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwElpsArcWdg.html">Draw
+Ellipse/Elliptical Arc/Elliptical Wedge</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Embedded_Font</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;w&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/DefWT_Embedded_Font.html">Define
+Embedded Font&nbsp;</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(EmbedFile</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>(&lt;T<sub>Type</sub>>/&lt;T<sub>Subtype</sub>>;[&lt;T<sub>Options</sub>>])&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;T<sub>Desc</sub>>)&lt;ws>(&lt;T<sub>Filename</sub>>)&lt;ws>{&lt;D<sub>Data</sub>>})&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/EmbdSrcFil.html">Embed
+Source File</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Embed</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>(&lt;T<sub>Type</sub>>/&lt;T<sub>Subtype</sub>>;[&lt;T<sub>Options</sub>>])&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;T<sub>Desc</sub>>)&lt;ws>(&lt;T<sub>Filename</sub>>)&lt;ws>{&lt;T<sub>URL</sub>>})&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/EmbdSrcFil.html">Embed
+Source File</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Encryption</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font size=-2><font face="Courier New">&lt;ws>&lt;</font><font face="Courier New,Courier">T<sub>encryption</sub></font><font face="Courier New">>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Encryption.html">Define
+Encryption</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Font</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>[&lt;ws>(Name&lt;ws>&lt;T<sub>Font</sub>>)]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Charset&lt;ws>&lt;T<sub>Charset</sub>>)][&lt;ws>(Pitch&lt;ws>&lt;T<sub>Pitch</sub>>)]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Family&lt;ws>&lt;T<sub>Family</sub>>)][&lt;ws>(Style[&lt;ws>bold][&lt;ws>italic])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Height&lt;ws>&lt;I<sub>Height</sub>>)][&lt;ws>(Widthscale&lt;ws>&lt;I<sub>Widthscale</sub>>)]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Spacing&lt;ws>&lt;I<sub>Spacing</sub>>)][&lt;ws>(Oblique&lt;ws>&lt;I<sub>Oblique</sub>>)]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Flags&lt;ws>&lt;I<sub>Flags</sub>>)][&lt;ws>&lt;R<sub>Description</sub>>]<sup>*</sup>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/SetFnt.html">Set
+Font</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Gouraud</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Count</sub>>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>R1</sub>>,&lt;I<sub>G1</sub>>,&lt;I<sub>B1</sub>>,&lt;I<sub>A1</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>&lt;ws>&lt;I<sub>R2</sub>>,&lt;I<sub>G2</sub>>,&lt;I<sub>B2</sub>>,&lt;I<sub>A2</sub>>[&lt;ws>&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;I<sub>ri</sub>>,&lt;I<sub>gi</sub>>,&lt;I<sub>bi</sub>>,&lt;I<sub>ai</sub>>]<sup>+</sup>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwGrdPolyt.html">Draw
+Gouraud Polytriangle</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Group4PNGImage</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>"&lt;T<sub>Format</sub>&lt;I<sub>Id</sub>>"&lt;ws>>[&lt;ws>&lt;I<sub>Col</sub>>,&lt;I<sub>Row</sub>>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>&lt;I<sub>ColorMapSize</sub>></font></font></b>
+<p><b><font face="Courier New"><font size=-2>[(Colormap &lt;ws>&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Ri</sub>>,&lt;I<sub>Gi</sub>>,&lt;I<sub>Bi</sub>>,&lt;I<sub>Ai</sub>>]<sup>+</sup>[&lt;ws>])]]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[(&lt;ws>&lt;I<sub>DSize</sub>>&lt;ws>[&lt;H<sub>Data</sub>>]<sup>+</sup>)])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DrwPNGGroup4Img.html">Draw
+Group4 PNG Image</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(GroupBegin</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font size=-2><font face="Courier New">&lt;ws></font><font face="Courier New,Courier">&lt;T</font><sub><font face="Courier New">group_name</font></sub><font face="Courier New,Courier">>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/GroupBegin.html">Group
+Begin</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(GroupEnd</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/GroupEnd.html">Group
+End</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Guid</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font size=-2><font face="Courier New">&lt;ws>&lt;UL</font><sub><font face="Courier New,Courier">Data1</font></sub><font face="Courier New">>&lt;US</font><sub><font face="Courier New,Courier">Data2</font></sub><font face="Courier New">>&lt;US</font><sub><font face="Courier New,Courier">Data3</font></sub><font face="Courier New">>&lt;T</font><sub><font face="Courier New,Courier">Data4</font></sub><font face="Courier New">></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Guid.html">Define
+Guid</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(GuidList</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font size=-2><font face="Courier New">&lt;</font><font face="Courier New,Courier">ws</font><font face="Courier New">>&lt;I</font><sub><font face="Courier New,Courier">Number
+of guids maintained in this list</font></sub><font face="Courier New">>&lt;ws></font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;ws></font><font face="Courier New,Courier">&lt;Guid<sub>guid1</sub>>&lt;ws>&lt;Guid<sub>guid2</sub>></font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-2>&lt;ws>&lt;Guid<sub>guid1</sub>>...up
+to n guids)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Guid_List.html">Define
+Guid List</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Image</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Format</sub>>&lt;ws>&lt;I<sub>Id</sub>>[&lt;ws>&lt;I<sub>Col</sub>>,&lt;I<sub>Row</sub>>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>][(Colormap&lt;ws>&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Ri</sub>>,&lt;I<sub>Gi</sub>>,&lt;I<sub>Bi</sub>>,\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;I<sub>Ai</sub>>]<sup>+</sup>[&lt;ws>])]][(&lt;ws>&lt;I<sub>DSize</sub>>&lt;ws>[&lt;H<sub>Data</sub>>]<sup>+</sup>)])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+Image</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(InkedArea</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/InkArea.html">Inked
+Area</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Keywords</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>List</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/DefKeywords.html">Define
+Keywords</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Layer</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>LayerNum</sub>>[&lt;ws>&lt;T<sub>LayerName</sub>>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetLyr.html">Set
+Layer</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(LinePattern</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>PatName</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetLinPat.html">Set
+Line Pattern</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(LinesOverwrite</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws><sub>'opaque'|'merge'|'transparent</sub></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/MergeControl.html">Merge
+Control</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(LineStyle</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>(AdaptPatterns&lt;ws>&lt;T<sub>Boolean</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(LinePatternScale&lt;ws>&lt;F<sub>Scale</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(LineStartCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(LineEndCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(DashStartCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(DashEndCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(LineJoin&lt;ws>&lt;T<sub>Join</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(MiterAngle&lt;ws>&lt;I<sub>Angle</sub>>[&lt;ws>])]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(MiterLength&lt;ws>&lt;I<sub>Length</sub>>[&lt;ws>])])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetLinSty.html">Set
+Line Style</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(LineWeight</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Weight</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetLinWgt.html">Set
+Line Weight</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Modified</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Time</sub>>&lt;ws>&lt;T<sub>Desc</sub>>&lt;ws>&lt;T<sub>GUID</sub>>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgModTim.html">Define
+Drawing Modification Time</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(NamedView</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>&lt;ws>&lt;T<sub>Name</sub>>][&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefNamedVw.html">Define
+Named View</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Node</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>NodeNum</sub>>[&lt;ws>&lt;T<sub>NodeName</sub>>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/ObjectNode.html">Set Object Node</a></font></font></td>
+</tr>
+
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(NonStdFontList</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>'fontname0'
+'fontname1' 'fontname2' ...... )&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Trusted_Font_List.html">Define
+Trusted Font List</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Orientation</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;ws>&lt;</font><font face="Courier New,Courier">T<sub>orientation</sub></font><font face="Courier New">>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Orientation.html">Define Orientation</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font size=-2><font face="Arial">(</font><font face="Arial,Helvetica">PenPattern</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;</font><font face="Courier New,Courier">ws</font><font face="Courier New">>&lt;I</font><font face="Courier New,Courier"><sub>Pen
+pattern type</sub>></font><font face="Courier New">&lt;ws>&lt;UI</font><sub><font face="Courier New,Courier">Screening
+percentage value</font></sub><font face="Courier New">>&lt;ws>&lt;B</font><sub><font face="Courier New,Courier">ColorMap
+flag</font></sub><font face="Courier New">>&lt;ws>&lt;ColorMap>&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/SetPen_Pattern.html">Set Pen Pattern</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font size=-2><font face="Arial">(</font><font face="Arial,Helvetica">Pen Pattern Options</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;</font><font face="Courier New,Courier">ws</font><font face="Courier New">>&lt;B</font><font face="Courier New,Courier"><sub>scale_pen_width</sub>></font><font face="Courier New">&lt;B</font><sub><font face="Courier New,Courier">map_colors_to_gray_scale</font></sub><font face="Courier New">>&lt;ws>&lt;B</font><sub><font face="Courier New,Courier">use_alternate_fill_rule</font></sub><font face="Courier New">>,</font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;B</font><sub><font face="Courier New,Courier">use_error_diffusion_for_Rasters</font></sub><font face="Courier New">>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/WT_PenPat_Options.html">Pen Pattern Options</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(PlotInfo</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>ShowPaper</sub>>&lt;ws>&lt;I<sub>Rotation</sub>>&lt;ws>&lt;T<sub>Units</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;F<sub>Width</sub>>&lt;ws>&lt;F<sub>Height</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;F<sub>Left</sub>>&lt;ws>&lt;F<sub>Bottom</sub>>&lt;ws>&lt;F<sub>Right</sub>>&lt;ws>&lt;F<sub>Top</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>((&lt;F<sub>M00</sub>>&lt;ws>&lt;F<sub>M01</sub>>&lt;ws>&lt;F<sub>M02</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&nbsp;(&lt;F<sub>M10</sub>>&lt;ws>&lt;F<sub>M11</sub>>&lt;ws>&lt;F<sub>M12</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&nbsp;(&lt;F<sub>M20></sub>>&lt;ws>&lt;F<sub>M21</sub>>&lt;ws>&lt;F<sub>M22</sub>>))[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefPltInf.html">Define
+Plot Info</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(PlotOptimized</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws><sub>|0|1</sub></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/OptimizedForPlotting.html">Opitimized
+For Plotting</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Projection</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;T<sub>Proj</sub>>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetProj.html">Set
+Projection</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Psswd</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;ws>&lt;T</font><sub><font face="Courier New,Courier">password</font></sub><font face="Courier New">></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Password.html">Define Password</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font size=-2><font face="Arial">(</font><font face="Courier New">SignData</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;</font><font face="Courier New,Courier">ws</font><font face="Courier New">>&lt;I</font><font face="Courier New,Courier"><sub>boolean
+signaling the presence/absence of <b>Guid List</b> opcode</sub>></font><font face="Courier New">&lt;ws>&lt;Guid List</font><sub><font face="Courier New,Courier">block
+ids list</font></sub><font face="Courier New">>&lt;ws>&lt;I</font><sub><font face="Courier New,Courier">signature
+data size</font></sub><font face="Courier New">>&lt;ws>&lt;Byte *</font><sub><font face="Courier New,Courier">signature
+data</font></sub><font face="Courier New">>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_SignData.html">Define SignData</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(SourceCreated</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Time</sub>>&lt;ws>&lt;T<sub>Desc</sub>>&lt;ws>&lt;T<sub>GUID</sub>>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgCreaTim.html">Define
+Source Drawing Creation Time</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(SourceFilename</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Filename</sub>>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefSrcDwgFilnm.html">Define
+Source Drawing Filename</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(SourceModified</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Time</sub>>&lt;ws>&lt;T<sub>Desc</sub>>&lt;ws>&lt;T<sub>GUID</sub>>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/DefSrcDwgModTm.html">Define
+Source Drawing Modification Time</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>(Text</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;T<sub>Str</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Overscore&lt;ws>(&lt;I<sub>OS-Count</sub>>&lt;ws>&lt;I<sub>OS-Pos0</sub>>[,&lt;I<sub>OS-Pos<i>i</i></sub>>]<sup>*</sup>))]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Underscore&lt;ws>(&lt;I<sub>US-Count</sub>>&lt;ws>&lt;I<sub>US-Pos0</sub>>[,&lt;I<sub>US-Pos<i>i</i></sub>>]<sup>*</sup>))]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(CharPos&lt;ws>(&lt;I<sub>RES-Count</sub>>&lt;ws>&lt;I<sub>RES-Pos0</sub>>[,&lt;I<sub>RES-Pos<i>i</i></sub>>]<sup>*</sup>))]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Bounds&lt;ws>&lt;I<sub>P0x</sub>>,&lt;I<sub>P0y</sub>>&lt;ws>&lt;I<sub>P1x</sub>>,&lt;I<sub>P1y</sub>>&lt;ws>&lt;I<sub>P2x</sub>>,&lt;I<sub>P2y</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>P3x</sub>>,&lt;I<sub>P3y</sub>>)]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwTxt.html">Draw
+Text</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>(Time</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;ws>&lt;I</font><sub><font face="Courier New,Courier">low_time_value</font></sub><font face="Courier New">>&lt;I</font><sub><font face="Courier New,Courier">high_time_value</font></sub><font face="Courier New">>&nbsp;</font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_FileTime.html">Define
+FileTime</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>(Units</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Units</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>((&lt;F<sub>H00</sub>>&lt;ws>&lt;F<sub>H01</sub>>&lt;ws>&lt;F<sub>H02</sub>>&lt;ws>&lt;F<sub>H03</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>H10</sub>>&lt;ws>&lt;F<sub>H11</sub>>&lt;ws>&lt;F<sub>H12</sub>>&lt;ws>&lt;F<sub>H13</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>H20</sub>>&lt;ws>&lt;F<sub>H21</sub>>&lt;ws>&lt;F<sub>H22</sub>>&lt;ws>&lt;F<sub>H23</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>H30</sub>>&lt;ws>&lt;F<sub>H31</sub>>&lt;ws>&lt;F<sub>H32</sub>>&lt;ws>&lt;F<sub>H33</sub>>)))&nbsp;</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DefDwgUnits.html">Define
+Drawing Units</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(URL</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>(&lt;I<sub>Index</sub>>&lt;ws>&lt;T<sub>Address</sub>>&lt;ws>&lt;T<sub>Name</sub>>)]\
+[&lt;ws>(&lt;I<sub>Index</sub>>&lt;ws>&lt;T<sub>Address</sub>>&lt;ws>&lt;T<sub>Name</sub>>)]<sup>+</sup>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetUrlLnk.html">Set
+URL Link</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font size=-2><font face="Arial">(</font><font face="Courier New">UserData</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;</font><font face="Courier New,Courier">ws</font><font face="Courier New">>&lt;T</font><font face="Courier New,Courier"><sub>data
+description</sub>></font><font face="Courier New">&lt;ws>&lt;I</font><sub><font face="Courier New,Courier">DataSize</font></sub><font face="Courier New">>&lt;ws>&lt;H</font><sub><font face="Courier New,Courier">Data</font></sub><font face="Courier New">>)&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_UserData.html">Define
+UserData</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(View</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>[&lt;T<sub>Name</sub>>][&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/DefInitVw.html">Define
+Initial View</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2>(Viewport</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Name</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>>]<sup>+</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Units</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>((&lt;F<sub>M00</sub>>&lt;ws>&lt;F<sub>M01</sub>>&lt;ws>&lt;F<sub>M02</sub>>&lt;ws>&lt;F<sub>M03</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M10</sub>>&lt;ws>&lt;F<sub>M11</sub>>&lt;ws>&lt;F<sub>M12</sub>>&lt;ws>&lt;F<sub>M13</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M20</sub>>&lt;ws>&lt;F<sub>M21</sub>>&lt;ws>&lt;F<sub>M22</sub>>&lt;ws>&lt;F<sub>M23</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M30</sub>>&lt;ws>&lt;F<sub>M31</sub>>&lt;ws>&lt;F<sub>M32</sub>>&lt;ws>&lt;F<sub>M33</sub>>)))&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Arial"><font size=-2><a href="../Opcodes/SetViewPort.html">Set
+Viewport&nbsp;</a></font></font></td>
+</tr>
+</table>
+
+<p><a NAME="Extbo"></a><b><font face="Arial"><font size=+1>Extended Binary
+Opcodes</font></font></b>
+<br><a NAME="Tabl11"></a><i><font face="Arial,Helvetica">Table 3. Extended
+Binary Formatted Opcodes</font></i>
+<table BORDER CELLPADDING=9 WIDTH="735" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="34%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Extended
+Binary</font></font></font></b>
+<p><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode (Hex)</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="35%" BGCOLOR="#0000A0">
+<center><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></b></center>
+</td>
+
+<td VALIGN=TOP WIDTH="31%" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-2>Refer
+to</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20"><font face="Arial"><font size=-2>00
+01</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%" HEIGHT="20"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;B<sub>Ri</sub>>&lt;B<sub>Gi</sub>>&lt;B<sub>Bi</sub>>&lt;B<sub>Ai</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="20"><font face="Arial"><font size=-2><a href="../Opcodes/SetColrMap.html">Set
+Color Map</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%"><font face="Arial"><font size=-2>00 02</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;B<sub>Count</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Ri</sub>>&lt;B<sub>Gi</sub>>&lt;B<sub>Bi</sub>>&lt;B<sub>Ai</sub>>]<sup>+</sup>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+Mapped Bitonal Image</a></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="34%" HEIGHT="20"><font face="Arial"><font size=-2>00
+03</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;B<sub>Count</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Ri</sub>>&lt;B<sub>Gi</sub>>&lt;B<sub>Bi</sub>>&lt;B<sub>Ai</sub>>]<sup>+</sup>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="20"><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+Mapped Group 3X Image</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>00 04</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>GIndex</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+Indexed Color Image</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>00 05</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;B<sub>Count</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Ri</sub>>&lt;B<sub>Gi</sub>>&lt;B<sub>Bi</sub>>&lt;B<sub>Ai</sub>>]<sup>+</sup>&lt;L<sub>DSize</sub>>[&lt;B<sub>LIndex</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+Mapped Color Image</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>00 06</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Rn</sub>>&lt;B<sub>Gn</sub>>&lt;B<sub>Bn</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+RGB Image</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>00 07</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Rn</sub>>&lt;B<sub>Gn</sub>>&lt;B<sub>Bn</sub>>&lt;B<sub>An</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+RGBA Image</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>00 08</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Data</sub>>]<sup>+</sup>}&nbsp;</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DrwImg.html">Draw
+JPEG Image</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>00 09</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>ColorMapSize</sub>>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DrwPNGGroup4Img.html">Draw
+Group4 PNG Image</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>00 10</font></font>
+<br><font face="Arial"><font size=-2>00 11</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>[&lt;D>]<sup>*</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DefCompData.html">Define
+Compressed Data</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x014A</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;ws>&lt;UL</font><sub><font face="Courier New,Courier">Data1</font></sub><font face="Courier New">>&lt;US</font><sub><font face="Courier New,Courier">Data2</font></sub><font face="Courier New">>&lt;US</font><sub><font face="Courier New,Courier">Data3</font></sub><font face="Courier New">>&lt;T</font><sub><font face="Courier New,Courier">Data4</font></sub><font face="Courier New">></font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Guid.html">Define
+Guid</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x014B</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">password</font></sub><font face="Courier New">></font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Password.html">Define
+Password</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x014D</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">low_time_value</font></sub><font face="Courier New">>&lt;UL</font><sub><font face="Courier New,Courier">high_time_value</font></sub><font face="Courier New">></font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_FileTime.html">Define
+FileTime</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x015D</font></font></td>
+
+<td><b><font face="Courier New,Courier"><font size=-2><a href="../Opcodes/BlockRef.html#ExtendBin">&lt;US<sub>format</sub>>&lt;UL<sub>file_offset</sub>>&lt;UL<sub>block_size</sub>>&lt;Guid<sub>block_guid</sub>>\</a></font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/BlockRef.html">BlockRef</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0142</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">meaning</font></sub><font face="Courier New">></font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Block_Meaning.html">Define
+Block Meaning</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0143</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">encryption</font></sub><font face="Courier New">></font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Encryption.html">Define
+Encryption</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0145</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">orientation</font></sub><font face="Courier New">></font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Orientation.html">Define
+Orientation</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0147</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;US</font><sub><font face="Courier New,Courier">alignment</font></sub><font face="Courier New">></font></font></b></td>
+
+<td><font face="Arial"><font size=-2><a href="../Opcodes/DefWT_Alignment.html">Define
+Alignment</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0160</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;L</font><sub><font face="Courier New,Courier">total_number_of_blocks</font></sub><font face="Courier New">>(&lt;WT_BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)</font></font></b>
+<br><b><font size=-2><font face="Courier New">(&lt;BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)&lt;more
+blockrefs></font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">directory_beginning_file_offset</font></sub><font face="Courier New">>)+}</font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/Directory.html">Directory</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0162</font></font></td>
+
+<td><b><font face="Courier New,Courier"><font size=-2>&lt;T<sub>data description
+stored as ascii text</sub>>&lt;L<sub>DSize</sub>>&lt;B<sub>Data</sub>>)+}</font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_UserData.html">Define
+UserData</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0164</font></font></td>
+
+<td><b><font face="Courier New,Courier"><font size=-2>&lt;I<sub>'Pen pattern
+type</sub>>&lt;UI
+<sub>Screening percentage value</sub>>&lt;B<sub>ColorMap
+flag</sub>>&lt;ColorMap>)+}</font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/SetPen_Pattern.html">Set
+Pen Pattern</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0166</font></font></td>
+
+<td><b><font face="Courier New,Courier"><font size=-2>&lt;Byte<sub>'0'
+or '1' flag signalling the presence/absence of <b>Guid List</b> opcode</sub>>&lt;Guid List
+<sub>block
+ids list</sub>>&lt;I<sub>signature data size</sub>>&lt;Byte *<sub>signature
+data</sub>>)+}</font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_SignData.html">Define
+SignData</a></font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>0x0168</font></font></td>
+
+<td><b><font face="Courier New,Courier"><font size=-2>&lt;I<sub>Number
+of guids maintained in this list</sub>></font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-2>Guid<sub>guid1</sub>>Guid<sub>guid2</sub>>Guid<sub>guid3</sub>>...up
+to n guids)+}</font></font></b></td>
+
+<td><font face="Arial,Helvetica"><font size=-2><a href="../Opcodes/DefWT_Guid_List.html">Define
+Guid List</a></font></font></td>
+</tr>
+</table>
+
+<p>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

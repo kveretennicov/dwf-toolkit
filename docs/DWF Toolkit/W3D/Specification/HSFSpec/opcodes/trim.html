@@ -1,0 +1,177 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>NURBS Surface Trims</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+<H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">NURBS Surface Trims</FONT></H2>
+<FONT face="arial,helvetica,sans-serif">
+
+<P>Trimmed NURBS surfaces are followed by a terminated list of surface trims.
+Much like the top-level opcodes, surface trims have a format that is dictated
+by the opcode character.  The main differences are that they always apply to NURBS surfaces,
+and there are few enough of them to be described in just this one document.
+
+<p>Trim objects generally specify a closed region on the parameter space of the NURBS surface.
+The only exception to this is are trim objects that are given as part of a trim collection,
+in which case they describe one section of a piecewise closed region.  In addition do describing
+the closed region, they dictate the operation that is to be done on that area, either "keep" or
+"remove".  "Remove" operations cut away the closed region.  "Keep" operations cut away everything except
+the region.  The operation control bit (0x01) on objects that are part of an <b>NS_Trim_Collection</b>
+is ignored, since only collectively do such objects specify a closed region.
+
+<p>NURBS surfaces are parameterized from 0 to 1 always, so control vertices should be specified
+with that in mind.  Note that this contrasts with some solid modelling kernels, which parameterize 
+their surfaces with respect to their knots.
+
+	<p><FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Trim opcodes:</strong></FONT></P><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0</TD>
+		<TD height=21 width=390>trim list termination</TD>
+	</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1</td>
+		<td WIDTH=390 HEIGHT=21>trim poly</td>
+	</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>2</td>
+		<td WIDTH=390 HEIGHT=21>trim curve</td>
+	</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>3</td>
+		<td WIDTH=390 HEIGHT=21>trim collection</td>
+	</tr>
+	</table>
+
+	<p><FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Trim controls:</strong></FONT></P><p>
+	<table BORDER =1 WIDTH="500">
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0x01</td>
+		<td WIDTH=390 HEIGHT=21>trim is a "keep" operation</td>
+	</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0x02</td>
+		<td WIDTH=390 HEIGHT=21>trim curve has weights (relevant to <em>trim curve</em> only)</td>
+	</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0x04</td>
+		<td WIDTH=390 HEIGHT=21>trim curve has knots (relevant to <em>trim curve</em> only)</td>
+	</tr>
+	</table>
+	</FONT>
+
+<!-------------------------TRIM TERMINATION----------------------------------->
+    <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">NS_Trim_Termination (0)</FONT></H3>
+    <p>no operands.
+
+<!-------------------------TRIM POLY------------------------------------------>
+    <p><H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">NS_Trim_Poly (1)</FONT></H3>
+    <P><FONT face="Courier New,Courier,typewriter">
+    <STRONG>Byte</STRONG>&nbsp;control_bits,
+    <STRONG>Long</STRONG>&nbsp;control_count,
+    <STRONG>(</STRONG><EM>2 x control_count</EM><STRONG>)</STRONG> x <STRONG>Float</STRONG>&nbsp;control_points,
+    </FONT></P>
+    <FONT face="arial,helvetica,sans-serif">	  
+    <table BORDER =1 WIDTH="530">
+    <TR>
+        <TD height=21 width=131>control_bits</TD>
+        <TD height=21 width=390>miscellaneous control options bits (see above)</TD>
+	</TR>
+    <TR>
+        <TD height=21 width=131>point_count</TD>
+        <TD height=21 width=390>number of control points in the poly</TD>
+	</TR>
+    <tr>
+	    <td WIDTH=131 HEIGHT=21>points</td>
+	    <td WIDTH=390 HEIGHT=21><EM>control_count</EM> pairs of u,v data</td>
+	</tr>
+    </table>
+
+<!-------------------------TRIM CURVE----------------------------------------->
+
+    <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">NS_Trim_Curve (2)</FONT></H3>
+    <P><FONT face="Courier New,Courier,typewriter">
+    <STRONG>Byte</STRONG>&nbsp;options,
+    <br><STRONG>Byte</STRONG>&nbsp;degree,
+    <br><STRONG>Long</STRONG>&nbsp;control_count,
+    <br><STRONG>(</STRONG><EM>2 x control_count</EM><STRONG>)</STRONG> x <STRONG>Float</STRONG>&nbsp;control_points,
+    <br><STRONG>[(</STRONG><EM>control_count</EM><STRONG>)</STRONG> x <STRONG>Float</STRONG>&nbsp;weights<STRONG>]</STRONG>,
+    <br><STRONG>[(</STRONG><EM>control_count+degree+1</EM><STRONG>)</STRONG> x <STRONG>Float</STRONG>&nbsp;knots<STRONG>]</STRONG>,
+    <br><STRONG>[Float</STRONG>&nbsp;start<STRONG>]</STRONG>,
+    <br><STRONG>[Float</STRONG>&nbsp;end<STRONG>]</STRONG>
+    </FONT></P>
+    <FONT face="arial,helvetica,sans-serif">	  
+    <table BORDER =1 WIDTH="530">
+    <TR>
+        <TD height=21 width=131>control_bits</TD>
+        <TD height=21 width=390>miscellaneous control options bits (see above)</TD>
+	</TR>
+    <TR>
+        <TD height=21 width=131>degree</TD>
+        <TD height=21 width=390>degree of the curve</TD>
+	</TR>
+    <TR>
+        <TD height=21 width=131>control_count</TD>
+        <TD height=21 width=390>number of control points in the curve</TD>
+	</TR>
+    <tr>
+	    <td WIDTH=131 HEIGHT=21>control_points</td>
+	    <td WIDTH=390 HEIGHT=21><EM>control_count</EM> triplets of x, y, z data</td>
+	</tr>
+    <tr>
+	    <td WIDTH=131 HEIGHT=21>weights</td>
+	    <td WIDTH=390 HEIGHT=21><EM>control_count</EM> weight factors</td>
+	</tr>
+    <tr>
+	    <td WIDTH=131 HEIGHT=21>knots</td>
+	    <td WIDTH=390 HEIGHT=21><EM>control_count + degree + 1</EM> knot values</td>
+	</tr>
+    <tr>
+	    <td WIDTH=131 HEIGHT=21>start</td>
+	    <td WIDTH=390 HEIGHT=21>parametric start point (0-1, default 0)</td>
+	</tr>
+    <tr>
+	    <td WIDTH=131 HEIGHT=21>end</td>
+	    <td WIDTH=390 HEIGHT=21>parametric end point (0-1, default 1)</td>
+	</tr>
+    </table>
+
+<!-------------------------TRIM COLLECTION------------------------------------>
+    <p><H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">NS_Trim_Collection (3)</FONT></H3>
+    <P><FONT face="Courier New,Courier,typewriter">
+    <STRONG>Byte</STRONG>&nbsp;control_bits,
+    <STRONG>Variable</STRONG>&nbsp;trim list
+    </font>
+    <p><table BORDER =1 WIDTH="530">
+    <TR>
+        <TD height=21 width=131>control_bits</TD>
+        <TD height=21 width=390>miscellaneous control options bits (see above)</TD>
+	</TR>
+    <tr>
+	    <td WIDTH=131 HEIGHT=21>trim list</td>
+	    <td WIDTH=390 HEIGHT=21>a terminated list of trim objects that together form a single closed region.</td>
+	</tr>
+    </table>
+
+
+<!---------------------------------------------------------------------------->
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

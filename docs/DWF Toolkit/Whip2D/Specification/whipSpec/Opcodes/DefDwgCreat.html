@@ -1,0 +1,66 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Drawing Creator - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Drawing Creator - DEPRECATED</font></i></b>
+<p>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>The <b>Define Drawing Creator</b> function provides information to
+WHIP! data reading applications listing which software program was used to generate
+the WHIP! data.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="596" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="21%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="25%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="35%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>(Creator</font></font></td>
+
+<td VALIGN=TOP WIDTH="25%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Program</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Arial"><font size=-2>Defines name
+of the software used to create the WHIP! data</font></font></td>
+</tr>
+</table></center>
+
+<dir><i>Program</i> Name of the software program that was used to generate
+the WHIP! data</dir>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>Some WHIP! data reading applications may need to "know" what software was
+used to create the WHIP! data. The WHIP! data generating application can
+indicate this with the Creator opcode:
+<dir>
+<dir><font face="Courier New"><font size=-1>(Creator 'AutoCAD R13c4')</font></font></dir>
+</dir>
+</dir>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<dir>WHIP! data should contain a maximum of one occurrence of the
+creator opcode, which by convention should be nested inside a <b><a href="DefDwgInfoBlk.html">Define
+Drawing Information Block</a></b> opcode.</dir>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<dir>By default no drawing creator is defined, which is equivalent to
+<dir>
+<dir><font face="Courier New"><font size=-1>(Creator unknown)</font></font></dir>
+</dir>
+</dir>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

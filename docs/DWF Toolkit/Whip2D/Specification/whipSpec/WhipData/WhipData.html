@@ -1,0 +1,1219 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>WHIP! Data Format Architecture</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;WhipDataHd.html&quot;">
+<b><font face="Arial"><font size=+2>WHIP! Data Format Architecture</font></font></b>
+<br>This chapter gives a description of the WHIP! data and opcode
+structure, details and examples.
+<br>
+<hr WIDTH="100%">
+<p><a NAME="Introduction"></a><b><font face="Arial,Helvetica"><font size=+1>Introduction</font></font></b>
+<br>The WHIP! data format is intended only for the efficient viewing of 2D
+vector data as electronic plots, within the context of a DWF package. It is 
+not intended for the interchange of higher level data between applications, 
+since most WHIP! data is post-tessellation.
+<p>For example, a CAD application generates WHIP! data contained in a <i>.dwf</i> 
+file based on a drawing in the application’s native format. This <i>.dwf</i> file is
+then transmitted and displayed by a much simpler viewing application, such
+as an Internet Web browser. Due to the lack of non-visual data, the WHIP! data 
+in the <i>DWF</i> file is not intended to be read back into the original CAD 
+application, although the WHIP! data or <i>.dwf</i> file can refer to another 
+file in the application’s native format with a hyperlink or an embedding operation.
+<p><a NAME="Fileo"></a><b><font face="Arial"><font size=+1>WHIP! Data Organization</font></font></b>
+<br>WHIP! data is organized into three main sections as shown in
+<a href="#Fig3">figure 1</a>.<a NAME="Fig3"></a>
+<ul>
+<li>
+Identification header</li>
+
+<li>
+Data block</li>
+
+<li>
+Termination trailer</li>
+</ul>
+
+<center><img SRC="Image26.gif">
+<br><i><font face="Arial,Helvetica">Figure 1. WHIP! data organization</font></i></center>
+
+<p>The data in the header and the trailer are encoded as readable ASCII
+text. Data in the file data block is delimited by operation codes (opcodes)
+and argument data used by the opcodes (operands), shown in <a href="#TablFilDatBlk">table
+1</a>.<a NAME="TablFilDatBlk"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 1. Data block</font></i></center>
+
+<p><br>
+<center><table BORDER CELLPADDING=9 WIDTH="60%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="17%"><font size=-1>&lt;opcode></font></td>
+
+<td VALIGN=TOP WIDTH="17%"><font size=-1>&lt;operand></font></td>
+
+<td VALIGN=TOP WIDTH="17%"><font size=-1>&lt;opcode></font></td>
+
+<td VALIGN=TOP WIDTH="17%"><font size=-1>&lt;operand></font></td>
+
+<td VALIGN=TOP WIDTH="17%"><font size=-1>&lt;opcode></font></td>
+
+<td VALIGN=TOP WIDTH="17%"><font size=-1>&lt;operand></font></td>
+</tr>
+</table></center>
+
+<p>There are two types of opcode-operand pairs: readable ASCII text and
+coded binary. All WHIP! opcodes have a readable ASCII opcode/operand form,
+and most operations also have a coded binary opcode/operand form. By using
+the proper opcode form, you can create data that is humanly readable
+or one that is more efficient from a processing and storage point of view
+or, more commonly, a mixture of both types.
+<p>An application reading WHIP! data may not understand a set of
+opcodes, especially when the application reading the file outdates the
+application that created the file. For this reason, WHIP! data is designed to
+allow a reader to skip most opcodes. In order for the reader
+to skip an opcode, it must know the length of its operand. WHIP! data has three
+categories of opcodes:
+<dir><i>1. Single-byte opcodes</i> that must be recognized for efficiency
+reasons and thus cannot be skipped.
+<p>A reader application need <i>not</i> implement these opcodes but must
+be able to compute their operand length, which requires that the opcode
+be recognized. <b>If a single-byte opcode is unrecognized by a WHIP! data reading
+application, the rest of the file cannot be read.</b>
+<p><i>2. Extended ASCII opcodes</i> (humanly readable) that have delimited
+and nestable operands.
+<p>By following some simple rules, a reader application can safely skip
+such an opcode/operand pair without understanding the operation or its
+contents.
+<p><i>3. Extended binary opcodes</i> that indicate their operand length
+so that a reader application can easily skip past the unknown operation
+and data.</dir>
+To improve the readability of WHIP! data, an opcode may be preceded
+by white-space. White-space is defined as any number of ASCII spaces, tabs,
+carriage returns, or line feeds.
+<p><a NAME="Filef"></a><b><font face="Arial"><font size=+1>WHIP! Data Format
+Details</font></font></b>
+<br>This section describes each block of the WHIP! data format in
+detail.
+<br>&nbsp;
+<ul><a NAME="Filei"></a><b><font size=+1>Identification&nbsp;<a NAME="dwfHead"></a>Header</font></b>
+<br>The file header has two basic functions:
+<ul>
+<li>
+To allow for easy identification of WHIP! data by human or machine.</li>
+
+<li>
+To identify which revision of the WHIP! data specification, for example 00.42,
+was used to encode the file.</li>
+</ul>
+<a NAME="TablFilHdr"></a>
+<br>&nbsp;
+<ul>
+<center><i><font face="Arial,Helvetica">Table 2. Identification header</font></i></center>
+</ul>
+</ul>
+
+<ul>
+<ul>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="60%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="10%" BGCOLOR="#0000A0"><font face="Arial"><font color="#FFFFFF"><font size=-1>Byte</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="5%"><font face="Arial"><font size=-1>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>1</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>2</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>3</font></font></td>
+
+<td VALIGN=TOP WIDTH="10%"><font face="Arial"><font size=-1>4</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>5</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>6</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>7</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>8</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>9</font></font></td>
+
+<td VALIGN=TOP WIDTH="8%"><font face="Arial"><font size=-1>10</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>11</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#0000A0"><font face="Arial"><font color="#FFFFFF"><font size=-1>Character</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>(</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>W</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>2</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>D</font></font></td>
+
+<td VALIGN=TOP WIDTH="10%"><font face="Courier New"><font size=-2>(</font></font><tt>space</tt><font face="Courier New"><font size=-2>)</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>V</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>6</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>.</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="8%"><font face="Courier New"><font size=-2>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>)</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#0000A0"><font color="#FFFFFF">ASCII
+(Hex)</font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>28</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>57</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>32</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>44</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="10%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>56</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>30</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>36</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>2E</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>30</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="8%">
+<center><font face="Courier New"><font size=-2>30</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>29</font></font></center>
+</td>
+</tr>
+</table></center>
+
+<ul>&nbsp;</ul>
+</ul>
+The header, shown in <a href="#TablFilHdr">table 2</a>, is 12 bytes that
+can be interpreted as a, possibly unterminated, ASCII string, for example,
+"<font face="Courier New"><font size=-1>(W2D V06.00)</font></font>". The
+first 6 bytes are the constant "<font face="Courier New"><font size=-1>(W2D
+V</font></font>" which identify this as WHIP! data <b><i>—</i></b>
+note that this constant is in upper case. This constant is followed by
+a 5-byte revision number in the format shown in <a href="#Tabl5Byt">table
+3</a>.  Note, prior to version 6.0, the WHIP! specification was known as the
+DWF specification, and the file headers began with "<font face="Courier New"><font size=-1>(DWF
+V</font></font>", as shown in the examples at the bottom.
+<ul>
+<ul><a NAME="Tabl5Byt"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 3. The 5-byte revision number</font></i></center>
+</ul>
+
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="60%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="12%" BGCOLOR="#0000A0">
+<ul><b><font color="#FFFFFF">Byte</font></b></ul>
+</td>
+
+<td VALIGN=TOP WIDTH="15%" BGCOLOR="#0000A0">
+<ul><b><font color="#FFFFFF">Symbol</font></b></ul>
+</td>
+
+<td VALIGN=TOP WIDTH="73%" BGCOLOR="#0000A0">
+<ul><b><font color="#FFFFFF">Description</font></b></ul>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="12%"><font face="Arial"><font size=-1>6 &amp; 7</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><font face="Arial"><font size=-1>&lt;0 .. 99></font></font></td>
+
+<td VALIGN=TOP WIDTH="73%"><font face="Arial"><font size=-1>ASCII integer;
+The major revision value of the format used.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="12%"><font face="Arial"><font size=-1>8</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Arial"><font size=-1>.</font></font></b>(period)</td>
+
+<td VALIGN=TOP WIDTH="73%"><font face="Arial"><font size=-1>ASCII decimal
+point</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="12%"><font face="Arial"><font size=-1>9 &amp; 10</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><font face="Arial"><font size=-1>&lt;0 .. 99></font></font></td>
+
+<td VALIGN=TOP WIDTH="73%"><font face="Arial"><font size=-1>ASCII integer;
+minor revision value of the format used</font></font></td>
+</tr>
+</table></center>
+
+<ul>&nbsp;</ul>
+</ul>
+The application generating WHIP! data should specify the lowest possible
+revision number that an application reading the data would need to support
+in order to properly use the data. Generally, a reader application should
+not attempt to read a file with a higher major revision value than what
+it was designed for. If the minor revision value is higher, this indicates
+that the file may contain opcodes&nbsp;<a NAME="unknown"></a>unknown to
+the reader, which can and should be skipped.  In either case, the user should
+be notified by the reader application.
+<ul>
+<ul>&nbsp;</ul>
+</ul>
+<a NAME="Filed"></a><b><font size=+1>Data Block</font></b>
+<br>The data block starts at the 13th byte of the WHIP! data,
+and is a series of opcode and operand pairs, as in <a href="#TablOpPars">table
+4</a>.
+<br><a NAME="TablOpPars"></a>
+<br>&nbsp;
+<ul>
+<ul>
+<center><i><font face="Arial,Helvetica">Table 4. Opcode, operand pairs</font></i></center>
+</ul>
+</ul>
+
+<ul>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="60%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="17%"><font face="Arial"><font size=-1>&lt;opcode></font></font></td>
+
+<td VALIGN=TOP WIDTH="17%"><font face="Arial"><font size=-1>&lt;operand></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Arial"><font size=-1>&lt;opcode></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Arial"><font size=-1>&lt;operand></font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><font face="Arial"><font size=-1>&lt;opcode></font></font></td>
+
+<td VALIGN=TOP WIDTH="17%"><font face="Arial"><font size=-1>&lt;operand></font></font></td>
+</tr>
+</table></center>
+</ul>
+
+<ul>
+<ul>&nbsp;</ul>
+<a NAME="Whit"></a><b>White Space</b>
+<br>An opcode may be preceded by any number of white-space characters,
+which are defined as any number of ASCII spaces, tabs, carriage returns,
+or line feeds.
+<p><a NAME="Opco"></a><b>Opcode Forms</b>
+<br>Opcodes are a single byte in length except for two special cases: extended
+ASCII and extended binary. This allows for over 200 operations.
+<p><b>Note</b>: Some values in the range from 0 to 255 of a byte are not
+legal for opcode use.
+<p>These single-byte opcodes may have operands that are either readable
+ASCII or coded binary. Some common operations have separate opcodes for
+both ASCII and binary operand forms. Generally, if an operand is formatted
+as readable ASCII, then its single-byte opcode is also a readable ASCII
+character, which allows the file to be edited with a normal text editor.
+The following example shows a line drawing operation using the <font face="Courier New"><font size=-1>L</font></font>
+single-byte opcode followed by a readable ASCII operand:
+<ul>
+<pre><font face="Courier New">L 500,20300 90100,48000</font></pre>
+</ul>
+This line could also be represented using a binary-coded operand, as shown
+in the following<font color="#FF0000"> </font>example, which uses the <font face="Courier New">l</font>
+opcode. In this example, each underlined character represents a byte of
+binary operand data:
+<ul>
+<pre><font face="Courier New">l<u>XXXXYYYYxxxxyyyy</u></font></pre>
+</ul>
+Except for the two special types of opcodes extended ASCII and extended
+binary, a file reader <i>must</i> know how to compute the operand length.
+<p><a NAME="Ille"></a><b>Illegal Opcodes</b>
+<br>The ASCII representations for the following cannot be used as opcodes:</ul>
+
+<ul>&nbsp;
+<table CELLSPACING=0 CELLPADDING=9 WIDTH="60%" HEIGHT="20%" >
+<tr>
+<td VALIGN=TOP WIDTH="50%" HEIGHT="9%">
+<li>
+A space (<font face="Courier New"><font size=-1>0x20</font></font>)</li>
+</td>
+
+<td VALIGN=TOP WIDTH="50%" HEIGHT="9%">
+<li>
+A double quotation mark (<font face="Courier New"><font size=-1>0x22</font></font>)</li>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A tab (<font face="Courier New"><font size=-1>0x09</font></font>)</li>
+</td>
+
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A period (<font face="Courier New"><font size=-1>0x2E</font></font>)</li>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A hyphen (<font face="Courier New"><font size=-1>0x2D</font></font>)</li>
+</td>
+
+<td VALIGN=TOP WIDTH="50%">
+<li>
+Parentheses (<font face="Courier New"><font size=-1>0x28</font></font>
+and <font face="Courier New"><font size=-1>0x29</font></font>)</li>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="50%">
+<li>
+the ASCII digits 0–9 (<font face="Courier New"><font size=-1>0x34 - 0x30</font></font>)</li>
+</td>
+
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A curly brackets (<font face="Courier New"><font size=-1>0x7B</font></font>
+and <font face="Courier New"><font size=-1>0x7D</font></font>)</li>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A carriage return (<font face="Courier New"><font size=-1>0x0D</font></font>)</li>
+</td>
+
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A square brackets (<font face="Courier New"><font size=-1>0x5B</font></font>
+and <font face="Courier New"><font size=-1>0x5D</font></font>)</li>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A line feed (<font face="Courier New"><font size=-1>0x0A</font></font>)</li>
+</td>
+
+<td VALIGN=TOP WIDTH="50%">
+<li>
+A backwards slash (<font face="Courier New"><font size=-1>0x5C</font></font>)</li>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP COLSPAN="2">
+<li>
+A single quotation mark (<font face="Courier New"><font size=-1>0x27</font></font>)</li>
+</td>
+</tr>
+</table>
+</ul>
+
+<ul><a NAME="Bina"></a><b>Binary Operands</b>
+<br>In the case of an opcode with a binary coded operand, the binary data
+is stored in little-endian format. On systems with big-endian processors,
+such as Motorola-, Sun-, and Hewlett Packard-based systems, byte swapping
+<i>must</i>
+be performed before writing or reading the WHIP! data.
+<p><a NAME="Exta"></a><b>The Extended ASCII opcode</b>
+<br>The single-byte opcode, <font face="Courier New">(</font>, open parenthesis
+character, indicates an extended and possibly nested readable ASCII opcode.
+Following the open parenthesis character, <font face="Courier New">(</font>,
+is a multiple-byte, string token opcode followed by white space, followed
+by zero or more operands, followed by a close parenthesis terminator, <font face="Courier New">)</font>,:
+<ul>
+<ul>
+<pre><font face="Courier New">(Origin 240 120)</font></pre>
+</ul>
+</ul>
+Extended ASCII opcodes may be nested:
+<ul>
+<ul>
+<pre><font face="Courier New">(Owner (FirstName Brian)(LastName Mathews))</font></pre>
+</ul>
+</ul>
+Extended ASCII opcodes may contain literal strings surrounded by the single
+quote mark, <font face="Courier New">'</font>,:
+<ul>
+<ul>
+<pre><font face="Courier New">(Account (Person 'Brian Mathews ;-)') (Company 'Autodesk \'ADSK\''))</font></pre>
+</ul>
+</ul>
+<b>Note:</b> Inside a quoted string, the, \ , character may be used to
+treat a subsequent, ' , or, \ , character as literal data.
+<br>For a listing of "<a href="../AppendixA/AppendixA.html#Extao">Extended
+ASCII Opcodes</a>," see appendix A.
+<p><a NAME="Extb"></a><b>The Extended binary opcode</b>
+<br>The single-byte opcode open curly brace character, <font face="Courier New">{</font>
+, indicates an extended and possibly nested binary section of data. Immediately
+following the open curly brace character, <font face="Courier New">{</font>
+, is a 4-byte integer that represents the length (in bytes) of the binary
+data. Following the length field is a 2-byte extended-binary opcode, which
+allows for over 65,000 operations. Finally, the binary stream is terminated
+with a closed curl brace character, <font face="Courier New">}</font>.
+For example, the binary data for a raster of pixels can be represented
+as
+<ul>
+<pre><font face="Courier New">{cccc<b>ee</b>xxxxxxxxx}</font></pre>
+</ul>
+where <i><u><font face="Courier New">cccc</font></u></i> is the length
+of the binary data, <b><i><u><font face="Courier New">ee</font></u></i></b>
+is the opcode for a raster, and <i><u><font face="Courier New">xxxxxxxxx</font></u></i>
+is the raster data. The extended binary opcode and the terminating character,
+<font face="Courier New">}</font>
+, are counted as part of the binary data stream. Thus, the value of <i><u><font face="Courier New">cccc</font></u></i>
+is 12 (nine <u><font face="Courier New"><font size=-1>x</font></font></u>’s,
+two <u><font face="Courier New"><font size=-1>e</font></font></u>’s, and
+one <u><font face="Courier New"><font size=-1>}</font></font></u> ) in
+this example, which is encoded as a little-endian binary value.
+<p>For a listing of "<a href="../AppendixA/AppendixA.html#Extbo">Extended
+Binary Opcodes</a>," see appendix A.
+<p><a NAME="Skipu"></a><b>Skipping Unrecognized Opcodes</b>
+<br>Skipping extended ASCII and extended binary opcodes.
+<br>&nbsp;
+<ul><a NAME="Skipea"></a><b><i>Skipping extended ASCII opcodes</i></b>
+<br>If a reader application does not recognize an extended ASCII opcode,
+it should keep scanning the file while matching open paren characters,<font face="Courier New">(</font>,
+with closed paren characters,<font face="Courier New">)</font> , until
+the terminating closed paren character, <font face="Courier New">)</font>
+, is found. If a single quote character ,<font face="Courier New"><font size=-1>'</font></font>
+, is found, scanning should continue until a matching single quote,<font face="Courier New"><font size=-1>'</font></font>
+, is found, ignoring any open paren, <font face="Courier New"><font size=-1>(</font></font>
+, or closed paren, <font face="Courier New"><font size=-1>)</font></font>
+, characters inside.
+<p><b>Note:</b> While parentheses may be nested, single quote marks are
+not, as the latter always contain a single literal string.
+<p>A backslash character, <font face="Courier New">\</font> , indicates
+a literal character will follow that should <i>not </i>be used for literal
+string termination. Thus, the following would pass the operand&nbsp; <tt>This
+is\was a <font size=-1>'</font>happy<font size=-1>'</font> face :-) comment!</tt>
+to the Comment opcode:
+<ul>
+<pre><tt>(Comment 'This is\\was a \'happy\' face :-) comment!')</tt></pre>
+</ul>
+<a NAME="Skipeb"></a><b><i>Skipping extended binary opcodes</i></b>
+<br>It is possible, although not recommended, for an extended ASCII opcode
+to contain nested extended binary data, as in
+<ul>
+<pre><font face="Courier New">(Embedded_DWG (FileName house.dwg) {<i><u>ccccXXXXXXXXXX</u></i>})</font></pre>
+</ul>
+where <i><tt><u>cccc</u></tt></i> represents a 4-byte little-endian integer
+indicating the length of the binary data, 11 in this example represented
+by "<i><tt><u>XXXXXXXXXX</u></tt></i>" plus the terminating curly brace,
+}.
+<p>To skip any binary object, either opcode or operand data, the four byte
+count <i><tt><u>cccc</u></tt></i> <i>must</i> be used rather than searching
+for the curly brace character, <font face="Courier New">}</font>. Also,
+notice that this method allows a reader application to skip even a <i>nested</i>
+set of binary streams as the parent stream’s <i><tt><u>cccc</u></tt></i>
+count includes the subobjects’ data.
+<p>If the four-byte binary data run count <i><tt><u>cccc</u></tt></i> has
+the value zero, this indicates that the WHIP! data writing application
+was unable to compute the length of the binary data. Such an opcode can
+not be skipped, and therefore the reading application must either know
+how to parse the opcode, or must fail to read the remainder of the WHIP! data.
+Obviously, WHIP! data writing applications should refrain from this practice
+whenever possible.
+<br>&nbsp;</ul>
+<a NAME="Log"></a><b>The Logical Coordinate System</b>
+<br>Most of the coordinates specified in WHIP! data are in <i>logical</i>
+coordinates, as opposed to <i>screen</i> or <i>device</i> coordinates.
+Logical coordinates are specified as the positive range of 32-bit signed
+integers (31 bits of precision) with a legal range from 0 to a maximum
+of 2,147,483,647 (2<sup>31 </sup><font face="Courier New">-</font> 1).
+Normally, a WHIP! data writing application should scale the geometric primitives
+of the illustration that is being stored so that a large portion of this
+31-bit range is used. This allows a WHIP! data reading application to scale the
+illustration for the desired display or a user to zoom in on the drawing
+with sufficient precision to render fine details.
+<br>&nbsp;
+<ul><a NAME="Inte"></a><b><i>Integer Versus Floating-Point Values</i></b>
+<br>Thirty-two-bit integer values are used because they allow for more
+precision and greater computing speed than 32-bit floating-point values.
+Out of a floating-point number’s 32 bits, 8 bits are used to store exponent
+and sign information, leaving only 24 bits of true precision (not to be
+confused with a floating point number’s large range).
+<p>If a map were drawn with WHIP! data’s 31-bit integer coordinates, over 21,000
+kilometers (>12,000 miles) of distance could be uniquely resolved down
+to 1-centimeter increments. If 32-bit floating-point coordinates were used,
+only 167 kilometers (100 miles) could be resolved to this level of detail.
+By contrast, AutoCAD uses 64 bit double-sized floating point coordinates
+to address this issue, with a resulting 52 bits of precision and an enormous
+range. For the more limited purpose of representing an electronic plot,
+WHIP! data's 31 bits of precision are more than adequate.
+<p><a NAME="Rela"></a><b><i>Relative Logical Coordinates</i></b>
+<br>Depending upon the opcode in use, these logical coordinate values may
+be encoded in WHIP! data literally as absolute coordinates or as
+relative coordinates. Whereas absolute logical coordinates may only range
+from 0 to 2,147,483,647 (31-bit unsigned), relative coordinates may range
+from negative 2,147,483,647 to positive 2,147,483,647 (32-bit signed).
+A relative coordinate is formed from an absolute coordinate by taking the
+literal coordinate and subtracting from it the previous absolute coordinate
+in the file.
+<p>Relative coordinates are used in order to increase the effectiveness
+of the WHIP! data compression algorithm, which tries to find repeating
+patterns of data. Common drawings have objects, represented by sequences
+of lines, circles, and so forth, that may occur multiple times, such as
+the four tires in an illustration of a car. If absolute coordinates were
+used, each of the lines and circles that make up an object would have differing
+coordinates for each instance of that object in an illustration, due to
+their differing positions. If relative coordinates are used, however, only
+the first coordinate in the sequence of coordinates differs for each instance
+of the object. Since the remainder of the coordinate sequence is independent
+of the object instance, the data compression algorithm will find longer
+and more frequent sequences of repeating data.
+<p><a NAME="Sixt"></a><b><i>Sixteen bit coordinates</i></b>
+<br>For many applications, the extreme level of detail allowed by WHIP! data’s
+31-bit logical coordinates is not necessary and may be undesirable due
+to the increased file size needed to store such large values. For this
+reason, many drawing operations allow for 16-bit integer relative coordinates
+to be used—16-bit signed relative values. When a WHIP! data reading application
+is given either a 32-bit or a 16-bit relative coordinate, its value is
+converted to a full 31-bit absolute logical coordinate before use. This
+is a lossless form of compression since the full 31 bits of precision are
+preserved even when storing only a 16 bit value.
+<br>&nbsp;</ul>
+</ul>
+<a NAME="Howo"></a><b><font size=+1>How Opcodes are Selected</font></b>
+<br>When assigning an opcode to an operation, apply the following principles:
+<ul>
+<li>
+By default, a new operation is assigned to an extended ASCII opcode so
+that it is humanly readable, can be easily skipped by older WHIP! data reading
+applications, and doesn’t use one of the scarce single-byte opcodes. If
+the operand to this operation represents binary information, this binary
+information should be converted to a readable ASCII form for storage in
+the WHIP! data.</li>
+
+<li>
+If the operation’s operand represents a large amount of binary information
+which would be inefficient to convert to a readable ASCII form, then the
+operation should be assigned an extended binary opcode. This has the advantage
+of storing the binary data more efficiently from a processing and storage
+point of view. Also, the conversion doesn’t use one of the scarce single-byte
+opcodes and it still allows older WHIP! data reading applications to skip 
+unrecognized operations.</li>
+
+<li>
+If an operation is expected to be used frequently in WHIP! data
+and the operation has a relatively small operand, it should be assigned
+one of the scarce single-byte opcodes. For common operations with large
+operands, the space savings from a single-byte opcode is not justified
+and an extended style opcode should be used instead. Single-byte opcodes
+<i>must</i> be known to the WHIP! data-reading application and, thus, cannot 
+be skipped.</li>
+</ul>
+
+<p><br><a NAME="Blockrefs"></a><b><font size=+1>Blockrefs</font></b> - <i>DEPRECATED</i>
+<br>In version 0.55 of the DWF Toolkit, <i>DWF</i> files could
+store data in "blocks", each of which is separately compressed and
+uniquely identified with some meta-data. When serialized, the <b><a href="../Opcodes/BlockRef.html">BlockRef</a></b>
+opcode signaled the beginning of a block of data. Opcodes that follow
+a <b>BlockRef </b>(up until the next
+<b>BlockRef</b>) constitute a block
+of data. Block information can be either in compressed or uncompressed
+or ASCII format, although the
+<b>BlockRef</b> opcode will always stay uncompressed.
+<p><tt>Block_Ref </tt>holds meta-data pertaining to the block of 
+data that follows it (up until the next <b>BlockRef</b> opcode is encountered
+in the data). Since <b>BlockRef</b> seems to hold attributes pertaining
+to a block, it was added as a rendition attribute.
+<p>Currently there are blockrefs for the following functions for viewers
+and plotters:
+<ul><a href="../Opcodes/BlockRef.html#GraphicHdr">Graphic Header</a>
+<br><a href="../Opcodes/BlockRef.html#OverlayHdr">Overlay Header</a>
+<br><a href="../Opcodes/BlockRef.html#RedlineHdr">Redline Header</a>
+<br><a href="../Opcodes/BlockRef.html#ThumbnailBlkRef">Thumbnail</a>
+<br><a href="../Opcodes/BlockRef.html#PreviewBlkRef">Preview</a>
+<br><a href="../Opcodes/BlockRef.html#EmbddFntBlkRef">Embedded Font</a>
+<br><a href="../Opcodes/BlockRef.html#GrphcsBlkRef">Graphics</a>
+<br><a href="../Opcodes/BlockRef.html#OvrlyBlkRef">Overlay</a>
+<br><a href="../Opcodes/BlockRef.html#RdlinBlkRef">Redline</a>
+<br><a href="../Opcodes/BlockRef.html#UsrBlkRef">User</a>
+<br><a href="../Opcodes/BlockRef.html#UsrBlkRef">Null</a>
+<br><a href="../Opcodes/BlockRef.html#GlblSht BlkRef">GlobalSheet</a>
+<br><a href="../Opcodes/BlockRef.html#GlblBlockRef">Global</a>
+<br><a href="../Opcodes/BlockRef.html#SigBlkRef">Signature</a>
+<br><a href="../Opcodes/BlockRef.html#OvrlayPrvwBlockRef">Overlay_Preview</a></ul>
+For more information on syntax, fields, and details on each function, see
+the <b><a href="../Opcodes/BlockRef.html">BlockRef</a></b> opcode. For
+a sample data file using blockrefs, see the "<a href="#Exam">Example</a>"
+section, following.
+<p><a NAME="Execf"></a><b><font size=+1>Processing of the WHIP! Data Block</font></b>
+<br>To preserve proper drawing order, the opcodes found in the data should be 
+processed in the order they are received.
+<p><a NAME="Filet"></a><a NAME="end_of_dwf"></a><b><font size=+1>Termination
+Trailer</font></b>
+<br>The file termination trailer is simply a special opcode indicating the end of the
+WHIP! data sequence file—normally at the end of the file. It is possible
+for an application to store non-WHIP! data following the termination opcode. 
+<a href="#TablFilTrlr">Table 5</a> shows the format.
+<br><a NAME="TablFilTrlr"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 5. File trailer</font></i></center>
+
+<ul>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="50%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#0000A0"><font face="Arial"><font color="#FFFFFF"><font size=-1>Byte</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>1</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>2</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>3</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>4</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>5</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>6</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>7</font></font></td>
+
+<td VALIGN=TOP WIDTH="8%"><font face="Arial"><font size=-1>8</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Arial"><font size=-1>9</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#0000A0"><font face="Arial"><font color="#FFFFFF"><font size=-1>Character</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>(</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>n</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>d</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>0</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>f</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>D</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>W</font></font></td>
+
+<td VALIGN=TOP WIDTH="8%"><font face="Courier New"><font size=-2>F</font></font></td>
+
+<td VALIGN=TOP WIDTH="6%"><font face="Courier New"><font size=-2>)</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#0000A0"><font color="#FFFFFF">ASCII
+(Hex)</font></td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>28</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>45</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>6E</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>64</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>4F</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>66</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>44</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>57</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="8%">
+<center><font face="Courier New"><font size=-2>46</font></font></center>
+</td>
+
+<td VALIGN=TOP WIDTH="6%">
+<center><font face="Courier New"><font size=-2>29</font></font></center>
+</td>
+</tr>
+</table></center>
+</ul>
+</ul>
+<a NAME="Exam"></a><b><font face="Arial"><font size=+1>Example</font></font></b>
+<br>Following are two sample WHIP! data streams that use readable ASCII opcodes
+exclusively. These examples could be represented more efficiently using
+binary coding, but it is difficult to show this in a printed document.  Note, 
+prior to version 6.0, the WHIP! specification was known as the DWF specification, 
+and the file headers began with "<font face="Courier New"><font size=-1>(DWF
+V</font></font>", and were known as DWF files, as shown in the examples at the bottom.
+<ul>
+<li>The first example is a version 00.42 DWF file which does not have a block structure.
+<li>The second example shows a version 0.55 DWF file having block structure,
+containing 4 blocks, of the 14 possible blocks. For more detailed information
+on blocks and blockrefs, refer to the <a href="../Opcodes/BlockRef.html">BlockRef</a>
+opcode information. 
+</ul>
+<b><font size=+1>Sample 1</font></b>
+<br>Readable ASCII version 00.42 DWF format,
+<blockquote>
+<pre><tt>(DWF V00.42)
+(Comment 'This is a DWF comment!')
+(Author scottsh)
+(Creator 'AutoCAD 14.0')
+(Created 891274953 '03/30/98 08:22:33')
+(Description 'This is an example ASCII DWF file.')
+(Modified 891274953 '03/30/98 08:22:33')
+(SourceFilename simple.dwg)
+(SourceCreated 891273528 '03/30/98 07:58:48')
+(SourceModified 891274913 '03/30/98 08:21:53')
+(NamedView 1055732,648214 1583598,972322 INITIAL)
+(NamedView 1021856,759719 1347292,959536 JUST_RED)
+(Units inches&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((56251.8 0 0 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 56251.8 0 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 0 1 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (926921 552481 0 1)))
+(Embed 'image/vnd.dwg;' 'AutoCAD-r14' 'simple.dwg' '')
+(View 1055732,648214 1583598,972322)
+(ColorMap 256
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,0,0,255 128,0,0,255 0,128,0,255 128,128,0,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,0,128,255 128,0,128,255 0,128,128,255 192,192,192,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192,220,192,255 166,202,240,255 0,0,0,255 0,0,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,0,102,255 0,0,153,255 0,0,204,255 0,0,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,51,0,255 0,51,51,255 0,51,102,255 0,51,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,51,204,255 0,51,255,255 0,102,0,255 0,102,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,102,102,255 0,102,153,255 0,102,204,255 0,102,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,153,0,255 0,153,51,255 0,153,102,255 0,153,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,153,204,255 0,153,255,255 0,204,0,255 0,204,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,204,102,255 0,204,153,255 0,204,204,255 0,204,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,255,0,255 0,255,51,255 0,255,102,255 0,255,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,255,204,255 0,255,255,255 51,0,0,255 51,0,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,0,102,255 51,0,153,255 51,0,204,255 51,0,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,51,0,255 51,51,51,255 51,51,102,255 51,51,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,51,204,255 51,51,255,255 51,102,0,255 51,102,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,102,102,255 51,102,153,255 51,102,204,255 51,102,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,153,0,255 51,153,51,255 51,153,102,255 51,153,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,153,204,255 51,153,255,255 51,204,0,255 51,204,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,204,102,255 51,204,153,255 51,204,204,255 51,204,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,255,0,255 51,255,51,255 51,255,102,255 51,255,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 51,255,204,255 51,255,255,255 102,0,0,255 102,0,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,0,102,255 102,0,153,255 102,0,204,255 102,0,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,51,0,255 102,51,51,255 102,51,102,255 102,51,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,51,204,255 102,51,255,255 102,102,0,255 102,102,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,102,102,255 102,102,153,255 102,102,204,255 102,102,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,153,0,255 102,153,51,255 102,153,102,255 102,153,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,153,204,255 102,153,255,255 102,204,0,255 102,204,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,204,102,255 102,204,153,255 102,204,204,255 102,204,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,255,0,255 102,255,51,255 102,255,102,255 102,255,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 102,255,204,255 102,255,255,255 153,0,0,255 153,0,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,0,102,255 153,0,153,255 153,0,204,255 153,0,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,51,0,255 153,51,51,255 153,51,102,255 153,51,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,51,204,255 153,51,255,255 153,102,0,255 153,102,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,102,102,255 153,102,153,255 153,102,204,255 153,102,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,153,0,255 153,153,51,255 153,153,102,255 153,153,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,153,204,255 153,153,255,255 153,204,0,255 153,204,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,204,102,255 153,204,153,255 153,204,204,255 153,204,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,255,0,255 153,255,51,255 153,255,102,255 153,255,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 153,255,204,255 153,255,255,255 204,0,0,255 204,0,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,0,102,255 204,0,153,255 204,0,204,255 204,0,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,51,0,255 204,51,51,255 204,51,102,255 204,51,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,51,204,255 204,51,255,255 204,102,0,255 204,102,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,102,102,255 204,102,153,255 204,102,204,255 204,102,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,153,0,255 204,153,51,255 204,153,102,255 204,153,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,153,204,255 204,153,255,255 204,204,0,255 204,204,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,204,102,255 204,204,153,255 204,204,204,255 204,204,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,255,0,255 204,255,51,255 204,255,102,255 204,255,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204,255,204,255 204,255,255,255 255,0,0,255 255,0,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,0,102,255 255,0,153,255 255,0,204,255 255,0,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,51,0,255 255,51,51,255 255,51,102,255 255,51,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,51,204,255 255,51,255,255 255,102,0,255 255,102,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,102,102,255 255,102,153,255 255,102,204,255 255,102,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,153,0,255 255,153,51,255 255,153,102,255 255,153,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,153,204,255 255,153,255,255 255,204,0,255 255,204,51,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,204,102,255 255,204,153,255 255,204,204,255 255,204,255,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,255,0,255 255,255,51,255 255,255,102,255 255,255,153,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 255,255,204,255 255,255,255,255 0,0,0,255 13,13,13,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26,26,26,255 40,40,40,255 53,53,53,255 67,67,67,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 80,80,80,255 93,93,93,255 107,107,107,255 120,120,120,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 134,134,134,255 147,147,147,255 161,161,161,255 174,174,174,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 187,187,187,255 201,201,201,255 214,214,214,255 228,228,228,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 241,241,241,255 255,255,255,255 255,251,240,255 160,160,164,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 128,128,128,255 255,0,0,255 0,255,0,255 255,255,0,255
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,0,255,255 255,0,255,255 0,255,255,255 255,255,255,255)
+(Background 0)
+C 190
+(Layer 2 ELECTRICAL)
+(Comment 'drawing a line')
+&nbsp;&nbsp; L 1057527,761954 1310375,942166
+C 15
+(URL http://www.autodesk.com)
+(Layer 3 PLUMBING)
+&nbsp;&nbsp; L 1219275,678351 1581814,798182
+C 225
+(URL '')
+(Layer 1 0)
+&nbsp;&nbsp; P 5 1286338,807295 1311906,844764 1274436,870332 1248869,832862
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1286338,807295
+&nbsp;&nbsp; T 5 1286338,807295 1311906,844764 1280387,838813 1274436,870332
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1248869,832862
+&nbsp;&nbsp; T 3 1280387,838813 1248869,832862 1286338,807295
+(Font (Name Arial) (Family swiss) (Height 15716))
+&nbsp;&nbsp; (Text 1424932,870381 'Hello world')
+(EndOfDWF)</tt></pre>
+</blockquote>
+
+<b><font size=+1>Sample 2</font></b>
+<br>Readable ASCII version 0.55 DWF format,</blockquote>
+
+<blockquote>
+<pre><tt>(DWF V00.55)
+(BlockRef 'Graphics_Hdr' 00000001460&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 2293737895 28613 20209&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B86117C1AA7782AF )&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1 1 00000000001 0 0 0 000000.0025&nbsp;
+&nbsp;&nbsp; (Orientation 'Decoupled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;
+&nbsp;&nbsp; (Alignment 'Align_None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ') 00000001556 00000001988&nbsp;&nbsp;&nbsp; 400 00000000000 00000000000 00000000196,00000000196 00000053346,00000069094 )
+V
+(Background 225)
+(Author manathn)
+(Creator 'Genuine AutoCAD 2002 (K.0.72) - Autodesk(R)&nbsp; Design Your World (tm)')
+(Created 995414815 '07/17/2001 05:06:55 PM' '{61532BFE-CE7A-4426-B0E2-AAB4450AA610}')
+(Modified 995414815 '07/17/2001 05:06:55 PM' '{61532BFE-CE7A-4426-B0E2-AAB4450AA610}')
+(SourceFilename Drawing1.dwg)
+(SourceCreated 995321041 '07/16/2001 03:04:01 PM' '{4E19B40B-D0EF-4180-BCF3-A1563D2F0436}')
+(SourceModified 995321063 '07/16/2001 03:04:23 PM' '{4B0BEF38-238E-46A2-BBD2-ED87DB82481F}+')
+(Units ''&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((265.86413065 0 0 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 265.86413065 0 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 0 1 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (2147479274 0 0 1)))
+(Embed 'image/vnd.dwg;' 'Genuine AutoCAD 2002 (K.0.72) - Autodesk(R)&nbsp; Design Your World (tm)' 'Drawing1.dwg' '')
+(NamedView 2147479273,0 2147483647,2392 INITIAL)
+(View 2147479273,0 2147483647,2392)
+(PlotInfo hide 90 in 10.99999976 8.4999997597 0.031250480592 0.031249999531 10.96874976 8.4687498799&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((0.0025 0 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 0.0025 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 0 1)))
+(InkedArea 2147482064,314 2147482064,1870 2147480076,1870 2147480076,314)
+(BlockRef 'Thumbnail' 00000004445&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 2264850732 14877 17258&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A2C292BEE4E02654 )&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 50047226 29394 20034&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9DE8CFF8581A1C66 ) 00000000000 00000000170 00000000219 00000000256&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((00000000001 00000000000 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000001 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000001 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000000 00000000001)) )
+v
+&nbsp;&nbsp; (Group4PNGImage 'PNG' 0 219,170 0,0 219,170 (1838&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 89504E470D0A1A0A0000000D49484452000000DB000000AA080300000013
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23CA1600000300504C544500000080000000800080800000008080008000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8080C0C0C0C0DCC0D4D0C80000333300003300330033331616161C1C1C22
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22222929295555554D4D4D424242393939FF7C80FF5050D60093CCECFFEF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D6C6E7E7D6ADA99033FF00660000990000CC000000330033330066330099
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3300CC3300FF3300006600336600666600996600CC6600FF660000990033
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9900669900999900CC9900FF990000CC0033CC0066CC0099CC00CCCC00FF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CC0066FF0099FF00CCFF0000FF333300FF660033990033CC0033FF003300
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 33FF333333663333993333CC3333FF3333006633336633666633996633CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6633FF6633009933339933669933999933CC9933FF993300CC3333CC3366
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CC3399CC33CCCC33FFCC3333FF3366FF3399FF33CCFF33FFFF3300006633
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0066660066990066CC0066FF0066003366333366663366993366CC3366FF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3366006666336666666666996666CC6666009966339966669966999966CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9966FF996600CC6633CC6699CC66CCCC66FFCC6600FF6633FF6699FF66CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FF66FF00CCCC00FF009999993399990099CC0099000099333399660099CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3399FF0099006699336699663399996699CC6699FF339933999966999999
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9999CC9999FF999900CC9933CC9966CC6699CC99CCCC99FFCC9900FF9933
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FF9966CC9999FF99CCFF99FFFF990000CC3300996600CC9900CCCC00CC00
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 33993333CC6633CC9933CCCC33CCFF33CC0066CC3366CC6666999966CCCC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 66CCFF66990099CC3399CC6699CC9999CCCC99CCFF99CC00CCCC33CCCC66
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CCCC99CCCCCCCCCCFFCCCC00FFCC33FFCC66FF9999FFCCCCFFCCFFFFCC33
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00CC6600FF9900FF0033CC3333FF6633FF9933FFCC33FFFF33FF0066FF33
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 66FF6666CC9966FFCC66FFFF66CC0099FF3399FF6699FF9999FFCC99FFFF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99FF00CCFF33CCFF66CCFF99CCFFCCCCFFFFCCFF33FFFF66FFCC99FFFFCC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FFFFFF666666FF66FFFF666666FFFF66FF66FFFFA500215F5F5F77777786
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8686969696CBCBCBB2B2B2D7D7D7DDDDDDE3E3E3EAEAEAF1F1F1F8F8F8FF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FBF0A0A0A4808080FF000000FF00FFFF000000FFFF00FF00FFFFFFFFFF4C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FC227F000003E94944415478DAEDDCCB92A3300C05D0DE69DFFFFF87B0D1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7451DA0E0E0921B6E547F00BEA66375DD4944F6424D9E0FCFCFBBBEDE7E7
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6FB9ED0736D860830D36D860830D36D860830D36D860830D36D860830D36
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D860830D36D860830D36D860830D36D860830D36D860830D36D860830D36
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D860830D36D860830D36D860830D36D860830D36D87ADAF8C6B659E4B636
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5948F8B6B66568DD599BD1DDD7B6B0D06D6D093A16E9F00514B1457046B6
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5ECDD7B43DC6AF5CF48A18CB556D0F857D01C9F16F4C17B2D983FDCC9866
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2672E8BB18BB9F74A6D91E26F2E58ED6813BD72B3BA3DD928A96151BA793
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 93EB003741D0EF24E9570FBDC6B12267B247A01E105FC9768805BD9207EB
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EB83A6B3B2C0DA549E658C83F5A0C3AC2C606362712C5A07DD72569EB7AD
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5371F6372429057FE83C69E6A2BF70F99BCC86813B637B15E8357093D384
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A8BA76E9E47BDBA679247D3191238FCE9731DBA593EF6C46B4A9F858E7C8
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43F174D03CAC8D65FE9DDD29F80C87676E3ABA56B332D746D3DA537993C4
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2BA1C4EB41AB5999699359FFD289DE91A260E81ACDCA5CDBE24D88CE906D
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9D9531654C9B92329C78B0C5FBD0B59995DFD88C8EE2ADB0A5FBA8074D66
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 659E8DE4D890C4BB0E563B6819CEF6E9F1E54B22A579B1FE8316FB0B9936
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3B43B83A77B67D342C7BE41B14B94C9BAF59A648E42CDEBE801DDEE6D179
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F3C441F7CC98F5D3C9799B9B329451BF79CFDD30BE82CDD669A3DEEBFEA3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1E547FB855C866DD53FA7CDB2BE3AAAB3D2BB36CB12FFACD230A2ED595A6
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7A64DB41178AC9A6A3ABD9DEDDE61CBE6A7AEC3E4BD57C52DEB6B522E1C7
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A4EB055BE9A8FA3CB9866DD9F65022817D56C68ABA1C5BDAFDC17BAAA078
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2934FFE45A13B3B8ED301B5D1DBB3798F953A5A49265A38498B1DE8F6937
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A1D99996DEB6388DF46E9382B7E0340F6DD3C2B2DD53B19B8AA69947B585
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 46BF8E7B96E8E7771ED316CAE469AF0455A80519367D1B2050A939B57050
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D7FB4DF287CF894D559D027EDA161856EAFB69B55A93B336FDDDD0E437EF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AAED9C9CB2E9538E925B8D31FA49494E219CFEB664CD35DCF7B640CC9223
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 517775FAA54DCD8D94B1DCA471D6DD12CF2039B245C6D9E792988CB37608
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 64A47D65894C47CA1AAD0CF5AC434289222F668B0CF66C510231CB93B53A
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0B9263D3933BD178B20C9B4CC225FA2619F07D2E0AAF1C1323D7F46852B1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 738B29916B7CE8AADC99CCF8136CBAD67BE619916B7F52AEE859DAC0E87B
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9C012C7B4E587F1DAAC7F1C6C267A0FD8FDD3A1DDC2C7DBE3BF5CDDE2BDA
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9C42D7F1C466F973F94483D06AFCE6C0A1D0F53D665BE3F7145EB8DE0788
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ABFC56C4B611D2FD6C74A5DFC1304FA5BA9FFAAE646319E0B708F0FB25B0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C1061B6CB0C1061B6CB0C1061B6CD7F8FC07967A8282420A538E00000000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 49454E44AE426082))
+V
+(BlockRef 'Graphics' 00000000779&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 50047226 29394 20034&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9DE8CFF8581A1C66 )&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533) 1 )
+(PlotOptimized 1)
+C 0
+(LineWeight 4)
+(LineStyle&nbsp;
+(LineJoin round)&nbsp;
+(LineStartCap round)&nbsp;
+(LineEndCap round))
+(Layer 1 0)
+(Viewport ''&nbsp;
+&nbsp;&nbsp; (Contour 1 4 2147483647,0 2147483647,2393 2147479273,2393 2147479273,0)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; (Units ''&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((265.86413065 0 0 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 265.86413065 0 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0 0 1 0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (2147479274 0 0 1))))
+&nbsp;&nbsp; P 15 2147480705,1487 2147482064,938 2147481018,314 2147480649,655
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2147481761,1132 2147481359,1761 2147480194,1383 2147480076,598
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2147481042,1094 2147480455,1690 2147480455,1870 2147482064,938
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2147481310,938 2147480194,1383 2147480705,1487
+(BlockRef 'Preview' 00000007223&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 4291207406 34418 19561&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B55DEE798E940114 )&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 50047226 29394 20034&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9DE8CFF8581A1C66 ) 00000000000 00000000438 00000000566 00000000256&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((00000000001 00000000000 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000001 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000001 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000000 00000000001)) )
+v
+&nbsp;&nbsp; (Group4PNGImage 'PNG' 0 566,438 0,0 566,438 (3162&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 89504E470D0A1A0A0000000D4948445200000236000001B608030000005B
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 303C4200000300504C544500000080000000800080800000008080008000
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8080C0C0C0C0DCC0D4D0C80000333300003300330033331616161C1C1C22
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22222929295555554D4D4D424242393939FF7C80FF5050D60093CCECFFEF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D6C6E7E7D6ADA99033FF00660000990000CC000000330033330066330099
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3300CC3300FF3300006600336600666600996600CC6600FF660000990033
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9900669900999900CC9900FF990000CC0033CC0066CC0099CC00CCCC00FF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CC0066FF0099FF00CCFF0000FF333300FF660033990033CC0033FF003300
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 33FF333333663333993333CC3333FF3333006633336633666633996633CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6633FF6633009933339933669933999933CC9933FF993300CC3333CC3366
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CC3399CC33CCCC33FFCC3333FF3366FF3399FF33CCFF33FFFF3300006633
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0066660066990066CC0066FF0066003366333366663366993366CC3366FF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3366006666336666666666996666CC6666009966339966669966999966CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9966FF996600CC6633CC6699CC66CCCC66FFCC6600FF6633FF6699FF66CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FF66FF00CCCC00FF009999993399990099CC0099000099333399660099CC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3399FF0099006699336699663399996699CC6699FF339933999966999999
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9999CC9999FF999900CC9933CC9966CC6699CC99CCCC99FFCC9900FF9933
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FF9966CC9999FF99CCFF99FFFF990000CC3300996600CC9900CCCC00CC00
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 33993333CC6633CC9933CCCC33CCFF33CC0066CC3366CC6666999966CCCC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 66CCFF66990099CC3399CC6699CC9999CCCC99CCFF99CC00CCCC33CCCC66
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CCCC99CCCCCCCCCCFFCCCC00FFCC33FFCC66FF9999FFCCCCFFCCFFFFCC33
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00CC6600FF9900FF0033CC3333FF6633FF9933FFCC33FFFF33FF0066FF33
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 66FF6666CC9966FFCC66FFFF66CC0099FF3399FF6699FF9999FFCC99FFFF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99FF00CCFF33CCFF66CCFF99CCFFCCCCFFFFCCFF33FFFF66FFCC99FFFFCC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FFFFFF666666FF66FFFF666666FFFF66FF66FFFFA500215F5F5F77777786
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8686969696CBCBCBB2B2B2D7D7D7DDDDDDE3E3E3EAEAEAF1F1F1F8F8F8FF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FBF0A0A0A4808080FF000000FF00FFFF000000FFFF00FF00FFFFFFFFFF4C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FC227F000009154944415478DAEDDDDD76DB281480D1F3FECFD4D7D2FDAC
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D57412E7C78E408038B0BFBBE9A4E3D6ECC1928550FC918A8B3F87541A36
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C246D8081B61236C246C848DB01136C246C246D8081B61236C246C848DB0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1136C246C246D8081B61236C246C848DB01136C246C246D8081B61236C24
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6C848DB01136C246C246D8081B61236C246C848DB01136C246C246D8081B
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 61236C246C848DB01136C246C246D8081B61236C246C848DB01136C246C2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 46D8081B61236C246C848DB01136C246C246D8081B61236C246C848DB011
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 36C246D848D8081B61236C848D848DB01136C246D848D8081B61236C848D
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 848DB01136C246D848D8081B61236C848D848DB01136C246D848D8081B61
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 236C848D848DB01136C246D848D8081B61236C848D848DB01136C246D848
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D8081B61236C848D848DB01136C246D848D8081B61236C848D848DB01136
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C246D848D8081B61236C848D848DB01136C246D848D8081B61236C848DB0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 91B01136C246D8081B091B61236C848DB091B01136C246D8081B293D9B30
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 38D854FCC9021C6C6A661B70B0A9FA9002079BAA631B6EB0A9392436E160
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 537526050E365527E0DC6053C1C684834D0D1B70B0A962030E36556C1CE2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6053C5C684834D0D1B70B0A962D3170E94CBB2E97688F3F7923B37CBB2E9
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3129FCBF4C039B75D9B486F3B8B4879B85D9341CDEAFCBC1B859994D9B09
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E7872584D82CCDE63A9C27CB4EB9599BCD2538CF972A63B33A9BCA318ED7
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CBDBB9599E4DF98473E28E086EF2B2393D782570CEDD45834D6236E7472F
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5A9AE126399B0237D1D00C37C9D9148C5E443B33D8246773141DB6B432C3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4D7636C7D54F96DA3BC9B149CDA6CC4DB431C34D7A3665E3F77829FBE2B5
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 076E52B3291CBF881666B049CFA67400A3D1CE38DCE46653787CD36C3F25
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6E72B329B8CE10AF4FC6B1D989CDC95514D178C8B949CEE6C45ABF0EF78C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 63939DCDEB1B19A2D32D9CDC6467F36C085F1D003B0BC7E6C7BD04A2F3FD
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0DD8A46773D45C3AB8BC4C1D91EC6C1EC7B060C9956B0C9BB379DF74366A
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2F5461B3239BB7ADD163E8D873B3009BDAE533C1CDB687C4577612A98783
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4D6236EFF3CCF8E1E726299B36979B6A271C6C32B2F97EB9E9180C879B6C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6C7E3C068EFAB55895BF0B94446C9E5DA28C88B104B049C3E627331F622E
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9C8FBB6D6A5936DF3D7C59EC1997100437EBB1F9B69B5EBCDC2BADEA6BE3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C06625365F84BC58501E63A70F6EA665F3F963E8B793A5F8FDE8B9E18483
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CD9C6C1E06FEE44D2B57570F175E4787653A361F970E4ABE90895327ECAD
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 287033179BF7AF611A0C7BD4DCFA8B4D3A366F97B5ABBFF43D73EEDE0A0E
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3793B0897F5DF82F343868096E12B18916B76B57DC0653CF019BDBD9B4BA
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C13F9A1CB6043749D81CBDDD14C93CF7A3D8DCCFA6D58C13030F78B99980
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CD31E00EFFC6375471732B9B767BECFD3E962DE16033099B16534EF13626
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F570B89986CD886D3D9B9D2C71330F9BCB53CEA95D04CE1DF5063689D85C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9C729A9038F553DCCCC5E6DA9473F2697771FD618ADCCCC6E6CA9433EC44
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1B9BBBD87479367CC1E3A7AE1D427333239BEA29A7ED55A8E73F82CD9C6C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6AA79CC2EDD2EB3F49B19994CD88FD8F226A7F20B099954DD59453FE588F
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AA3F013633B319F194CB3A3881CDC46A2AA69C9A5B342BBEDF0B6CE66633
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E261CC51FC8D0036D3B33906DC99F29AE64FBB5F60333F9BA229A7F6EBC2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2238D8A4605332E5D46F275AF0DD70609383CDF929A7CBF67EEDF610C466
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2C9B63C03D062F687EFE37D8E4517376CAB9B6E8EBDC6585C026119B63C0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 62F1E7BB31053769D99C9972A213CD875FC7261B9B63C0AADF67341F3670
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C2261D9B5FA79CE84633B049CCE628FCAAA5DD0B5C7E700836B7B279FD61
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15FD5EE0DF2F063639D5BC9C72A2E30BFCFD356CF2B27975DED3F305E268
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B5DD0A36F7B0793AE544CF1708C736D9D93C3D08E9F60261B65982CD93E7
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C2747981D8F9646A35363F4E391DCEDC3E6FF38F4D7E364D1F9378EE05B6
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8373039B216F71CFD9E0EDC47B6B38ABB2F998111A0FE8C744131BAFBE59
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 97CD9B98E6689EFFE34E13CED26C8E88E877FAFD7DCAD907CECA6CAE3CBF
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F7DCA9FDF7C3286CD21FDBFC3AE0D7269A1F456D32E18C671383D1B418CD
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 137B9AEC05674D36BF1D84B4F9747A7E8A854D4236D1723FC9AA07C50436
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D9D8BC5CED57BCED49E52607AB4F38ABB1A9DF20AB01B2C717581BCE5A6C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A2E1E66E71F58EE395E1ACC4A6604B8AE887E6E1B70736D3AB297DAE6AF4
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43F3FE02CB4E38ABB089763B2D4534BCFD6F51388BB089FA19A1FD44F3F9
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 05029B49D944B3ED6CDA4F0E8DAFA66233019ACF534EA7015E114E7A36D1
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EA46EF9E63BB1C9CE46C1AAE8AE81D36B3A8E9BE9466BA3F293613A139A0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D9854D1E348733A959DEC268B503C97DCB38B019CD2622CD80FA96781636
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 89D01CAE494DF236A642B3EC25F0646CA2D1871C341BB18948349C56F7CD
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F15EE642B3F662E2346C62CCD6E9D02CC526320DA6FBA4E678432332A1D9
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E0B6CCB16CE2AE711878057A8B9BC0E7671391E9FF7F5B074CC1061A6C8A
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D944B767FBF87C5A964D0B3423FF7236619B800D34D814B3498666B7ADD0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 87B28961433E78C9B7EDAC276013916B146D9E3F019B6C683CAA63823738
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 463C5ADE54B3169BEB680E687663930E8DC7C7DFFF2E37DB01C054B3169B
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8E8F7ABF61043746330D9B6B6370C708EE8C661236716D89F11D68F65633
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 039B886CE3B73B9A09D8E443736C8FE6763619D15033944DDB5D39039A3D
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D95C4373D3DB45CCBD6C52A2A1E65E36D06053CCE6EA75049F4F1BB269B0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DED354B31B9B365B0040B30B9BB60FE5F6F9B40F9B86FFD38EBC698E9A3B
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D944A41C4C68EEFF904A379EA69ABB0F8913CE03D02CC8A6FF23C5F95891
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4DDF7135D5ACCA668AA74363C38DCFA72DD81C9D1E6F49C6DA6CE67B662B
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 365BBA81660B3647CE6F9FB1B9FD2F11D06073DF8403CD5E6C723D93019B
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 75DC40B3239BAB6EA0D993CD91EF064F6C52BB81666736D54FABC2606B36
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 773D78089BDDDC40834DB91B68B0299E3E4C35D814CF20D06053EE061A6C
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8A45986AB02977030D36C52C4C35D814BB81069B7237D06053ECC654834D
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B11B68B02977030D3667FE7261AAC1E6D284030D36E56EA0C1A6D88DA906
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9B6237D060D3E4445CD8081B61236C246C848DB01136C246C246D8081B61
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 236C246C848DB01136C246C246D8081B61236C848D848DB01136C246D848
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D8081B61236C848D848DB01136C246D848D8A85FFF01E2E052E465AFE565
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0000000049454E44AE426082))
+V
+(Directory 00000000004&nbsp;
+(BlockRef 'Graphics_Hdr' 00000000012 00000001460&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 2293737895 28613 20209&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B86117C1AA7782AF )&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1 1 00000000001 0 0 0 000000.0025&nbsp;
+&nbsp;&nbsp; (Orientation 'Decoupled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;
+&nbsp;&nbsp; (Alignment 'Align_None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ') 00000001556 00000001988&nbsp;&nbsp;&nbsp; 400 00000000000 00000000000 00000000196,00000000196 00000053346,00000069094 )&nbsp;
+(BlockRef 'Thumbnail' 00000001472 00000004445&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 2264850732 14877 17258&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A2C292BEE4E02654 )&nbsp;&nbsp;
+
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 50047226 29394 20034&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9DE8CFF8581A1C66 ) 00000000000 00000000170 00000000219 00000000256&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((00000000001 00000000000 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000001 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000001 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000000 00000000001)) )&nbsp;
+(BlockRef 'Graphics' 00000005917 00000000779&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 50047226 29394 20034&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9DE8CFF8581A1C66 )&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533) 1 )&nbsp;
+(BlockRef 'Preview' 00000006696 00000007223&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 4291207406 34418 19561&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B55DEE798E940114 )&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Time 02397820982 00029429533)&nbsp;&nbsp;
+&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1&nbsp;&nbsp;
+&nbsp;&nbsp; (Guid 50047226 29394 20034&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9DE8CFF8581A1C66 ) 00000000000 00000000438 00000000566 00000000256&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((00000000001 00000000000 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000001 00000000000 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000001 00000000000)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000 00000000000 00000000000 00000000001)) ) 00000013919)
+(EndOfDWF)</tt></pre>
+
+<pre>
+<hr WIDTH="100%"></pre>
+
+<pre>
+<hr WIDTH="100%"></pre>
+
+</body>
+</html>

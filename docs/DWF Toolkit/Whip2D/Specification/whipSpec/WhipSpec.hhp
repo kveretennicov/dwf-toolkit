@@ -1,0 +1,113 @@
+[OPTIONS]
+Auto Index=Yes
+Auto TOC=9
+Binary Index=No
+Compatibility=1.1 or later
+Compiled file=..\out\WhipSpec.chm
+Default topic=index.html
+Display compile progress=No
+Full-text search=Yes
+Language=0x409 English (United States)
+Title=WHIP! Specification
+
+
+[FILES]
+index.html
+AppendixA\AppendixAHd.html
+AppendixA\AppendixA.html
+Chapters\Chapters.html
+Contents\Contents.html
+CoverPage\CoverPageHd.html
+CoverPage\CoverPage.html
+Glossary\GlossaryHd.html
+Glossary\Glossary.html
+Header\Header.html
+License\LicenseHd.html
+License\License.html
+Opcodes\WT_PenPat_Options.html
+Opcodes\BlockRef.html
+Opcodes\Comment.html
+Opcodes\DefCompData.html
+Opcodes\DefCopyright.html
+Opcodes\DefDwgAuth.html
+Opcodes\DefDwgBack.html
+Opcodes\DefDwgCreat.html
+Opcodes\DefDwgCreaTim.html
+Opcodes\DefDwgDesc.html
+Opcodes\DefDwgInfoBlk.html
+Opcodes\DefDwgModTim.html
+Opcodes\DefDwgUnits.html
+Opcodes\DefInitVw.html
+Opcodes\DefKeywords.html
+Opcodes\DefMrkrGlph.html
+Opcodes\DefNamedVw.html
+Opcodes\DefPltInf.html
+Opcodes\DefSrcDwgCrtTm.html
+Opcodes\DefSrcDwgFilnm.html
+Opcodes\DefSrcDwgModTm.html
+Opcodes\DefWT_Alignment.html
+Opcodes\DefWT_Block_Meaning.html
+Opcodes\DefWT_Embedded_Font.html
+Opcodes\DefWT_Encryption.html
+Opcodes\DefWT_FileTime.html
+Opcodes\DefWT_Font_Extension.html
+Opcodes\DefWT_Guid.html
+Opcodes\DefWT_Guid_List.html
+Opcodes\DefWT_Orientation.html
+Opcodes\DefWT_Password.html
+Opcodes\DefWT_SignData.html
+Opcodes\DefWT_Trusted_Font_List.html
+Opcodes\DefWT_UserData.html
+Opcodes\Directory.html
+Opcodes\DrwCircArcWdg.html
+Opcodes\DrwContrSet.html
+Opcodes\DrwElpsArcWdg.html
+Opcodes\DrwGrdPolyt.html
+Opcodes\DrwImg.html
+Opcodes\DrwLine.html
+Opcodes\DrwPlyBezCrv.html
+Opcodes\DrwPlylnPlygon.html
+Opcodes\DrwPlymkr.html
+Opcodes\DrwPlytringl.html
+Opcodes\DrwPNGGroup4Img.html
+Opcodes\DrwTxt.html
+Opcodes\DrwTxtrdPlytri.html
+Opcodes\EmbdSrcFil.html
+Opcodes\GroupBegin.html
+Opcodes\GroupEnd.html
+Opcodes\InkArea.html
+Opcodes\MergeControl.html
+Opcodes\OpcodesHd.html
+Opcodes\OptimizedForPlotting.html
+Opcodes\SetCodePage.html
+Opcodes\SetColr.html
+Opcodes\SetColrMap.html
+Opcodes\SetCurPt.html
+Opcodes\SetFillPattern.html
+Opcodes\SetFilMod.html
+Opcodes\SetFnt.html
+Opcodes\SetLinPat.html
+Opcodes\SetLinSty.html
+Opcodes\SetLinWgt.html
+Opcodes\SetLyr.html
+Opcodes\SetMkrGlyph.html
+Opcodes\SetMkrSz.html
+Opcodes\SetPen_Pattern.html
+Opcodes\SetProj.html
+Opcodes\SetUrlLnk.html
+Opcodes\SetViewPort.html
+Opcodes\SetVis.html
+Terms_Index\Terms_Index.html
+WhatsNew\WhatsNewHd.html
+WhatsNew\WhatsNew.html
+OpcodeRef\OpcodeRef.html
+OpcodeRef\OpcodeRefHd.html
+Opcodes\ObjectNode.html
+Opcodes\DrwGrdPolyl.html
+Overview\Overview.html
+Overview\OverviewHd.html
+WhipData\WhipData.html
+WhipData\WhipDataHd.html
+
+[INFOTYPES]
+

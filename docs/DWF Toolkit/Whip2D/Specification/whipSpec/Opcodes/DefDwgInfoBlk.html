@@ -1,0 +1,65 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Drawing Information Block - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Drawing Information Block - DEPRECATED</font></i></b>
+<p>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>The <b>Define Drawing Information Block</b> opcode doesn’t perform
+any operation. It acts as a container for other drawing information opcodes.
+If used, this should be the first opcode in the file, following the WHIP! data 
+header.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="676" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="22%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="22%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(DrawingInfo</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Info</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Container for
+a list of other Drawing Information opcodes.</font></font></td>
+</tr>
+</table></center>
+
+<dir><i>Info</i>&nbsp;&nbsp; Possible nested list of Drawing Information
+opcodes</dir>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>There are a set of drawing information opcodes that a WHIP! data reading
+application may want to inspect before actually rendering the WHIP! data. 
+For example, a user might want to WHIP! data those data streams created by 
+a specific author. Because almost all opcodes are optional in WHIP! data, the 
+reader can’t assume that the<b> Define Drawing Author</b> opcode will be found 
+and, consequently, the reader is forced to read and parse WHIP! data in its entirety.
+<p>The <b>Define Drawing Information Block</b> opcode solves this problem
+by allowing all drawing information opcodes to be contained at the very
+beginning of the data. If, after reading the information block, the desired
+opcode is not found (the "drawing author" in this example), the WHIP! data reader
+can safely assume that no occurrences can be found anywhere else in the data.</dir>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<dir>If the <b>Drawing Information Block</b> opcode is used, by convention
+it should be the first opcode in the file (following the WHIP! data header), and
+all other "Define Drawing xxx" opcodes should be contained therein.</dir>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Drawing Description - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Drawing Description - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Drawing Description</b> function specifies a description
+of what the WHIP! data represents.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="667" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><font face="Courier New"><font size=-2>(Description</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Desc</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="40%" HEIGHT="26"><font face="Arial"><font size=-2>Explains
+the contents of the WHIP! data.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Desc</i> String describing what is represented by the WHIP! data</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Some WHIP! data reading applications may need to "know" what the image in
+the WHIP! data represents. The WHIP! data generating application can indicate
+this with the description opcode:
+<ul><font face="Courier New"><font size=-1>(Description 'Blueprints for
+Pam’s new office')</font></font></ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>WHIP! data reading applications should not expect to be able to parse the
+<i>Desc</i>
+argument, though it could be shown to a user.
+<p>WHIP! data should contain a maximum of one occurrence of this
+opcode, which by convention should be nested inside a <b>Define <a href="DefDwgInfoBlk.html">Drawing
+Information Block</a></b> opcode.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default, no drawing subject is defined, which is equivalent to
+<ul><font face="Courier New"><font size=-1>(Description unknown)</font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

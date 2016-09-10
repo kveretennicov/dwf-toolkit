@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="shared"
+	InheritedPropertySheets="..\Configure.vsprops;..\$(DebugOrRelease).vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="DWFCORE_EXPORT_API"
+	/>
+	<Tool
+		Name="VCPostBuildEventTool"
+		CommandLine="xcopy /r /y /d /i ..\..\..\develop\global\$(binloc)\$(DebugOrRelease)\$(VCOutDir)\*.dll $(OutDir)"
+	/>
+</VisualStudioPropertySheet>

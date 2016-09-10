@@ -1,0 +1,157 @@
+AC_INIT(dwfcore, 1.7.0, http://www.autodesk.com/dwf)
+
+AC_CONFIG_SRCDIR(configure.in)
+AM_INIT_AUTOMAKE
+
+AM_CONFIG_HEADER(config.h)
+
+  
+AC_LANG_CPLUSPLUS
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+
+AC_CHECK_FUNCS( memmove )
+
+AC_CHECK_HEADERS(bits/stl_algobase.h)
+AC_CHECK_FUNCS( max )
+AC_CHECK_FUNCS( min )
+
+AC_CANONICAL_BUILD
+if test $build_os = x86_64; then
+AC_MSG_NOTICE([build a x64 version])
+AC_DEFINE(_DWFCORE_X64_SYSTEM, 1, [define _DWFCORE_X64_SYSTEM])
+AC_DEFINE(_M_X64, 1, [define _DWFCORE_X64_SYSTEM])
+fi
+
+AC_CANONICAL_HOST
+if test $host_cpu = x86_64; then
+AC_MSG_NOTICE([build a x64 version])
+AC_DEFINE(_DWFCORE_X64_SYSTEM, 1, [define _DWFCORE_X64_SYSTEM])
+AC_DEFINE(_M_X64, 1, [define _DWFCORE_X64_SYSTEM])
+fi
+
+AC_CHECK_HEADERS(asm/atomic.h)
+AC_CHECK_HEADERS(alsa/iatomic.h)
+AC_CHECK_HEADERS(netinet/ether.h)
+
+
+if test HAVE_ASM_ATOMIC_H; then
+AC_COMPILE_IFELSE(
+    [AC_LANG_PROGRAM([[#include <asm/atomic.h>]],
+                     [[int i = 0;
+                       atomic_t tValue;
+                       atomic_set( &tValue, i );
+                       atomic_inc( &tValue );
+                       atomic_dec( &tValue );		       
+                       i = atomic_read( &tValue );]]
+                    )
+    ],
+    [AC_MSG_NOTICE([OK to use atomic operations from asm/atomic.h])
+     AC_DEFINE(_DWFCORE_USE_ASM_ATOMIC_H,1,[OK to use atomic operations from asm/atomic.h])
+    ],
+    [ AC_MSG_NOTICE([asm/atomic.h available but required operations are missing])
+      if test HAVE_ALSA_IATOMIC_H; then
+        AC_COMPILE_IFELSE(
+            [AC_LANG_PROGRAM([[#include <alsa/iatomic.h>]],
+                             [[int i = 0;
+                               atomic_t tValue;
+                               atomic_set( &tValue, i );
+                               atomic_inc( &tValue );
+			       atomic_dec( &tValue );
+                               i = atomic_read( &tValue );]]
+                            )
+            ],
+            [AC_MSG_NOTICE([OK to use atomic operations from alsa/iatomic.h])
+             AC_DEFINE(_DWFCORE_USE_ALSA_IATOMIC_H,1,[OK to use atomic operations from alsa/iatomic.h])
+            ],
+            [AC_MSG_NOTICE([alsa/iatomic.h available but required operations are missing])]
+        )
+      fi
+    ])
+fi
+
+
+
+AC_CHECK_LIB(pthread, pthread_create,, AC_MSG_ERROR([POSIX thread library is required]))
+AC_CHECK_LIB(uuid, uuid_generate,,)
+
+AC_ARG_WITH([zlib],
+             AC_HELP_STRING([--with-zlib],
+              	            [use system zlib [[default=yes]]]),
+	    [with_zlib=$withval],
+	    [with_zlib=yes])
+
+if test $with_zlib = yes; then
+AC_CHECK_LIB(z, inflate,, AC_MSG_ERROR([System zlib is required]))
+else
+AC_MSG_NOTICE([Building zlib into dwfcore])
+AC_DEFINE(DWFCORE_BUILD_ZLIB, 1, [Build zlib into dwfcore])
+fi
+
+
+gcc --version > gccver.txt
+sed -e '/^gcc version 3.2/ p' gccver.txt > gcc32.txt
+
+AC_ARG_WITH([expat],
+             AC_HELP_STRING([--with-expat],
+              	            [use system expat [[default=no]]]),
+	    [with_expat=$withval],
+	    [with_expat=no])
+
+if test $with_expat = yes; then
+AC_MSG_CHECKING([system expat existence and version])
+AC_CHECK_LIB(expat, XML_ResumeParser,, AC_MSG_ERROR([System expat version 2.0 or greater is required.]))
+AC_DEFINE(DWFCORE_SYSTEM_EXPAT, 1, [Using system expat])
+else
+AC_MSG_NOTICE([Building expat into dwfcore])
+AC_DEFINE(DWFCORE_BUILD_EXPAT, 1, [Using dwfcore expat])
+fi
+
+
+AC_ARG_ENABLE([optimized],
+               AC_HELP_STRING([--enable-optimized],
+              	              [enable optimized build [[default=no]]]),
+	      [enable_optimized=$enableval],
+	      [enable_optimized=no])
+
+if test $enable_optimized = no; then
+AC_MSG_NOTICE([Using debug configuration])
+
+if test -s gcc32.txt
+then
+AC_MSG_NOTICE([gcc 3.2.x requires less strict compiler flags. Please pay attention to warnings!])
+AC_SUBST(CXXFLAGS, ["-g3 -ggdb -p -O0 -pipe -pedantic -Wall -Wno-long-long -Wnon-virtual-dtor -Wsign-promo -Wsign-compare -Wundef"])
+else
+AC_SUBST(CXXFLAGS, ["-g3 -ggdb -p -O0 -pipe -pedantic-errors -Wall -Werror -Wno-long-long -Wnon-virtual-dtor -Wsign-promo -Wsign-compare -Wundef -Wunreachable-code"])
+fi
+
+else
+AC_MSG_NOTICE([Using optimized configuration])
+
+if test -s gcc32.txt
+then
+AC_MSG_NOTICE([gcc 3.2.x requires less strict compiler flags. Please pay attention to warnings!])
+AC_SUBST(CXXFLAGS, ["-g0 -O2 -pipe -pedantic -Wall -Wno-long-long  -Wnon-virtual-dtor -Wsign-promo -Wsign-compare -Wundef -fforce-addr -fomit-frame-pointer -finline-functions -ffast-math -fno-strict-aliasing"])
+else
+AC_SUBST(CXXFLAGS, ["-g0 -O2 -pipe -pedantic-errors -Wall -Werror -Wno-long-long  -Wnon-virtual-dtor -Wsign-promo -Wsign-compare -Wundef -Wunreachable-code -fforce-addr -fomit-frame-pointer -finline-functions -ffast-math -fno-strict-aliasing"])
+fi
+
+fi
+
+rm gccver.txt
+rm gcc32.txt
+
+AC_OUTPUT( 
+    Makefile 
+    ansi/Makefile 
+    crypto/Makefile 
+    digest/Makefile 
+    expat/Makefile 
+    mac/Makefile 
+    utility/Makefile 
+    x86/Makefile 
+    x64/Makefile
+    zip/Makefile 
+    zlib/Makefile
+    sqlite/Makefile
+    paging/Makefile )

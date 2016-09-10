@@ -1,0 +1,63 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Source Drawing Filename - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Source Drawing Filename - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Source Drawing Filename</b> function provides information
+to WHIP! data reading applications about what source file was used to generate
+the WHIP! data.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="675" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="21%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="27%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="35%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>(SourceFilename</font></font></td>
+
+<td VALIGN=TOP WIDTH="27%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Filename</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Arial"><font size=-2>Provides name
+of the source file that was used to create the WHIP! data</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Filename</i> The simple filename of the source file that was used
+to create the WHIP! data</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Some WHIP! data reading applications may need to "know" the name of the source
+file that was used to generate the WHIP! data. The WHIP! data generating
+application can indicate this need with the <i>SourceFilename</i> opcode:
+<ul><font face="Courier New"><font size=-1>(SourceFilename 'House Plan.DWG')</font></font></ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>It is intended that the Filename argument refer only to a basic filename,
+and not include path information.
+<p>WHIP! data should contain, at most, one occurrence of the source
+creation time opcode, which by convention should be nested inside a <b><a href="DefDwgInfoBlk.html">Define
+Drawing Information Block</a></b> opcode.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default, no source drawing file name is defined, which is equivalent
+to
+<ul><font face="Courier New"><font size=-1>(SourceFilename unknown)</font></font></ul>
+</ul>
+<hr>
+</body>
+</html>

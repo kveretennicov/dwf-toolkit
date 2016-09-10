@@ -1,0 +1,201 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Line Style</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Line Style</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Line Style</b> function encapsulates, in one opcode, the
+attributes which affect rendered lines</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+[ASCII](Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(LineStyle</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>[&lt;ws>(AdaptPatterns&lt;ws>&lt;T<sub>Boolean</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(LinePatternScale&lt;ws>&lt;F<sub>Scale</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(LineStartCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(LineEndCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(DashStartCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(DashEndCap&lt;ws>&lt;T<sub>Cap</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(LineJoin&lt;ws>&lt;T<sub>Join</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(MiterAngle&lt;ws>&lt;I<sub>Angle</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(MiterLength&lt;ws>&lt;I<sub>Length</sub>>[&lt;ws>])])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>Select the
+type of line style from the supplied description.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Boolean</i>&nbsp;&nbsp; ASCII text string True or False indicates
+whether or not line patterns should be fit by line segment
+<p><i>Scale</i>&nbsp;&nbsp; Float The multiplication factor to be applied
+to the pattern
+<p><i>Cap</i>&nbsp;&nbsp; ASCII text string Describes how ends of thick
+lines should be rendered
+<p><i>Join</i>&nbsp;&nbsp; ASCII text string Describes how the joints of
+multi-segment thick polylines are rendered
+<p><i>Angle</i>&nbsp;&nbsp; Integer The angle (measured in 360/65636ths of a degree) at which adjoining line segments
+are mitered 
+<p><i>Length</i>&nbsp;&nbsp; Integer The multiplier applied to the line
+width to determine the miter length</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Line Style</b> opcode is simply a grouping mechanism used to
+contain the other opcodes that affect how lines are drawn.
+<p>The <b>Adaptive Patterns</b> opcode specifies how a WHIP! data viewing application
+adjusts a line pattern length so that each line contains one or more complete
+pattern.
+<ul><b>Note:</b> Do <i>not</i> use an adaptive line type when drawing circles
+or arcs, or the edges of wedges or polygons. The WHIP! data viewing application
+will attempt to draw the complete pattern in every chord; there are 72
+chords in a circle using the default chord angle.</ul>
+The&nbsp;<a NAME="LinePatternScale"></a><b>Line Pattern Scale</b> opcode
+specifies the scale factor (muliplier) for the line pattern. There are
+three different types of pattern scales:
+<ul>
+<li>
+Values greater than 0.0 indicate the pattern scales with geometry (as you
+zoom in the pattern spreads out). The value defines the number of logical
+units over which one repetition of the line pattern will occur. Thus if
+a line pattern scale of 50.0 is applied to a line 100 logical units long,
+then the line pattern will repeat two times over the length of the line.</li>
+
+<li>
+When the pattern scale is 0.0 (the default), this means that a WHIP! data viewing
+application should pick a default screen-relative scale value.</li>
+
+<li>
+Values less than 0.0 mean that the provided scale is to be measured in
+device coordinates (and thus doesn't change with a viewer's zoom factor).
+The value defines the number of device pixels (not logical units) over
+which the pattern repeats.</li>
+</ul>
+The Line Cap opcodes specify how the ends of subsequent thickened lines
+are rendered. The attribute applies to lines, polylines, circular arcs,
+and elliptical arcs. The meaning of the various line end-caps and joins
+are shown in <a href="#Fig2LnCps">figure 2</a>. The <b>Line Start Cap</b>
+opcode specifies the type of line caps for the starting points of lines.
+The <b>Line End Cap</b> opcode specifies the type of line caps for the
+ending points of lines. The <b>Dash Start Cap</b> opcode specifies the
+type of line caps for the starting points of interior pattern segments.
+The <b>Dash End Cap</b> opcode specifies the type of line caps for the
+ending points of interior pattern segments. Examples of line caps are shown
+in Figure 2.
+<p>The <b>Line Join</b> opcode specifies how the joints of subsequent thickened
+multi-segment polylines are rendered.<a NAME="Fig1CpsJns"></a> These are
+shown in <a href="#Fig1CpsJns">figure 1</a>.</ul>
+
+<center><img SRC="Image70.gif" height=823 width=630>
+<p><i><font face="Arial,Helvetica">Figure 1. Caps and Joins</font></i>
+<br><a NAME="Fig2LnCps"></a>
+<p><img SRC="Image72.gif" </P height=200 width=548>
+<br>&nbsp;
+<br>&nbsp;
+<p><i><font face="Arial,Helvetica">Figure 2. Line Caps</font></i></center>
+
+<ul>The possible values for <i>Cap</i> include the following:</ul>
+
+<dir>
+<ul><font face="Courier New">butt</font> A butt line end-cap where the
+line terminates exactly at its endpoint
+<p><font face="Courier New">square</font> A square line end-cap where the
+line terminates one-half line width beyond its endpoint
+<p><font face="Courier New">round</font> A round line end-cap where the
+line terminates in a semicircle with a diameter equal to the current line
+width
+<p><font face="Courier New">diamond</font> A diamond line end-cap where
+the line terminates one-half line width beyond its endpoint</ul>
+</dir>
+
+<ul>The possible values for <i>Join</i> include the following:</ul>
+
+<dir>
+<ul><font face="Courier New">miter</font> A join formed by two lines extending
+from the outer edge of each line segment until they meet. Thus, a miter
+join involves adding a kite-shaped area to the line at each join.
+<p>Miter terminology includes:
+<ul>
+<li>
+<font face="Courier New">miter angle</font> An inside angle (measured in 360/65636ths of a degree) formed by extending
+two intersecting line segments past the join</li>
+
+<li>
+<font face="Courier New">miter length</font> A distance from the intersection
+of two line segments to the furtherest point of the boundary formed by
+the extended edges of these line segments</li>
+</ul>
+<font face="Courier New">bevel</font> A join formed by a line connecting
+the outer edge of one line segment to the outer edge of the other line
+segment. Thus, a bevel join involves adding an equilateral triangle area
+to the line at each joint
+<p><font face="Courier New">round</font> A join formed by an arc with a
+diameter equal to the current line width
+<p><font face="Courier New">diamond</font> A join formed by two lines extending
+from the outer edge of each line segment to a point 1/2 line width beyond
+the end intersection of the line segments</ul>
+</dir>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>How the line attributes are applied to patterned lines can be system
+dependent. Some WHIP! data reading applications can apply the LineStartCap/LineEndCap
+attributes to each portion of the line (i.e., ignore DashStartCap/DashEndCap).
+For example, each dash in a dashed line might have rounded end caps (although
+only the first dash should have a round start cap and the last dash should
+have a round endcap). If exact line patterns that synchronize with other
+geometric primitives in the drawing are required, then the WHIP! data writing
+application should explicitly draw the individual dashes and dots required
+as a series of <b><a href="DrwLine.html">Draw Line</a></b> calls.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>The defaults are:
+<ul>
+<li>
+not to adapt patterns</li>
+
+<li>
+not to scale patterns</li>
+
+<li>
+butt caps for all segments</li>
+
+<li>
+miter joins at 10&deg; with a length of 6</li>
+</ul>
+</ul>
+
+<ul>These defaults are equivalent to:
+<ul><font face="Courier New"><font size=-1>(LineStyle</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(AdaptPatterns false)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(LinePatternScale 0.0)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(LineStartCap butt)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(LineEndCap butt)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(DashStartCap butt)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(DashEndCap butt)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(LineJoin miter)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(MiterAngle 1820)</font></font>
+<br>&nbsp; <font face="Courier New"><font size=-1>(MiterLength 6))</font></font></ul>
+</ul>
+<hr>
+<br>
+<hr WIDTH="100%">
+</body>
+</html>

@@ -1,0 +1,107 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "W2dTest", "W2dTest_vc80.vcproj", "{0127ACF4-D48F-4534-8435-694AD52E337D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8BECE007-1749-4300-87D8-267B613AAE6B} = {8BECE007-1749-4300-87D8-267B613AAE6B}
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2} = {337A987F-97AE-46FF-98AF-6C6B9B81E3B2}
+		{681750CF-B191-4A41-B92C-0F94599B121D} = {681750CF-B191-4A41-B92C-0F94599B121D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DWF Core Library (1.4)", "..\..\..\develop\global\build\VC 8.0\DWFCore\DWFCore.vcproj", "{8BECE007-1749-4300-87D8-267B613AAE6B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DWF W2D (Whip) Toolkit (7.9.601)", "..\..\..\develop\global\build\VC 8.0\WhipToolkit\WhipToolkit.vcproj", "{681750CF-B191-4A41-B92C-0F94599B121D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8BECE007-1749-4300-87D8-267B613AAE6B} = {8BECE007-1749-4300-87D8-267B613AAE6B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAML", "..\..\..\develop\global\build\VC 8.0\XAML\XAML.vcproj", "{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8BECE007-1749-4300-87D8-267B613AAE6B} = {8BECE007-1749-4300-87D8-267B613AAE6B}
+		{681750CF-B191-4A41-B92C-0F94599B121D} = {681750CF-B191-4A41-B92C-0F94599B121D}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug WChar LIB|Win32 = Debug WChar LIB|Win32
+		Debug WChar LIB|x64 = Debug WChar LIB|x64
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release WChar LIB|Win32 = Release WChar LIB|Win32
+		Release WChar LIB|x64 = Release WChar LIB|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug WChar LIB|Win32.ActiveCfg = Debug WChar LIB|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug WChar LIB|Win32.Build.0 = Debug WChar LIB|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug WChar LIB|x64.ActiveCfg = Debug WChar LIB|x64
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug WChar LIB|x64.Build.0 = Debug WChar LIB|x64
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug|Win32.ActiveCfg = Debug WChar|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug|Win32.Build.0 = Debug WChar|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug|x64.ActiveCfg = Debug WChar|x64
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Debug|x64.Build.0 = Debug WChar|x64
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release WChar LIB|Win32.ActiveCfg = Release WChar LIB|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release WChar LIB|Win32.Build.0 = Release WChar LIB|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release WChar LIB|x64.ActiveCfg = Release WChar LIB|x64
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release WChar LIB|x64.Build.0 = Release WChar LIB|x64
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release|Win32.ActiveCfg = Release WChar|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release|Win32.Build.0 = Release WChar|Win32
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release|x64.ActiveCfg = Release WChar|x64
+		{0127ACF4-D48F-4534-8435-694AD52E337D}.Release|x64.Build.0 = Release WChar|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug WChar LIB|Win32.ActiveCfg = Debug (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug WChar LIB|Win32.Build.0 = Debug (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug WChar LIB|x64.ActiveCfg = Debug (Read-Write WChar LIB)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug WChar LIB|x64.Build.0 = Debug (Read-Write WChar LIB)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug|Win32.ActiveCfg = Debug (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug|Win32.Build.0 = Debug (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug|x64.ActiveCfg = Debug (Read-Write WChar LIB)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Debug|x64.Build.0 = Debug (Read-Write WChar LIB)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release WChar LIB|Win32.ActiveCfg = Release (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release WChar LIB|Win32.Build.0 = Release (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release WChar LIB|x64.ActiveCfg = Release (Read-Write WChar LIB)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release WChar LIB|x64.Build.0 = Release (Read-Write WChar LIB)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release|Win32.ActiveCfg = Release (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release|Win32.Build.0 = Release (Read-Write WChar LIB)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release|x64.ActiveCfg = Release (Read-Write WChar LIB)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Release|x64.Build.0 = Release (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug WChar LIB|Win32.ActiveCfg = Debug (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug WChar LIB|Win32.Build.0 = Debug (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug WChar LIB|x64.ActiveCfg = Debug (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug WChar LIB|x64.Build.0 = Debug (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug|Win32.ActiveCfg = Debug (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug|Win32.Build.0 = Debug (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug|x64.ActiveCfg = Debug (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Debug|x64.Build.0 = Debug (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release WChar LIB|Win32.ActiveCfg = Release (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release WChar LIB|Win32.Build.0 = Release (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release WChar LIB|x64.ActiveCfg = Release (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release WChar LIB|x64.Build.0 = Release (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release|Win32.ActiveCfg = Release (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release|Win32.Build.0 = Release (Read-Write WChar LIB)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release|x64.ActiveCfg = Release (Read-Write WChar LIB)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Release|x64.Build.0 = Release (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug WChar LIB|Win32.ActiveCfg = Debug (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug WChar LIB|Win32.Build.0 = Debug (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug WChar LIB|x64.ActiveCfg = Debug (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug WChar LIB|x64.Build.0 = Debug (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug|Win32.ActiveCfg = Debug (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug|Win32.Build.0 = Debug (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug|x64.ActiveCfg = Debug (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug|x64.Build.0 = Debug (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release WChar LIB|Win32.ActiveCfg = Release (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release WChar LIB|Win32.Build.0 = Release (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release WChar LIB|x64.ActiveCfg = Release (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release WChar LIB|x64.Build.0 = Release (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release|Win32.ActiveCfg = Release (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release|Win32.Build.0 = Release (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release|x64.ActiveCfg = Release (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release|x64.Build.0 = Release (Read-Write WChar LIB)|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(SolutionNotes) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,112 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Gouraud Polytriangle</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw Gouraud Polytriangle</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Draw Gouraud Polytriangle</b> function draws a connected chain
+of smoothly (Gouraud) shaded triangles.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="41%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="24%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>(Gouraud</font></font></td>
+
+<td VALIGN=TOP WIDTH="41%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>count</sub>>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>R1</sub>>,&lt;I<sub>G1</sub>>,&lt;I<sub>B1</sub>>,&lt;I<sub>A1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>&lt;ws>&lt;I<sub>R2</sub>>,&lt;I<sub>G2</sub>>,&lt;I<sub>B2</sub>>,&lt;I<sub>A2</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>>&lt;ws>&lt;I<sub>ri</sub>>,&lt;I<sub>gi</sub>>,&lt;I<sub>Bi</sub>>,&lt;I<sub>ai</sub>>]<sup>+</sup>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="24%"><font face="Arial"><font size=-2>Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Single-byte,
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><a NAME="Gouraud"></a><font face="Courier New"><font size=-2>[g]
+(67)</font></font></td>
+
+<td VALIGN=TOP WIDTH="41%"><b><font face="Courier New"><font size=-2>&lt;B<sub>count</sub>>[&lt;US<sub>Ecount</sub>>]&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;UL<sub>C1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;UL<sub>C2</sub>>[&lt;L<sub>xi</sub>>&lt;L<sub>yi</sub>>&lt;UL<sub>Ci</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="24%"><font face="Arial"><font size=-2>Relative coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>[Ctrl-G] (07)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>]&lt;S<sub>X1</sub>>&lt;S<sub>Y1</sub>>&lt;UL<sub>C1</sub>>&lt;S<sub>X2</sub>>&lt;S<sub>Y2</sub>>&lt;UL<sub>C2</sub>>[&lt;S<sub>xi</sub>>&lt;S<sub>yi</sub>>&lt;UL<sub>Ci</sub>>]<sup>+</sup></font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Relative coordinates.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Count</i>&nbsp;&nbsp; The number of triangles to be drawn, which
+is two less than the number of vertices included. In the binary operand
+case, a value of zero indicates that an extended count will follow. In
+the extended ASCII case, <i>count</i> may be any value larger than zero.
+<p><i>Ecount&nbsp;&nbsp; </i>When <i>count</i> is zero, a two-byte extended
+count follows. This allows for Polytriangles of length 256 through 65,791
+which are encoded as an integer in the range 0 to 65,535.
+<p><i>X1,Y1</i>&nbsp;&nbsp; The first vertex (in logical coordinates) of
+the first triangle in the list.
+<p><i>R1,G1,B1,A1</i>&nbsp;&nbsp; The color of the first vertex of the
+first triangle in the list (interpreted as intensities of the red, green,
+blue, and alpha channels, respectively). Legal intensity values range from
+zero to 255.
+<p><i>C1</i>&nbsp;&nbsp; The color of the first vertex of the first triangle
+in the list (interpreted as 4 bytes representing an RGBA color).
+<p><i>X2,Y2</i>&nbsp;&nbsp; The second vertex (in logical coordinates)
+of the first triangle in the list.
+<p><i>R2,G2,B2,A2</i>&nbsp;&nbsp; The color of the second vertex of the
+first triangle in the list.
+<p><i>C2</i>&nbsp; The color of the second vertex in the list (interpreted
+as four bytes representing an RGBA color).
+<p><i>Xi,Yi</i>&nbsp;&nbsp; A vertex (in logical coordinates) in the list
+that, when combined with the previous two vertices, defines the <i>i<sup>th</sup></i> triangle
+in the list.
+<p><i>Ri,Gi,Bi,Ai</i>&nbsp;&nbsp; The color of the <i>i<sup>th</sup></i> vertex in the list.
+<p><i>Ci</i>&nbsp;&nbsp; The color of the <i>i<sup>th</sup></i> vertex
+in the list (interpreted as 4 bytes representing an RGBA color).</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Topologically, a polytriangle is a strip of connected triangles, where
+each successive triangle in the chain is defined by a single vertex and
+two vertices from the previous triangle in the strip as shown in figure
+1.<a NAME="Fig12"></a></ul>
+
+<center><img SRC="Image55.gif" height=183 width=507>
+<p><i><font face="Arial,Helvetica">Figure 1. polytriangle of six points</font></i></center>
+
+<ul>A polytriangle is similar to a polygon, but the polytriangle vertices
+are specified in a special order that allows for well-defined smooth shading
+of the triangle interiors.
+<p>Each triangle is rendered by smoothly interpolating the color from each 
+vertex across the interior.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>If a Gouraud Polytriangle with more than 65,791 triangles is desired,
+it must be drawn by multiple <b>Draw Gouraud Polytriangle</b> opcodes.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

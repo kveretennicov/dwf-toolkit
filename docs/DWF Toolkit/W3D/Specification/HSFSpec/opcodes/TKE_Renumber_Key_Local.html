@@ -1,0 +1,60 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Renumber_Key_Local</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>k</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>6B</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>107</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter"><STRONG>Long</STRONG>&nbsp;value</FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+	<td WIDTH="131" HEIGHT="21">value</td>
+	<td WIDTH="390" HEIGHT="21">key to be associated with the object</td>
+</TR>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3><FONT face="arial,helvetica,sans-serif"><FONT 
+      face=arial,helvetica,sans-serif>This opcode allows the user to associate 
+      user-defined keys (positive signed longs) with geometric items and 
+      segments so that they may be referenced directly with a value meaningful 
+      to the application. A local key value is interpreted relative to the 
+      current context (open segment). 
+      <P>Note,&nbsp;3dGS keys are the same size as a pointer (8 bytes on some 
+      systems), HSF restricts them to 4-byte values.</FONT>
+                   </FONT>
+<hr WIDTH="100%">
+      </P>
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

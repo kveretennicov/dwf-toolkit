@@ -1,0 +1,81 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Viewport</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Viewport</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Viewport</b> function selects a polygonal region of logical
+coordinate space outside of which no primitives are rendered. The function
+affects geometry which follows in the code.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="651" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="14%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="35%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>(Viewport</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;T<sub>Name</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>>]<sup>+</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>Units</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>((&lt;F<sub>M00</sub>>&lt;ws>&lt;F<sub>M01</sub>>&lt;ws>&lt;F<sub>M02</sub>>&lt;ws>&lt;F<sub>M03</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M10</sub>>&lt;ws>&lt;F<sub>M11</sub>>&lt;ws>&lt;F<sub>M12</sub>>&lt;ws>&lt;F<sub>M13</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M20</sub>>&lt;ws>&lt;F<sub>M21</sub>>&lt;ws>&lt;F<sub>M22</sub>>&lt;ws>&lt;F<sub>M23</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>(&lt;F<sub>M30</sub>>&lt;ws>&lt;F<sub>M31</sub>>&lt;ws>&lt;F<sub>M32</sub>>&lt;ws>&lt;F<sub>M33</sub>>))]])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>Specifies a
+clipping region of the current viewing region.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Name&nbsp;&nbsp; </i>The name that identifies the viewport.
+<p><i>Count&nbsp;&nbsp; </i>The number of points that define the viewport.
+When using the binary operand form, a value of zero for <i>count </i>indicates
+that an extended count will follow. In the ASCII operand case, <i>count
+</i>may
+be any value larger than zero.
+<p><i>X<sub>i </sub>,Y<sub>i&nbsp;&nbsp; </sub></i>The <i>i</i><sup>th
+</sup>point
+(in logical coordinates) that circumscribe a region defining the viewport
+<p><i>Units&nbsp;&nbsp; </i>If the viewport is changing the scale of the
+subsequent geometry, then a <a href="DefDwgUnits.html">Units</a> opcode
+will be inserted.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The Viewport opcode specifies a sub-region of the current viewing-region
+with which to clip and scale subsequent viewing primitives until the viewport
+is deactivated.
+<p>To deactivate the viewing region, the Viewport opcode is presented without
+any arguments:
+<dir><font face="Courier New"><font size=-1>(Viewport)</font></font></dir>
+To reactivate a previously defined viewing region, the Viewport opcode
+is presented with only its name:
+<dir><font face="Courier New"><font size=-1>(Viewport 'Uncle Ed's Viewport')</font></font></dir>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>Non-rectangular viewing-regions may be handled by defining the viewport
+region to be non-rectangular.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default no viewing-region is performed and the entire logical coordinate
+space may be viewed.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

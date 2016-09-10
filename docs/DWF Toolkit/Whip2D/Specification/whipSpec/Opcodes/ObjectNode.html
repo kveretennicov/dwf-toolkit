@@ -1,0 +1,275 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Object Node</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Object Node</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>
+
+<p>DWF version 5.0 introduced the Group opcode, used by both AutoCAD and Inventor, to tag geometry as belonging to an object hierarchy.  The group names can be used to provide enhanced features for object display and selection.  Additionally, the group names are used to link the groups to metadata in an external XML file produced with the DWF file during publishing.
+
+<p>The primary drawback in the Group opcode in that it is too bulky.  It was designed to fit into the existing format without causing any compatibility problems.  With WHIP! 6.0, the opportunity to make this a single-byte opcode was taken.
+
+<p>To prevent future complications, the WHIP! 6.0 specification deprecates the Group opcodes.  
+
+<p>The authoring tools (AutoCAD and Inventor) will be responsible for keeping selection information and metadata associated with object nodes in an external file, by referring to the object nodes indicated in the WHIP! data.  The specification and/or schema for such selection and metadata is considered domain-specific and is thus outside the scope of this document.
+ 
+<p>A new single-byte ID opcode has been added to facilitate the referencing of objects.  Since the Object Node opcode is expected to be rather ubiquitous, several different space-saving opcode choices are available:
+
+</ul>
+
+<center>
+<table border=1 cellpadding=0 width="75%"
+ style='width:75%;mso-cellspacing:1.5pt;border:outset black 1.0pt;
+ mso-border-alt:outset black .75pt;mso-padding-alt:6.75pt 6.75pt 6.75pt 6.75pt'>
+ <tr style='mso-yfti-irow:0'>
+  <td width="25%" valign=top style='width:25.4%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;background:navy;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;color:white;mso-fareast-language:ZH-CN'>Opcode format</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="12%" valign=top style='width:12.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;background:navy;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;color:white;mso-fareast-language:ZH-CN'>Opcode</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'> <o:p></o:p></span></p>
+  <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+  style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:SimSun;
+  color:white;mso-fareast-language:ZH-CN'>[ASCII] (Hex)</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="33%" valign=top style='width:33.92%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;background:navy;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;color:white;mso-fareast-language:ZH-CN'>Operand Format</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="26%" valign=top style='width:26.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;background:navy;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;color:white;mso-fareast-language:ZH-CN'>Comments</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width="25%" valign=top style='width:25.4%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>Extended ASCII</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="12%" valign=top style='width:12.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:"Courier New";
+  mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>(Node</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="33%" valign=top style='width:33.92%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><b><span style='font-size:7.5pt;font-family:"Courier New";
+ mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>&lt;ws&gt;&lt;I<sub>NodeNum</sub>&gt;[&lt;ws&gt;&lt;T<sub>NodeName</sub>&gt;])</span></b><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="26%" valign=top style='width:26.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>ASCII readable integer, optional string
+  name</span><span style='font-size:12.0pt;mso-fareast-font-family:SimSun;
+  mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width="25%" valign=top style='width:25.4%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>Single-byte, binary operand<o:p></o:p></span></p>
+  </td>
+  <td width="12%" valign=top style='width:12.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:"Courier New";
+  mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>[</span><span
+  style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:SimSun;
+  mso-fareast-language:ZH-CN'>N</span><span style='font-size:7.5pt;font-family:
+  "Courier New";mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>]
+  (4E)<o:p></o:p></span></p>
+  </td>
+  <td width="33%" valign=top style='width:33.92%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><b><span style='font-size:7.5pt;font-family:"Courier New";
+  mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>&lt;UL<sub>NodeNum</sub>&gt;<o:p></o:p></span></b></p>
+  </td>
+  <td width="26%" valign=top style='width:26.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>32-bit unsigned integer (absolute value)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width="25%" valign=top style='width:25.4%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>Single-byte, binary operand</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="12%" valign=top style='width:12.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:"Courier New";
+  mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>[n] (6E)</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="33%" valign=top style='width:33.92%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><b><span style='font-size:7.5pt;font-family:"Courier New";
+  mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>&lt;S<sub>NodeNum</sub>&gt;</span></b><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="26%" valign=top style='width:26.48%;border:inset black 1.0pt;
+  mso-border-alt:inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>16-bit signed relative offset</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes'>
+  <td width="25%" style='width:25.4%;border:inset black 1.0pt;mso-border-alt:
+  inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>Single-byte, binary operand</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'> <o:p></o:p></span></p>
+  </td>
+  <td width="12%" style='width:12.48%;border:inset black 1.0pt;mso-border-alt:
+  inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:"Courier New";
+  mso-fareast-font-family:SimSun;mso-fareast-language:ZH-CN'>[</span><span
+  style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:SimSun;
+  mso-fareast-language:ZH-CN'>Ctrl-N</span><span style='font-size:7.5pt;
+  font-family:"Courier New";mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'>] (0E)</span><span style='font-size:12.0pt;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'><o:p></o:p></span></p>
+  </td>
+  <td width="33%" style='width:33.92%;border:inset black 1.0pt;mso-border-alt:
+  inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:12.0pt;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width="26%" style='width:26.48%;border:inset black 1.0pt;mso-border-alt:
+  inset black .75pt;padding:6.75pt 6.75pt 6.75pt 6.75pt'>
+  <p class=MsoNormal><span style='font-size:7.5pt;font-family:Arial;mso-fareast-font-family:
+  SimSun;mso-fareast-language:ZH-CN'>Auto increment +1 from previous node value</span><span
+  style='font-size:12.0pt;mso-fareast-font-family:SimSun;mso-fareast-language:
+  ZH-CN'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+</center>
+</div>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><i>NodeNum</i> The node number which will
+be assigned to the geometric primitives that are subsequently created.</span> A
+NodeNum of zero indicates that no node attribute will be applied to subsequent
+primitives (until the next node is encountered, of course).<span
+style='mso-spacerun:yes'>  </span>In ASCII form, the highest node number
+allowed is 4294967295.</p>
+
+<p class=MsoNormal style='margin-left:.5in'><i>NodeName</i> An optional ASCII text string that names the
+node number specified.</p>
+
+<p class=MsoNormal><span style='font-family:"Arial Black"'>Details</span> </p>
+
+<p class=MsoNormal style='margin-left:.5in'>Opcodes<span style='mso-tab-count:
+1'></span> in a <i>.dwf</i> file can be assigned to a specific
+node, which is a grouping of opcodes that can later be referenced from external
+metadata.<span style='mso-spacerun:yes'>  </span>For example, in a mechanical
+drawing, a node can be used to specify multiple primitives belonging to a
+particular part.<span style='mso-spacerun:yes'>  </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'>To put it plainly, the node
+attribute is essentially another layering mechanism (albeit without visibility
+control).</p>
+
+<p class=MsoNormal style='margin-left:.5in'>A node attribute is attached to a
+specific set of opcodes by surrounding them with a pair of <b>Node </b>opcodes:
+the first with a Node<i>Num</i> (and optionally a <i style='mso-bidi-font-style:
+normal'>NodeName</i>) specified and the second with a zero <i>NodeNum</i>: </p>
+
+<p class=MsoNormal style='margin-left:.5in'>
+<table border=0>
+<tr>
+    <td><tt>(Node 1 ‘Door‘)</tt></td>
+    <td>The node will be attached to subsequent geometry.</td></tr>
+<tr>
+    <td><tt>L 10,10 35,35</tt></td>
+    <td>This line is attached to node 1, the Door node.</td></tr>
+<tr>
+    <td><tt>L 0,10 30,30</tt></td>
+    <td>This line is attached to node 1, the Door node.</td></tr>
+<tr>
+    <td><tt>(Node 0)</tt></td>
+    <td>Subsequent geometry will not be attached to a node.</td></tr>
+<tr>
+    <td><tt>L 40,40 75,75</tt></td>
+    <td>This line is not be attached to a node.</td></tr>
+</table>
+<br>
+As with layers, only one node is active at a time. If a node is active in a <i>.dwf</i>
+file and a second node is specified, only the second node “takes over” and
+applies to subsequent geometric primitives.</p>
+
+<p class=MsoNormal><span style='font-family:"Arial Black"'>Notes</span> </p>
+
+<p class=MsoNormal style='margin-left:.5in'>A geometric primitive has a maximum
+of one node attached to it.<span style='mso-spacerun:yes'>  </span>Also,
+primitaves in nodes may reside on different layers.<span
+style='mso-spacerun:yes'>  </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'>Nodes do <i>not</i> affect the
+drawing order of geometric primitives. It is possible to have two nodes where
+some primitives of the first node are drawn before some primitives of the
+second node and vice versa. To accomplish this, return to a given node after
+specifying contents for another node. For example, three lines are drawn in the
+order in which they appear in the file: </p>
+
+<p class=MsoNormal style='margin-left:.5in'>
+<table border=0>
+<tr>
+    <td><tt>(Node 1 ‘Door‘)</tt></td>
+    <td>The node will be attached to subsequent geometry.</td></tr>
+<tr>
+    <td><tt>L 10,10 35,35</tt></td>
+    <td>This line is attached to node 1, the Door node.</td></tr>
+<tr>
+    <td><tt>(Node 2 ‘Window‘)</tt></td>
+    <td>Subsequent geometry uses node 2.</td></tr>
+<tr>
+    <td><tt>L 0,20 20,20</tt></td>
+    <td>This line is on node 2, the Window node.</td></tr>
+<tr>
+    <td><tt>(Node 1)</tt></td>
+    <td>Return to node 1.</td></tr>
+<tr>
+    <td><tt>L 20,10 45,35</tt></td>
+    <td>This line is attached to node 1, the Door node.</td></tr>
+</table>
+
+</body>
+</html>

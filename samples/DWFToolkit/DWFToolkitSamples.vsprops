@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="DWFToolkitSamples"
+	InheritedPropertySheets="..\Configure.vsprops;.\$(Platform).vsprops"
+  OutputDirectory="$(StaticOrShared)_$(DebugOrRelease)_$(VCOutDir)_$(Platform)"
+  IntermediateDirectory="$(StaticOrShared)_$(DebugOrRelease)_$(VCOutDir)_$(Platform)"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="DWFTK_USE_DWFCORE_ZLIB"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalDependencies="dwfcore_wt.$(DWFCoreVersion).lib dwftk_wt.$(DWFToolkitVersion).lib w3dtk_wt.$(W3DToolkitVersion).lib"
+	/>
+</VisualStudioPropertySheet>

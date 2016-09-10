@@ -1,0 +1,60 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Current Point</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Current Point</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Current Point</b> function updates the value of the <i>CurrentPoint</i>
+variable that is used in conjunction with opcodes that are using relative
+logical coordinates.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="645" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="44%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Single-byte,
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>[O] (4F)</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><b><font face="Courier New"><font size=-2>&lt;UL<sub>X</sub>>&lt;UL<sub>Y</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="44%"><font face="Arial"><font size=-2>Updates <i>CurrentPoint</i>
+Origin variable</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>X,Y</i> The new logical coordinate origin to assign to the <i>CurrentPoint</i>
+variable</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Sets the <i>CurrentPoint</i> variable (also called the origin) to an
+absolute logical coordinate. This opcode is often used just prior to 16-bit
+relative-coordinate drawing primitives to define the 16-bit relative space
+within the 32-bit absolute space.. The <i>CurrentPoint</i> variable is
+used by drawing opcodes as an offset to convert relative logical coordinates
+to absolute logical coordinates.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>The default <i>CurrentPoint</i> is set at the logical coordinate space
+origin (0,0).</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

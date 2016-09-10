@@ -1,0 +1,554 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Compressed Data</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Compressed Data</font></i></b>
+<p>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>The <b>Define Compressed Data</b> function contains a compressed WHIP! data
+stream of opcode/operand pairs.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="654" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+Binary</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>0x0010</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;D>]<sup>*</sup>}</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>Starts
+a compressed WHIP! data stream.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>0x0123</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>[&lt;D>]<sup>*</sup>}</font></font></b></td>
+
+<td><font face="Arial"><b><font size=-1>Obsolete </font></b><font size=-2>opcode
+for DWF files of version v00.30 or lower. Starts a compressed DWF stream.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+Binary</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>0x0011</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;D>]<sup>*</sup>}</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>Starts
+a zlib compressed WHIP! data stream.</font></font></td>
+</tr>
+</table></center>
+
+<p><font face="Arial Black"><font size=-1>Notes</font></font>
+<dir>In order to read/write WHIP! data, the user needs the zlib source.
+See <a href="ftp://ftp.freesoftware.com/pub/infozip/zlib/">ZLIB compression
+documentation and source code</a>. ZLIB has also been submitted and is
+available as
+<a href="http://www.cis.ohio-state.edu/htbin/rfc/rfc1950.html">RFC
+1950</a>.</dir>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>This opcode allows for data compression in WHIP! data. The
+operand of the <b>Define Compressed Data</b> opcode is simply a compressed
+version of a normal WHIP! data stream of opcodes and operands. A WHIP! data reading application
+should decode the compressed data (the input stream) into an uncompressed
+form (the output stream) and execute the opcodes contained therein. In
+the process of decoding, a "history buffer" is maintained of the last 65,536
+bytes that were transferred into the output stream.
+<p>Compression is achieved by finding repeating sequences of data and substituting
+shorter codes for these repeating patterns. WHIP! data’s use of relative logical
+coordinates for many drawing opcodes increases the number of repeating
+data sequences that may be compressed.
+<p>In the encoded stream, shown repeating in figure 1, each square represents
+one byte of data.<a NAME="Fig4"></a></dir>
+
+<center><img SRC="Image28b.gif" height=349 width=667>
+<p><i><font face="Arial,Helvetica">Figure 1. The encoded stream</font></i></center>
+
+<dir>Following the <b>Define Compressed Data</b> opcode, the operand (the
+compressed data stream) begins with a <i>compression code</i> byte (see
+figure 1), which is divided into two 4-bit parts. The lower four bits of
+the <i>compression code</i>, called the <i>literal data run length</i>,
+indicate how many bytes of literal data will follow, while the upper four
+bits, called the <i>compressed data run length</i>, indicate how many bytes
+of the original data stream were compressed by replacing them with an <i>offset
+code</i>.
+<p>The range of the four-bit <i>literal data run length</i> value includes
+the following:</dir>
+
+<ul>
+<ul>
+<li>
+0 indicates that no <i>literal data</i> sequence of bytes or <i>extended
+literal run length</i> byte will follow, and that the next byte will be
+either an <i>offset code</i> or an <i>extended compressed run length</i>
+byte.</li>
+
+<li>
+1 to 14 indicates that this number of <i>literal data</i> bytes will follow.</li>
+
+<li>
+15 indicates that an <i>extended literal run length</i> byte will follow,
+whose 0 to 255 range is interpreted as a literal data run length in the
+range 15 to 270.</li>
+</ul>
+</ul>
+
+<dir>
+<dir>For each literal byte in the input stream’s sequence, if there are
+any, the decompressor simply copies the byte to the output stream directly,
+and updates the history buffer accordingly.
+<p>The range of the four-bit <i>compressed data run length</i> value includes
+the following:</dir>
+</dir>
+
+<ul>
+<ul>
+<li>
+0 indicates that no data could be compressed at this stage, and thus the
+next byte following the <i>literal data</i> sequence will be yet another
+<i>compression
+code</i> byte, whereby the decompression process repeats.</li>
+
+<li>
+1 to 14 indicates that a string of 4 to 17 bytes was replaced (compressed)
+in the input stream by a two byte <i>offset code</i> that immediately follows
+any <i>literal data</i>.</li>
+
+<li>
+15 indicates that an <i>extended compressed run length</i> byte will immediately
+follow any <i>literal data</i> which in turn will be followed by a two
+byte <i>offset code</i>. The <i>extended compressed run length</i> byte’s
+range of 0 to 255 is interpreted as a compressed run length of 18 to 273.</li>
+</ul>
+</ul>
+
+<dir>
+<dir>Following the <i>offset code</i>, if any, is yet another <i>compression
+code</i> byte that repeats the entire decompression sequence.
+<p>To decompress the data to the output stream, the <i>offset code</i>
+is used as an index into the "history buffer". The WHIP! data reading application
+simply copies the specified number of bytes from the history buffer into
+the output stream starting at the position indicated by the
+<i>offset code</i>,
+where an <i>offset code</i> of zero selects the youngest byte in the history
+buffer. Just as with <i>literal data</i>, as bytes are copied to the output
+stream they should also be added to the end of the history buffer.
+<p>The entire repeating sequence of compression data is terminated whenever
+a <i>compression code</i> has a value of zero, that is, when both the <i>compressed
+data run length</i> value is zero and the <i>literal data run length value</i>
+is zero. This zero valued <i>compression code</i> terminates the operand
+of the <b>Define Compressed Data</b> opcode, and is followed by the normal
+extended binary termination character, "<font face="Courier New">}</font>".</dir>
+</dir>
+<font face="Arial Black"><font size=-1>Example</font></font>
+<dir>Table 1 shows an example of how the string "<font face="Courier New"><font size=-1>SHE
+SELLS SEASHELLS BY THE SEASHORE</font></font>" would be compressed:</dir>
+
+<center><a NAME="Tabl7"></a><i><font face="Arial,Helvetica">Table 1. String
+compression example</font></i></center>
+
+<p><br>
+<center><table BORDER CELLPADDING=9 WIDTH="735" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="11%" BGCOLOR="#000080"><b><font face="Arial Narrow"><font color="#FFFFFF"><font size=-1>Original</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="14%" BGCOLOR="#000080"><b><font face="Arial Narrow"><font color="#FFFFFF"><font size=-1>ASCII
+(Hex)</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><b><font face="Arial Narrow"><font color="#FFFFFF"><font size=-1>Compressed
+(Hex)</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="55%" BGCOLOR="#000080"><b><font face="Arial Narrow"><font color="#FFFFFF"><font size=-1>Comments</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>2F</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Compression
+code, 5 compressed bytes, and an "extended" number of literal bytes.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>H</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>48</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>00</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Extended literal
+run length of 15.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>S</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%">-</td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>48</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>H</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>E</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%">-</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>L</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>4C</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>S</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>L</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>4C</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>E</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>4C</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>L</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%">-</td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>4C</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>L</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>S</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%">-</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>A</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>41</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>S</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>E</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>H</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>48</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>41</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>A</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>S</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>L</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>4C</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>48</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>H</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>L</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>4C</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>09</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Two byte (little-endian)
+offset code of 0009 into the history buffer.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>00</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%">-</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%">-</td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>24</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Compression
+code, 5 compressed bytes and 4 literal bytes.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>B</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>42</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>42</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>B</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>Y</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>59</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>59</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Y</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%">-</td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%">-</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>T</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>54</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>54</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>T</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>H</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>48</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>16</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Two byte (little-endian)
+offset code of 0016 into the history buffer.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>00</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%">-</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%">-</td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>20</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>06</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Compression
+code, 0 compressed bytes, 6 literal bytes.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>41</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>A</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>S</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>A</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>41</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>48</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>H</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>S</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>53</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>4F</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>O</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>H</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>48</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>52</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>R</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>O</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>4F</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>E</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>R</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>52</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>00</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>Compression
+code terminator (zero compressed bytes, zero literal bytes).</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%"><font face="Courier New"><font size=-2>E</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>45</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>7D</font></font></td>
+
+<td VALIGN=TOP WIDTH="55%"><font face="Arial"><font size=-2>} character
+(Extended binary opcode trailer).</font></font></td>
+</tr>
+</table></center>
+
+<dir><b>Note:</b> longer strings would, of course, get much higher compression
+ratios.</dir>
+
+<p><br>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

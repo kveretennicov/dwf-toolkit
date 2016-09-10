@@ -1,0 +1,1 @@
+This sample shows how to use ZipDescriptor to write a zip package from buffered data or an existing file. 

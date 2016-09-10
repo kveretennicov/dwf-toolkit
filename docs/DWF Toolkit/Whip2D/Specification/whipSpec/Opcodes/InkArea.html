@@ -1,0 +1,83 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Inked Area - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Inked Area - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Inked Area</b> opcode specifies a rectangle, in logical coordinates,
+in which all of the WHIP! data’s geometric primitives fit tightly
+inside.&nbsp; Prior to encountering or drawing the drawables, this opcode
+gives the WHIP! data readers or viewers an idea of the rectangle within which
+all the drawables, in that WHIP! data, would fit.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="646" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="14%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="36%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="14%"><font face="Courier New"><font size=-2>(InkedArea</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="36%"><font face="Arial"><font size=-2>Defines bounding
+rectangle for the drawing</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>X1,Y1</i>&nbsp;&nbsp; The logical coordinates of the lower-left
+corner of the drawing’s bounding box
+<p><i>X2,Y2</i>&nbsp;&nbsp; The logical coordinates of the upper-right
+corner of the drawing’s bounding box</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Some WHIP! data reading applications may need to "know" where in the logical
+coordinate space the geometric primitives will be located. This information
+can be used, for example, to aid in the selection of an initial view of
+the file.
+<p>Only extended ASCII format is supported for this opcode.&nbsp; This
+opcode can occur only once in WHIP! data, at the very top,&nbsp;
+just after the WHIP! header as shown following:
+<pre>(DWF V00.50)
+(InkedArea 00000000319,00000000335 00000002897,00000000335&nbsp;
+00000002897,00000003457 00000000319,00000003457)</pre>
+</ul>
+
+<ul>In many cases, a WHIP! data writing application may not know in advance what
+the bounds of the drawing will be until after all the geometric primitives
+have been written. The toolkit has a mechanism of remembering the original
+place (where the opcode gets written first) and subsequently seeks back
+to the same place to update the bounding rectangle. This way, the toolkit
+ensures that the opcode gets written only once in WHIP! data , specifyies
+the boundary in logical co-rodinates and tightly bounds the geometric primitives.
+<p>Header Block and Inked Area
+<br>Every header block must have an <b>Inked Area</b> opcode returned as
+part of the header blockref representing the inked area of the corresponding
+graphic block. For more information, see the <b><a href="BlockRef.html#GraphicHdr">Graphic
+Header</a>, <a href="BlockRef.html#OverlayHdr">Overlay Header</a> </b>and<b>
+<a href="BlockRef.html#RedlineHdr">Redline Header</a> </b>BlockRefs.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the drawing bounds include the entire logical coordinate
+space, which a WHIP! data reader may recompute once the
+file has been fully parsed.</ul>
+
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

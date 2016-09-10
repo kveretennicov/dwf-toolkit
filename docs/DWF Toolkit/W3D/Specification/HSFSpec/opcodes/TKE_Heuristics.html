@@ -1,0 +1,188 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Heuristics</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>H</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>48</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>72</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Variable</STRONG>&nbsp;mask, 
+      <STRONG>Variable</STRONG>&nbsp;value,<br>
+	  <STRONG>[Long</STRONG>&nbsp;related_limit<STRONG>]</STRONG>, 
+      <STRONG>[Long</STRONG>&nbsp;internal_limit<STRONG>]</STRONG>,
+      <STRONG>[Byte</STRONG>&nbsp;details<STRONG>]</STRONG>
+      <STRONG>[Byte</STRONG>&nbsp;culling<STRONG>]</STRONG>
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<tr>
+    <td height=21 width=131>mask</TD>
+    <td height=21 width=390>bitmask of options which are specified, <STRONG>Short</STRONG>,
+						    if high bit set a second <STRONG>Short</STRONG> follows</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>value</TD>
+    <td height=21 width=390>bitmask of options which are set <em>on</em>, <STRONG>Short</STRONG>,
+						    if high bit of mask set a second <STRONG>Short</STRONG> follows</TD>
+	</tr>
+<TR>
+    <TD height=21 width=131>related_limit</TD>
+    <TD height=21 width=390>number of additional geometry entities to record which also satisfy selection criteria</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>internal_limit</TD>
+    <TD height=21 width=390>number of geometry components within a selected entity (ie, faces and edges
+							 within a shell) to record in addition to the "best" one</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>details</TD>
+    <TD height=21 width=390>bitmask to clarify a couple of the options which aren't simply <em>on/off</em></TD>
+	</TR>
+<tr>
+    <td height=21 width=131>culling</TD>
+    <td height=21 width=390>bitmask of culling options</TD>
+	</tr>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+      <font face="arial,helvetica,sans-serif">Heuristics provide hints on how you may improve drawing speed. Some options may change the
+	  appearance of the drawing, such as <em>quick moves</em> using <strong>Xor</strong> drawing mode or <em>partial
+	  erase</em> leaving holes in the 
+      drawing.&nbsp; For the specific definitions on what these 
+      mean in HOOPS/3dGS please refer to the 
+      <A href = "../../Hoops3DGS/ref_manual/csetd_l.htm#st21">Set_Heuristics</A> specification in the 3dGS Reference Manual.
+	  <p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Mask/Value bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>00000001</TD>
+		<TD height=21 width=390>Hidden Surfaces</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000002</td>
+		<td WIDTH=390 HEIGHT=21>Backplane Cull</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000004</td>
+		<td WIDTH=390 HEIGHT=21>Polygon Handedness, <em>details</em> field will be present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000008</td>
+		<td WIDTH=390 HEIGHT=21>Quick Moves, <em>details</em> field will be present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000010</td>
+		<td WIDTH=390 HEIGHT=21>Partial Erase</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000020</td>
+		<td WIDTH=390 HEIGHT=21>Memory Purge</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000040</td>
+		<td WIDTH=390 HEIGHT=21>Related selection limit, <em>related_limit</em> field will be present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000080</td>
+		<td WIDTH=390 HEIGHT=21>Internal selection limit, <em>internal_limit</em> field will be present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000100</td>
+		<td WIDTH=390 HEIGHT=21>Clipping</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000200</td>
+		<td WIDTH=390 HEIGHT=21>Transformations</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000400</td>
+		<td WIDTH=390 HEIGHT=21>Intersecting Polygons</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000800</td>
+		<td WIDTH=390 HEIGHT=21>Polygons Crossings</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00001000</td>
+		<td WIDTH=390 HEIGHT=21>Concave Polygons</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00002000</td>
+		<td WIDTH=390 HEIGHT=21>Incremental Updates</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00004000</td>
+		<td WIDTH=390 HEIGHT=21>Selection Sorting</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00008000</td>
+		<td WIDTH=390 HEIGHT=21>Extended mask/value size</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00010000</td>
+		<td WIDTH=390 HEIGHT=21>Culling</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Detail bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>01</TD>
+		<TD height=21 width=390>Polygons Handedness is <strong>left</strong> if set,
+								 <strong>right</strong> otherwise</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>02</td>
+		<td WIDTH=390 HEIGHT=21>Quick Moves is to use <strong>spriting</strong> if set,
+								 <strong>Xor/overlay</strong> otherwise</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Culling bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>01</TD>
+		<TD height=21 width=390>View Frustum culling should be used</TD>
+		</TR>
+	</table>
+	<p>
+
+</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

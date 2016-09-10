@@ -1,0 +1,1 @@
+This sample shows how to get information about properties and sections in package. 

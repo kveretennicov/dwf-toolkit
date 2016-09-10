@@ -1,0 +1,471 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Set Font</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Font</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Font </b>function specifies a description of a font to be
+used when displaying subsequent text output. Not all sub-options need be
+specified. For sub-options that are not specified, the previously active
+values should be maintained.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="22%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="22%"><font face="Courier New"><font size=-2>(Font</font></font></td>
+
+<td VALIGN=TOP WIDTH="34%"><b><font face="Courier New"><font size=-2>[&lt;ws>(Name&lt;ws>&lt;T<sub>Font</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Charset&lt;ws>&lt;T<sub>Charset</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Pitch&lt;ws>&lt;T<sub>Pitch</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Family&lt;ws>&lt;T<sub>Family</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Style[&lt;ws>bold][&lt;ws>italic])]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Height&lt;ws>&lt;I<sub>Height</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Widthscale&lt;ws>&lt;I<sub>Widthscale</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Spacing&lt;ws>&lt;I<sub>Spacing</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Oblique&lt;ws>&lt;I<sub>Oblique</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(Flags&lt;ws>&lt;I<sub>Flags</sub>>)]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;R<sub>Description</sub>>]<sup>*</sup>\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="26%"><font face="Arial"><font size=-2>Select the
+best matching font from the supplied description.</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>Single-byte, binary operand</font></font></td>
+
+<td><font face="Courier New"><font size=-2>[Ctrl-F] (06)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Fields</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;T<sub>Font</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Charset</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Pitch</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Family</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Style</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;UL<sub>Height</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;US<sub>Rotation</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;US<sub>Widthscale</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;US<sub>Spacing</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;US<sub>Oblique</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;UL<sub>Flags</sub>>]</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Select the best matching font from
+the supplied description.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Fields</i>&nbsp;&nbsp; When using the binary opcode form, each bit
+of this value indicates which of the optional font sub-options will be
+subsequently specified (see below for bit definitions).
+<p><i>Font</i>&nbsp;&nbsp; The name of the specific font that is desired.
+If this font is not available, then the specified font attributes should
+be used to find the closest available font.
+<p><i>Charset</i>&nbsp;&nbsp; Used for font matching, the desired font
+should support the specified character set (see below).
+<p><i>Pitch</i>&nbsp;&nbsp; Used for font matching, the desired font should
+have the specified pitch (see below).
+<p><i>Family</i>&nbsp;&nbsp; Used for font matching, the desired font should
+be from the specified family (see below).
+<p><i><tt>Style&nbsp;&nbsp; </tt></i>Used for font matching, allows the
+specification of <b>bold </b>and/or <i>italic </i>styled fonts.
+<p><i><tt>Height&nbsp;&nbsp; </tt></i>The desired height of the font measured
+in logical coordinates.
+<p><i><tt>Rotation&nbsp;&nbsp; </tt></i>The desired rotation of the font
+(measured in 360/65636<sup>ths</sup> of a degree) from horizontal.
+<p><i><tt>Widthscale&nbsp;&nbsp; </tt></i>The desired width scaling (multiplied
+by 1024) to be applied to the basic font . A value of 1024 indicates no
+scaling, whereas 2048 indicates a font twice as wide as normal, and 512
+indicates a font 1/2 as wide as normal. May range from a value of one (1/1024
+of normal) to 65535 (64 times normal).
+<p><i><tt>Spacing&nbsp;&nbsp; </tt></i>The desired inter-character- spacing
+scale (multiplied by 1024) to be applied to the basic font . A value of
+1024 indicates normal inter-character spacing, whereas 2048 indicates spacing
+that is twice as wide as normal, and 512 indicates spacing that is 1/2
+as wide as normal. May range from a value of one (1/1024 of normal) to
+65535 (64 times normal).
+<p><i><tt>Oblique&nbsp;&nbsp; </tt></i>The desired rotation of the individual
+<i>characters
+</i>within
+the font (measured in 360/65636<sup>ths</sup> of a degree). Note that <i>rotation
+</i>describes how the entire string is rotated.
+<p><i>Flags</i>&nbsp;&nbsp; Flag bits reserved for the WHIP! data generator’s
+use. Currently the AutoCAD DWF ePlot driver uses this field to set one
+or more of the following flags:
+<ul>
+<pre>VERTICAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x0001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TVERT
+MIRROR_X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x0002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TXMIR
+MIRROR_Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x0004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TYMIR
+UNDERSCORE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x0008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TUNDER
+OVERSCORE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x0010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TOVER
+MTEXT_START&nbsp;&nbsp;&nbsp;&nbsp; 0x0020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TMSTART
+MTEXT_END&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x0040&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TMEND
+MTEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x0080&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TMTEXT
+GREEK_TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Whip and GDI font engine only
+PATH_TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Whip and GDI font engine only
+OUTLINE_TEXT&nbsp;&nbsp;&nbsp; 0x4000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Outline Text Only</pre>
+</ul>
+Volo view and VoloView Express interpret this flag field in an AutoCAD
+text context.
+<p><i>Description</i>&nbsp;&nbsp; Any number of other application specific
+font attributes may be recursively specified (in the ASCII opcode form)
+in order to support the font matching process. WHIP! data reading applications
+may ignore these extra font options if they are not recognized.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>This opcode is used to select a font for subsequent text operations.
+Since the system that is reading the WHIP! data may not have the same
+fonts resources available as the system that generated the WHIP! data file,
+font substitution may be necessary. This opcode defines a known set of
+font description attributes, but WHIP! data writing applications may supplement
+these with their own additional descriptions (such as Panose values).
+<p>The <i>Charset</i> attribute gives the WHIP! data reading application a hint
+as to what type of characters will be needed by subsequent <b><a href="DrwTxt.html">Draw
+Text</a></b> operations (which are normally specified in Unicode). On systems
+with a wide array of Unicode based fonts, this value may be ignored. On
+systems with few Unicode fonts, the font matching process should give a
+high priority to finding a font that supports the selected character set.
+Although any value may be used, common values for <i>Charset</i> include:<a NAME="Tbl1CharacterSetMapping"></a>
+<br>&nbsp;
+<center><table BORDER >
+<caption><i><font face="Arial,Helvetica">Table 1. Character Set Mapping</font></i></caption>
+
+<tr>
+<td>
+<ul>
+<ul><b>ASCII <i>Charset </i>Value</b></ul>
+</ul>
+</td>
+
+<td>
+<ul>
+<ul><b>Binary <i>Cs </i>Value </b>(hex)</ul>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font size=-1>ANSI</font></tt></td>
+
+<td>
+<ul><tt>0x00</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>DEFAULT</tt></td>
+
+<td>
+<ul><tt>0x01</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>SYMBOL</tt></td>
+
+<td>
+<ul><tt>0x02</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>MAC</tt></td>
+
+<td>
+<ul><tt>0x4D</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>SHIFTJIS</tt></td>
+
+<td>
+<ul><tt>0x80</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>HANGEUL</tt></td>
+
+<td>
+<ul><tt>0x81</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>JOHAB</tt></td>
+
+<td>
+<ul><tt>0x82</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>GB2312</tt></td>
+
+<td>
+<ul><tt>0x86</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>CHINESEBIG5</tt></td>
+
+<td>
+<ul><tt>0x88</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>GREEK</tt></td>
+
+<td>
+<ul><tt>0xA1</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>TURKISH</tt></td>
+
+<td>
+<ul><tt>0xA2</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>VIETNAMESE</tt></td>
+
+<td>
+<ul><tt>0xA3</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>HEBREW</tt></td>
+
+<td>
+<ul><tt>0xB1</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>ARABIC</tt></td>
+
+<td>
+<ul><tt>0xB2</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>BALTIC</tt></td>
+
+<td>
+<ul><tt>0xBA</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>RUSSIAN</tt></td>
+
+<td>
+<ul><tt>0xCC</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>THAI</tt></td>
+
+<td>
+<ul><tt>0xDE</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>EASTEUROPE</tt></td>
+
+<td>
+<ul><tt>0xEE</tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt>OEM</tt></td>
+
+<td>
+<ul><tt>0xFF</tt></ul>
+</td>
+</tr>
+</table></center>
+
+<p>Pitch describes how the characters of a font are positioned in a string.
+This attribute is used in the font matching process between what the WHIP! data 
+reading application has available and what the WHIP! data writing application
+specifies. Legal values for <i>Pitch </i>include:
+<ul>
+<li>
+"<tt>fixed</tt>" - suggests that the matched font have characters that
+are all of the same width</li>
+
+<li>
+"<tt>variable</tt>" - suggests that the matched font have characters that
+are proportionally spaced (variable width characters)</li>
+
+<li>
+"<tt>default</tt>" - the suggested pitch is defined by the system.</li>
+</ul>
+
+<p><br>A font "family" describes the overall style of a font, and is used
+in the font matching process. Legal values for <i>Family </i>include:
+<ul>
+<li>
+"<tt>roman</tt>" - proportional serif fonts (ex. "Times Roman")</li>
+
+<li>
+"<tt>swiss</tt>" - proportional sans-serif fonts (ex. "Helvetica")</li>
+
+<li>
+"<tt>modern</tt>" - (ex. "Courier")</li>
+
+<li>
+"<tt>script</tt>" - fonts that appear hand-written</li>
+
+<li>
+"<tt>decorative</tt>" - (ex. "Old English")</li>
+
+<li>
+"<tt>unknown</tt>" - the WHIP! data writing application was unsure of the font
+family being used</li>
+</ul>
+When using the binary version of the <b>Set Font</b> opcode, the pitch,
+family, bold, and italic attributes are bit-encoded into a byte (the <i>Style
+</i>byte).
+Pitch is stored in the two low order bits (bits 0 and 1), the bold setting
+is stored in bit 2, the italic setting is stored in bit 3, and the family
+setting is stored in the 4 high-order bits as follows:<a NAME="Tbl2FontAttributes"></a>
+<center>
+<p><i><font face="Arial,Helvetica">Table 2. Font Attributes</font></i></center>
+
+<p><br>
+<center><table BORDER >
+<tr>
+<td>
+<ul><b>Font Attribute</b></ul>
+</td>
+
+<td>
+<ul><b>Binary bit value</b></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#0000FF">fixed</font></tt></td>
+
+<td>
+<ul><tt><font color="#0000FF">0x01</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#0000FF">variable</font></tt></td>
+
+<td>
+<ul><tt><font color="#0000FF">0x02</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#0000FF">default</font></tt></td>
+
+<td>
+<ul><tt><font color="#0000FF">0x00</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#800000">bold</font></tt></td>
+
+<td>
+<ul><tt><font color="#800000">0x04</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#800080">italic</font></tt></td>
+
+<td>
+<ul><tt><font color="#800080">0x08</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#008000">roman</font></tt></td>
+
+<td>
+<ul><tt><font color="#008000">0x10</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#008000">swiss</font></tt></td>
+
+<td>
+<ul><tt><font color="#008000">0x20</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#008000">modern</font></tt></td>
+
+<td>
+<ul><tt><font color="#008000">0x30</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#008000">script</font></tt></td>
+
+<td>
+<ul><tt><font color="#008000">0x40</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#008000">decorative</font></tt></td>
+
+<td>
+<ul><tt><font color="#008000">0x50</font></tt></ul>
+</td>
+</tr>
+
+<tr>
+<td><tt><font color="#008000">unknown</font></tt></td>
+
+<td>
+<ul><tt><font color="#008000">0x00</font></tt></ul>
+</td>
+</tr>
+</table></center>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

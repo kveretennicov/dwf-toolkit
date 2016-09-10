@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'SimpleEnumReader' target in the 'SimpleEnumReader' project.
+//
+
+#include <Carbon/Carbon.h>

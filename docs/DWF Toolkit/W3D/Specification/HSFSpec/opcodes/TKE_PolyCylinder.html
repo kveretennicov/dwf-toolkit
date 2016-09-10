@@ -1,0 +1,134 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_PolyCylinder</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>Q</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>51</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>81</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Long</STRONG>&nbsp;count,
+      <STRONG>(</STRONG><EM>count</EM><STRONG>)xPoint</STRONG>&nbsp;points,<br>
+	  <STRONG>Long</STRONG>&nbsp;radius_count,
+      <STRONG>(</STRONG><EM>radius_count</EM><STRONG>)xFloat</STRONG>&nbsp;radii,<br>
+      <STRONG>Byte</STRONG>&nbsp;flags,<br>
+	  <STRONG>[(3)xFloat</STRONG>&nbsp;start_orientation<strong>]</strong>,
+	  <STRONG>[(3)xFloat</STRONG>&nbsp;end_orientation<strong>]</strong>,<br>
+	  <STRONG>[Variable</STRONG>&nbsp;attributes<strong>]</strong>
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+    <TD height=21 width=131>count</TD>
+    <TD height=21 width=390>number of points defining the polycylinder axis</TD>
+	</TR>
+<tr>
+	<td WIDTH="131" HEIGHT="21">points</td>
+	<td WIDTH="390" HEIGHT="21"><EM>count</EM> triplets of x, y, z data</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">radius_count</td>
+	<td WIDTH="390" HEIGHT="21">number of radii associated with the points</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">radii</td>
+	<td WIDTH="390" HEIGHT="21"><EM>radius_count</EM> floats</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">flags</td>
+	<td WIDTH="390" HEIGHT="21">a bitmask indicating options for the cylinder</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">start_orientation</td>
+	<td WIDTH="390" HEIGHT="21">vector describing the direction of the polycylinder at the start point.
+								Present if the appropriate <em>flags</em> bit is set.</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">end_orientation</td>
+	<td WIDTH="390" HEIGHT="21">vector describing the direction of the polycylinder at the start point.
+								Present if the appropriate <em>flags</em> bit is set.</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">attributes</td>
+	<td WIDTH="390" HEIGHT="21">colors specified at the vertices of the polycylinder.
+								Present if the appropriate <em>flags</em> bit is set.<br>
+	    See <A href="attributes.html">attributes.html</a> (Note: 
+	    only options OPT_ALL_VFCOLORS, OPT_VERTEX_FCOLORS, OPT_ALL_VECOLORS, and OPT_VERTEX_ECOLORS
+		are relevant).</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+<font face="arial,helvetica,sans-serif">
+A PolyCylinder is a series of cylindrical (or conical) pieces connected in series to resemble pipes or ducts.
+
+Options settings for the polycylinder are as follows.<p>
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Flags:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50> 0x01</TD>
+		<TD height=21 width=390>Capping disk at the start point is visible</TD>
+		</TR>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 0x02</td>
+		<td WIDTH="390" HEIGHT="21">Capping disk at the end point is visible</td>
+		</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 0x04</td>
+		<td WIDTH="390" HEIGHT="21">Orientation normal for the start point is specified</td>
+		</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 0x08</td>
+		<td WIDTH="390" HEIGHT="21">Orientation normal for at the end point is specified</td>
+		</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 0x10</td>
+		<td WIDTH="390" HEIGHT="21">Attributes (vertex colors) are specified</td>
+		</tr>
+	</table>
+
+<p>
+PolyCylinders are meant to be rendered according to the resolution set in TKE_Rendering_Options.
+
+<p>
+If <em>radius_count</em> is less then <em>count</em>, the <em>radii</em> should be repeated as needed
+to pair up a radius with each point.
+
+<p>
+PolyCylinder support was added in HSF format 7.05.  End orientations and vertex colors were added in 8.05.
+
+</font>
+
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Texture</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>t</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>74</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>116</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+      <STRONG>Byte</STRONG>&nbsp;name_length,
+      <STRONG>(</STRONG><EM>name_length</EM><STRONG>)xByte</STRONG>&nbsp;name,
+      <STRONG>Byte</STRONG>&nbsp;image_length,
+      <STRONG>(</STRONG><EM>image_length</EM><STRONG>)xByte</STRONG>&nbsp;image_name,
+	  <STRONG>Short</STRONG>&nbsp;options, 
+	  <STRONG>[Byte</STRONG>&nbsp;parameter_source<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;tiling<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;interpolation<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;decimation<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;red_mapping<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;green_mapping<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;blue_mapping<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;alpha_mapping<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;param_function<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;layout<strong>]</strong>,
+	  <STRONG>[(2)xByte</STRONG>&nbsp;value_scale<strong>]</strong>,
+      <STRONG>[Byte</STRONG>&nbsp;transform_length<strong>]</strong>,
+      <STRONG>[(</STRONG><EM>transform_length</EM><STRONG>)xByte</STRONG>&nbsp;transform_segment<strong>]</strong>
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<tr>
+	<td WIDTH="131" HEIGHT="21">name_length</td>
+	<td WIDTH="390" HEIGHT="21">length of texture name string</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">name</td>
+	<td WIDTH="390" HEIGHT="21">name of texture</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">image_length</td>
+	<td WIDTH="390" HEIGHT="21">length of image name string</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">image_name</td>
+	<td WIDTH="390" HEIGHT="21">name of image on which the texture is based</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">options</td>
+	<td WIDTH="390" HEIGHT="21">flags indicating optional fields</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">parameter_source</td>
+	<td WIDTH="390" HEIGHT="21">initial values used for texture lookup, usually UV parametric values</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">tiling</td>
+	<td WIDTH="390" HEIGHT="21">indicates how parameter values outside the 0-1 range are handled.</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">interpolation</td>
+	<td WIDTH="390" HEIGHT="21">indicates texture sampling when a texture pixel spans multiple display pixels</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">decimation</td>
+	<td WIDTH="390" HEIGHT="21">indicates texture sampling when a display pixel covers multiple texture pixels</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">red_mapping</td>
+	<td WIDTH="390" HEIGHT="21">enumeration of source choices for red value</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">green_mapping</td>
+	<td WIDTH="390" HEIGHT="21">enumeration of source choices for green value</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">blue_mapping</td>
+	<td WIDTH="390" HEIGHT="21">enumeration of source choices for blue value</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">alpha_mapping</td>
+	<td WIDTH="390" HEIGHT="21">enumeration of source choices for alpha value</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">param_function</td>
+	<td WIDTH="390" HEIGHT="21">initial remapping function for parameter values</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">layout</td>
+	<td WIDTH="390" HEIGHT="21">arrangement of useful picture data within the image</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">value_scale</td>
+	<td WIDTH="390" HEIGHT="21">amount to scale and shift color values</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">transform_length</td>
+	<td WIDTH="390" HEIGHT="21">length of transform segment name</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">transform_segment</td>
+	<td WIDTH="390" HEIGHT="21">name of a segment containing an additional texture_matrix to apply</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+      <P>
+<font face="arial,helvetica,sans-serif">Textures define a form of image which can be stretched and applied to a surface.  The simplest form
+is indeed just an image; as each pixel on the surface is drawn, a color is selected from a corresponding spot on the
+image.  The <em>options</em>   allow for changes to 
+      the correspondence between points, and/or changes to the color selected. 
+
+</font></P>
+      <P><FONT face=arial,helvetica,sans-serif>For the specific definitions on 
+      what the various texture&nbsp;option bits mean in HOOPS/3dGS please refer to the 
+      <A href="../../Hoops3DGS/ref_manual/cd.htm#d8">Define_Texture</A> 
+      specification in the 3dGS Reference Manual. </P>              
+ 
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Option bits:</FONT></H4>
+<table BORDER =1 WIDTH="330">
+	<TR>
+	    <TD height=21 width=50>0001</TD>
+	    <TD height=21 width=190>Parameter Source</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0002</TD>
+	    <TD height=21 width=190>Tiling</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0004</TD>
+	    <TD height=21 width=190>Interpolation</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0008</TD>
+	    <TD height=21 width=190>Decimation</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0010</TD>
+	    <TD height=21 width=190>Red Channel Mapping</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0020</TD>
+	    <TD height=21 width=190>Green  Channel Mapping</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0040</TD>
+	    <TD height=21 width=190>Blue  Channel Mapping</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0080</TD>
+	    <TD height=21 width=190>Alpha  Channel Mapping</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0100</TD>
+	    <TD height=21 width=190>Parameter Function</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0200</TD>
+	    <TD height=21 width=190>Layout</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0400</TD>
+	    <TD height=21 width=190>Transform Segment Name</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>0800</TD>
+	    <TD height=21 width=190>Value Scale</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>1000</TD>
+	    <TD height=21 width=190>Caching</TD>
+	</TR>	 	
+</table>
+<p>
+
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Parameter Sources:</FONT></H4>
+<table BORDER =1 WIDTH="330">
+	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=190>U</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=190>UV</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=190>UVW</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=190>Object Space XYZ</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>4</TD>
+	    <TD height=21 width=190>World Space XYZ</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>5</TD>
+	    <TD height=21 width=190>Surface Normal</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>6</TD>
+	    <TD height=21 width=190>Reflection Vector</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>7</TD>
+	    <TD height=21 width=190>Natural UV</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>8</TD>
+	    <TD height=21 width=190>Local Pixels</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>9</TD>
+	    <TD height=21 width=190>Outer Pixels</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>10</TD>
+	    <TD height=21 width=190>Local Window</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>11</TD>
+	    <TD height=21 width=190>Outer Window</TD>
+	</TR>	 	
+</table>
+<p>
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Parameter Functions:</FONT></H4>
+<table BORDER =1 WIDTH="330">
+	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=190>None</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=190>Sphere</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=190>Cylinder</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=190>Box</TD>
+	</TR>	 	
+</table>
+<p>
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Parameter Layouts:</FONT></H4>
+<table BORDER =1 WIDTH="330">
+	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=190>Rectilinear</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=190>Spherical</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=190>Hemispherical</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=190>Cubic Faces</TD>
+	</TR>	 	
+</table>
+<p>
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Parameter Tilings:</FONT></H4>
+<table BORDER =1 WIDTH="330">
+	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=190>None</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=190>Clamp</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=190>Repeat</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=190>Mirror</TD>
+	</TR>	 	
+</table>
+<p>
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Texture Filters:</FONT></H4>
+<table BORDER =1 WIDTH="330">
+	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=190>None</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=190>Bilinear</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=190>Trilinear</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=190>MipMap</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>4</TD>
+	    <TD height=21 width=190>Summed Areas</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>5</TD>
+	    <TD height=21 width=190>Gaussian</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>6</TD>
+	    <TD height=21 width=190>Stochastic</TD>
+	</TR>	 	
+</table>
+<p>
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Channel Mappings:</FONT></H4>
+<table BORDER =1 WIDTH="330">
+	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=190>Red</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=190>Green</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=190>Blue</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=190>Alpha</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>4</TD>
+	    <TD height=21 width=190>Zero</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>5</TD>
+	    <TD height=21 width=190>One</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>6</TD>
+	    <TD height=21 width=190>Luminance</TD>
+	</TR>	 	
+	<TR>
+	    <TD height=21 width=50>7</TD>
+	    <TD height=21 width=190>None</TD>
+	</TR>	 	
+</table>
+<p></FONT>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Optimized For Plotting</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Optimized For Plotting</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Optimized For Plotting</b> opcode gives the WHIP! data generators the
+ability to choose whether to optimize the WHIP! data for display or
+plotting. This opcode categorizes WHIP! data as either optimized
+for plotting or for displaying.
+<p>The viewers must honor this opcode and take full advantage of
+the nature of the WHIP! data while plotting or displaying the drawables
+from WHIP! data. When the WHIP! data is optimized for plotting,
+the WHIP! data generator should store enough data to allow full fidelity
+plots at the selected resolution and color depth. When the WHIP! data 
+is optimized for display, allow for much deeper zooms.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(PlotOptimized</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws><sub>|0|1</sub></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>If the value
+is 1, then, the WHIP! data is optimized for plotting,&nbsp;</font></font>
+<br><font face="Arial"><font size=-2>Else the default&nbsp; (the WHIP! data 
+is optimized for viewing).</font></font></td>
+</tr>
+</table></center>
+
+<p><font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Only Extended&nbsp; ASCII is supported,&nbsp; there is no binary or
+extended support.</ul>
+<font face="Arial Black"><font size=-1>Use Case</font></font>
+<ul>When the WHIP! data is "optimized for plotting" the users should
+send a plot-ready file to a reprographer or a colleague and be assured
+that they will be able to plot the right picture.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

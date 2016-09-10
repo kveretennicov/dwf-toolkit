@@ -1,0 +1,88 @@
+/** \page glossaryPage Glossary of Terms
+<H2>Glossary of Terms</H2>
+<P><STRONG>Aggregator </STRONG>- The %DWF Aggregator module facilitates the
+    copying of data from an existing %DWF package to a new one that is being
+    written.  During the copy process, sections within the %DWF package can be
+    "filtered out", essentially deleting the section and all of the file resources 
+    within the section.  In a simple case, the Aggregator can be used to merge
+    two %DWF packages together.
+</P>
+<P><strong>Bookmark </strong>- A Bookmark in the context of an "ePlotGlobal" 
+    section is simply a node in a heirarchical table of contents.
+</P>
+<P><STRONG>Descriptor </STRONG>- %DWF files are divided into 
+    sections. Some interfaces, such as EPlot dictate that the sections represent 
+    individual pages in a plot set. Each section is described in detail by its 
+    descriptor file (descriptor.xml). These files contain time stamps, contents of 
+    each section, and information such as the file which generated the %DWF 
+    information and the units it lives in.
+</P>
+<P><STRONG>Document Interface </STRONG>- Since %DWF files can 
+    contain a wide variety of information and files, they can be structured in 
+    different ways. Each %DWF file tells what document 
+    interface(s) they conform to and therefore how they should be read. For 
+    example, %DWF files implementing the EPlot interface can 
+    be read and written with the EPlot manager objects, such as EPlotSectionManager 
+    and EPlotPageDescriptor. You may implement your own interfaces by creating a 
+    contract between an authoring tool and a file consumer, assigning a TypeInfo 
+    GUID to that interface, then adding a corresponding DWFManifest::Interface 
+    object to the Manifest file.
+</P>
+<P><STRONG>%DWF</STRONG> - Design Web Format. Originally this 
+    file extension was used for publishing documents to Web pages and viewed only 
+    with a browser embedded viewer. Since then it has come to mean a published CAD 
+    file format. %DWF files are created and viewed using this 
+    toolkit or software built with this freely available toolkit. %DWF 
+    files can contain a wide range of information, including 
+    electronic plots (EPlots, W2D files), thumbnails of those plots, metadata 
+    files, other auxiliary files which may be useful to an application, such as 
+    spreadsheets or text documents. %DWF files are 
+    implemented as Zip files with additional information (see Interfaces) which 
+    describe the format of the contents.
+</P>
+<P><STRONG>EPlot </STRONG>- Electronic Plot. A file which contains an electronic 
+    plot which mimics what a paper plot would look like. For example, most 
+    %DWF files, when viewed with a %DWF viewer, will display a "page" that looks 
+    exactly like the result of printing or plotting the page to a printer. In turn, 
+    these electronic plots may be printed from a viewer, giving you the same printed 
+    result you would have gotten had you plotted in the first place. Most %DWF files 
+    will contain EPlot information.
+</P>
+<P><STRONG>Manifest </STRONG>- On a ship, the manifest describes the contents or 
+    cargo being carried. In a %DWF file, the manifest does 
+    the same thing. In this case it describes the document interface(s) that the 
+    %DWF file supports and the contents of the file. Each 
+    %DWF file contains one and only one manifest.xml file.
+</P>
+<P><STRONG>Optimizer </STRONG>- The %DWF optimizer is a module that reorders the 
+    internal file resources of a %DWF package based on a predefined set of rules.
+    Currently, only one optimizer rules file is included with the %DWF toolkit
+    distribution, "OptimizeEPlot.xml".  This file contains rules which order the
+    %DWF resources in such a fashion that makes the %DWF file "streaming friendly"
+    with respect to its internal ePlot pages.  It places the .TYPEINFO file (if any)
+    first, followed by the manifest, then content within the ePlotGlobal section 
+    (if any) then content within any ePlotPage sections.  In each of the two latter
+    groups (ePlotGlobal / ePlotPage), the file resources are ordered by "role" as 
+    follows: descriptor, thumbnail, font, 2d streaming graphics.  This means that
+    in the ePlotPage group, all of the descriptors will be placed together.  Finally,
+    within like-role groups, the files are ordered by the ePlotPage's plot order
+    then by filesize.  
+</P>
+<P><STRONG>TypeInfo </STRONG>- Not to be confused with the document type, the TypeInfo
+    setting of a %DWF file indicates the paricular domain-specific nature of the %DWF data.
+    It is similar to a document interface in that it provides an idea of the general content 
+    of the %DWF file; however, there can be only one TypeInfo designation.  A %DWF may 
+    implement multiple interfaces, but is of one primary "type."  This designation is its 
+    TypeInfo string (a GUID).  The information is stored in the %DWF archive as a (typically
+    empty) file resource .TYPEINFO.  If found, the prefix of the .TYPEINFO file, a GUID, is 
+    the TypeInfo designation.  Note, the TypeInfo string is only available for %DWF version 6.1
+    and greater. %DWF version 6.0 and earlier have no TypeInfo designation. 
+</P>
+<P><STRONG>W2D </STRONG>- A W2D file resource within a %DWF package contains 2D vector 
+    graphics as produced by the WHIP! toolkit.  In a %DWF EPlot package, each page will 
+    have one (and only one) W2D file resource with the role "2d streaming graphics".  Other 
+    W2D file resources may be associated with the page (e.g. markup resources;) however,
+    only one "2d streaming graphics" resource is allowed.  This represents the original
+    page data as published by an authoring application.
+</P>
+*/

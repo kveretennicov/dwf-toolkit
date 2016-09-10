@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="samples"
+	InheritedPropertySheets="..\develop\global\build\Common.vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="..\..\..\develop\global\src"
+		PreprocessorDefinitions="WIN32;_CONSOLE"
+		WarningLevel="4"
+		WarnAsError="true"
+		DisableSpecificWarnings="4290;4996"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		SubSystem="1"
+	/>
+</VisualStudioPropertySheet>

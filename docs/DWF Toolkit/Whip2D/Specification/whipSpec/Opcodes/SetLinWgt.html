@@ -1,0 +1,80 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Line Weight</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Line Weight</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Line Weight</b> function specifies the thickness with which
+lines are rendered.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="28%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="36%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>(LineWeight</font></font></td>
+
+<td VALIGN=TOP WIDTH="28%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Weight</sub>>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="36%"><font face="Arial"><font size=-2>Defines how
+subsequent lines are rendered</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Single-byte,
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>[Ctrl-W]
+(17)</font></font></td>
+
+<td VALIGN=TOP WIDTH="28%"><b><font face="Courier New"><font size=-2>&lt;L<sub>Weight</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="36%"><font face="Arial"><font size=-2>Corresponds
+to the line weight of subsequent lines</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Weight</i>&nbsp;&nbsp; The thickness in logical coordinates that
+subsequent lines are drawn</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Set Line Weight</b> opcode specifies the thickness with which
+subsequent lines are rendered. The attribute applies to lines, polylines,
+circular arcs, and elliptical arcs. The units of the line weight attribute
+are logical coordinates, which are later transformed to screen coordinates
+by the WHIP! data reading application.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>Because a WHIP! data reading application may view a large area of logical
+coordinate space, often a logical line weight is much smaller than a screen’s
+pixel. The WHIP! data reading application renders such lines a minimum of one
+screen pixel wide in all cases. A line weight of zero indicates that the
+line is <i>always</i> drawn one pixel wide in screen coordinates, no matter
+how much the user zooms in on the drawing.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>The default Line Weight is zero, which corresponds to a one-pixel wide
+line, and is equivalent to
+<ul>
+<pre><font face="Courier New">(LineWeight 0)</font></pre>
+</ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

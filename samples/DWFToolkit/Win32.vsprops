@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="Win32"
+	InheritedPropertySheets="..\Configure.vsprops;.\$(StaticOrShared).vsprops"
+	>
+	<Tool
+		Name="VCLinkerTool"
+		TargetMachine="1"
+		AdditionalLibraryDirectories="..\..\..\develop\global\lib\$(StaticOrShared)\$(DebugOrRelease)\$(VCOutDir)"
+	/>
+</VisualStudioPropertySheet>

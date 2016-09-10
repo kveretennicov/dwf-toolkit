@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <Platform>Win32</Platform>
+  </PropertyGroup>
+  <PropertyGroup Label="UserMacros">
+    <StaticOrShared>shared</StaticOrShared>
+    <DebugOrRelease>debug</DebugOrRelease>
+    <VCOutDir>vc10.0</VCOutDir>
+    <binloc>bin</binloc>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <_PropertySheetDisplayName>DWF Toolkit Libraries</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemGroup>
+    <BuildMacro Include="Platform">
+      <Value>$(Platform)</Value>
+    </BuildMacro>
+    <BuildMacro Include="StaticOrShared">
+      <Value>$(StaticOrShared)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DebugOrRelease">
+      <Value>$(DebugOrRelease)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VCOutDir">
+      <Value>$(VCOutDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="binloc">
+      <Value>$(binloc)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

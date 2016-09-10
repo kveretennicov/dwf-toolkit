@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'SimpleW3DStreamProcessor' target in the 'SimpleW3DStreamProcessor' project.
+//
+
+#include <Carbon/Carbon.h>

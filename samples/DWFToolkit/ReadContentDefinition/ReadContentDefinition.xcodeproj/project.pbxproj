@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		B86CA8360F146A7B0028327C /* ReadContentDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B86CA8350F146A7B0028327C /* ReadContentDefinition.cpp */; };
+		B873B21B0F1DBE2A00076B78 /* libDWFCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B873B21A0F1DBE2A00076B78 /* libDWFCore.a */; };
+		B873B21D0F1DBE4A00076B78 /* libDWFToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B873B21C0F1DBE4A00076B78 /* libDWFToolkit.a */; };
+		BB21596313E1233F004CF889 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		BB21596513E1233F004CF889 /* ReadContentDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B86CA8350F146A7B0028327C /* ReadContentDefinition.cpp */; };
+		BB21596713E1233F004CF889 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		BB21597113E12399004CF889 /* DWFCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB21596F13E12399004CF889 /* DWFCore.framework */; };
+		BB21597213E12399004CF889 /* DWFToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB21597013E12399004CF889 /* DWFToolkit.framework */; };
+		BB21597413E123A7004CF889 /* DWFCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB21596F13E12399004CF889 /* DWFCore.framework */; };
+		BB21597513E123A7004CF889 /* DWFToolkit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB21597013E12399004CF889 /* DWFToolkit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB21597313E1239E004CF889 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB21597413E123A7004CF889 /* DWFCore.framework in CopyFiles */,
+				BB21597513E123A7004CF889 /* DWFToolkit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0867D6ABFE840B52C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		32DBCF6D0370B57F00C91783 /* ReadContentDefinition_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadContentDefinition_Prefix.pch; sourceTree = "<group>"; };
+		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D0C4E970486CD37000505A6 /* ReadContentDefinition static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReadContentDefinition static.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B86CA8350F146A7B0028327C /* ReadContentDefinition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReadContentDefinition.cpp; sourceTree = "<group>"; };
+		B873B21A0F1DBE2A00076B78 /* libDWFCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFCore.a; path = "../../../develop/global/build/XCode 3.1/DWFCore/build/UninstalledProducts/libDWFCore.a"; sourceTree = SOURCE_ROOT; };
+		B873B21C0F1DBE4A00076B78 /* libDWFToolkit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFToolkit.a; path = "../../../develop/global/build/XCode 3.1/DWFToolkit/build/UninstalledProducts/libDWFToolkit.a"; sourceTree = SOURCE_ROOT; };
+		BB21596D13E1233F004CF889 /* ReadContentDefinition share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReadContentDefinition share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB21596F13E12399004CF889 /* DWFCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFCore.framework; path = ../../../develop/global/lib/release/DWFCore.framework; sourceTree = "<group>"; };
+		BB21597013E12399004CF889 /* DWFToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFToolkit.framework; path = ../../../develop/global/lib/release/DWFToolkit.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D0C4E910486CD37000505A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
+				B873B21B0F1DBE2A00076B78 /* libDWFCore.a in Frameworks */,
+				B873B21D0F1DBE4A00076B78 /* libDWFToolkit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB21596613E1233F004CF889 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB21597113E12399004CF889 /* DWFCore.framework in Frameworks */,
+				BB21597213E12399004CF889 /* DWFToolkit.framework in Frameworks */,
+				BB21596713E1233F004CF889 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		195DF8CFFE9D517E11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E970486CD37000505A6 /* ReadContentDefinition static.app */,
+				BB21596D13E1233F004CF889 /* ReadContentDefinition share.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20286C29FDCF999611CA2CEA /* ReadContentDefinition */ = {
+			isa = PBXGroup;
+			children = (
+				BB21596F13E12399004CF889 /* DWFCore.framework */,
+				BB21597013E12399004CF889 /* DWFToolkit.framework */,
+				20286C2AFDCF999611CA2CEA /* Sources */,
+				20286C2CFDCF999611CA2CEA /* Resources */,
+				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
+				195DF8CFFE9D517E11CA2CBB /* Products */,
+			);
+			name = ReadContentDefinition;
+			sourceTree = "<group>";
+		};
+		20286C2AFDCF999611CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B86CA8350F146A7B0028327C /* ReadContentDefinition.cpp */,
+				32DBCF6D0370B57F00C91783 /* ReadContentDefinition_Prefix.pch */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		20286C2CFDCF999611CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E960486CD37000505A6 /* Info.plist */,
+				0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B873B21C0F1DBE4A00076B78 /* libDWFToolkit.a */,
+				B873B21A0F1DBE2A00076B78 /* libDWFCore.a */,
+				20286C33FDCF999611CA2CEA /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D0C4E890486CD37000505A6 /* ReadContentDefinition static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "ReadContentDefinition static" */;
+			buildPhases = (
+				8D0C4E8C0486CD37000505A6 /* Resources */,
+				8D0C4E8F0486CD37000505A6 /* Sources */,
+				8D0C4E910486CD37000505A6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ReadContentDefinition static";
+			productInstallPath = "$(HOME)/Applications";
+			productName = ReadContentDefinition;
+			productReference = 8D0C4E970486CD37000505A6 /* ReadContentDefinition static.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB21596113E1233F004CF889 /* ReadContentDefinition share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB21596A13E1233F004CF889 /* Build configuration list for PBXNativeTarget "ReadContentDefinition share" */;
+			buildPhases = (
+				BB21596213E1233F004CF889 /* Resources */,
+				BB21596413E1233F004CF889 /* Sources */,
+				BB21596613E1233F004CF889 /* Frameworks */,
+				BB21597313E1239E004CF889 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ReadContentDefinition share";
+			productInstallPath = "$(HOME)/Applications";
+			productName = ReadContentDefinition;
+			productReference = BB21596D13E1233F004CF889 /* ReadContentDefinition share.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20286C28FDCF999611CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "ReadContentDefinition" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20286C29FDCF999611CA2CEA /* ReadContentDefinition */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D0C4E890486CD37000505A6 /* ReadContentDefinition static */,
+				BB21596113E1233F004CF889 /* ReadContentDefinition share */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D0C4E8C0486CD37000505A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB21596213E1233F004CF889 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB21596313E1233F004CF889 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D0C4E8F0486CD37000505A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B86CA8360F146A7B0028327C /* ReadContentDefinition.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB21596413E1233F004CF889 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB21596513E1233F004CF889 /* ReadContentDefinition.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0867D6ABFE840B52C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB21596B13E1233F004CF889 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ReadContentDefinition_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "ReadContentDefinition share";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BB21596C13E1233F004CF889 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ReadContentDefinition_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "ReadContentDefinition share";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C0E91AC608A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ReadContentDefinition_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "ReadContentDefinition static";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C0E91AC708A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ReadContentDefinition_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DWFTK_USE_DWFCORE_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = ../../../develop/global/src;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "ReadContentDefinition static";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C0E91ACA08A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		C0E91ACB08A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB21596A13E1233F004CF889 /* Build configuration list for PBXNativeTarget "ReadContentDefinition share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB21596B13E1233F004CF889 /* Debug */,
+				BB21596C13E1233F004CF889 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "ReadContentDefinition static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91AC608A95435008D54AB /* Debug */,
+				C0E91AC708A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "ReadContentDefinition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91ACA08A95435008D54AB /* Debug */,
+				C0E91ACB08A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20286C28FDCF999611CA2CEA /* Project object */;
+}

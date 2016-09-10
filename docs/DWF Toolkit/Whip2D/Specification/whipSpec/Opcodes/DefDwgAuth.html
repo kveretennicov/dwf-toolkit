@@ -1,0 +1,66 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Drawing Author - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Drawing Author - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Drawing Author</b> function specifies the person who
+created the WHIP! data.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="735" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="16%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="16%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%" HEIGHT="26"><font face="Courier New"><font size=-2>(Author</font></font></td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>author</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="34%" HEIGHT="26"><font face="Arial"><font size=-2>States
+person who created the file</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Author</i> A string describing who created the WHIP! data.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Some WHIP! data reading applications may need to "know" who created the WHIP! data
+file. The WHIP! data generating application can indicate this need with the <b>Define
+Drawing Author</b> opcode:
+<ul><font face="Courier New"><font size=-1>(Author 'Brian P. Mathews, Autodesk,
+Inc.')</font></font></ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>WHIP! data reading applications should not expect to be able to parse the
+<i>Author</i>
+argument, though it can be shown to a user.
+<p>WHIP! data should contain a maximum of one occurrence of the
+<b>Define
+Drawing Author</b> opcode, which by convention should be nested inside
+a <b><a href="DefDwgInfoBlk.html">Define Drawing Information Block</a></b>
+opcode.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default, no drawing author is defined:
+<ul><font face="Courier New"><font size=-1>(Author unknown)</font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

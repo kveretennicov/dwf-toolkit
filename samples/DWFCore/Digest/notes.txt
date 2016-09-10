@@ -1,0 +1,1 @@
+This sample shows how to use dwfcore toolkit to calculate digest of one paragraph text. 

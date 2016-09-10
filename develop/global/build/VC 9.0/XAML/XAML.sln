@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DWF XAML (Whip) Toolkit", "XAML.vcproj", "{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug (Read-Write LIB)|Win32 = Debug (Read-Write LIB)|Win32
+		Debug (Read-Write LIB)|x64 = Debug (Read-Write LIB)|x64
+		Debug (Read-Write WChar DLL)|Win32 = Debug (Read-Write WChar DLL)|Win32
+		Debug (Read-Write WChar DLL)|x64 = Debug (Read-Write WChar DLL)|x64
+		Debug (Read-Write WChar LIB)|Win32 = Debug (Read-Write WChar LIB)|Win32
+		Debug (Read-Write WChar LIB)|x64 = Debug (Read-Write WChar LIB)|x64
+		Release (Read-Write LIB)|Win32 = Release (Read-Write LIB)|Win32
+		Release (Read-Write LIB)|x64 = Release (Read-Write LIB)|x64
+		Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32 = Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32
+		Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64 = Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64
+		Release (Read-Write WChar DLL)|Win32 = Release (Read-Write WChar DLL)|Win32
+		Release (Read-Write WChar DLL)|x64 = Release (Read-Write WChar DLL)|x64
+		Release (Read-Write WChar LIB)|Win32 = Release (Read-Write WChar LIB)|Win32
+		Release (Read-Write WChar LIB)|x64 = Release (Read-Write WChar LIB)|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write LIB)|Win32.ActiveCfg = Debug (Read-Write LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write LIB)|Win32.Build.0 = Debug (Read-Write LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write LIB)|x64.ActiveCfg = Debug (Read-Write LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write LIB)|x64.Build.0 = Debug (Read-Write LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar DLL)|Win32.ActiveCfg = Debug (Read-Write WChar DLL)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar DLL)|Win32.Build.0 = Debug (Read-Write WChar DLL)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar DLL)|x64.ActiveCfg = Debug (Read-Write WChar DLL)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar DLL)|x64.Build.0 = Debug (Read-Write WChar DLL)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar LIB)|Win32.ActiveCfg = Debug (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar LIB)|Win32.Build.0 = Debug (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar LIB)|x64.ActiveCfg = Debug (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Debug (Read-Write WChar LIB)|x64.Build.0 = Debug (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write LIB)|Win32.ActiveCfg = Release (Read-Write LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write LIB)|Win32.Build.0 = Release (Read-Write LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write LIB)|x64.ActiveCfg = Release (Read-Write LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write LIB)|x64.Build.0 = Release (Read-Write LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32.ActiveCfg = Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32.Build.0 = Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64.ActiveCfg = Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64.Build.0 = Release (Read-Write WChar DLL SECURE_SCL_DISABLED)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL)|Win32.ActiveCfg = Release (Read-Write WChar DLL)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL)|Win32.Build.0 = Release (Read-Write WChar DLL)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL)|x64.ActiveCfg = Release (Read-Write WChar DLL)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar DLL)|x64.Build.0 = Release (Read-Write WChar DLL)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar LIB)|Win32.ActiveCfg = Release (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar LIB)|Win32.Build.0 = Release (Read-Write WChar LIB)|Win32
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar LIB)|x64.ActiveCfg = Release (Read-Write WChar LIB)|x64
+		{337A987F-97AE-46FF-98AF-6C6B9B81E3B2}.Release (Read-Write WChar LIB)|x64.Build.0 = Release (Read-Write WChar LIB)|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

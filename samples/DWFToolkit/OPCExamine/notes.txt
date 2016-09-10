@@ -1,0 +1,1 @@
+This sample shows how to get relationships and parts contained in a package which comply to OPCStandard, such as a dwfx file or a xps file.

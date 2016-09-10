@@ -1,0 +1,76 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Pen Pattern Options</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Pen Pattern Options</font></i></b>
+<p>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>The <b>Pen Pattern Options</b> opcode is a rendering option for storing
+the penset option selections in WHIP! data (as configured in the
+pen pattern editor)&nbsp; and makes it possible to save penset options
+in WHIP! data . Additional parameters enable pen widths to be proportional
+to new plotted paper sizes; render as gray scale; and, use error diffusion
+instead of ordered dithering.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="712" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="11%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="67%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="11%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26"><font face="Courier New"><font size=-2>(PenPat_Options</font></font></td>
+
+<td VALIGN=TOP WIDTH="67%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;</font><font face="Courier New,Courier">ws</font><font face="Courier New">>&lt;B</font><font face="Courier New,Courier"><sub>scale_pen_width</sub>></font><font face="Courier New">&lt;B</font><sub><font face="Courier New,Courier">map_colors_to_gray_scale</font></sub><font face="Courier New">>&lt;ws>&lt;B</font><sub><font face="Courier New,Courier">use_alternate_fill_rule</font></sub><font face="Courier New">>,<br>
+&lt;B</font><sub><font face="Courier New,Courier">use_error_diffusion_for_Rasters</font></sub><font face="Courier New">>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="10%" HEIGHT="26"><font face="Arial"><font size=-2>to
+store penset options as configured in the pen pattern&nbsp;</font></font>
+<br><font face="Arial"><font size=-2>editor</font></font>
+<br><font face="Arial"><font size=-2></font></font>&nbsp;</td>
+</tr>
+</table></center>
+
+<ul><i>Scale Pen Width</i> — If true, and if the WHIP! data is plotted
+on a different paper size than it was originally created for, then pen
+widths will be enlarged or reduced in proportion to the two paper sizes.
+<p><i>Map Colors to gray Scale</i> — If true, this will cause colors to
+be rendered as gray scale, using Buzzsaw screening patterns.
+<p><i>Use Error Diffusion for Rasters</i> — If true, error diffusion
+will be used instead of ordered dithering (if dithering is necessary to
+render any rasters embedded in the WHIP! data).
+<br>&nbsp;</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>The purpose is to store penset options, as configured in the pen pattern
+editor. The preceding parameters correspond to checkboxes on the <font face="Arial,Helvetica">Options</font>
+page of the <font face="Arial,Helvetica">Properties</font> subdialog in
+the Buzzsaw <font face="Arial,Helvetica">Pen-set-editor</font> dialog.
+These options only affect the plotted output from Buzzsaw's plotting utility
+and they do not affect the output from Volo View.</ul>
+<font face="Arial Black"><font size=-1>See Also</font></font>
+<p>&nbsp;&nbsp;&nbsp; For more information on patterns, see the <b><a href="SetPen_Pattern.html">Set
+Pen Pattern</a></b>, <b><a href="SetFillPattern.html">Set Fill Pattern</a></b>,
+<b><a href="SetFilMod.html">Set Fill Mode</a></b> and <b><a href="SetLinPat.html">Set
+Line Pattern</a></b> opcodes.
+<p>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'DWFCore' target in the 'DWFCore' project.
+//
+
+#include <Carbon/Carbon.h>

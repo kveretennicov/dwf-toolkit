@@ -1,0 +1,1 @@
+This samples shows how to create every kind of resource needed in 2D package in detail. It also shows the usage of different kinds of objects. It's a configuralbe sample. User can create w2d file needed in DWF package or xaml, ttf and w2x files needed in DWFx package by modifying the classFactory value in W2DTest.in.

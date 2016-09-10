@@ -1,0 +1,1 @@
+This sample shows how to read objectDefinition which used to combine graphics and metadata out from a dwf pacakge. 

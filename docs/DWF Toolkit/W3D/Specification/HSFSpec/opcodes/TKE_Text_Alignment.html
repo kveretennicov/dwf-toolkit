@@ -1,0 +1,127 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Text_Alignment</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>*</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>2A</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>42</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter"><STRONG>Byte</STRONG>&nbsp;alignment</FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+	<td WIDTH="131" HEIGHT="21">alignment</td>
+	<td WIDTH="390" HEIGHT="21">combined enumerations of text alignment and justification</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+<FONT face="arial,helvetica,sans-serif">
+Indicates how the text should be drawn relative to the insertion point (lower nibble of value),
+and for multiline text, justification - how the lines align against each other (upper nibble of value).
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Alignment Enumeration</FONT></H3>
+
+<table BORDER =1 WIDTH="230">
+ 	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=390>Lower Left</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=390>Upper Left</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=390>Center Left</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=390>Lower Right</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>4</TD>
+	    <TD height=21 width=390>Upper Right</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>5</TD>
+	    <TD height=21 width=390>Center Right</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>6</TD>
+	    <TD height=21 width=390>Lower Center</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>7</TD>
+	    <TD height=21 width=390>Upper Center</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>8</TD>
+	    <TD height=21 width=390>Center</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>9</TD>
+	    <TD height=21 width=390>Insertion Point</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>15</TD>
+	    <TD height=21 width=390>no setting</TD>
+	</TR>
+</table>
+<p>
+
+<H4><FONT color=#0000a0 face="arial,helvetica,sans-serif">Justification Enumeration</FONT></H3>
+
+<table BORDER =1 WIDTH="230">
+ 	<TR>
+	    <TD height=21 width=50>0</TD>
+	    <TD height=21 width=390>no setting</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>1</TD>
+	    <TD height=21 width=390>Left</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>2</TD>
+	    <TD height=21 width=390>Center</TD>
+	</TR>
+ 	<TR>
+	    <TD height=21 width=50>3</TD>
+	    <TD height=21 width=390>Right</TD>
+	</TR>
+</table>
+ 
+</FONT>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

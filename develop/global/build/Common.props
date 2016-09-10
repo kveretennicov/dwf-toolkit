@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <DWFCoreVersion>1.7.0</DWFCoreVersion>
+    <VCVersion>vc10.0</VCVersion>
+    <OutputDir>VC 10.0</OutputDir>
+    <DWFToolkitVersion>7.7.0</DWFToolkitVersion>
+    <W3DToolkitVersion>1.7.1555</W3DToolkitVersion>
+    <W2DToolkitVersion>7.13.601</W2DToolkitVersion>
+    <XAMLToolkitVersion>7.7.0</XAMLToolkitVersion>
+    <PDFToolkitVersion>7.2.14</PDFToolkitVersion>
+    <DWFOpenEncryptionVersion>1.1</DWFOpenEncryptionVersion>
+    <DWFSecurityToolkitVersion>1.7.0</DWFSecurityToolkitVersion>
+    <DWFDRMPrivateVersion>1.7.0</DWFDRMPrivateVersion>
+    <DWFEMapToolkitVersion>1.6.0</DWFEMapToolkitVersion>
+    <DWFApplicationFrameworkVersion>1.7.0</DWFApplicationFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <_PropertySheetDisplayName>DWF Toolkit Libraries</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemGroup>
+    <BuildMacro Include="DWFCoreVersion">
+      <Value>$(DWFCoreVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VCVersion">
+      <Value>$(VCVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OutputDir">
+      <Value>$(OutputDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DWFToolkitVersion">
+      <Value>$(DWFToolkitVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="W3DToolkitVersion">
+      <Value>$(W3DToolkitVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="W2DToolkitVersion">
+      <Value>$(W2DToolkitVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XAMLToolkitVersion">
+      <Value>$(XAMLToolkitVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PDFToolkitVersion">
+      <Value>$(PDFToolkitVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DWFOpenEncryptionVersion">
+      <Value>$(DWFOpenEncryptionVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DWFSecurityToolkitVersion">
+      <Value>$(DWFSecurityToolkitVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DWFDRMPrivateVersion">
+      <Value>$(DWFDRMPrivateVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DWFEMapToolkitVersion">
+      <Value>$(DWFEMapToolkitVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DWFApplicationFrameworkVersion">
+      <Value>$(DWFApplicationFrameworkVersion)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

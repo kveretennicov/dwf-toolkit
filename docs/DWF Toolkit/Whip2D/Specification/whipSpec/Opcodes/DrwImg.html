@@ -1,0 +1,260 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Image</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw Image</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>T<font color="#000000">he <b>Draw Image </b>function draws a one or
+two-dimensional array of pixels.</font></ul>
+<font face="Arial Black"><font color="#000000"><font size=-1>Syntax</font></font></font>
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="21%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="44%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="12%"><font face="Courier New"><font size=-2>(Image</font></font></td>
+
+<td VALIGN=TOP WIDTH="44%"><b><font face="Courier New"><font size=-2>&lt;ws>"&lt;T<sub>Format</sub>>"&lt;ws>&lt;I<sub>Id</sub>>[&lt;ws>&lt;I<sub>Col</sub>>,&lt;I<sub>Row</sub>>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[(Colormap &lt;ws>&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Ri</sub>>,&lt;I<sub>Gi</sub>>,&lt;I<sub>Bi</sub>>,&lt;I<sub>Ai</sub>>]<sup>+</sup>[&lt;ws>])]]\</font></font></b>
+<p><b><font face="Courier New"><font size=-2>[(&lt;ws>&lt;I<sub>DSize</sub>>&lt;ws>[&lt;H<sub>Data</sub>>]<sup>+</sup>)])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="23%"><font face="Arial"><font size=-2>Draws an image</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>Extended Binary</font></font></td>
+
+<td VALIGN=TOP WIDTH="12%"><font face="Courier New"><font size=-2>0x0002</font></font></td>
+
+<td VALIGN=TOP WIDTH="44%"><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;B<sub>count</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Ri</sub>>&lt;B<sub>Gi</sub>>&lt;B<sub>Bi</sub>>&lt;B<sub>Ai</sub>>]<sup>+</sup>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="23%"><font face="Arial"><font size=-2>A bitonal colormapped
+image.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>0x0003</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;B<sub>count</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Ri</sub>>&lt;B<sub>Gi</sub>>&lt;B<sub>Bi</sub>>&lt;B<sub>Ai</sub>>]<sup>+</sup>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>A Group3X compressed bitonal colormapped
+image</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>0x0004</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>[&lt;B<sub>GIndex</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>A color-indexed image.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>0x0005</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;B<sub>count</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Ri</sub>>&lt;B<sub>Gi</sub>>&lt;B<sub>Bi</sub>>&lt;B<sub>Ai</sub>>]<sup>+</sup>&lt;L<sub>DSize</sub>>[&lt;B<sub>LIndex</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>A colormapped image.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>0x0006</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Rn</sub>>&lt;B<sub>Gn</sub>>&lt;B<sub>Bn</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>An RGB image.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>0x0007</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;B<sub>Rn</sub>>&lt;B<sub>Gn</sub>>&lt;B<sub>Bn</sub>>&lt;B<sub>An</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>An RGBA image</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>0x0008</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>A JPEG compressed RGB image.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Col</i>&nbsp;&nbsp; The number of columns in the pixel array
+<p><i>Row</i>&nbsp;&nbsp;&nbsp; The number of rows in the pixel array
+<p><i>X1,Y1</i>&nbsp;&nbsp; A logical coordinate indicating the lower-left
+corner of the image to be drawn
+<p><i>X2,Y2</i>&nbsp;&nbsp; A logical coordinate indicating the upper-right
+corner of the image to be drawn
+<p><i>Id</i>&nbsp;&nbsp; An integer identifier that may be used by other
+opcodes to refer to this image (as with texture mapping). A value of zero
+may be used for images that will not be refered to.
+<p><i>Count</i>&nbsp;&nbsp; The number of colors to be defined in this
+Color Map. Legal values range from 1 to 256, when using the ASCII version,
+or 0 to 255 when using the binary form—with zero indicating a colormap
+of size 256.
+<p><i>Ri, Gi, Bi, Ai</i>&nbsp;&nbsp; The definition of the <i>ith </i>color
+(the red, green, blue, and alpha components) in the Color Map.
+<p><i>Format</i>&nbsp;&nbsp; A description of how data in the Data array
+is to be interpreted.
+<p><i>DSize</i>&nbsp;&nbsp; The length (in bytes) of the <i>Data </i>sequence
+that follows
+<p><i>Data</i>&nbsp;&nbsp; A sequence of encoded data that represents the
+colors of the image pixels, see below for encoding details.
+<p><i>GIndex</i>&nbsp;&nbsp; An index into the global colormap (as defined
+by <b><a href="SetColrMap.html">Set Color Map</a></b>) that defines the
+color of the n<i>th</i> pixel.
+<p><i>LIndex</i>&nbsp;&nbsp; An index into the local colormap (as defined
+by the <i>Ri, Gi, Bi, Ai</i> parameters) that defines the color of the
+n<i>th</i> pixel.
+<p><i>Rn, Gn, Bn, An</i>&nbsp;&nbsp; The color definition of the n<i>th
+</i>pixel
+(the red, green, blue, and alpha components).</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Regardless of the format used, the data that defines the pixel colors
+within the image is ordered so that the top-left most pixel comes first,
+followed by the remaining pixels on the top-most row (in left to right
+order), followed by the subsequent rows (in top-to-bottom order).
+<p>For the extended binary opcode versions of Draw Image the image data
+format is specified by the opcode itself. For the extended ASCII opcode
+form of Draw Image, the <i>Format </i>qualifier may be one of the following:
+<ul>
+<li>
+"bitonal"</li>
+
+<li>
+"group 3X"</li>
+
+<li>
+"indexed"</li>
+
+<li>
+"mapped"</li>
+
+<li>
+"RGB"</li>
+
+<li>
+"RGBA"</li>
+
+<li>
+"JPEG"</li>
+</ul>
+The color of pixels in the various formats are encoded as follows:
+<p><font face="Arial Black"><font size=-1>Bitonal</font></font>
+<ul>Each pixel of the image is represented by a single bit of data that
+is used as an index into the supplied two entry colormap (note that the
+"global" colormap is not used). The index bits from 8 sequential pixels
+are packed into bytes and stored in the WHIP! data. If image width is not
+an even multiple of 8 pixels, then each scanline is padded so that they
+end on a byte boundary. In the case of ASCII output, the data bytes are
+encoded as two-byte ASCII hexadecimal values.</ul>
+<font face="Arial Black"><font size=-1>Group3X</font></font>
+<ul>Each pixel of the image is represented by a single bit of data that
+is used as an index into the supplied two entry colormap (note that the
+"global" colormap is not used). Each raster of the image is compressed
+individually (using a modified version of CCITT Group 3 compression) and
+stored in the the WHIP! data as a series of bits. If the last bit of the
+last raster does not fill a byte, then the last raster is padded to a byte
+boundary.
+<p>The Group 3X format differs from CCITT Group 3 compression in that each
+raster is considered individually, is prepended by a two bit code, and
+may be stored in one of three ways. The application generating the WHIP! data 
+may try compressing each raster with three available methods and then
+store the most efficient result. The first two bits of each compressed
+raster indicate the compression method that was selected by the WHIP! data generating
+application as follows:
+<p><font size=-1><b>00 </b>(Normal CCITT Group 3 compression of the raster
+was used)</font>
+<ul>In this case the original raster was scanned for run-lengths (the number
+of consecutive pixels of a certain color), and these run lengths were converted
+to variable bit length codes using the CCITT Group 3 Huffman table (as
+found in "<a href="hufcodes.h">hufcodes.h</a>").</ul>
+<font size=-1><b>01 </b>(CCITT Group 3 compression of the raster XOR'ed
+with the previous raster was used)</font>
+<ul>In this case the original raster was first XOR'ed with its previous
+raster (the previous raster of the first raster in the image is considered
+to be all zeros), and then the resulting raster was compressed using the
+Group 3 method described above.</ul>
+<font size=-1><b>10 </b>(Uncompressed Bitonal format)</font>
+<ul>In this case the original raster is not compressed, and is stored as
+a normal bitonal raster as described above. This case is used when compression
+formats "<b><font size=-1>00</font></b>" and "<b><font size=-1>01</font></b>"
+would have caused the raster to grow in size, as happens for noisy or random
+source data.</ul>
+<font size=-1><b>11 </b>(Reserved for future use)</font></ul>
+<font face="Arial Black"><font size=-1>Indexed</font></font>
+<ul>Each pixel of the image is represented by a single byte of data that
+is used as an index into the global colormap (which may have up to 256
+RGBA colors). In the case of ASCII output, the data bytes are encoded as
+two-byte ASCII hexadecimal values. Note that no colormap is supplied since
+the global colormap (as defined by <b><a href="SetColrMap.html">Set Color
+Map</a></b>) will be used.</ul>
+<font face="Arial Black"><font size=-1>Mapped</font></font>
+<ul>Each pixel of the image is represented by a single byte of data that
+is used as an index into the supplied colormap (which may have up to 256
+RGBA colors). In the case of ASCII output, the data bytes are encoded as
+two-byte ASCII hexadecimal values. Note that the global colormap is not
+used.</ul>
+<font face="Arial Black"><font size=-1>RGB</font></font>
+<ul>Each pixel of the image is represented by three bytes of data that
+describe a 24-bit "red, green, blue" color. In the case of ASCII output,
+each data byte is encoded as a two-byte ASCII hexadecimal value. Note that
+no colormap is supplied.</ul>
+<font face="Arial Black"><font size=-1>RGBA</font></font>
+<ul>Each pixel of the image is represented by four bytes of data that describe
+a 32-bit "red, green, blue, alpha" color. In the case of ASCII output,
+each data byte is encoded as a two-byte ASCII hexadecimal value. Note that
+no colormap is supplied.</ul>
+<font face="Arial Black"><font size=-1>JPEG</font></font>
+<ul>The pixels of the image are encoded as a JFIF (a JPEG format) data
+file and stored in the WHIP! data. The <b>Independent JPEG Group</b>'s JPEG Toolkit
+version 6 is used as the refrence implementation (found at <a href="ftp://ftp.simtel.net:/pub/simtelnet/msdos/graphics/">ftp://ftp.simtel.net:/pub/simtelnet/msdos/graphics/</a>jpegsr6a.zip
+or <a href="ftp://ftp.uu.net:/graphics/jpeg">ftp://ftp.uu.net:/graphics/jpeg/</a>jpegsrc.v6a.tar.gz).
+No colormap is supplied with a JPEG image since the format describes the
+color of pixels as full 24-bit RGB values.</ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>The array of pixels that define an image (Col x Row) need not have
+a one-to-one mapping to the logical coordinates that are specified (<i>X1,Y1</i>
+to <i>X2,Y2</i>) to position and size the image, as the image is scaled
+accordingly when displayed.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

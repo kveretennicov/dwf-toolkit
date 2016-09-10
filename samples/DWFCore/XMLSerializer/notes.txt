@@ -1,0 +1,1 @@
+This sample shows the way to use XMLSerilizer to make user understand how it works.

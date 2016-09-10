@@ -1,0 +1,193 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Opcode Reference</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodeRefHd.html&quot;">
+<b><font face="Arial"><font size=+2>Standard Opcode
+Definitions and Reference</font></font></b>
+<br>This section provides a comprehensive reference of the standard WHIP! 
+functions, opcodes, arguments and methods.
+<br>
+<hr>
+<p><a NAME="Opcm"></a><b><font face="Arial"><font size=+1>Opcode Mnemonics</font></font></b>
+<br>This section defines opcodes by the mnemonics listed in <a href="#Tbl1OpMnem">table
+1</a>.
+<center>
+<p><a NAME="Tbl1OpMnem"></a><i><font face="Arial,Helvetica">Table 1. Opcode
+mnemonics</font></i></center>
+
+<p><br>
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="15%" HEIGHT="33" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-1>Mnemonic</font></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%" HEIGHT="33" BGCOLOR="#0000A0"><b><font face="Arial"><font color="#FFFFFF"><font size=-1>Meaning</font></font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;B></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Unsigned byte
+of binary data.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;S></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Signed short
+integer (two bytes) of binary memory, stored in little-endian format. If
+used to represent a coordinate value, then it is interpreted to be a relative
+coordinate.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;US></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Unsigned short
+integer (two bytes) of binary memory, stored in little-endian format. If
+used to represent a coordinate value, then it is interpreted to be an absolute
+coordinate.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;L></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Signed long
+integer (four bytes) of binary memory, stored in little-endian format.
+If used to represent a coordinate value, then it is interpreted to be a
+relative coordinate.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;UL></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Unsigned long
+integer (four bytes) of binary memory, stored in little-endian format.
+If used to represent a coordinate value, then it is interpreted to be an
+absolute coordinate.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;I></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Integer (signed
+or unsigned) value expressed as a series of ASCII-coded bytes (including
+the hyphen (-),and the ASCII digits 0- 9); sequence is terminated by a
+non-digit character.</font></font></td>
+</tr>
+
+<tr>
+<td><b><font face="Courier New"><font size=-1>&lt;H></font></font></b></td>
+
+<td><font face="Arial"><font size=-1>A byte of binary data encoded as two
+hexadecimal ASCII characters (two bytes using the symbols '0' through '9',
+and 'A' through 'F' or 'a' through 'f').</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;F></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Floating-point
+(signed or unsigned) value expressed as a series of ASCII coded bytes (including
+the hyphen (-), the period (.), "E" (or 'e') and the ASCII digits 0- 9).</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;R></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Nested (recursive)
+set of opcodes.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;T></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>ASCII or UNICODE
+text string. If the string is ASCII and does not contain any white spaces,
+the string is not enclosed in quotes. If the string is ASCII and contains
+at least one white space character, the string is enclosed in single quotes
+('). If the string is UNICODE, the string is hexadecimal encoded and enclosed
+in double quotes (").</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>[
+]</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Optional pattern
+that may occur in the data stream exactly once, or not at all.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>[
+]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Pattern that
+must occur in the data stream at least one time and may repeat multiple
+times.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>[
+]<sup>*</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Pattern that
+may occur once, many times, or not at all.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>\</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Indicates that
+the expression continues on the next line because it would not fit in the
+table properly (the \ is not part of the data stream).</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-1>&lt;ws></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="85%"><font face="Arial"><font size=-1>Any (non-zero)
+number of ASCII white-space bytes, including the space, tab, line feed,
+or carriage return characters.</font></font></td>
+</tr>
+</table></center>
+
+<p><a NAME="Stand"></a><b><font face="Arial"><font size=+1><a href="../Contents/Contents.html#StandFuncRef" TARGET="frm1">Standard
+Opcodes Functional Reference</a></font></font></b>
+<br>The Functional Reference lists opcode mnemonics and contains detailed
+functional notes. For convenience, the opcodes are additionally tabulated
+in <a href="../AppendixA/AppendixA.html">apppendix A, "Opcodes listed by
+Format"</a>. In this section opcode operations are classified into the
+following categories:
+<ul>
+<li>
+File Information opcodes, whose names begin with <i><a href="../Contents/Contents.html#DefFuncs" TARGET="frm1">Define</a></i>.</li>
+
+<li>
+Geometric primitives such as lines, circles, and so forth, whose opcode
+names begin with <i><a href="../Contents/Contents.html#DrwFuncs" TARGET="frm1">Draw</a></i>.</li>
+
+<li>
+Attribute opcodes that modify how geometric primitives are rendered, whose
+opcode names begin with <i><a href="../Contents/Contents.html#SetFuncs" TARGET="frm1">Set</a>.</i></li>
+
+<li>
+Other opcodes such as Comment[s], which are listed in alphabetical order.</li>
+</ul>
+The reference lists and describes all of the standard functions possible
+within WHIP! data.&nbsp; Each function is listed at the top of
+the page followed by its purpose, syntax, and details. More commentary
+is provided in "Notes" sections, followed by default information and further
+reference information in "See Also."
+<p>To locate an opcode, choose from the Standard Opcodes Functional Refererence
+list displayed in the
+<a href="../Contents/Contents.html#StandFuncRef" TARGET="frm1">Contents</a>.
+<p>
+<hr>
+<br>
+<hr WIDTH="100%">
+</body>
+</html>

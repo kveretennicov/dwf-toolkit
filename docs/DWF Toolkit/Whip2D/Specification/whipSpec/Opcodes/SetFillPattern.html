@@ -1,0 +1,93 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Set Fill Pattern</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Fill Pattern</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set</b> <b>Fill Pattern</b> opcode is a rendition attribute.
+Prior to adding this opcode fill patterns were done as 'grass clippings'
+resulting in very large WHIP! data streams. Using this opcode, the WHIP! data generator
+can actually specify the 'filling patterns' for drawables as rendition
+attributes. The viewer can then stroke the patterns for drawables.</ul>
+<a NAME="FillPatternScale"></a>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(FillPattern</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws><sub>id</sub></font></font></b>
+<p><b><font face="Courier New"><font size=-2>[&lt;ws>(FillPatternScale&lt;ws>&lt;F<sub>Scale</sub>>[&lt;ws>])]\&nbsp;</font></font></b>
+</td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>id is based
+on the following mapping.</font></font></td>
+</tr>
+</table></center>
+
+<blockquote><i>id</i>&nbsp; is based on the following mapping:
+<blockquote>id value = 0 correspond to '<tt>Illegal</tt>' fill pattern
+<br>id value = 1 correspond to 'solid' fill pattern
+<br>id value = 2 correspond to '<tt>Checkerboard</tt>' fill pattern
+<br>id value = 3 correspond to '<tt>Crosshatch</tt>' fill pattern
+<br>id value = 4 correspond to '<tt>Diamonds</tt>' fill pattern
+<br>id value = 5 correspond to '<tt>Horizontal_Bars</tt>' fill pattern
+<br>id value = 6 correspond to '<tt>Slant_Left</tt>' fill pattern
+<br>id value = 7 correspond to '<tt>Slant_Right'</tt> fill pattern
+<br>id value = 8 correspond to '<tt>Square_Dots</tt>' fill pattern
+<br>id value = 9 correspond to '<tt>Vertical_Bars</tt>' fill pattern
+<br>id value = 10 correspond to '<tt>User_Defined</tt>' fill pattern<a NAME="F1FllPats"></a></blockquote>
+
+<center><img SRC="FilPtrns.JPG" height=172 width=140>
+<p><i><font face="Arial,Helvetica">Figure 1. Available fill patterns</font></i></center>
+</blockquote>
+
+<p><br><font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Only <tt>Extended_ASCII</tt>&nbsp; is supported for this opcode.
+<p><b>Set Fill Pattern</b> supports scaling as an opcode option for storing
+a double value similar to the way that the <b><a href="SetLinSty.html">Set
+Line Style</a></b> opcode supports pattern scale. The <b>Fill
+Pattern Scale</b> opcode specifies the scale factor (multiplier) for the
+fill pattern.
+<p>The fill pattern scale setting, in the ePlot driver, is the pattern
+scale from the General page of the Plot Style Table Editor. This is a simple
+multiplier of the standard fill pattern size. When this is 1.0, plot style
+fill patterns plot so that the spacing between pattern elements is approximately
+1/10 inch on the plotted page. For example, if the pattern scale is 2.0
+this should become 2/10th inch on the plotted page; or, if the scale is
+0.5 then the spacing between elements should be 1/20th inch.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>A whip toolkit user, for example, the eplot driver, makes use of&nbsp;
+the <b>Set Fill Pattern </b>opcode in the same way that the existing non-ISO
+line types are used.
+<font face="Arial Black"><font size=-1>See Also</font></font>
+<ul>For more information, see the <b><a href="SetFilMod.html">Set Fill
+Mode</a></b> and <b><a href="SetLinPat.html">Set Line Pattern</a></b> opcodes.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<blockquote>Fill pattern of 'Solid' is the default.</blockquote>
+
+<hr>
+<br>
+<hr WIDTH="100%">
+</body>
+</html>

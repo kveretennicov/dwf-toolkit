@@ -1,0 +1,88 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Line_Weight</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>=</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>3D</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>61</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter"><STRONG>Float</STRONG>&nbsp;weight,
+	  <STRONG>[Byte</STRONG>&nbsp;units<strong>]</strong>
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+	<td WIDTH="131" HEIGHT="21">weight</td>
+	<td WIDTH="390" HEIGHT="21">thickness of lines</td>
+	</tr>
+	<td WIDTH="131" HEIGHT="21">units</td>
+	<td WIDTH="390" HEIGHT="21">enumeration of unit choices, present if <em>weight</em> is negative</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3><FONT face="arial,helvetica,sans-serif">Indicates the thickness of lines relative
+to the default (usually 1 pixel for display devices) if positive. A negative value indicates that the <em>units</em>
+field is present, and the magnitude of the value plus the units indicate the line weight.<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Size Units options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0</TD>
+		<TD height=21 width=390>Object space size</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1</td>
+		<td WIDTH=390 HEIGHT=21>Screen space size</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>2</td>
+		<td WIDTH=390 HEIGHT=21>Window space size</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>3</td>
+		<td WIDTH=390 HEIGHT=21>Points</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>4</td>
+		<td WIDTH=390 HEIGHT=21>Pixels</td>
+		</tr>
+	</table>
+	<p>
+
+    Specification of line weight with units was added after version 7.00.
+
+
+</FONT>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

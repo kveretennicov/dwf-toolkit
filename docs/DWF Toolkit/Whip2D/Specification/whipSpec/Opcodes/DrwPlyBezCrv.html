@@ -1,0 +1,114 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw PolyB&eacute;zier Curve</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw PolyB&eacute;zier
+Curve</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Draw PolyB&eacute;zier Curve</b> function draws a single B&eacute;zier
+curve or a series of connected B&eacute;zier curves.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="42%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="24%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>(Bezier</font></font></td>
+
+<td VALIGN=TOP WIDTH="42%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Count</sub>>&lt;ws>&lt;I<sub>Xs</sub>>,&lt;I<sub>Ys</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>XC1</sub>>,&lt;I<sub>YC1</sub>>&lt;ws>&lt;I<sub>XC2</sub>>,&lt;I<sub>YC2</sub>>&lt;ws>&lt;I<sub>Xe</sub>>,&lt;I<sub>Ye</sub>>]<sup>+</sup>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="24%"><font face="Arial"><font size=-2>Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Single-byte,
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>[b] (62)</font></font></td>
+
+<td VALIGN=TOP WIDTH="40%"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>]&lt;L<sub>Xs</sub>>&lt;L<sub>Ys</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;L<sub>XC1</sub>>&lt;L<sub>YC1</sub>>&lt;L<sub>XC2</sub>>&lt;L<sub>YC2</sub>>&lt;L<sub>Xe</sub>>&lt;L<sub>Ye</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="26%"><font face="Arial"><font size=-2>Relative coordinates.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Count</i>&nbsp;&nbsp; The number of connected four-point B&eacute;zier
+curves to be drawn. In the binary operand case, a value of zero indicates
+that an extended count will follow. In the extended ASCII case, <i>count</i>
+may be any value larger than zero.
+<p><i>Ecount&nbsp;&nbsp; </i>When <i>count</i> is zero, a 2-byte extended
+count follows allowing for PolyB&eacute;zier curves of length 256 through
+65,791, which are encoded as an integer (0 to 65,535).
+<p><i>Xs,Ys</i>&nbsp;&nbsp; The position from which the 1st four-point
+B&eacute;zier curve starts from.
+<p><i>Xc1,Yc1</i>&nbsp;&nbsp; The first control point of the <i>i<sup>th</sup></i>
+four-point B&eacute;zier curve.
+<p><i>Xc2,Yc2</i>&nbsp;&nbsp; The second control point of the <i>i<sup>th</sup></i>
+four-point B&eacute;zier curve.
+<p><i>Xe,Ye</i>&nbsp;&nbsp; The endpoint of the <i>i<sup>th</sup></i> four-point
+B&eacute;zier curve. This point becomes the starting point for the (<i>i</i>
++ 1)<sup>th</sup> four-point B&eacute;zier curve, if there is one.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>A four-point B&eacute;zier curve is a smooth curve that passes through
+its two endpoints and is shaped by, but does not touch, its two control
+points. An example is shown in figure 1.<a NAME="Fig13"></a>
+<ul>
+<ul>
+<center><img SRC="Image58.gif" LOWSRC="Image58.gif" height=240 width=360></center>
+</ul>
+
+<center><i><font face="Arial,Helvetica">Figure 1. Four-point B&eacute;zier
+curve</font></i></center>
+</ul>
+</ul>
+
+<ul>When the "<a href="SetFilMod.html">Fill Mode</a>" attribute is inactive
+(the default), the <b>Draw PolyB&eacute;zier</b> function renders a curve
+based on the current line drawing attributes, which include "<a href="SetColr.html">Color</a>",
+"<a href="SetVis.html">Visibility</a>", "<a href="SetLinWgt.html">Line
+Weight</a>", "<a href="SetLinSty.html">Line Cap</a>" and "<a href="SetLinPat.html">Line
+Pattern</a>."
+<p>When the "Fill Mode" attribute is active, the <b>Draw PolyB&eacute;zier</b>
+function renders the interior of the region defined by the PolyB&eacute;zier
+curve and the edge connecting <i>Xs,Yx</i> to the final <i>Xe,Ye</i> in
+a solid color. The color is based on the Polygon drawing attributes, which
+include "Color", and "Visibility."</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>In order to have a smooth joint when going from one four-point B&eacute;zier
+to the next in the series, the <i>Xc2,Yc2</i> and the <i>Xe,Ye</i> of the
+previous B&eacute;zier must form a straight line with the <i>Xc1,Yc1</i>
+point of the B&eacute;zier shown in figure 2.<a NAME="Fig14"></a></ul>
+
+<ul>
+<ul>
+<center><img SRC="Image59.gif" height=240 width=360><img SRC="Image60.gif" height=240 width=360></center>
+</ul>
+</ul>
+
+<center><i><font face="Arial,Helvetica">Figure 2. Smooth joint between
+two, four point B&eacute;ziers</font></i></center>
+
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

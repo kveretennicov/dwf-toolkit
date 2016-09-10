@@ -1,0 +1,1 @@
+This samples is an extension of W2DTest. It tell users how to create a DWFx package by creating kinds of resources by W2DTest.

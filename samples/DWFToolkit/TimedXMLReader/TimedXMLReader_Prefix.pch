@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'TimedXMLReader' target in the 'TimedXMLReader' project.
+//
+
+#include <Carbon/Carbon.h>

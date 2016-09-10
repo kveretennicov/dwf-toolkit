@@ -1,0 +1,149 @@
+DWF Toolkit 7.6 Mac Port
+
+============
+ History
+============
+
+- 2009 1.21 	Silvia Cao(Silvia.Cao@autodesk.com) Initial Porting
+
+===============
+ Introduction
+===============
+
+This is a port of DWF Toolkit 7.6 to Mac OS X 10.5.6. This document only covers the Mac porting work. Please refer to readmefirst.html for how to use DWF Toolkit.
+
+This port contains the dwfcore part and the dwftk.
+
+For sizing issue, this port doesn't contain the Docs of DWF Toolkit. You may get a copy of DWF Toolkit at:
+http://usa.autodesk.com/adsk/servlet/index?id=823771&siteID=123112
+
+===============
+ Prerequisites
+===============
+
+  * Mac OS X 10.5.6
+  * XCode 3.1
+
+=======================
+ Build & Installation
+=======================
+
+1. use Xcode 3.1
+The XCode projects are ready for building the toolkit, they are under the directories:
+DWFCore.xcodeproj: ~/develop/global/build/XCode 3.1/DWFCore
+DWFToolkit.xcodeproj: ~/develop/global/build/XCode 3.1/DWFToolkit
+Open them directly, you can build the libraries and frameworks.
+
+2. use makefile
+TODO
+
+==========
+ Samples
+==========
+
+Samples are under ~/DWFTK/samples directory, please refer to DWF Docs for more information.
+
+You can open the XCode projects to build and run all the samples, and also you can run the runsample.sh to build and have a test run on all samples that have Makefile.
+
+Most samples are work fine on this Port, but not all. Here are the current status of the Samples:
+1. Xcode 3.1 
+
+Sample Name 			Build	Run			
+DWFCore/   
+Digest				Pass	Pass			
+Files				Pass	Pass
+Strings 			Pass	Pass
+Threads				Pass	1/3 deadlock[1]
+UUID				Pass	Pass
+VariableZip			Pass	Pass			
+XMLSerializer			Pass	Pass
+ZipDescriptor			Pass	Pass			
+
+
+DWFToolkit/
+3DPublishing			Pass	Pass
+Aggregate			Pass	Pass
+GlobalSectionwWriter		Pass	Pass
+ObjectDefinitionReader		Pass	Pass
+OPCExamine			Pass	Pass
+PublishMetaData			Pass	Pass
+ReadContentDefinition		Pass	Pass
+SimpleEnumReader		Pass	Pass
+SimpleEPlotWriter		Pass	Pass
+SimpleW3DStreamProcessor	Pass	Pass
+SimpleXPSPublisher		Pass	Pass
+TimedXMLReader			Pass	Pass
+W2dText				N/A[2]	N/A	
+WriteContent			Pass	Pass
+XPSTest				N/A[2]	N/A	
+
+2. Makefile
+TODO
+
+[1] DWFThreadPool does not work stably, hence the Threads sample has 1/3 chance to deadlock or deadloop. The reason is Mac OS X POSIX API doesn't support unamed semaphore functions (i.e. sem_init), in porting, I replaced it with mach kernel unamed semaphore, and it might have some difference in semantics.
+[2] Windows project: need to rewrite many windows API.
+
+==============
+ Known issues
+==============
+  1. A lot of warnings generated while building the dwfx project in dwftoolkit. This is because it defined several small classes which contains virtual functions however doesn't have virtual destructor.
+
+======
+ TODO
+======
+  Here are a few suggestions for what should be improved for this Port.
+  * Add more regression tests to this Mac Port
+  * Makefile
+  * some functions like the 2d font are not supported in Mac, need to implement them.
+
+============
+ ChangeLogs
+============
+  * DWFCore/
+	* add xcode 3.1 project.
+	* ansi/Semaphore.h:
+	* ansi/Semaphore.cpp:
+The Mac OS X POSIX API doesn't support unamed semaphore functions (i.e. sem_init), in porting, It replaced it with mach kernel unamed semaphore.
+	* ansi/UUID.cpp: change the functions:
+		 DWFUUIDImpl_ANSI::DWFUUIDImpl_ANSI( const DWFUUIDImpl_ANSI& uuid ) and 
+		 DWFUUIDImpl_ANSI::operator=( const DWFUUIDImpl_ANSI& uuid ) to 
+		 DWFUUIDImpl_ANSI::DWFUUIDImpl_ANSI( const DWFUUIDImpl_ANSI& zuuid )
+		 DWFUUIDImpl_ANSI::operator=( const DWFUUIDImpl_ANSI& zuuid )
+	* UUID.cpp
+	* zip/password.cpp 
+	* zip/unzip.cpp
+The class DWFUUIDImpl_ANSI contains a function named uuid(), which conflict with parameter const DWFUUIDImpl_ANSI& uuid, so it need to change the name. Other modification has the same reason.
+	* BufferInputStream.cpp:
+	* DecompressingInputStream.cpp
+Force type conversion.
+	* mac/Core.h: 
+	  1) Add the missing DWFCORE_ASCII_STRING_TOKENIZE, _DWFCORE_SPRINTF macro declarations from ansi/Core.h to mac/Core.h
+	  2) min, max conflict with the system defined min & max when __GNUC__ > 3, add condition (__GNUC__ > 3) to solve the conflicting.
+	  3) define BYTE.
+	* mac/Core.cpp:	Use libkern/OSAtomic.h to replace Carbon.h, the OTAtomicAdd32 is obsoleted.
+	* mac/Timer.cpp: Use CoreServices.h instead of Carbon.h, the Carbon API UpTime is obsoleted.
+	* sqlite/sqlite3.c: change structure struct Cursor to struct Sqlite3Cursor for the name conflicting.
+	
+
+  * DWF/
+	* add xcode 3.1 project.
+	* package/DefinedObject.cpp: remove "LONG_PTR" for mac os.
+	* package/DwfResult.h: process "HRESULT" for mac os.
+	* w3dtk/BOpcodeHandler.cppz: comment "tk" which is useless.
+	* XAML/XamlObjectFactory.cpp: 
+	* XAML/XamlURL.cpp:
+	* XAML/XamlText.cpp
+	* XAML/XamlFont.cpp
+	* XAML/XamlAttribute_Url.cpp
+force type conversion.
+	* XAML/XamlFile.cpp:
+comment win32 function (getFontStringWidth) for mac os. (We need to implement the function in the next step.)
+
+
+
+
+  * Samples/
+	* add xcode 3.1 project.
+
+
+	

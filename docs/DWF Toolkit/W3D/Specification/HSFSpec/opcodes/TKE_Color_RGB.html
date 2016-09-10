@@ -1,0 +1,63 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Color_RGB</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>~</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>7E</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>126</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Variable</STRONG>&nbsp;geometry, 
+      <STRONG>Byte</STRONG>&nbsp;red,
+	  <STRONG>Byte</STRONG>&nbsp;green, 
+      <STRONG>Byte</STRONG>&nbsp;blue
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+    <TD height=21 width=131>geometry</TD>
+    <TD height=21 width=390>bitmask of affected geometry. 1 byte, if high bit set a second byte follows.
+							bit definitions are <a href="geometry_table.html">here</a></TD>
+	</TR>
+<tr>
+	<td WIDTH="131" HEIGHT="21">red, green,blue</td>
+	<td WIDTH="390" HEIGHT="21">RGB color components in the range 0-255</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+      <font face="arial,helvetica,sans-serif">This is the color which will apply to geometry in the currently opened 
+      segment/geometry.</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

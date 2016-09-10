@@ -1,0 +1,1081 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Rendering_Options</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>R</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>52</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>82</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Variable</STRONG>&nbsp;mask, 
+      <STRONG>Variable</STRONG>&nbsp;value,<br>
+      <STRONG>[Byte</STRONG>&nbsp;hsr<STRONG>]</STRONG>
+      <STRONG>[Byte</STRONG>&nbsp;tech_quant<STRONG>]</STRONG>
+	  <STRONG>[Long</STRONG>&nbsp;face_displacement<STRONG>]</STRONG>,<br>
+
+      <STRONG>[Long</STRONG>&nbsp;lock_mask,
+	  <STRONG> Long</STRONG>&nbsp;lock_value,<br>
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;color_lock_mask,
+      <STRONG>&nbsp; Long</STRONG>&nbsp;color_lock_value<STRONG>]</STRONG>,<br>
+	  <STRONG>&nbsp;[Long</STRONG>&nbsp;visibility_lock_mask, 
+      <STRONG>&nbsp; Long</STRONG>&nbsp;visibility_lock_value<STRONG>]]</STRONG>,<br>
+      <STRONG>[(2)xFloat</STRONG>&nbsp;fog_limits<STRONG>]</STRONG>
+	  <STRONG>[Long</STRONG>&nbsp;debug<STRONG>]</STRONG><br>
+      <font size=1><br></font>
+      <STRONG>[Float</STRONG>&nbsp;stereo_separation<STRONG>]</STRONG><br>
+
+      <STRONG>[Byte</STRONG>&nbsp;buffer_options_mask,
+      <STRONG>&nbsp; Byte</STRONG>&nbsp;buffer_options_value,<br>
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;buffer_size_limit<STRONG>]]</STRONG><br>
+
+      <STRONG>[Variable</STRONG>&nbsp;hidden_line_options,
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;hidden_line_pattern<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Float</STRONG>&nbsp;hidden_line_dim_factor<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Float</STRONG>&nbsp;hidden_line_face_displacement<STRONG>]]</STRONG><br>
+
+      <STRONG>[Variable</STRONG>&nbsp;nurbs_options_mask,
+      <STRONG>&nbsp;Variable</STRONG>&nbsp;nurbs_options_value,<br>
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;nurbs_curve_budget<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;nurbs_curve_continued_budget<STRONG>]</STRONG>,<br>
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;nurbs_surface_budget<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;nurbs_surface_trim_budget<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Float</STRONG>&nbsp;nurbs_surface_max_trim_curve_deviation<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Float</STRONG>&nbsp;nurbs_surface_max_facet_angle<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Float</STRONG>&nbsp;nurbs_surface_max_facet_deviation<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Float</STRONG>&nbsp;nurbs_surface_max_facet_width<STRONG>]]</STRONG><br>
+      <STRONG>[Long</STRONG>&nbsp;LOD_options_mask,
+      <STRONG> Long</STRONG>&nbsp;LOD_options_value,<br>
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_algorithm<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[(6)xFloat</STRONG>&nbsp;LOD_explicit_bounding<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_num_cutoffs,
+      <STRONG>&nbsp;&nbsp;(<em>LOD_num_cutoffs</em>)xFloat</STRONG>&nbsp;LOD_cutoffs<STRONG>]</STRONG>,<br>
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_clamp<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_fallback<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;LOD_max_degree<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Long</STRONG>&nbsp;LOD_min_triangle_count<STRONG>]</STRONG>,
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_num_levels<STRONG>]</STRONG>,<br>
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_num_ratios,
+      <STRONG>&nbsp;&nbsp;(<em>LOD_num_ratios</em>)xFloat</STRONG>&nbsp;LOD_ratios<STRONG>]</STRONG>,<br>
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_num_thresholds,
+      <STRONG>&nbsp;&nbsp;(<em>LOD_num_thresholds</em>)xFloat</STRONG>&nbsp;LOD_thresholds,
+      <STRONG>&nbsp;&nbsp;Byte</STRONG>&nbsp;LOD_threshold_type<STRONG>]</STRONG>,<br>
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;LOD_heuristic<STRONG>]]</STRONG><br>
+
+      <STRONG>[Byte</STRONG>&nbsp;tessellation_options,<br>
+      <STRONG>&nbsp;[Byte</STRONG>&nbsp;tess_num_cylinder,
+      <STRONG>&nbsp;&nbsp;(<em>tess_num_cylinder</em>)xLong</STRONG>&nbsp;tess_cylinder<STRONG>]]</STRONG><br>
+      <STRONG>[Byte</STRONG>&nbsp;transparency_style<STRONG>]</STRONG><br>
+
+      <STRONG>[Byte</STRONG>&nbsp;cut_geometry_options,<br>
+	  <STRONG>&nbsp;[Byte</STRONG>&nbsp;cut_geometry_level<STRONG>]</STRONG>,
+	  <STRONG>&nbsp;[Byte</STRONG>&nbsp;cut_geometry_tolerance<STRONG>]]</STRONG><br>
+
+      <STRONG>[(2)xLong</STRONG>&nbsp;depth_range<STRONG>]</STRONG><br>
+
+
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<tr>
+    <td height=21 width=131>mask</TD>
+    <td height=21 width=390>bitmask of options which are specified, <STRONG>Long</STRONG>,
+						    if high bit set a second <STRONG>Long</STRONG> follows</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>value</TD>
+    <td height=21 width=390>bitmask of options which are set <em>on</em>, <STRONG>Long</STRONG>,
+						    if high bit of mask set a second <STRONG>Long</STRONG> follows</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>hsr</TD>
+    <td height=21 width=390>combination of hsr (low nibble) and transparent hsr (high nibble) enums</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>tech_quant</TD>
+    <td height=21 width=390>combination of technology and quantization bitmasks</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>face_displacement</TD>
+    <td height=21 width=390>displacement applied to "push back" surfaces so associated edges may be seen more clearly</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>lock_mask</TD>
+    <td height=21 width=390>bitmask showing which attribute types are having their lock setting changed</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>lock_value</TD>
+    <td height=21 width=390>bitmask showing which of those attribute settings are going to "locked"</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>color_lock_mask</TD>
+    <td height=21 width=390>bitmask showing which <A href="geometry_table.html">geometries</A> are having their color lock settings changed</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>color_lock_value</TD>
+    <td height=21 width=390>bitmask showing which of those color settings are going to "locked"</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>visibility_lock_mask</TD>
+    <td height=21 width=390>bitmask showing which <A href="geometry_table.html">geometries</A> are having their visibility lock settings changed</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>visibility_lock_value</TD>
+    <td height=21 width=390>bitmask showing which of those visibility settings are going to "locked"</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>fog_limits</TD>
+    <td height=21 width=390>near and far limits of depth cueing (relative to camera position)</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>stereo_separation</TD>
+    <td height=21 width=390>offset amgle (in degrees) from view axis for each eye in a stereo view</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>buffer_options_mask</TD>
+    <td height=21 width=390>bitmask showing which software frame buffer options are being changed</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>buffer_options_value</TD>
+    <td height=21 width=390>bitmask showing which buffer options are being set to "on"</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>buffer_size_limit</TD>
+    <td height=21 width=390>size limit for buffer</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>hidden_line_options</TD>
+    <td height=21 width=390>bitmask showing which hidden linde options are set,
+	                        <STRING>Byte</STRONG>. If high bit set, a second <STRING>Byte</STRONG> follows.</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>hidden_line_pattern</TD>
+    <td height=21 width=390>pattern used to draw the "hidden" lines</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>hidden_line_dim_factor</TD>
+    <td height=21 width=390>color dimming factor for the "hidden" lines</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>hidden_line_face_displacement</TD>
+    <td height=21 width=390>face displacement used when doing hidden line calculations</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_options_mask</TD>
+    <td height=21 width=390>bitmask indicating which NURBS curve/surface options are being changed,
+							<STRING>Byte</STRONG>. If high bit set, a second <STRING>Byte</STRONG> follows.</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_options_value</TD>
+    <td height=21 width=390>bitmask indications which NURBS options are set "on",
+							<STRING>Byte</STRONG>. If high bit set, a second <STRING>Byte</STRONG> follows.</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_curve_budget</TD>
+    <td height=21 width=390>number of points to generate along a NURBS curve</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_curve_continued_budget</TD>
+    <td height=21 width=390>additional points generated per control point beyonf one over the degree of the curve</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_surface_budget</TD>
+    <td height=21 width=390>maximum number of points to generate on the NURBS surface</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_surface_trim_budget</TD>
+    <td height=21 width=390>number of points to generate along NURBS trimming curves</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_surface_max_trim_curve_deviation</TD>
+    <td height=21 width=390>Distance, in the NURBS Surface's normalized [0..1] parametric space, of trim curve vertices from the parametric definition of the trimming curve.</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_surface_max_facet_angle</TD>
+    <td height=21 width=390>The largest angle allowed between the surface tangents evaluated at any two corners of a given facet. Expressed in degrees.</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_surface_max_facet_deviation</TD>
+    <td height=21 width=390>Distance, in object space, of the tessellation to the parametric definition of the surface.</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>nurbs_surface_max_facet_width</TD>
+    <td height=21 width=390>The largest allowable length, in the NURBS Surface's normalized [0..1] parametric space, of any facet's edge. </TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_options_mask</TD>
+    <td height=21 width=390>bitmask indicating which  Level Of Detail options which are being changed</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_options_value</TD>
+    <td height=21 width=390>bitmask indication which LOD options are being set "on"</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_algorithm</TD>
+    <td height=21 width=390>indicates the preferred choice of LOD generation</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_explicit_bounding</TD>
+    <td height=21 width=390>specific bounding volume used with some LOD choices</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_num_cutoffs</TD>
+    <td height=21 width=390>number of cutoff settings</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_cutoffs</TD>
+    <td height=21 width=390>minimum limits for generating a LOD at each level</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_clamp</TD>
+    <td height=21 width=390>selects a specific LOD level for display</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_fallback</TD>
+    <td height=21 width=390>indicates what (if anything) to draw when the desired LOD level is not present</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_max_degree</TD>
+    <td height=21 width=390>maximum number of edges to connect to a vertex in a generated LOD</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_min_triangle_count</TD>
+    <td height=21 width=390>lower bound on the number of triangles worth generating as a LOD</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_num_levels</TD>
+    <td height=21 width=390>number of LOD levels to compute</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_num_ratios</TD>
+    <td height=21 width=390>number of ratios specified</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_ratios</TD>
+    <td height=21 width=390>ratios of the number of triangles between a LOD level and the previous level</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_num_thresholds</TD>
+    <td height=21 width=390>number of threshold setting</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_thresholds</TD>
+    <td height=21 width=390>limits on triangle density before switching to a lower LOD during display</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_threshold_type</TD>
+    <td height=21 width=390>units specifying triangle density (not present previous to file version 9.08)</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>LOD_heuristic</TD>
+    <td height=21 width=390>indicates method used to determine when a LOD should not be generated</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>tessellation_options</TD>
+    <td height=21 width=390>indicates which tessellation options are set</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>tess_num_cylinder</TD>
+    <td height=21 width=390>number of cylinder tessellation settings</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>tess_cylinder</TD>
+    <td height=21 width=390>tessellation limits for cylinder display at various LOD levels</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>transparency_style</TD>
+    <td height=21 width=390>preferred means of handling transparent geometry</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>cut_geometry_options</TD>
+    <td height=21 width=390>options controlling the generation of capping faces when geometry is affected by cutting planes</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>cut_geometry_level</TD>
+    <td height=21 width=390>controls how geometry is collected for processing for capping faces</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>cut_geometry_tolerance</TD>
+    <td height=21 width=390>tolerance for closing loops when processing capping faces.
+							negative value indicates value is a percentage of current view (camera field) instead of object units</TD>
+	</tr>
+<tr>
+    <td height=21 width=131>depth_range</TD>
+    <td height=21 width=390>restricts placement of drawing into z-buffer range</TD>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+      <font face="arial,helvetica,sans-serif">Rendering options 
+      control miscellaneous display options.&nbsp; For the specific definitions 
+      of what these values mean in HOOPS/3dGS please refer to the <A 
+      href="../../Hoops3DGS/ref_manual/csetm_t.htm#st31">Set_Rendering_Options</A>  
+      specification in the 3dGS Reference Manual.
+	  <p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Mask/Value bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="550">
+	<TR>
+		<TD height=21 width=50>00000001</TD>
+		<TD height=21 width=390>Texture interpolation of faces</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000002</td>
+		<td WIDTH=390 HEIGHT=21>Texture interpolation of edges</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000004</td>
+		<td WIDTH=390 HEIGHT=21>Texture interpolation of vertices</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000008</td>
+		<td WIDTH=390 HEIGHT=21>Color interpolation of faces</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000010</td>
+		<td WIDTH=390 HEIGHT=21>Color interpolation of edges</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000020</td>
+		<td WIDTH=390 HEIGHT=21>Color interpolation of vertices</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000040</td>
+		<td WIDTH=390 HEIGHT=21>Color index interpolation of faces</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000080</td>
+		<td WIDTH=390 HEIGHT=21>Color index interpolation of edges</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000100</td>
+		<td WIDTH=390 HEIGHT=21>Lighting interpolation for faces is gouraud</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000200</td>
+		<td WIDTH=390 HEIGHT=21>Lighting interpolation for faces is phong</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000400</td>
+		<td WIDTH=390 HEIGHT=21>Lighting interpolation for edges is gouraud</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000800</td>
+		<td WIDTH=390 HEIGHT=21>Lighting interpolation for edges is phong</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00001000</td>
+		<td WIDTH=390 HEIGHT=21>Hidden surface algorithm specified, <em>hsr</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00002000</td>
+		<td WIDTH=390 HEIGHT=21>Hidden surface algorithm for transparent items specified, <em>hsr</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00004000</td>
+		<td WIDTH=390 HEIGHT=21>Local viewer</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00008000</td>
+		<td WIDTH=390 HEIGHT=21>Perspective Correction</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00010000</td>
+		<td WIDTH=390 HEIGHT=21>Display Lists</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00020000</td>
+		<td WIDTH=390 HEIGHT=21>Debug, <em>debug</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00040000</td>
+		<td WIDTH=390 HEIGHT=21>Technology, <em>tech_quant</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00080000</td>
+		<td WIDTH=390 HEIGHT=21>Quantization, <em>tech_quant</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00100000</td>
+		<td WIDTH=390 HEIGHT=21>Attribute Locks, <em>lock_mask</em> and <em>lock_value</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00200000</td>
+		<td WIDTH=390 HEIGHT=21>Face Displacement, <em>face_displacement</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00400000</td>
+		<td WIDTH=390 HEIGHT=21>Fog, <em>fog_limits</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00800000</td>
+		<td WIDTH=390 HEIGHT=21>Buffer Options, <em>buffer_options_mask</em> & <em>buffer_options_value</em>
+												present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>01000000</td>
+		<td WIDTH=390 HEIGHT=21>Hidden Line Options, <em>hidden_line_options</em>
+												present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>02000000</td>
+		<td WIDTH=390 HEIGHT=21>LODs desired</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>04000000</td>
+		<td WIDTH=390 HEIGHT=21>LOD Options, <em>LOD_options_mask</em> & <em>LOD_options_value</em>
+												present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>08000000</td>
+		<td WIDTH=390 HEIGHT=21>NURBS Curve Options, <em>nurbs_options_mask</em> & <em>nurbs_options_value</em>
+												present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>10000000</td>
+		<td WIDTH=390 HEIGHT=21>NURBS Surface Options, <em>nurbs_options_mask</em> & <em>nurbs_options_value</em>
+												present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>20000000</td>
+		<td WIDTH=390 HEIGHT=21>Stereo Requested</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>40000000</td>
+		<td WIDTH=390 HEIGHT=21>Stereo Separation, <em>stereo_separation</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>80000000</td>
+		<td WIDTH=390 HEIGHT=21>Extended, <em>mask</em> & <em>value</em> are extended with an extra
+								<strong>Long</strong> if <em>on</em></td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Mask/Value extended bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="550">
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000001</td>
+		<td WIDTH=390 HEIGHT=21>Tessellations, <em>tessellation_options</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000002</td>
+		<td WIDTH=390 HEIGHT=21>Transparency style, <em>transparency</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000004</td>
+		<td WIDTH=390 HEIGHT=21>Hardware acceleration for transparency requested if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000008</td>
+		<td WIDTH=390 HEIGHT=21>Options for processing geometry cuts info capping faces, <em>cut_geometry_options</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000010</td>
+		<td WIDTH=390 HEIGHT=21>Z-buffer depth range mapping, <em>depth_range</em> present if <em>on</em></td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>HSR algorithms:</strong></FONT><p>
+	<table BORDER =1 WIDTH="250">
+	<TR>
+		<TD height=21 width=50>0</TD>
+		<TD height=21 width=390>Hardware</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1</td>
+		<td WIDTH=390 HEIGHT=21>Software Z Buffer</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>2</td>
+		<td WIDTH=390 HEIGHT=21>Painter's</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>3</td>
+		<td WIDTH=390 HEIGHT=21>Z-Sort</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>4</td>
+		<td WIDTH=390 HEIGHT=21>Priority</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>5</td>
+		<td WIDTH=390 HEIGHT=21>Spider Web</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>6</td>
+		<td WIDTH=390 HEIGHT=21>Hidden Line</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>7</td>
+		<td WIDTH=390 HEIGHT=21>None (used with transparency)</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>8</td>
+		<td WIDTH=390 HEIGHT=21>Fast Hidden Line</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Technology and Quantization bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="250">
+	<TR>
+		<TD height=21 width=50>01</TD>
+		<TD height=21 width=390>Standard Technology</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>02</td>
+		<td WIDTH=390 HEIGHT=21>Software Frame Buffer</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>04</td>
+		<td WIDTH=390 HEIGHT=21>Radiosity</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>08</td>
+		<td WIDTH=390 HEIGHT=21>Ray-trace</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>10</td>
+		<td WIDTH=390 HEIGHT=21>Threshold Quantization</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>20</td>
+		<td WIDTH=390 HEIGHT=21>Dither</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>40</td>
+		<td WIDTH=390 HEIGHT=21>Error Diffusion</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Attribute Lock bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+ 	<TR>
+		<TD height=21 width=50>00000001</TD>
+		<TD height=21 width=390>Callbacks</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000002</td>
+		<td WIDTH=390 HEIGHT=21>Camera</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000004</td>
+		<td WIDTH=390 HEIGHT=21>Color, <em>color_lock_mask</em> and <em>color_lock_value</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000008</td>
+		<td WIDTH=390 HEIGHT=21>Color Map</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000010</td>
+		<td WIDTH=390 HEIGHT=21>Driver</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000020</td>
+		<td WIDTH=390 HEIGHT=21>Driver Options</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000040</td>
+		<td WIDTH=390 HEIGHT=21>Edge Pattern</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000080</td>
+		<td WIDTH=390 HEIGHT=21>Edge Weight</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000100</td>
+		<td WIDTH=390 HEIGHT=21>Face Pattern</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000200</td>
+		<td WIDTH=390 HEIGHT=21>Handedness</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000400</td>
+		<td WIDTH=390 HEIGHT=21>Heuristics</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00000800</td>
+		<td WIDTH=390 HEIGHT=21>Line Pattern</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00001000</td>
+		<td WIDTH=390 HEIGHT=21>Line Weight</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00002000</td>
+		<td WIDTH=390 HEIGHT=21>Marker Size</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00004000</td>
+		<td WIDTH=390 HEIGHT=21>Marker Symbol</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00008000</td>
+		<td WIDTH=390 HEIGHT=21>Metafile</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00010000</td>
+		<td WIDTH=390 HEIGHT=21>Modelling Matrix</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00020000</td>
+		<td WIDTH=390 HEIGHT=21>Rendering Options</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00040000</td>
+		<td WIDTH=390 HEIGHT=21>Selectability</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00080000</td>
+		<td WIDTH=390 HEIGHT=21>Styles</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00100000</td>
+		<td WIDTH=390 HEIGHT=21>Text Alignment</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00200000</td>
+		<td WIDTH=390 HEIGHT=21>Text Font</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00400000</td>
+		<td WIDTH=390 HEIGHT=21>Text Path</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>00800000</td>
+		<td WIDTH=390 HEIGHT=21>Text Spacing</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>01000000</td>
+		<td WIDTH=390 HEIGHT=21>User Options</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>02000000</td>
+		<td WIDTH=390 HEIGHT=21>User Value</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>04000000</td>
+		<td WIDTH=390 HEIGHT=21>Texture Matrix</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>08000000</td>
+		<td WIDTH=390 HEIGHT=21>Visibility, <em>visibility_lock_mask</em> and <em>visibility_lock_value</em> present if <em>on</em></td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>10000000</td>
+		<td WIDTH=390 HEIGHT=21>Window</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>20000000</td>
+		<td WIDTH=390 HEIGHT=21>Window Frame</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>40000000</td>
+		<td WIDTH=390 HEIGHT=21>Window Pattern</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Buffer Options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>0x01</TD>
+		<td height=21 width=390>Buffer Size Limit, <em>buffer_size_limit</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x02</TD>
+		<td height=21 width=390>Buffer should be retained</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x04</TD>
+		<td height=21 width=390>Buffer color depth should match device</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x08</TD>
+		<td height=21 width=390>Buffer color depth should be full RGB</TD>
+		</tr>
+	</table>
+	<p>
+
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Hidden Line Options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>0x0001</TD>
+		<td height=21 width=390>Hidden Lines are Visible</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0002</TD>
+		<td height=21 width=390>Hidden Lines are Not Visible</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0004</TD>
+		<td height=21 width=390>Hidden lines drawn with a Pattern, <em>hidden_line_pattern</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0008</TD>
+		<td height=21 width=390>Hidden Line Face Displacement, <em>hidden_line_face_displacement</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0010</TD>
+		<td height=21 width=390>Hidden Lines drawn with a Dimmed Color, <em>hidden_line_dim_factor</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0020</TD>
+		<td height=21 width=390>Attempt to draw faces here also if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0040</TD>
+		<td height=21 width=390>Do not draw faces here if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0080</TD>
+		<td height=21 width=390>Extended, <em>hidden_line_options</em> is extended with an extra <strong>Byte</strong> if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0100</TD>
+		<td height=21 width=390>Attempt silhouette edge cleanup if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0200</TD>
+		<td height=21 width=390>Do not do silhouette edge cleanup if <em>on</em></TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>LOD Options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>0x00000001</TD>
+		<td height=21 width=390>Conserve Memory</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000002</TD>
+		<td height=21 width=390>Screen Space</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000004</TD>
+		<td height=21 width=390>Physical</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000008</TD>
+		<td height=21 width=390>Tolerance is specified as FRU</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000010</TD>
+		<td height=21 width=390>Tolerance is specified as ORU</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000020</TD>
+		<td height=21 width=390>LODs should be generated as a Preprocess step</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000040</TD>
+		<td height=21 width=390>Bounding volume calculations should use the current bounding volume</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000080</TD>
+		<td height=21 width=390>Bounding volume is given explicitly</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000100</TD>
+		<td height=21 width=390>Ratios are specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000200</TD>
+		<td height=21 width=390>Thresholds are specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000400</TD>
+		<td height=21 width=390>Min Triangle Count is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00000800</TD>
+		<td height=21 width=390>Clamp level is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00001000</TD>
+		<td height=21 width=390>Num Levels is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00002000</TD>
+		<td height=21 width=390>Max_Degree is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00004000</TD>
+		<td height=21 width=390>Tolerance is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00008000</TD>
+		<td height=21 width=390>Usefulness Heuristic is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00010000</TD>
+		<td height=21 width=390>Calculation Cutoffs are specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00020000</TD>
+		<td height=21 width=390>Fallback method is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00040000</TD>
+		<td height=21 width=390>Duplicate vertices should be collapsed into a single vertex</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00080000</TD>
+		<td height=21 width=390>Algorithm for LOD generaation is specified</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x00100000</TD>
+		<td height=21 width=390>LOD mode is set, segment level if matching value bit is set, geometry level if not</TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>LOD Threshold Units:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>1</TD>
+		<td height=21 width=390>Triangles per Square Pixel</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>2</TD>
+		<td height=21 width=390>triangles per Square Centimeter</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>3</TD>
+		<td height=21 width=390>percentage of display area</TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>LOD Algorithms:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>1</TD>
+		<td height=21 width=390>Fast Algorithm</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>2</TD>
+		<td height=21 width=390>Nice Algorithm</TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>LOD Fallback Heuristic Choices:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>0</TD>
+		<td height=21 width=390>bounding diagonal</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>1</TD>
+		<td height=21 width=390>bounding diagonal per triangle</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>2</TD>
+		<td height=21 width=390>bounding diagonal ratio</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>3</TD>
+		<td height=21 width=390>bounding diagonal ratio per triangle</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>4</TD>
+		<td height=21 width=390>bounding volume</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>5</TD>
+		<td height=21 width=390>bounding volume per triangle</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>6</TD>
+		<td height=21 width=390>bounding volume ratio</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>7</TD>
+		<td height=21 width=390>bounding volume ratio per triangle</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>8</TD>
+		<td height=21 width=390>triangle size</TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>LOD Fallback Choices:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>0</TD>
+		<td height=21 width=390>None</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>1</TD>
+		<td height=21 width=390>Bounding Box</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>2</TD>
+		<td height=21 width=390>Coarsest LOD</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>3</TD>
+		<td height=21 width=390>Coarsest LOD or None</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>4</TD>
+		<td height=21 width=390>Coarsest LOD or Bounding Box</TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>NURBS Options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>0x01</TD>
+		<td height=21 width=390>NURBS Curve Budget, <em>nurbs_curve_budget</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x02</TD>
+		<td height=21 width=390>NURBS Curve Continued Budget, <em>nurbs_curve_continued_budget</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x04</TD>
+		<td height=21 width=390>NURBS Curve View Dependent Tessellation</TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x10</TD>
+		<td height=21 width=390>NURBS Surface Budget, <em>nurbs_surface_budget</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x20</TD>
+		<td height=21 width=390>NURBS Surface Trim Budget, <em>nurbs_surface_trim_budget</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x40</TD>
+		<td height=21 width=390>NURBS Surface Max Trim Curve Deviation, <em>nurbs_surface_max_trim_curve_deviation</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x80</TD>
+		<td height=21 width=390>Extended, <em>nurbs_options_mask</em> & <em>nurbs_options_value</em> are extended with an extra
+								<strong>Byte</strong> if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0100</TD>
+		<td height=21 width=390>NURBS Surface Max Facet Angle, <em>nurbs_surface_max_facet_angle</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0200</TD>
+		<td height=21 width=390>NURBS Surface Max Facet Deviation, <em>nurbs_surface_max_facet_deviation</em> present if <em>on</em></TD>
+		</tr>
+	<tr>
+		<td height=21 width=50>0x0400</TD>
+		<td height=21 width=390>NURBS Surface Max Facet Width, <em>nurbs_surface_max_facet_width</em> present if <em>on</em></TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Tesselation Options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="540">
+	<tr>
+		<td height=21 width=50>0x01</TD>
+		<td height=21 width=390>Cylinder, <em>tess_num_cylinder</em> & <em>tess_cylinder</em> present if <em>on</em></TD>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Transparency style:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0</TD>
+		<TD height=21 width=390>Transparency should be ignored</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1</td>
+		<td WIDTH=390 HEIGHT=21>Transparency should be drawn normally</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>2</td>
+		<td WIDTH=390 HEIGHT=21>Transparency should be drawn preferrring speed over quality,
+								for exampe, using a  transparent stipple ("screen door") pattern</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Cut Geometry Options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0x01</TD>
+		<TD height=21 width=390>Accumulation level for cut geometry processing, <em>cut_geometry_level</em> present if <en>on</em></TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0x02</td>
+		<td WIDTH=390 HEIGHT=21>Tolerance for cut geometry loop closure, <em>cut_geometry_tolerance</em> present if <en>on</em></td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Cut Geometry Levels:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0</TD>
+		<TD height=21 width=390>Entity -- each shell will be processed invividually</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1</td>
+		<td WIDTH=390 HEIGHT=21>Segment -- all shells in a segment will be processed together</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>2</td>
+		<td WIDTH=390 HEIGHT=21>Segment Tree -- all shells in the current segment and all subsegments will
+		                        be processed together.</td>
+		</tr>
+	</table>
+	<p>
+
+
+      <P><FONT face=arial,helvetica,sans-serif>
+	  Extra fields for extended mask/value, and Optional fields starting at
+	  Stereo Separation were added in HSF version 6.50.<br>
+	  Transparency style was added in 7.10. <br>
+	  Cut Geometry Options & Depth range added in 8.06.<br>
+	  Extended Hidden Line Options added in 9.05.<br>
+	  LOD_threshold_type added in 9.08.<br>
+	  </FONT></P>
+
+</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

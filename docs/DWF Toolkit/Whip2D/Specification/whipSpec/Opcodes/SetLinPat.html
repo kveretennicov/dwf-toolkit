@@ -1,0 +1,395 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Set Line Pattern</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Line Pattern</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Line Pattern</b> function specifies the repeating pattern
+with which lines are rendered.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="660" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>ASCII Operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="19%"><font face="Courier New"><font size=-2>(LinePattern</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>PatName</sub>>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Defines how
+subsequent lines are rendered.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Binary Operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="19%"><font face="Courier New"><font size=-2>0xCC</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;B<sub>PatNum</sub>>[&lt;US<sub>Epatnum</sub>>]&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Corresponds
+to the pattern of subsequent lines.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>ASCII Operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="19%"><font face="Courier New"><font size=-2>(DashPattern</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Dashpatnum</sub>>
+&lt;ws>&lt;[&lt;I<sub>Pixels_on</sub>>,&lt;I<sub>Pixels_off</sub>>]<sup>+</sup>[&lt;ws>])&nbsp;</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Application
+defines the pattern.&nbsp;</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>PatName</i>&nbsp; An ASCII text string that describes a pattern
+with which to render subsequent lines
+<p><i>PatNum</i>&nbsp; A number that corresponds to a pattern with which
+to render subsequent lines
+<p><i>Epatnum</i>&nbsp; In the binary form, if the pattern number is greater
+than 255, then PatNum is stored as zero, and a two byte Epatnum follows
+indicating layer numbers from the range 256 to 65791
+<p><i>Dashpatnum</i>&nbsp; A number that corresponds to a pattern defined
+by the application
+<ul>
+<li>
+<i>Pixels_on</i> Represent pixels that are lighted</li>
+
+<li>
+<i>Pixels_off</i> Represent pixels that are not lighted</li>
+</ul>
+</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Set Line Pattern</b> opcode specifies a pattern of dashes and
+dots with which subsequent lines are rendered. The attribute applies to
+lines, polylines, circular arcs, and elliptical arcs. Applications can
+specify patterns in WHIP! data via two ways:
+<ul>
+<li>
+<b>Line Pattern</b> Allows the application to select one of 31 predefined
+patterns that are associated with WHIP! data. For ASCII WHIP! data, applications 
+use Line Pattern by specifying the name of the pattern.
+For binary WHIP! data, a number corresponding to a particular pattern
+is specified.</li>
+
+<li>
+<a NAME="DashPat"></a><b>Dash Pattern</b> Allows the application to define
+its own pattern rather than use the predefined patterns. A desired pattern
+is specified by indicating how many pixels are on and off.</li>
+</ul>
+<b>Note:</b> Line patterns have been extended from values of 18 through
+31 to include ISO linetypes. This should reduce tessellation of&nbsp; ISO
+linetypes that are tessellated via the ePlot driver through Heidi. The
+possible values for <i>PatName</i> (ASCII) and <i>PatNum</i> (binary) including
+the ISO values are shown in table 1.<a NAME="Tbl1LinePatVals"></a></ul>
+
+<center>
+<p><br><i><font face="Arial,Helvetica">Table 1. Line pattern values</font></i></center>
+
+<center><table BORDER CELLPADDING=9 WIDTH="660" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Pattern
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="35%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Pattern
+Name</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="15%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Pattern
+Number&nbsp;</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>——&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Solid</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>1</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– –&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Dashed</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>2</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>. . . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Dotted</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>3</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– . – .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Dash_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>4</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>-&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Short_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>5</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>–&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Medium_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>6</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>—&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Long_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>7</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>- -&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Short_Dash_X2</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>8</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– –&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Medium_Dash_X2</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>9</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— —&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Long_Dash_X2</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>10</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– —&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Medium_Long_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>11</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– - -&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Medium_Dash_Short_Dash_Short_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>12</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— -&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Long_Dash_Short_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>13</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Long_Dash_Dot_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>14</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Long_Dash_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>15</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– . - .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Medium_Dash_Dot_Short_Dash_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>16</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>.&nbsp;&nbsp;&nbsp;
+.&nbsp;&nbsp;&nbsp; .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>Sparse_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>17</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– –</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>18</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>–&nbsp; –&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Dash_Space</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>19</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— .</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Long_Dash_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>20</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— . .</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Long_Dash_Double_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>21</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— . . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Long_Dash_Triple_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>22</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>. . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>23</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— -</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Long_Dash_Short_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>24</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>— - -</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Long_Dash_Double_Short_Dash</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>25</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Dash_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>26</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– – .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Double_Dash_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>27</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Dash_Double_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>28</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– – . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Double_Dash_Double_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>29</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– . . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Dash_Triple_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>30</font></font></b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>– – . . .&nbsp;</font></font></td>
+
+<td VALIGN=TOP WIDTH="35%"><font face="Courier New"><font size=-2>ISO_Double_Dash_Triple_Dot</font></font></td>
+
+<td VALIGN=TOP WIDTH="15%"><b><font face="Courier New"><font size=-2>31</font></font></b></td>
+</tr>
+</table></center>
+
+<p><font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>Because the way that line patterns are rendered is highly dependent
+upon the WHIP! data  reading application, line patterns are meant to be used only
+as a visual cue. Normally, a WHIP! data  reading application renders line patterns
+in screen space, such that the size of the pattern does not change as a
+user zooms-in on the drawing. If exact line patterns are required that
+synchronize with other geometric primitives in the drawing, then the WHIP! data 
+writing application should explicitly draw the individual dashes and dots
+required as a series of&nbsp; <b><a href="DrwLine.html">Draw Line</a></b>
+calls.
+
+<font face="Arial Black"><font size=-1>See Also</font></font>
+<blockquote>For more information on line patterns,&nbsp; see&nbsp; the
+<b><a href="SetLinSty.html">Set Line Style</a></b>, <b><a href="DrwLine.html">Draw
+Line</a></b>, <b><a href="SetPen_Pattern.html">Set Pen Pattern</a></b>
+and <b><a href="SetLinSty.html#LinePatternScale">Line Pattern Scale</a></b>
+opcodes.</blockquote>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>The default Line Pattern is a solid line and is equivalent to
+<ul><font face="Courier New"><font size=-1>(LinePattern Solid)</font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

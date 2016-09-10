@@ -1,0 +1,126 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_NURBS_Surface</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>A</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>0x41</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>65</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Byte</STRONG>&nbsp;options,
+	  <STRONG>Byte</STRONG>&nbsp;u_degree,
+	  <STRONG>Byte</STRONG>&nbsp;v_degree,
+	  <STRONG>Long</STRONG>&nbsp;u_count,
+	  <STRONG>Long</STRONG>&nbsp;v_count,
+      <STRONG>(</STRONG><EM>u_count</EM> x <EM>v_count</EM><STRONG>)</strong>x<strong>Point</STRONG>&nbsp;control_points,
+      <STRONG>[(</STRONG><EM>u_count</EM> x <EM>v_count</EM><STRONG>)</strong>x<strong>Float</STRONG>&nbsp;weights<STRONG>]</STRONG>,<br>
+      <STRONG>[(</STRONG><EM>u_count+degree+1</EM><STRONG>)</strong>x<strong>Float</STRONG>&nbsp;u_knots<STRONG>]</STRONG>,<br>
+      <STRONG>[(</STRONG><EM>v_count+degree+1</EM><STRONG>)</strong>x<strong>Float</STRONG>&nbsp;v_knots<STRONG>]</STRONG>,<br>
+      <STRONG>[variable</STRONG>&nbsp;trims<STRONG>]</STRONG>
+	  </FONT></P>
+
+    <FONT face="arial,helvetica,sans-serif">	  
+    <table BORDER =1 WIDTH="530">
+        <TR>
+            <TD height=21 width=131>options</TD>
+            <TD height=21 width=390>bitmask indicating which options are present</TD>
+	    </TR>
+        <TR>
+            <TD height=21 width=131>u_degree</TD>
+            <TD height=21 width=390>degree of the surface in the u direction</TD>
+	    </TR>
+        <TR>
+            <TD height=21 width=131>v_degree</TD>
+            <TD height=21 width=390>degree of the surface in the v direction</TD>
+	    </TR>
+        <TR>
+            <TD height=21 width=131>u_count</TD>
+            <TD height=21 width=390>number of control points in the surface in the u direction</TD>
+	    </TR>
+        <TR>
+            <TD height=21 width=131>v_count</TD>
+            <TD height=21 width=390>number of control points in the surface in the v direction</TD>
+	    </TR>
+        <tr>
+	        <td WIDTH=131 HEIGHT=21>control_points</td>
+	        <td WIDTH=390 HEIGHT=21><EM>u_count</EM> x <EM>v_count</EM> triplets of x, y, z data.  
+            A two dimensional array sorted such that the v direction is varying fastest</td>
+	    </tr>
+        <tr>
+	        <td WIDTH=131 HEIGHT=21>weights</td>
+	        <td WIDTH=390 HEIGHT=21><EM>u_count</EM> x <EM>v_count</EM> weight factors.  Arranged 
+            in the same order as <em>control_points</em></td>
+	    </tr>
+        <tr>
+	        <td WIDTH=131 HEIGHT=21>knots</td>
+	        <td WIDTH=390 HEIGHT=21><EM>u_count + degree + 1</EM> knot values in the u direction</td>
+	    </tr>
+        <tr>
+	        <td WIDTH=131 HEIGHT=21>knots</td>
+	        <td WIDTH=390 HEIGHT=21><EM>v_count + degree + 1</EM> knot values in the v direction</td>
+	    </tr>
+    </table>
+ <P>&nbsp;</P></FONT>
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+
+    <P><FONT face=arial,helvetica,sans-serif>            
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Option flags:</strong></FONT></P><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0001</TD>
+		<TD height=21 width=390>Weights are specified</TD>
+	</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0002</td>
+		<td WIDTH=390 HEIGHT=21>Knots are specified</td>
+	</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0004</td>
+		<td WIDTH=390 HEIGHT=21>Surface is trimmed</td>
+	</tr>
+	</table>
+
+    <font face="arial,helvetica,sans-serif">
+    <p>Surface is inserted into the currently opened segment. 
+
+    <p>If trim operations are present, as indicated by the one of the bits in <em>options</em>, the
+    surface is followed by a variable-length list of trim operations, as described in <A href="trim.html">trim.html</A>.
+
+    <p>NURBS Surfaces were first added with version 7.0.
+
+</font></P>
+
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>
+
+

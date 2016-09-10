@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'Aggregate' target in the 'Aggregate' project.
+//
+
+#include <Carbon/Carbon.h>

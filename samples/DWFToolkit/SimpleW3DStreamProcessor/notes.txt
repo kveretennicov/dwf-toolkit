@@ -1,0 +1,1 @@
+This sample tells users the steps to get W3D file out from a package and how to process W3D files. It also shows how to create new opcodehandler so that they can process certain opcode as their need and design.

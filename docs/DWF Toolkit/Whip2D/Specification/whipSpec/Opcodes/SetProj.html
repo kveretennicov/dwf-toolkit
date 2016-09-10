@@ -1,0 +1,86 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set Projection</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Projection</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Projection</b> function indicates to the WHIP! data reading application
+what portion of the logical coordinate space is viewed.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="592" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="22%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="22%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="24%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="22%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="22%" HEIGHT="26"><font face="Courier New"><font size=-2>(Projection</font></font></td>
+
+<td VALIGN=TOP WIDTH="24%" HEIGHT="26"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;T<sub>Proj</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="26"><font face="Arial"><font size=-2>Selects
+a view projection</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Proj&nbsp;&nbsp;</i> A description of how the selected view is projected
+into the containing window.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Set Projection</b> opcode specifies how the WHIP! data reading application
+handles the case when the aspect ratio of the selected View does not equal
+the aspect ratio of the window into which the view is projected. Legal
+values for <i>Proj</i> include the following:</ul>
+
+<ul>
+<ul>
+<li>
+<i>normal</i>—The selected view is symmetrically scaled so that it completely
+fits within the containing window without distortion. In the case that
+the window’s aspect ratio is larger than the view’s aspect ratio, the view
+is scaled such that, horizontally, it fits tightly within the containing
+window. However, the view is scaled vertically such that a larger region
+of the logical coordinate space is viewed than was requested. When the
+window’s aspect ratio is less than the view’s aspect ratio, the view fits
+tightly in the vertical direction, and an excess of logical space is viewed
+horizontally (from what was requested).</li>
+
+<li>
+<i>stretch</i>—The selected view is asymmetrically scaled so that it exactly
+fills the containing window in both dimensions, and thus is distorted when
+the aspect ratios differ (circles become ellipses).</li>
+
+<li>
+<i>chop</i>—Similar to <i>normal</i>, however, the areas of excess logical
+space are not rendered. This results in leaving a gap on two sides of the
+containing window where no geometry is rendered.</li>
+</ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>WHIP! data reading applications may receive projection information from the
+execution of URLs. In this case... (TBD—WORK-IN-PROGRESS).</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the projection attribute is set to "normal", which is the
+equivalent of executing the following opcode:
+<ul><font face="Courier New"><font size=-1>(Projection normal)</font></font></ul>
+</ul>
+<hr>
+<hr>
+</body>
+</html>

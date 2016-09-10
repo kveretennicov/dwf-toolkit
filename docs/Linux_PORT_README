@@ -1,0 +1,106 @@
+DWF Toolkit 7.6 Linux Port
+
+============
+ History
+============
+
+- 2009 1.21 	Jerry Gao(jerry.gao@autodesk.com) Initial Porting
+
+===============
+ Introduction
+===============
+
+This is a port of DWF Toolkit 7.6 to support Linux on 32bit versions. This document only covers the Linux porting work. Please refer to readmefirst.html for details on usage of DWF Toolkit.
+
+This port contains the dwfcore part and the dwftk.
+
+===============
+ Prerequisites
+===============
+
+  * Linux with GNU (3.4.2)
+
+=======================
+ Build & Installation
+=======================
+ 
+Build step by step:
+  1). Download code into a directory (eg: ~/DWFTK)
+  2). Prepare build scripts
+     cd ~/DWFTK/develop/global/build/gnu/dwfcore
+     ./build_setup.sh
+     cd ../dwftoolkit
+     ./build_setup.sh
+  3). Build dwfcore
+     cd ~/DWFTK/develop/global/src/dwfcore/
+     ./configure --with-zlib=no --with-expat=no
+     make
+     sudo make install 
+     
+     * Specify --with-zlib=no if you want to use the zlib in DWF TK.
+     * Specify --with-expat=no if you want to use the expat in DWF TK.
+    
+
+  4). Build dwftoolkit
+     cd ~/DWFTK/develop/global/src/dwf/
+     ./configure --with-zlib=no --with-jpeg=no --with-expat=no
+     make
+     sudo make install
+    
+     * Specify --with-zlib=no if you want to use the zlib linked in libdwfcore.
+     * Specify --with-jpeg=no if you want to use the jpeg lib in DWF TK.
+     * Specify --with-expat=no if you want to use the expat lib linked in libdwfcore.
+     * Specify --enable-shared if you want to build shared library, if you don't want to build shared library, specify --disable-shared.
+     * Specify --enable-static if you want to build static library, if you don't want to build static library, specify --disable-shared.
+     * By default the build script will generate both static and shared library, the shared library has .dylib extension.
+
+The above methods build debug version of library. If you want to build opertimized version of library, please add --enable-optimized=yes to every ./configure.
+
+==========
+ Samples
+==========
+
+Samples are under ~/DWFTK/samples directory, please refer to DWF Docs for more information.
+
+You can all the samples with Makefile.
+
+Most samples are work fine on this Port, but not all. Here are the current status of the Samples:
+
+Sample Name 			Build	Run			
+DWFCore/   
+Digest				Pass	Pass			
+Files				Pass	Pass
+Strings 			Pass	Pass
+Threads				Pass	1/3 deadlock[1]
+UUID				Pass	Pass
+VariableZip			Pass	Pass			
+XMLSerializer			Pass	Pass
+ZipDescriptor			Pass	Pass			
+
+
+DWFToolkit/
+3DPublishing			Pass	Pass
+Aggregate			Pass	Pass
+GlobalSectionwWriter		Pass	Pass
+ObjectDefinitionReader		Pass	Pass
+OPCExamine			Pass	Pass
+PublishMetaData			Pass	Pass
+ReadContentDefinition		Pass	Pass
+SimpleEnumReader		Pass	Pass
+SimpleEPlotWriter		Pass	Pass
+SimpleW3DStreamProcessor	Pass	Pass
+SimpleXPSPublisher		Pass	Pass
+TimedXMLReader			Pass	Pass
+W2dTest_Mac_Linux		Pass	Pass	
+WriteContent			Pass	Pass
+XPSTest_Mac_Linux		Pass	Pass	
+
+[1] DWFThreadPool does not work stably, hence the Threads sample has 1/3 chance to deadlock or deadloop.
+
+==============
+ Known issues
+==============
+  1. A lot of warnings generated while building the dwftoolkit project. This is because it defined several small classes which contains virtual functions however doesn't have virtual destructor.
+  2. The samples W2dTest_Mac_Linux and XPSTest_Mac_Linux not support embedded font in Linux and Mac OS.
+
+

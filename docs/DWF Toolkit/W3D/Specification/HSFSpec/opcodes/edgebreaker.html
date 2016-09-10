@@ -1,0 +1,327 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF EdgeBreaker Connectivity Compression Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+<H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">EdgeBreaker Data</FONT></H2>
+<P>
+<FONT face="arial,helvetica,sans-serif">
+
+Shells with the TKSH_CONNECTIVITY_COMPRESSION bit set have their vertex location
+and connectivity data combined into an encoding according to the algorithm presented
+by Jarek Rossignac in 1998.  The remainder of this description will assume familiarity
+with that algorithm.   Please see:
+  	<FONT face="Courier New,Courier,typewriter"><blockquote>
+	  	"Edgebreaker: Connectivity compression for triangle meshes", J. Rossignac. IEEE Transactions on Visualization and Computer Graphics, Vol. 5, No. 1, pp. 47-61, January - March 1999. </blockquote></FONT>
+	  	Available in PDF format at <a href="http://www.gvu.gatech.edu/~jarek/papers/eb.pdf">	  http://www.gvu.gatech.edu/~jarek/papers/eb.pdf</a><p>
+   	
+	<FONT color=#0000a0>
+        <strong>Overall Organization</strong>
+	</FONT>
+	<center>
+	<TABLE border=1 height=90>
+  		<TR> <TD height=12>Header</TD> <TR>
+  		<TR> <TD height=12>Opcodes</TD> <TR>
+  		<TR> <TD height=12>pad to 4-byte boundary</TD> <TR>
+  		<TR> <TD height=12>MTable</TD> <TR>
+  		<TR> <TD height=12>pad to 4-byte boundary</TD> <TR>
+  		<TR> <TD height=12>Points</TD> <TR>
+  		<TR> <TD height=12>pad to 4-byte boundary</TD> <TR>
+  		<TR> <TD height=12>Normals</TD> <TR>
+	</TABLE>
+	</center>
+	The Header and MTable sections are relatively simple structures.  The opcodes section is an array of enumerated types.  The points section is described in detail in the <a href="#notes">notes</a> section. <p>
+		  
+ 	<FONT color=#0000a0>
+        <strong>Header</strong>
+	</FONT> <p>
+	<STRONG>byte</STRONG>&nbsp;scheme,
+    <STRONG>byte</STRONG>&nbsp;mtable_scheme,
+    <STRONG>byte</STRONG>&nbsp;points_scheme,
+    <STRONG>byte</STRONG>&nbsp;normals scheme,
+    <STRONG>int</STRONG>&nbsp;opslen,
+    <STRONG>int</STRONG>&nbsp;mtable length,
+    <STRONG>int</STRONG>&nbsp;points length,
+    <STRONG>int</STRONG>&nbsp;point count,
+    <STRONG>int</STRONG>&nbsp;normals length 
+	<p>
+	
+	<table BORDER =1 WIDTH="530">
+	 	<TR>
+	    	<TD height=21 width=131>scheme</TD>
+	    	<TD height=21 width=390>identification for the overall edgebreaker data format.  Only one such format exists at this point, so this will be zero</TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>mtable_scheme</TD>
+	    	<TD height=21 width=390>identification for the format of the mtable.  Set to zero</TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>points_scheme</TD>
+	    	<TD height=21 width=390>identification for the points format. Two formats currently exist, so this may be zero or one</TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>normals_scheme</TD>
+	    	<TD height=21 width=390>Identification of the format for encoding normals.  Only one such format currently exists, so this will always be set to zero.  Prior to version 7.0, this was padding that was ignored. </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>opslen</TD>
+	    	<TD height=21 width=390>length, in bytes, of the opcodes section </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>mtable length</TD>
+	    	<TD height=21 width=390>length, in bytes, of the mtable</TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>points length</TD>
+	    	<TD height=21 width=390>length, in bytes, of the points data</TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>point count</TD>
+	    	<TD height=21 width=390>number of unique points, after handling patches and dummies (see <a href="#notes">notes</a>)</TD>
+	  	</TR>
+		<TR>
+	    	<TD height=21 width=131>normals length</TD>
+	    	<TD height=21 width=390>length, in bytes of the normals data. </TD>
+	  	</TR>
+	</table>
+  	<p>
+	    
+
+	<FONT color=#0000a0>
+        <strong>Opcodes:</strong>
+	</FONT><p>	
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50> 1</TD>
+		<TD height=21 width=390>CASE_C</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 2</TD>
+		<TD height=21 width=390>CASE_L</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 3</TD>
+		<TD height=21 width=390>CASE_E</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 4</TD>
+		<TD height=21 width=390>CASE_R</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 5</TD>
+		<TD height=21 width=390>CASE_S</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 6</TD>
+		<TD height=21 width=390>CASE_M (obsolete) </TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 7</TD>
+		<TD height=21 width=390>CASE_M2 (obsolete, known as M' in the paper)</TD>
+	</TR>
+	</table>
+As in the paper, there are 5 basic operations that are used to describe connectivity, plus 2 extensions to take care of handles and holes.  In our experience, the CASE_M and CASE_M2 extension operations were not sufficiently robust, so we rely on surface processing to make pseudomanifolds for which these two operations are unnecessary. These opcodes are left 
+as unpacked 8-bit unsigned characters for HSF's LZ postprocess to optimize. <p>
+
+   	<FONT color=#0000a0>
+        <strong>MTable</strong>
+	</FONT> <p>
+    <STRONG>int</STRONG>&nbsp;mtable flags,
+    <STRONG>[int</STRONG>&nbsp;mlengths count (obsolete) <STRONG>]</STRONG>
+    <STRONG>[int</STRONG>&nbsp;m2stackoffsets count (obsolete) <STRONG>]</STRONG>
+    <STRONG>[int</STRONG>&nbsp;dummies count <STRONG>]</STRONG>
+    <STRONG>[int</STRONG>&nbsp;patches count <STRONG>]</STRONG>
+	<STRONG>[array of ints</STRONG>&nbsp;mlengths (obsolete) <STRONG>]</STRONG>
+    <STRONG>[array of ints</STRONG>&nbsp;m2stackoffsets (obsolete) <STRONG>]</STRONG>
+    <STRONG>[array of ints</STRONG>&nbsp;dummies <STRONG>]</STRONG>
+    <STRONG>[array of ints</STRONG>&nbsp;patches <STRONG>]</STRONG>
+    <STRONG>[6*float</STRONG>&nbsp;bounding <STRONG>]</STRONG>
+    <STRONG>[3*int</STRONG>&nbsp;quantizations <STRONG>]</STRONG>
+	<STRONG>[3*int</STRONG>&nbsp;quantizations_normals <STRONG>]</STRONG>
+	<p>
+	
+	<table BORDER =1 WIDTH="530">
+	 	<TR>
+	    	<TD height=21 width=131>MTable flags</TD>
+	    	<TD height=21 width=390>bit field to indicate the presence or absence of the other fields in MTable </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>mlengths count</TD>
+	    	<TD height=21 width=390>number of entries in the mlengths array </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>m2stackoffsets</TD>
+	    	<TD height=21 width=390>number of entries in the m2stackoffsets array </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>dummies</TD>
+	    	<TD height=21 width=390>number of entries in the dummies array </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>patches</TD>
+	    	<TD height=21 width=390>number of entries in the patches array (note that each entry consists of 2 integers) </TD>
+	  	</TR>	 			
+		<TR>
+	    	<TD height=21 width=131>mlengths</TD>
+	    	<TD height=21 width=390>encodes the lengths of loop encountered with CASE_M operations.  Surface preprocessing makes this unnecessary and obsolete </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>m2stackoffsets</TD>
+	    	<TD height=21 width=390>necessary information to connect loop self-intersections encountered as a result of topological handles.  Surface preprocessing makes this unnecessary and obsolete</TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>dummies</TD>
+	    	<TD height=21 width=390>identifiers of vertices that are inserted to fill holes in the surface. Any triangle touching such a vertex is removed at the end (see <a href="#notes">notes</a>)</TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>patches</TD>
+	    	<TD height=21 width=390>pairs of vertex identifiers.  See the <a href="#notes">notes</a> section for details.  This array is of size 2*patches*sizeof(int).
+			 </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>bounding</TD>
+	    	<TD height=21 width=390>axis-aligned bounding cuboid for the purpose of interpreting the quantized point location data </TD>
+	  	</TR>			
+		<TR>
+	    	<TD height=21 width=131>quantizations</TD>
+	    	<TD height=21 width=390>the number of bits to be used in the quantization in each direction of the point locations.  If not present, default values of {11,11,11} will be used </TD>
+	  	</TR>	 	
+		<TR>
+	    	<TD height=21 width=131>quantizations_normals</TD>
+	    	<TD height=21 width=390>the number of bits to be used in the quantization in each direction of the vertex normals.  If not present, default values of {11,11,11} will be used </TD>
+	  	</TR>	 	
+	</table>
+	<p>
+	
+    
+	<FONT color=#0000a0>
+        <strong>MTable Flags:</strong>
+	</FONT><p>	
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50> 0x01</TD>
+		<TD height=21 width=390>MTABLE_HAS_LENGTHS</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x02</TD>
+		<TD height=21 width=390>MTABLE_HAS_M2STACKOFFSETS (obsolete)</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x04</TD>
+		<TD height=21 width=390>MTABLE_HAS_M2GATEOFFSETS (obsolete)</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x08</TD>
+		<TD height=21 width=390>MTABLE_HAS_DUMMIES</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x10</TD>
+		<TD height=21 width=390>MTABLE_HAS_PATCHES</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x20</TD>
+		<TD height=21 width=390>MTABLE_HAS_BOUNDING </TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x40</TD>
+		<TD height=21 width=390>MTABLE_HAS_QUANTIZATION</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x80</TD>
+		<TD height=21 width=390>MTABLE_HAS_NORMALS_QUANTIZATION</TD>
+	</TR>
+	</table>
+	The meaning of each of the bits should be obvious from the names that we have given them.
+
+	<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif"><a name="notes">Notes</a></FONT></H3>
+
+	<FONT color=#0000a0>
+        <!strong><a name="dp">Dummies and Patches</a><!/strong>
+	</FONT>	
+	<p>Both of these fields are instructions to postprocess the pseudo-manifolds that were produced by the 
+	standard algorithm into a generalized shell. As described below in "<a href="#points">points</a>", 
+	these will also have interactions with vertex location reconstruction.
+
+	<p>Dummy vertices, as well any triangles that touch them are removed.  Patches are pairs of vertex id's.  
+	The first of each pair is the old vertex id.  The second is the new vertex id.  The pairs are sorted 
+	such that the first of each is monotonically increasing. In processing the patches, we replace the first 
+	vertex id with the second.  The old vertex id's are relative, the new ones are absolute.  In other words, 
+	the old vertex id's are encoded as differences from the last one seen. 
+
+	<p>These two postprocessing steps are what allow us to avoid the inherently unstable CASE_M and CASE_M2 operations. 
+
+	<p><FONT color=#0000a0>
+        <!strong><a name="points">Points</a><!/strong>
+	</FONT>	
+	<p>Points are encoded as positions relative to a "parallelogram completion" prediction scheme.  Let 
+	N be an unknown vertex location introduced as part of a triangle that contains vertices {N,A,B}.  Suppose 
+	further that there is another triangle {B,A,C} that shares edge {A,B} with triangle {N,A,B}.  If vertices 
+	A, B, and C are all known, vertex location A is predicted to lie at location A+(B-C).  
+
+	<p>We must, however, account for the case where one or more of vertices A, B and/or C are also unknown.  
+	If that is the case, we use the first valid vertex found among A, B, and C, in order, as the predicted 
+	location.  If all three are unknown (e.g. the very first vertex), the predicted location is the origin 
+	{0,0,0} (remember, though, that we're in integer space quantized to the axis-aligned bounding cuboid). 
+	These vertices could be unknown if it is part of the loop that begins a new set of triangles or if it is 
+	a "dummy" vertex (see "<a href="#dp">dummies and patches</a>" above). 
+
+	<p>Points are quantized to a uniform grid along the axis-aligned bounding cuboid so that we may reap the 
+	compression benefits of using small integers (the better the prediction of parallelogram completion, 
+	the deeper the compression).  The axis-aligned bounding cuboid is chopped into the number of buckets 
+	specified by mtable's three "quantizations" values.  If points_scheme in the edgebreaker header is 0, 
+	these differences are signed 16-bit shorts left for the LZ postprocess.  We found, however, that LZ 
+	required too much computation time to pack the 16-bit shorts.  This was the motivation for points_scheme 
+	1.  If points_scheme is 1, we do the packing ourselves into a cascading sequence of progressively larger 
+	samples that each have one escape sequence.  Each sample is of one of the following forms.
+
+	<center>
+	<TABLE border=1 height=90>
+  		<TR> <TD height=12>    2 bits in range [-1,1] or		</TD> <TR>  		
+		<TR> <TD height=12>    0x3, 6 bits in range [-31,31] or		</TD> <TR>
+		<TR> <TD height=12>    0x3F, 10 bits in range [-511,511] or		</TD> <TR>
+		<TR> <TD height=12>    0x3FF, 14 bits in range [-8191,8191] or		</TD> <TR>
+		<TR> <TD height=12>    0x3FFF, 18 bits in range [-131071,131071] or		</TD> <TR>
+		<TR> <TD height=12>    0x3FFFF, 22 bits in range [-2097151,2097151] or		</TD> <TR>
+		<TR> <TD height=12>    0x3FFFFF, 26 bits in range [-33554431,33554431] or		</TD> <TR>
+		<TR> <TD height=12>    0x3FFFFFF, 31 bits in range [-1073741824,1073741824]		</TD> <TR>
+	</TABLE>
+	</center>
+	Even though we still allow LZ to run on the output, the bad performance interactions were eliminated 
+	by the dramatic reduction in the redundancy of the point location data.  We chose these lengths 
+	{2,6,10,14,18,22,26,31} for the samples based on statistical analysis of parallelogram prediction 
+	accuracy of several benchmark data sets.  Although each sample's range in this sequence ostensibly 
+	contains all of the previous ranges, those values should be treated as reserved for future expansion 
+	of the protocol. 
+
+	<p>New to 7.0: edgebreaker data may now be encoded completely without points, so that the TKE_Shell opcode
+	may separately specify uncompressed floats after the end of the edgebreaker data.
+	    
+	<p><FONT color=#0000a0>
+        <!strong><a name="normals">Normals</a><!/strong>
+	</FONT>
+
+	<p>New as of version 7.0, normals are encoded in much the same way as points.  The same algorithm of parallelogram completion is used to predict the locations.  The only difference is simply that for the purpose of encoding, normals are assumed to lie in the standard 2x2x2 bounding cube: {[-1,-1,-1],[1,1,1]}.  The same table of cascading ranges used in points_scheme 1 is used to pack the bits in normals_scheme 0.  There is currently only one valid scheme for normals, normals_scheme 0.
+	
+	<p>Within the context of edgebreaker, we allow only one normal per vertex, and every vertex must have a normal.  The HSF opcode that uses the edgebreaker interface, TK_Shell, has a more general (though less compressed) encoding that allows some normals to be left undefined.
+	
+<!---------------------------------------------------------------------------->
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

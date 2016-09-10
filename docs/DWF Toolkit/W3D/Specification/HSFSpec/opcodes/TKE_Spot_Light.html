@@ -1,0 +1,119 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Spot_Light</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>^</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>5E</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>94</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Point</STRONG>&nbsp;position, 
+      <STRONG>Point</STRONG>&nbsp;target,
+      <STRONG>Byte</STRONG>&nbsp;options,
+      <STRONG>[Float</STRONG>&nbsp;outer<STRONG>]</STRONG>,
+      <STRONG>[Float</STRONG>&nbsp;inner<STRONG>]</STRONG>,
+      <STRONG>[Float</STRONG>&nbsp;concentration<STRONG>]</STRONG>
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<tr>
+	<td WIDTH="131" HEIGHT="21">position</td>
+	<td WIDTH="390" HEIGHT="21">location of spot light</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">target</td>
+	<td WIDTH="390" HEIGHT="21">aiming pointof the light</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">options</td>
+	<td WIDTH="390" HEIGHT="21">bitmask of optional settings</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">outer</td>
+	<td WIDTH="390" HEIGHT="21">size of outermost cone of light</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">inner</td>
+	<td WIDTH="390" HEIGHT="21">size of center "hotspot" of light</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">concentration</td>
+	<td WIDTH="390" HEIGHT="21">falloff factor applied away from spot light center line</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+      <P>
+<font face="arial,helvetica,sans-serif">A spot light provides a number of lighting affects. It normally provides a conical area of
+ illumination, full intensity within the inner cone, and dropping to zero at the outer cone.  Concentration,
+ if specified, is an additional falloff factor (the value is the cosine of the angle from the centerline of the
+ cone to the point being lit (as measured from the light position), raised to the <em>concentration</em>      
+      power.&nbsp; 
+</font></P>
+      <P><FONT face=arial,helvetica,sans-serif>For further details on what 
+      these options mean 
+      in HOOPS/3dGS please refer to the <A href="../../Hoops3DGS/ref_manual/cinsl_z.htm#i20">Insert_Spot_Light</a> 
+      specification in the 3dGS Reference Manual. </FONT></P>
+      <P><FONT face=arial,helvetica,sans-serif><FONT color=#0000a0 
+      face=arial,helvetica,sans-serif><STRONG>Options:</STRONG></FONT></P><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50> 01</TD>
+		<TD height=21 width=390>outer cone is specified, value is degrees out from centerline</TD>
+		</TR>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 02</td>
+		<td WIDTH="390" HEIGHT="21">outer cone is specified, value is the diameter of the cone at the target</td>
+		</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 04</td>
+		<td WIDTH="390" HEIGHT="21">inner cone is specified, if bit 08 is not set, value is degrees out from
+								centerline, otherwise value is percentage of outer cone angle</td>
+		</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 08</td>
+		<td WIDTH="390" HEIGHT="21">inner cone is specified,  if bit 04 is not set, value is the diameter of
+								the cone at the target, otherwise value is percentage of outer cone angle</td>
+		</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 10</td>
+		<td WIDTH="390" HEIGHT="21">Light position and target are relative to the camera's position &amp; target</td>
+		</tr>
+	<tr>
+		<td WIDTH="50" HEIGHT="21"> 20</td>
+		<td WIDTH="390" HEIGHT="21">Concentration value is specified</td>
+		</tr>
+	</table></FONT>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

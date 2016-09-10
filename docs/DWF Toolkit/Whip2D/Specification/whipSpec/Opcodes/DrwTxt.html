@@ -1,0 +1,193 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Text</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw Text</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Draw Text</b> function displays a string (Unicode or ASCII)
+in the current font (specified by <b>Set Font</b>).</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="44%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(Text</font></font></td>
+
+<td VALIGN=TOP WIDTH="60%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;T<sub>Str</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Overscore&lt;ws>(&lt;I<sub>OS-Count</sub>>&lt;ws>&lt;I<sub>OS-Pos0</sub>>[,&lt;I<sub>OS-Pos<i>i</i></sub>>]<sup>*</sup>))]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Underscore&lt;ws>(&lt;I<sub>US-Count</sub>>&lt;ws>&lt;I<sub>US-Pos0</sub>>[,&lt;I<sub>US-Pos<i>i</i></sub>>]<sup>*</sup>))]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(CharPos&lt;ws>(&lt;I<sub>RES-Count</sub>>&lt;ws>&lt;I<sub>RES-Pos0</sub>>[,&lt;I<sub>RES-Pos<i>i</i></sub>>]<sup>*</sup>))]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>(Bounds&lt;ws>&lt;I<sub>P0x</sub>>,&lt;I<sub>P0y</sub>>&lt;ws>&lt;I<sub>P1x</sub>>,&lt;I<sub>P1y</sub>>&lt;ws>&lt;I<sub>P2x</sub>>,&lt;I<sub>P2y</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>P3x</sub>>,&lt;I<sub>P3y</sub>>)]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>Single-byte, binary operand</font></font></td>
+
+<td><font face="Courier New"><font size=-2>[Ctrl-X](18)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;L<sub>x</sub>>&lt;L<sub>y</sub>>&lt;T<sub>Str</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;B<sub>OS-Count</sub>>[&lt;US<sub>OS-Ecount</sub>>][&lt;B<sub>OS-Pos<i>i</i></sub>>[&lt;US<sub>OS-Epos<i>i</i></sub>>]]<sup>*</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;B<sub>US-Count</sub>>[&lt;US<sub>US-Ecount</sub>>][&lt;B<sub>US-Pos<i>i</i></sub>>[&lt;US<sub>US-Epos<i>i</i></sub>>]]<sup>*</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;B<sub>RES-Count</sub>>[&lt;US<sub>RES-Ecount</sub>>][&lt;B<sub>RES-Pos<i>i</i></sub>>[&lt;US<sub>RES-Epos<i>i</i></sub>>]]<sup>*</sup>\</font></font></b>
+size=-2>&lt;L<sub>P0x</sub>>&lt;L<sub>P0y</sub>>&lt;L<sub>P1x</sub>>&lt;L<sub>P1y</sub>>&lt;L<sub>P2x</sub>>&lt;L<sub>P2y</sub>>&lt;L<sub>P3x</sub>>&lt;L<sub>P3y</sub>></font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Advanced text, relative coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%">-</td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>[x] (78)</font></font></td>
+
+<td VALIGN=TOP WIDTH="44%"><b><font face="Courier New"><font size=-2>&lt;L<sub>x</sub>>&lt;L<sub>y</sub>>&lt;T<sub>Str</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Basic text,
+relative coordinates.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>x,y</i> <b><i>—</i></b> The insertion point of the text in logical
+coordinates.
+<p><i>Str</i> <b><i>—</i></b> The text string to be drawn, encoded either
+as an ASCII value, or as Unicode (as documented by the &lt;T> mnemonic).
+<p><i>OS-Count</i> <b><i>—</i></b> One plus the number of overscore position
+indices for the text. (A value of one indicates no overscores). A value
+of zero indicates that an extended count will follow.
+<p><i>OS-Ecount</i> <b><i>—</i></b> When os-count is zero, a two-byte extended
+count follows. This allows for an overscore index count of 256 through
+65791 which are encoded as an integer in the range 0 to 65,535.
+<p><i>OS-Pos-i</i> <b><i>—</i></b> The i<sup>th</sup> overscore position
+index. A value of zero indicates that an extended count will follow.
+<p><i>OS-Epos-i</i> <b><i>—</i></b> When os-pos-i is zero, a two-byte extended
+count follows. This allows for positions of 256 through 65791 which are
+encoded as an integer in the range 0 to 65,535.
+<p><i>US-Count</i> <b><i>—</i></b> One plus the number of undererscore
+position indices for the text. (A value of one indicates no overscores).
+A value of zero indicates that an extended count will follow.
+<p><i>US-Ecount</i> <b><i>—</i></b> When us-count is zero, a two-byte extended
+count follows. This allows for underscore index count of 256 through
+65791 which are encoded as an integer in the range 0 to 65,535.
+<p><i>US-Pos-i</i> <b><i>—</i></b> The i<sup>th</sup> underscore position
+index. A value of zero indicates that an extended count will follow.
+<p><i>US-Epos-i</i> <b><i>—</i></b> When us-pos-i is zero, a two-byte extended
+count follows. This allows for positions 256 through 65791 which are encoded
+as an integer in the range 0 to 65,535.
+<p><i>RES-Count</i> <b><i>—</i></b> RESERVED.  <b>Should always equal one.</b>  
+This value is one plus the number of reserved values. (A value of one indicates 
+no reserved values).  A value of zero indicates that an extended count will follow.
+<p><i>RES-Ecount</i> <b><i>—</i></b> When res-count is zero, a two-byte extended
+count follows. This allows for an index count of 256 through 65791 which are 
+encoded as an integer in the range 0 to 65,535.
+<p><i>RES-Pos-i</i> <b><i>—</i></b> The i<sup>th</sup> reserved value
+index. A value of zero indicates that an extended count will follow.
+<p><i>RES-Epos-i</i> <b><i>—</i></b> When res-pos-i is zero, a two-byte extended
+count follows. This allows for values 256 through 65791 which are encoded
+as an integer in the range 0 to 65,535.
+<p><i>P0x,P0y...P3x,P3y</i> <b><i>—</i></b> Specifies the text bounding
+box in logical coordinates relative to the insertion point. This is shown
+in <a href="#F1TxtStrgBB">figure 1</a>, following.
+<p>For more information on working with ASCII and UNICODE charaters, see
+<a href="#Notes">Notes</a>,
+below.&nbsp;<a NAME="F1TxtStrgBB"></a></ul>
+
+<center><img SRC="BoundBox.gif" height=422 width=764>
+<p><i><font face="Arial,Helvetica">Figure 1. Text string bounding box</font></i></center>
+
+<p><a NAME="Notes"></a><font face="Arial Black"><font size=-1>Notes</font></font>
+<blockquote>Working with international text is not as straightforward as
+it may seem. It may help you to know a little about character encoding
+and display before you begin using international text in WHIP! data.
+These notes are provided as a brief overview of supporting international
+text.
+<p><b>Using International Character Sets</b>
+<br>Text characters are written to a file as either single-byte characters,
+double-byte characters, or both single and double-byte character sets.
+The method used to encode characters usually depends on the written local
+language of the operating system.
+<p>English has a relatively small character set of only 256 written characters.
+The 256 English characters are commonly referred to as the ASCII character
+set. ASCII characters can each be represented in one byte (8 bits) of computer
+memory. ASCII has a limited number of characters, but most written languages
+have many more characters than 256. As a result, international languages
+(other than English) must be represented using two byte (16 bits) character
+sets.
+<p><b>Note:</b> Although computer applications could simply represent all
+languages using two bytes of memory per character, this is not done for
+the English character set since ASCII characters would consume twice as
+much memory as is needed, and resulting file sizes would be unnecessarily
+large.
+<p>Using international character sets is complicated by the fact that there
+are two different ways to encode multiple bytes of computer memory for
+text: <i>Unicode</i> and <i>Multi-Byte Character Set</i> (MBCS):
+<blockquote>
+<li>
+Unicode is a map of characters in which each character corresponds to a
+unique two byte value. The Unicode character map contains characters from
+most of the world's languages.Unicode character values are always two bytes
+and there is only one mapping such that a given number always maps to the
+same character on every computer using Unicode.</li>
+
+<li>
+Multi-Byte Character Sets (MBCS) are code pages, or maps, between written
+characters and either one byte or two byte numbers. As a result, a string
+with several MBCS characters can have both single and double-byte characters.
+Unlike Unicode, one number is not unique to one character. When using MBCS,
+a given number might correspond to a Chinese character when using a Chinese
+character set, or it might correspond to a Japanese character when using
+a Japanese character set.</li>
+
+<li>
+Another difference between MBCS and Unicode is that different MBCS platforms
+(such as Unix, Microsoft Windows, or Macintosh) may have different character
+sets for the same written language. For example, when using MBCS a given
+number might map to a Japanese character on Japanese Windows, but the same
+number may map to another character on English Windows.</li>
+</blockquote>
+<b>Operating Systems and International Characters</b>
+<br>Another consideration in supporting international characters is that
+different operating systems support different character encoding methods.
+For example, Windows NT fully supports both Unicode and MBCS, but Windows95
+fully supports MBCS, and only partially supports Unicode.
+<p>To maximize the efficiency with which WHIP! data is used, and to ensure 
+the smallest possible file size, the strategy for WHIP! data is:
+<blockquote>
+<li>
+Text strings containing only ASCII characters are stored in WHIP! data as ASCII.
+By using one byte instead of two, file size remains small.</li>
+
+<li>
+Text strings containing multi-byte characters are stored in WHIP! data 
+as Unicode. This is the most flexible and universal approach for
+ensuring that WHIP! data works now and in the future. This also enables
+you to use WHIP! data on non-Microsoft operating systems.</li>
+
+</blockquote>
+</blockquote>
+<hr>
+<br>
+<hr WIDTH="100%">
+</body>
+</html>

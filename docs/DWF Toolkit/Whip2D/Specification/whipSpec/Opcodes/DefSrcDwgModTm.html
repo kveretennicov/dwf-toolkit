@@ -1,0 +1,73 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Source Drawing Modification Time - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Source Drawing Modification Time - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Source Drawing Modification Time</b> function provides
+information to WHIP! data reading applications about when the source file of the
+WHIP! data was last modified.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="22%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="27%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="33%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="22%"><font face="Courier New"><font size=-2>(SourceModified</font></font></td>
+
+<td VALIGN=TOP WIDTH="27%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Time</sub>>&lt;ws>&lt;T<sub>Desc</sub>>&lt;ws>&lt;T<sub>GUID</sub>>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="33%"><font face="Arial"><font size=-2>Defines when
+file was last changed</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Time</i>&nbsp;&nbsp; The number of seconds elapsed since midnight
+(00:00:00), January 1, 1970, coordinated universal time (GMT)
+<p><i>Desc</i>&nbsp;&nbsp; Any humanly readable description of the time
+when the source file to the WHIP! data was last modified
+<p><i>GUID</i>&nbsp;&nbsp; A globally unique identifier (GUID) represented
+by an alpha-numeric description generated to capture the modification time
+of the source file</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Some WHIP! data reading applications may need to "know" when the source file
+that was used to generate the WHIP! data was last changed. The WHIP! data 
+generating application can satisfy this with the SourceModified opcode:
+<ul><font face="Courier New"><font size=-1>(Created 820497600 'January
+1, 1996' C0176e42-dc10-11d0-bb09)</font></font></ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>WHIP! data reading applications should not expect to be able to parse the
+<i>Desc</i>
+argument, though it could be shown to a user.
+<p>WHIP! data should contain at most one occurrence of the source
+modification time opcode, which by convention should be nested inside a
+<b><a href="DefDwgInfoBlk.html">Define
+Drawing Information Block</a></b> opcode.</ul>
+<font face="Arial Black"><font color="#000000"><font size=-1>Default</font></font></font>
+<ul><font color="#000000">By default no source drawing modification time
+is defined, which is equivalent to</font>
+<ul><font face="Courier New"><font color="#000000"><font size=-1>(SourceModified
+0 unknown unknown)</font></font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

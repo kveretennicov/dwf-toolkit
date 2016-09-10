@@ -1,0 +1,361 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Shell</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>'S'</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>0x53</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>83</TD></TR></TABLE>
+      </H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+    Operands depend on suboptions.  Operands enclosed in brackets ('<STRONG>[]</STRONG>') will not be present in all situations.  See the description of the specific operands for the rules that dictate whether or not they appear.
+    <H4>Format 1: <i>(standard)</i></H4>
+    <blockquote>
+    <STRONG>byte</STRONG>&nbsp;suboptions,
+    <STRONG>[short</STRONG>&nbsp;suboptions2<STRONG>]</STRONG>,
+    <STRONG>[int</STRONG>&nbsp;index<STRONG>]</STRONG>,
+    <STRONG>byte</STRONG>&nbsp;level_of_detail,
+    <STRONG>variable</STRONG>&nbsp;points,
+    <STRONG>variable</STRONG>&nbsp;faces,
+    <STRONG>[variable</STRONG>&nbsp;attributes<STRONG>]</STRONG>
+    </blockquote>
+    <BR>
+  
+    <H4>Format 2: <i>(edgebreaker)</i></H4> 
+    <blockquote>
+    <STRONG>byte</STRONG>&nbsp;suboptions,
+    <STRONG>[short</STRONG>&nbsp;suboptions2<STRONG>]</STRONG>,
+    <STRONG>[int</STRONG>&nbsp;index<STRONG>]</STRONG>,
+    <STRONG>byte</STRONG>&nbsp;level_of_detail,
+    <STRONG>variable</STRONG>&nbsp;edgebreaker data,
+    <STRONG>[3 * float * pointcount</STRONG>&nbsp;uncompressed points <STRONG>]</STRONG>,
+    <STRONG>[variable</STRONG>&nbsp;attributes<STRONG>]</STRONG>
+    </blockquote>
+    <BR>
+    
+    <H4>Format 3: <i>(bounding only)</i></H4>
+    <blockquote>
+    <STRONG>byte</STRONG>&nbsp;suboptions,
+    <STRONG>[short</STRONG>&nbsp;suboptions2<STRONG>]</STRONG>,
+    <STRONG>byte</STRONG>&nbsp;level_of_detail,
+    <STRONG>float * 6</STRONG>&nbsp;bounding
+    </blockquote>
+    <BR>
+      
+    <H4>Format 4: <i>(collection)</i></H4>
+    <blockquote>
+    <STRONG>byte</STRONG>&nbsp;suboptions,
+    <STRONG>[short</STRONG>&nbsp;suboptions2<STRONG>]</STRONG>,
+    <STRONG>variable</STRONG>&nbsp;collection
+    </blockquote>
+    <BR>
+
+    <H4>Format 5:  <i>(null shell)</i></H4>
+    <blockquote>
+    <STRONG>byte</STRONG>&nbsp;suboptions,
+    <STRONG>[short</STRONG>&nbsp;suboptions2<STRONG>]</STRONG>,
+    <STRONG>byte</STRONG>&nbsp;level_of_detail
+    </blockquote>
+    <BR>
+  
+    </FONT>
+      <P></P>
+
+  <FONT face="arial,helvetica,sans-serif">    
+    <center><table BORDER =1 WIDTH="530">
+      <TR>
+        <TD height=21 width=131>suboptions</TD>
+        <TD height=21 width=390>a bit field with information about the formatting.  See below for more details</TD>
+      </TR>
+      <TR>
+        <TD height=21 width=131>suboptions2</TD>
+        <TD height=21 width=390>more formatting information.  Present if and only if suboptions contains the TKSH_EXPANDED bit, otherwise implicitly assumed to be zero </TD>
+      </TR>
+      <TR>
+        <TD height=21 width=131>index</TD>
+        <TD height=21 width=390>indicates the tagged opcode in the hsf file of which this shell is given as a refinement.  Present if and only if suboptions does not contain the TKSH_FIRSTPASS bit </TD>
+      </TR>
+      <TR>
+        <TD height=21 width=131>level_of_detail</TD>
+        <TD height=21 width=390>the level of detail into which this shell is meant to be inserted.  The full-resolution version is level 0.  Coarser versions have higher LOD numbers. HSF files may have up to 256 distinct levels, though HOOPS-based applications are limited to 8 levels as of this writing</TD>
+      </TR>
+      <TR>
+        <TD height=21 width=131>points</TD>
+        <TD height=21 width=390>compressed or uncompressed vertex location data.  See below for more details</TD>
+      </TR>  
+      <TR>
+        <TD height=21 width=131>faces</TD>
+        <TD height=21 width=390>face data.  See below for more details</TD>
+      </TR>  
+      <TR>
+        <TD height=21 width=131>edgebreaker_data</TD>
+        <TD height=21 width=390>highly compressed data for points and faces combined.  See <A href="edgebreaker.html">edgebreaker.html</A></TD>
+      </TR>  
+      <TR>
+        <TD height=21 width=131>bounding</TD>
+        <TD height=21 width=390>an axis-aligned bounding cuboid in the order Xmin, Ymin, Zmin,  Xmax, Ymax, Zmax. Present if and only if suboptions contains the TKSH_BOUNDING_ONLY bit</TD>
+      </TR> 
+      <TR>
+        <TD height=21 width=131>collection</TD>
+        <TD height=21 width=390>a set of Opcodes to be interpreted as the Level of Detail for a shell (e.g. a polyline and two markers in place of a cylinder-shaped shell at LOD 2).  All subsequent opcodes will be interpreted as part of the collection until a TKE_Termination opcode is encountered.  More details below. </TD>
+      </TR>  
+      <TR>
+        <TD height=21 width=131>attributes</TD>
+        <TD height=21 width=390>optional attributes to be bound to vertices, edges and/or faces.  
+                        See <A href="attributes.html">attributes.html</A></TD>
+      </TR> 
+    </table>
+    </center>
+     <p>
+  </FONT>
+
+    <FONT face="arial,helvetica,sans-serif">
+      <FONT color=#0000a0>
+          <strong>  </strong>
+    </FONT>
+  </FONT>
+      <P><FONT face=arial,helvetica,sans-serif><FONT 
+      color=#0000a0><STRONG>Suboptions and Suboptions2</STRONG> </FONT>
+      <P>As mentioned above, the formatting depends on the values of 
+      "suboptions" and "suboptions2". The following two tables define the bits 
+      of those two flags, as well as the rules that use the values of those bits 
+      to determine by which format the shell is to be interpreted. Bits that 
+      dictate a particular format are all mutually exclusive.</P>
+      <P><STRONG>Suboptions</STRONG><br>                                                         
+    <center><table BORDER =1 WIDTH="500">
+      <TR>
+        <TD height=21 width=50> 0x01</TD>
+        <TD height=21 width=390>TKSH_COMPRESSED_POINTS -- Points are compressed</TD>
+      </TR>
+      <tr>
+        <td WIDTH="50" HEIGHT="21"> 0x02</td>
+        <td WIDTH="390" HEIGHT="21">RESERVED -- unused</td>
+      </tr>
+      <tr>
+        <td WIDTH="50" HEIGHT="21"> 0x04</td>
+        <td WIDTH="390" HEIGHT="21">TKSH_TRISTRIPS -- Information on how to interpret the face list</td>
+      </tr>
+      <tr>
+        <td WIDTH="50" HEIGHT="21"> 0x08</td>
+        <td WIDTH="390" HEIGHT="21">TKSH_HAS_OPTIONALS -- Vertices, edges and/or faces have attributes.  See <A href="attributes.html">attributes.html</A></td>
+      </tr>
+      <tr>
+        <td WIDTH="50" HEIGHT="21"> 0x10</td>
+        <td WIDTH="390" HEIGHT="21">TKSH_FIRSTPASS -- A new shell, not a refinement.  "Index" does not exist</td>
+      </tr>
+      <tr>
+        <td WIDTH="50" HEIGHT="21"> 0x20</td>
+        <td WIDTH="390" HEIGHT="21">TKSH_BOUNDING_ONLY -- Shell is format 3.  This bit takes precedence over TKSH_CONNECTIVITY_COMPRESSION and TKSH2_COLLECTION</td>
+      </tr>
+      <tr>
+        <td WIDTH="50" HEIGHT="21"> 0x40</td>
+        <td WIDTH="390" HEIGHT="21">TKSH_CONNECTIVITY_COMPRESSION -- Shell is format 2</td>
+      </tr>
+      <tr>
+        <td WIDTH="50" HEIGHT="21"> 0x80</td>
+        <td WIDTH="390" HEIGHT="21">TKSH_EXPANDED -- Suboptions2 is present</td>
+      </tr>
+    </table>
+    </center>
+      <P><STRONG>Suboptions2</STRONG><br>
+      <CENTER>
+      <table BORDER =1 WIDTH="500">
+      <TR>
+        <TD height=21 width=50>
+            <P>0x0001</P> </TD>
+        <TD height=21 width=390>TKSH2_COLLECTION -- Shell is format 4</TD>
+      </TR> 
+      <TR>
+        <TD height=21 width=50>
+            <P>0x0002</P> </TD>
+        <TD height=21 width=390>TKSH2_NULL -- Shell is format 5.  This bit takes precedence 
+                over TKSH2_COLLECTION, TKSH_CONNECTIVITY_COMPRESSION and/or TKSH_BOUNDING_ONLY </TD>
+      </TR> 
+      <TR>
+        <TD height=21 width=50>
+            <P>0x0004</P> </TD>
+        <TD height=21 width=390>TKSH2_HAS_NEGATIVE_FACES -- Face list contains signed, not unsigned, values</TD>
+      </TR> 
+      <TR>
+        <TD height=21 width=50>
+            <P>0x0004</P> </TD>
+        <TD height=21 width=390>TKSH2_GLOBAL_QUANTIZATION -- Compressed vertices inherit global bounding box instead of specifying their own.</TD>
+      </TR> 
+    </table>
+  <br></CENTER>
+  
+
+<FONT face="arial,helvetica,sans-serif">
+  <H3><FONT color=#0000a0></FONT>&nbsp;</H3>
+      <H3><FONT color=#0000a0>Notes</FONT></H3>
+
+      Shell is inserted into the currently opened segment. <p>
+  
+  <FONT color=#0000a0>
+    Points (uncompressed) <br>
+  </FONT>
+    <strong>int</strong>&nbsp;pointcount,
+  <strong>float array</strong>&nbsp; uncompressed triplets of point data, in order xyzxyz... <p>
+
+  <FONT color=#0000a0>
+    Points (compressed)  <br>
+  </FONT>
+    <strong>byte</strong>&nbsp;compression scheme,
+  <strong>int</strong>&nbsp;pointcount,
+  <strong>byte</strong>&nbsp;bits_per_sample,
+  <strong>variable</strong>&nbsp;array of compressed floats (see <A href="attributes.html">attributes.html</A>) 
+  <p> Points are either compressed or uncompressed vertex data. Compression status is dictated 
+  by the TKSH_COMPRESSED_POINTS bit in the shell suboptions. If uncompressed, it will consist of 
+  triples of 32-bit floating point coordinates in the
+  order xyzxyz...  If compressed, it will consist of a compression scheme identifier, followed by 
+  data that is specific to that compression scheme.  The specifics of the compressed format are 
+  described in <A href="attributes.html">attributes.html</A> in the 
+  "<A href="attributes.html#aocf">array of compressed floats</A>" section.  "bits_per_sample" may have
+  any value from 2 to 31.
+
+  <p>Interpretation of the face (a.k.a polygon or facet) data in <strong>faces</strong>  will 
+  depend on whether the TKSH_TRISTRIPS bit is set in suboptions.  In any case, however, it will specify
+  which vertices should be connected to form faces.
+
+  <FONT color=#0000a0>
+    Faces (compressed)  <br>
+  </FONT>
+    <strong>byte</strong>&nbsp;compression scheme,
+  <strong>int</strong>&nbsp;face list length,
+    <strong>byte</strong>&nbsp;bits per value,
+    <strong>variable</strong>&nbsp;face list data (see below) <p>
+
+
+  If the TKSH_TRISTRIPS bit is set in suboptions, the face list is interpreted exactly as per the HOOPS function, Insert_Shell.  Here is the relevant excerpt from the HOOPS Reference Manual: <p>
+
+  <blockquote><FONT face="Courier New,Courier,typewriter">
+      The face_list is an array of integers. The first integer is the number of vertices that should 
+      be connected to form the first face. For example, "3" for a triangle. The next three integers 
+      (in this example) are the offsets into the points array at which the three x-y-z's can be found. 
+      The first point in the points array is considered to be at offset zero, so "0, 1, 2" in the 
+      face_list array would form the triangle from the first three entries in points. <p>
+  
+      Continuing with the example, a second triangle might be specified as "3, 0, 1, 3", meaning 
+      "form a face using three vertices. The vertices are at offsets zero, one, and three in the 
+      points array". So this second face happens to share an edge---the (0, 1) edge---with the 
+      first face. A third face might be "4, 1, 2, 11, 12", forming a quadrilateral. Faces continue 
+      being formed until an flist_length number of integers in face_list have been processed. <p>
+  
+      One special case: if a vertex count in the list is negative, that means "continue with 
+      the previous face and subtract a polygon formed from the following vertices". This allows 
+      you to build faces with true holes in them. Multiple holes get an "even-odd" rule applied. 
+      A region is part of the face if there are an odd number of edges between it and infinity 
+      in the plane of the face. Otherwise a region is considered exterior and is not drawn. The 
+      edges of the hole receive the usual edge attributes. For face-numbering purposes (for example, 
+      Edit_Shell_Faces) the hole is not counted separately---it's a part of the face it's in. 
+  </FONT></p></BLOCKQUOTE>
+
+<p> If the TKSH_TRISTRIPS bit is set in suboptions, the shell is assumed to contain 
+triangles only and may not contain holes, and the "faces" are actually the way that 
+vertices are connected into triangle strips.  The first 3 vertices form a triangle, 
+and every additional vertex is combined with the two previous ones to define one 
+additional triangle.  Exactly as with OpenGL's GL_TRIANGLE_STRIP primitive, the 
+orientation of every even triangle is reversed, beginning with the second. 
+
+<p> There is still special meaning attached to a negative count in the TKSH_TRISTRIPS 
+case. A  negative count indicates the beginning of a triangle fan. As  with triangle 
+strips, every vertex i after the second (for i &gt;  2) defines a new triangle.  
+Triangle strips connect i to vertices i-2 and i-1.  Triangle fans connect i to 
+vertices 0 and i-1. 
+
+<p> The values will of a type appropriate to the maximum vertex index (as opposed to 
+always 32-bit integers). For shells that have less than 256 vertices, the values 
+will be 8-bit characters. Otherwise they will be 16-bit shorts for shells with less 
+than 65536 and 32-bit integers for shells with more. 
+
+<P> If suboptions2 contains the TKSH_HAS_NEGATIVE_FACES bit, 
+vertex indices will use 16-bit shorts if the maximum index is greater than or equal 
+to 128, and 32-bit integers if the maximum is greater than or equal to 327678. 
+
+<p> As of this writing, CS_TRIVIAL is the only supported value for compression scheme for faces.
+Future revisions may introduce new methods, however.
+
+<P>If suboptions2 contains TKSH2_COLLECTION, a shell is interpreted according to 
+format 4. This is a set of opcodes, possibly including primitives other than shells, 
+that are to be inserted into the Level of Detail for a shell (e.g. a polyline and two 
+markers in place of a cylinder-shaped shell at LOD 2). All subsequent opcodes will be 
+interpreted as part of the collection until a TKE_Termination opcode is encountered. 
+Legal opcodes as part of a collection are the following: </P>
+
+  <center>                                                                          
+  <table BORDER =1 WIDTH="500">
+    <TR>
+      <TD height=21 width=50><A href="TKE_Circle.html">TKE_Circle</A></TD>
+      <TD height=21 width=50><A href="TKE_Circular_Arc.html">TKE_Circular_Arc</A></TD>
+      <TD height=21 width=50><A href="TKE_Circular_Chord.html">TKE_Circular_Chord</A></TD>
+    </TR> 
+    <TR>
+      <TD height=21 width=50><A href="TKE_Circular_Wedge.html">TKE_Circular_Wedge</A></TD>
+      <TD height=21 width=50><A href="TKE_Ellipse.html">TKE_Ellipse</A></TD>
+      <TD height=21 width=50><A href="TKE_Elliptical_Arc.html">TKE_Elliptical_Arc</A></TD>
+    </TR> 
+    <TR>
+      <TD height=21 width=50><A href="TKE_Grid.html">TKE_Grid</A></TD>
+      <TD height=21 width=50><A href="TKE_Image.html">TKE_Image</A></TD>
+      <TD height=21 width=50><A href="TKE_Line.html">TKE_Line</A></TD>
+    </TR> 
+    <TR>
+      <TD height=21 width=50><A href="TKE_Marker.html">TKE_Marker</A></TD>
+      <TD height=21 width=50><A href="TKE_Mesh.html">TKE_Mesh</A></TD>
+      <TD height=21 width=50><A href="TKE_NURBS_Curve.html">TKE_NURBS_Curve</A></TD>
+    </TR> 
+    <TR>
+      <TD height=21 width=50><A href="TKE_Polygon.html">TKE_Polygon</A></TD>
+      <TD height=21 width=50><A href="TKE_Polyline.html">TKE_Polyline</A></TD>
+      <TD height=21 width=50><A href="TKE_Shell.html">TKE_Shell</A></TD>
+    </TR>
+    <TR>
+      <TD height=21 width=50><A href="TKE_Text.html">TKE_Text</A></TD>
+      <TD height=21 width=50><A href="TKE_Text_With_Encoding.html">TKE_Text_With_Encoding</A></TD>
+    </TR>
+  </table>
+  </center>
+<P> In other words, a collection allows for any geometry with the exception of lights 
+and cutting planes (<A href="TKE_Area_Light.html">TKE_Area_Light</A>, 
+<A href="TKE_Distant_Light.html">TKE_Distant_Light</A>, <A href="TKE_Local_Light.html">TKE_Local_Light</A>, 
+<A href="TKE_Spot_Light.html">TKE_Spot_Light</A> and <A href="TKE_Cutting_Plane.html">TKE_Cutting_Plane</A>).  
+There are no limits placed on the number of opcodes that may be in a collection prior to the 
+<A href="TKE_Termination.html"> TKE_Termination</A>.  This situation is an exception to the rule 
+that there should be only one TKE_Termination opcode in the file.
+
+<p> Shells that are included as part of a collection may not themselves contain collections 
+(i.e. they may not be format 4).  Additionally, their level_of_detail member will be present 
+but ignored.
+  
+</FONT><!---------------------------------------------------------------------------->
+<hr WIDTH="100%"></FONT>
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+  function doClick (name) {
+    top.frames["logo"].loadByName(name);
+  }
+
+//-->
+</script>
+</body>
+</html>

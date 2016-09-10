@@ -1,0 +1,154 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Polyline/Polygon</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw Polyline/Polygon</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Draw Polyline/Polygon</b> function draws a connected chain of
+line segments and can be used to approximate a curve. When the "<a href="SetFilMod.html">Fill
+Mode</a>" attribute is enabled, this function draws a closed and filled
+polygon.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="24%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Single-byte,
+readable operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>[P] (50)</font></font></td>
+
+<td VALIGN=TOP WIDTH="24%"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Xi</sub>>,&lt;I<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Draws either
+a dot, a line, a polyline, or a polygon. Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Single-byte,
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%"><font face="Courier New"><font size=-2>[p] (70)</font></font></td>
+
+<td VALIGN=TOP WIDTH="24%"><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>][&lt;L<sub>Xi</sub>>&lt;L<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%"><font face="Arial"><font size=-2>Polyline/polygon,
+relative coordinates</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font size=-2><font face="Courier New">[</font><font face="Arial">Ctrl-</font><font face="Courier New">p]
+(10)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;US<sub>Ecount</sub>>][&lt;S<sub>Xi</sub>>&lt;S<sub>Yi</sub>>]<sup>+</sup></font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Polyline/polygon, relative coordinates</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Count</i>&nbsp;&nbsp; The number of points in the polyline/polygon.
+When using the binary operand form, a value of zero for <i>count</i> indicates
+that an extended count will follow. In the ASCII operand case, <i>count</i>
+may be any value larger than zero.
+<p><i>Ecount&nbsp;&nbsp; </i>When <i>count</i> is zero, a 2-byte extended
+count follows allowing for polylines/polygons with vertices from 256 through
+65,791 which are encoded as an integer (0 to 65,535).
+<p><i>Xi,Yi</i>&nbsp;&nbsp; The <i>i</i><sup>th</sup> point (in logical
+coordinates) of the polyline/polygon.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>This is the basic opcode for drawing a connected sequence of line segments.
+When the "<a href="SetFilMod.html">Fill Mode</a>" attribute is inactive
+(the default) a polyline is rendered using the current "<a href="SetLinWgt.html">Line
+Weight</a>", "<a href="SetLinSty.html">Line Cap</a>", "<a href="SetLinPat.html">Line
+Pattern</a>", "<a href="SetColr.html">Color</a>", and "<a href="SetVis.html">Visibility</a>"
+attributes.
+<p>There are two visual differences between a Polyline and the equivalent
+series of simple <b><a href="DrwLine.html">Draw Line</a></b> calls:
+<ul>
+<li>
+The "Line Pattern", if any, flows smoothly and without interruption around
+the corners.</li>
+
+<li>
+A <b><a href="SetLinSty.html">Line Join</a></b> style can be defined to
+either bevel, round, or miter the corners of thick lines.</li>
+</ul>
+The value of <i>count</i> is one more than the number of line segments
+to be drawn. For example, a <i>count</i> of 3 would specify three logical
+points that define two connected line segments.
+<p>When the "Fill Mode" attribute is active, a closed and colored-in polygon
+is drawn rather than a polyline. The polygon is rendered using the current
+"Color" and "Visibility" attributes. The value of <i>count</i> is equal
+to the number of sides of the polygon to be drawn. For example, a <i>count</i>
+of "3" would specify three logical points that define a filled-in triangular
+polygon.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>A polyline is generally more efficient, with respect to file size,
+than an equivalent series of <b><a href="DrwLine.html">Draw Line</a></b>
+calls.
+<p>To draw filled polygons with interior holes use the <b><a href="DrwContrSet.html">Draw
+Contour Set</a></b> opcode.</ul>
+
+<ul>If a polyline or a polygon with more than 65,791 points is desired,
+it must be drawn by multiple <b>Draw Polyline/Polygon</b> opcodes (unless
+the readable ASCII form of the command is used).
+<p>Polygons are drawn by filling the specified region with the currently
+active color attribute.
+<p><b>Note:</b> A visually apparent edge of the polygon is not rendered;
+however the <b>Draw Polygon</b> function can be followed by additional
+draw calls that render the desired edge. For example, to draw a red triangle
+with a black edge we could use the following:
+<dir>Set the color to red.
+<dir>
+<pre><tt>(Color 255,0,0,255)</tt></pre>
+</dir>
+Turn on Fill Mode.
+<dir>
+<pre><tt>F</tt></pre>
+</dir>
+Draw a triangle.
+<dir>
+<pre><tt>P 3 0,0 10,0 5,5</tt></pre>
+</dir>
+Set the color to black.
+<dir>
+<pre><tt>(Color 0,0,0,255)</tt></pre>
+</dir>
+Turn off Fill Mode.
+<dir>
+<pre><tt>f</tt></pre>
+</dir>
+Four points specifies three line segments.
+<dir>
+<pre><tt>P 4 0,0 10,0 5,5 0,0</tt></pre>
+</dir>
+</dir>
+In this example, notice that four points must be used to draw the outlining
+edge of the triangle, where the first and last points of the polyline are
+equal.
+<p>The "Fill Mode" attribute is ignored when <i>count</i> is given a value
+less than three. In this case the <b>Draw Line</b> function would normally
+be used instead of <b>Draw Polyline</b>.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

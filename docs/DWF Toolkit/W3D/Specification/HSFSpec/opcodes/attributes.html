@@ -1,0 +1,382 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Polyhedron Attributes Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+<H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">Polyhedron Attributes</FONT></H2>
+<P>
+
+
+	<FONT color=#0000a0>
+        <strong>Attribute Operations</strong>
+	</FONT><p>	
+	The following is the complete list of legal values for the attribute opcodes.  The format of the data depends on the opcode.
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50> 0x00</TD>
+		<TD height=21 width=390>OPT_TERMINATE</TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x01</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_NORMALS_COMPRESSED</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x02</TD>
+		<TD height=21 width=390><a href="#some">OPT_NORMALS_COMPRESSED</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x03</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_PARAMETERS_COMPRESSED</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x04</TD>
+		<TD height=21 width=390><a href="#some">OPT_PARAMETERS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x05</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_VFCOLORS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x06</TD>
+		<TD height=21 width=390><a href="#some">OPT_VERTEX_FCOLORS</a> </TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x07</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_VECOLORS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x08</TD>
+		<TD height=21 width=390><a href="#some">OPT_VERTEX_ECOLORS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x09</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_VMCOLORS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x0A</TD>
+		<TD height=21 width=390><a href="#some">OPT_VERTEX_FINDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x0B</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_VFINDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x0C</TD>
+		<TD height=21 width=390><a href="#some">OPT_VERTEX_FINDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x0D</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_VEINDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x0E</TD>
+		<TD height=21 width=390><a href="#some">OPT_VERTEX_EINDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x0F</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_VMINDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x10</TD>
+		<TD height=21 width=390><a href="#some">OPT_VERTEX_MINDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x11</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_NORMALS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x12</TD>
+		<TD height=21 width=390><a href="#some">OPT_NORMALS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> </TD>
+		<TD height=21 width=390><i>break in sequence</i></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x21</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_FACE_COLORS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x22</TD>
+		<TD height=21 width=390><a href="#some">OPT_FACE_COLORS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x23</TD>
+		<TD height=21 width=390><a href="#all">OPT_ALL_FACE_INDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x24</TD>
+		<TD height=21 width=390><a href="#some">OPT_FACE_INDICES</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> </TD>
+		<TD height=21 width=390><i>break in sequence</i></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x33</TD>
+		<TD height=21 width=390><a href="#all">OPT_FACE_REGIONS</a></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> </TD>
+		<TD height=21 width=390><i>break in sequence</i></TD>
+	</TR>
+	<TR>
+		<TD height=21 width=50> 0x63</TD>
+		<TD height=21 width=390><a href="#all">OPT_POLYHEDRON_ATTRIBUTES</a></TD>
+	</TR>
+	</table>
+<p>
+
+<FONT face="arial,helvetica,sans-serif">
+
+<a href="TKE_Shell.html">TKE_Shell</a> and <a href="TKE_Mesh.html">TKE_Mesh</a> (a.k.a. polyhedra) <em>suboptions</em>
+and <a href="TKE_PolyCylinder.html">TKE_PolyCylinder</a> <em>flags</em> have a bit to indicate the presence of
+"optionals" (a.k.a. attributes) on the faces, vertices, or edges.
+If that bit is set,  There will be a list of one or more attribute operations followed by an OPT_TERMINATE.
+Thus, the structure of this list is similar to a list of primitives in a segment,
+except that the opcodes and formats are specific to attributes.  <p>
+
+The meaning of most of the attribute should be apparent from the name of the opcode.  "Normals" are vertex normals.
+"Parameters" are texture coordinates bound to vertices.  "Indices" are values for looking up into a previously defined color look-up table.
+Vertex colors and indices can affect marker, face or edge appearance, as specified with "vm", "ve", or "vf".  <p>
+
+	<FONT color=#0000a0>
+	<a name="all"> <STRONG>Operations to Define Values Everywhere </strong><p></a>
+	</font>
+	<table BORDER =0 WIDTH="500">
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_NORMALS_COMPRESSED</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_VFCOLORS</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_PARAMETERS_COMPRESSED</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_VECOLORS</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_VMCOLORS</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_VFINDICES</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_VEINDICES</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_VMINDICES</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_NORMALS</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_FACE_COLORS</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_ALL_FACE_INDICES</TD>
+			<TD height=21 width=50></TD>
+		</TR>
+	</table>
+	
+	<strong>byte</strong>&nbsp;operation,
+	<strong>byte</strong>&nbsp;compression_scheme,	
+	<strong>byte</strong>&nbsp;bits_per_sample,
+	<strong>array of compressed floats</strong>&nbsp;data (see <a href="#aocf">below</a>)<P>
+
+	<FONT color=#0000a0>
+	<a name="some"> <STRONG>Operations to Define a Subset of Values</strong><p></a>
+	</font>
+	<table BORDER =0 WIDTH="500">
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_NORMALS_COMPRESSED</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_VERTEX_FCOLORS</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_VERTEX_ECOLORS</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_VERTEX_MCOLORS</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_VERTEX_FINDICES</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_VERTEX_EINDICES</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_VERTEX_MINDICES</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_PARAMETERS</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_NORMALS</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_FACE_COLORS</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_FACE_INDICES</TD>
+		</TR>
+	</table>
+
+	<strong>byte</strong>&nbsp;operation,
+	<strong>byte</strong>&nbsp;compression_scheme,	
+	<strong>byte</strong>&nbsp;bits_per_sample,
+	<strong>int</strong>&nbsp;count,
+	<strong>variable array </strong>&nbsp;indices (see <a href="#notes">notes</a>),
+	<strong>array of compressed floats</strong>&nbsp;data (see <a href="#aocf">below</a>) <P>
+
+
+    In the above format, "count" specifies the number of values that are defined. "Indices" and 
+    is an array of size-dependent values.  They will be unsigned values that are 
+    8-bit unsigned characters, 16-bit unsigned shorts, or 32-bit unsigned integers, rounded up from 
+    the number of bits required to store the point count (face count in the case of OPT_FACE_COLORS
+    or OPT_FACE_INDICES).  "Data" is an array of unsigned values packed bitwise with no padding between
+    entries whatsoever. <p>
+
+    With this format, some of the values may be left undefined.  They take on 
+    default or inherited values from elsewhere in a manner specific to the application and/or graphics 
+    system. <p>
+
+	<FONT color=#0000a0>
+	<a name="some"> <STRONG>Miscellaneous options</strong><p></a>
+	</font>
+	<table BORDER =0 WIDTH="500">
+		<TR>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_FACE_REGIONS</TD>
+			<TD height=21 width=50><FONT color=#0000a0>OPT_POLYHEDRON_ATTRIBUTES</TD>
+		</TR>
+	</table>
+
+	all are <strong>variable</strong> format, described below.<P>
+
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+	
+The entire list is terminated with an OPT_TERMINATE opcode <p>
+
+<FONT color=#0000a0 face="arial,helvetica,sans-serif"><a name="aocf">Array of Compressed Floats</a></FONT>
+<p>
+
+Points, normals, colors, color indices and parameters (a.k.a. texture coordinates) are all fundamentally 
+arrays of floating point values.  Of those, all but points are given as part of the polyhedron optionals 
+("points" are defined as part of <a href="TKE_Shell.html">TKE_Shell</a> and <a href="TKE_Mesh.html">TKE_Mesh</a> 
+which have links to this section for the definition of an "array of compressed floats").  The following schemes 
+are currently defined:
+	<table BORDER =1 WIDTH="500">
+		<TR>
+			<TD height=21 width=50> 1</TD>
+			<TD height=21 width=390>CS_TRIVIAL</TD>
+		</TR>	
+		<TR>
+			<TD height=21 width=50> 2</TD>
+			<TD height=21 width=390>CS_TRIVIAL_IMPLICIT (obsolete)</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50> 3</TD>
+			<TD height=21 width=390>CS_REPULSE</TD>
+		</TR>
+	</table><p>
+	
+<FONT color=#0000a0 face="arial,helvetica,sans-serif">CS_TRIVIAL</FONT><p>
+Under the CS_TRIVIAL scheme, the array consists of 6 floats (to define a bounding cuboid) followed by a packed 
+array of raw data samples. The initial 6 floats for the bounding cuboid are omitted when possible:
+<ul>
+    <li> Normal vectors use {-1,-1,-1,1,1,1}
+    <li> Colors (by value, but not by index) use {0,0,0,1,1,1}
+    <li> Vertices, when the TK_Global_Quantization write flag is set, inherit the top-level global bounding box.
+</ul> 
+The bounding cuboid is linearly divided into 2<sup>bits_per_sample</sup> equally 
+spaced buckets.  The samples field is then a packed array of samples in the order xyzxyz...xyz.  The array is 
+padded with bits set to 0 to align it to the next character, but no padding whatsoever exists between individual samples. 
+Legal values for bits_per_sample 
+allow for anything in the range from 2 to 31.  For colors 
+and normals, there is only one bounding cuboid possible, and are omitted.  Normals use .  Colors 
+use .<p>
+
+<FONT color=#0000a0 face="arial,helvetica,sans-serif">CS_TRIVIAL_IMPLICIT (obsolete)</FONT><p>
+CS_TRIVIAL_IMPLICIT differs from CS_TRIVIAL only in that the bounding cuboid is inferred from the nature of the 
+data it is encoding.  CS_TRIVIAL_IMPLICIT can be used only for normals, colors, parameters and colors-by-index.  
+For normals, the assumed bounding box is {-1,-1,-1,1,1,1}.  For the colors, the assumption is {0,0,0,1,1,1}.  
+This compression scheme was deprecated because of the observation that the difference between CS_TRIVIAL and 
+CS_TRIVIAL_IMPLICIT could be inferred from context. <p>
+
+<FONT color=#0000a0 face="arial,helvetica,sans-serif">CS_REPULSE</FONT><p>
+CS_REPULSE is defined only for <em>bits_per_sample</em> values of 8 and 10.  A predefined set of unit 
+vectors is hardcoded into both 
+the reading and writing sides.  The bit-packed array of samples is interpreted as indices into this array of 
+hardcoded unit vectors.  The last index in both the 8 and 10 bit versions is a reserved value that indicates 
+that the normal is not valid (left for the receiving end's graphics system to compute).  For the definition 
+of the predefined unit vectors, see <a href="repulse_data.html">repulse_data.html</a>.
+
+<p>
+<hr WIDTH="100%">
+<FONT color=#0000a0 face="arial,helvetica,sans-serif">Face Regions - Array of compresed Ints</FONT>
+<p>
+If face regions are defined, they are specified as one Int per face,which may then be compressed.  The form of
+storage is defined by <br>&nbsp;&nbsp;<strong>Byte</strong>&nbsp;compression_scheme<br> which currently consists of
+two parts.
+<p>
+The upper part (compression_scheme & 0xF8) defines the storage size of all the following values:
+	<table BORDER =1 WIDTH="300">
+		<TR>
+			<TD height=21 width=50> 0</TD>
+			<TD height=21 width=190>&nbsp;Int values are stored as Ints</TD>
+		</TR>	
+		<TR>
+			<TD height=21 width=50> 8</TD>
+			<TD height=21 width=190>&nbsp;Int values are stored as Bytes</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50>16</TD>
+			<TD height=21 width=190>&nbsp;Int values are stored as Words</TD>
+		</TR>
+	</table>
+<br>
+The lower part (compression_scheme & 0x07) defines the form of compression applied to the array of values:
+	<table BORDER =1 WIDTH="500">
+		<TR>
+			<TD height=21 width=50>0</TD>
+			<TD height=21 width=390>No Compression.<br><br>One region value per face</TD>
+		</TR>	
+		<TR>
+			<TD height=21 width=50>1</TD>
+			<TD height=21 width=390>Sequential, zero based.<br><br>A count is given indicating the number of distinct
+									regions, folowed by <em>count</em> values indicating the number of faces in
+									each successive region.</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50>2</TD>
+			<TD height=21 width=390>Sequential, non-zero based.<br><br>A count is given indicating the number of distinct
+									regions, folowed by the first region index, and then <em>count</em> values
+									indicating the number of faces in each successive region.</TD>
+		</TR>
+		<TR>
+			<TD height=21 width=50>3</TD>
+			<TD height=21 width=390>Grouped faces.<br><br>A count is given indicating the number of groups specified,
+									followed by <em>count</em> pairs of region/length values</TD>
+		</TR>
+	</table>
+<br>
+For example, a cube defining regions for the faces as (0 0 0 0 1 1) could use scheme 1 to encode this as
+(2 4 2), another cube with regions (2 2 2 2 1 1) could use scheme 3 to produce (2 2 4 1 2).
+<p>
+Face region support was added in HSF format 7.05.
+
+
+<p>
+<hr WIDTH="100%">
+<FONT color=#0000a0 face="arial,helvetica,sans-serif">Polyhedron Attributes</FONT>
+<p>
+If polyhedron attributes are defined, they are attributes (such as color) which are set at the geometry level (as opposed
+to the segment level or the face/edge/vertex level).  They are stored as one or more normal attributes followed by a
+TKE_Termination opcode (distinct from the OPT_TERMINATE which is required when all optional fields are done).
+<p>
+Polyhedron attribute support was added in HSF format 7.05.
+<p>
+<!---------------------------------------------------------------------------->
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

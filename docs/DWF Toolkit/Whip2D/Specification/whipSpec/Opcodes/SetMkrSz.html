@@ -1,0 +1,74 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Marker Size - DEPRECATED</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Marker Size - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Marker Size</b> function specifies the size of subsequently
+rendered markers.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="22%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="23%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="29%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="22%"><font face="Arial"><font size=-2>Single-byte,
+readable operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font face="Courier New"><font size=-2>[S] (53)</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>Size</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="29%"><font face="Arial"><font size=-2>Scales subsequent
+markers</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="22%"><font face="Arial"><font size=-2>Single-byte,
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="23%"><font face="Courier New"><font size=-2>[s] (13)</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%"><b><font face="Courier New"><font size=-2>&lt;UL<sub>Size</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="29%"><font face="Arial"><font size=-2>Scales subsequent
+markers</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Scale</i> Selects the size, in logical coordinate units, to which
+subsequent marker glyphs are rendered.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>When a glyph is recorded into the glyph table with the <b><a href="DefMrkrGlph.html">Define
+Marker Glyph</a></b> opcode, a unit parameter is specified. The <b>Set
+Marker Size</b> operation scales all of the geometric primitives in subsequent
+marker glyphs by a factor such that a line, originally of unit length,
+is scaled to a size in logical units.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>The default marker size is zero logical coordinate units (always rendered
+as a single screen pixel) and is equivalent to
+<ul>
+<pre><font face="Courier New">S0</font></pre>
+</ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

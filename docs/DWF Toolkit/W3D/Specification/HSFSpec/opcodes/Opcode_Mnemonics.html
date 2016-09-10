@@ -1,0 +1,98 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode Mnemonics</FONT></H2>
+      <P><FONT face="arial,helvetica,sans-serif">     
+                   
+                 
+        Immediately following the opcode in    the HSF will be the arguments, 
+      if any, to that specific opcode.&nbsp; These are&nbsp;listed in the operands list of 
+      each opcode definition.&nbsp; In the documentation this list is formatted as 
+      a list of comma separated datatypes, in the&nbsp;HSF stream the opcodes and 
+      their operands are packed without any spaces or commas between 
+      them.</FONT></P><br>
+	  
+  	  <center>
+	  <p><IMG src="hsf_buffer.gif">
+      </center>
+	  
+      <P><FONT face="arial,helvetica,sans-serif">Some opcodes are expected to be 
+      used in ordered pairs, examples of these include 
+      TKE_Start_Compression/TKE_Stop_Compression and 
+      TKE_Start_User_Data/TKE_Stop_User_Data.&nbsp; Not using these opcodes as 
+      ordered pairs will result in corrupt HSF streams.</FONT></P>
+      <P><FONT face="arial,helvetica,sans-serif">Below is a table containing&nbsp;the definitions of 
+      the different datatypes.&nbsp; Depending on the context datatypes can be signed or 
+      unsigned.</FONT></P>
+      <P>&nbsp;</P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<center>
+<table BORDER =1 WIDTH="400">
+        <TR>
+          <TD height=21 width=131><FONT 
+            face="Courier New,Courier,typewriter"><STRONG>Byte</STRONG>&nbsp;</FONT></TD>
+          <TD height=21 width=390><FONT face="arial,helvetica,sans-serif">Single&nbsp;byte of binary data.&nbsp; This is 
+            often used for character strings.</FONT></TD></TR>
+        <TR>
+          <TD height=21 width=131>
+            <P><FONT 
+            face="Courier New,Courier,typewriter"><STRONG>Short</STRONG></FONT><STRONG><FONT 
+            face="Courier New,Courier,typewriter">/Word</FONT></STRONG>&nbsp;</P></TD>
+          <TD height=21 width=390><FONT face="arial,helvetica,sans-serif"> short integer (two bytes) of binary memory, stored in 
+            little-endian format.</FONT></TD></TR>
+        <TR>
+          <TD height=21 width=131><FONT 
+            face="Courier New,Courier,typewriter"><STRONG>Int/Long</STRONG>&nbsp;</FONT></TD>
+          <TD height=21 width=390><FONT face="arial,helvetica,sans-serif">  integer (four bytes) of binary memory, stored in 
+            little-endian format.</FONT></TD></TR>
+        <TR>
+          <TD height=21 width=131><FONT 
+            face="Courier New,Courier,typewriter"><STRONG>Float</STRONG>&nbsp;</FONT></TD>
+          <TD height=21 width=390><FONT face="arial,helvetica,sans-serif">        
+                       
+              Floating point value stored in little endian format.</FONT></TD></TR>
+        <TR>
+          <TD height=21 width=131><FONT 
+            face="Courier New,Courier,typewriter"><STRONG>Point</STRONG>&nbsp;</FONT></TD>
+          <TD height=21 width=390>An array of 3 
+floats.</TD></TR>
+<tr>
+	<td WIDTH="131" HEIGHT="21"><STRONG><FONT 
+            face="Courier New,Courier,typewriter">Variable&nbsp;</FONT></STRONG></td>
+			<TD height=21 width=390>1 to 4 bytes, normally used for bitmasks. Specific details given for each usage in the 
+            appropriate opcode. Common case is to read 1 byte, and if the 
+            appropriate bit is set, one or more additional bytes specify additional 
+            more-significant bits.</TD>
+	</tr>
+</table>
+</center>
+<p><br>
+<B>Arrays</B><br>
+Arrays are specified by <b><font face="Courier New,Courier,typewriter">(count)x</font></b> in front of the base type.  The count maybe an expression based on a previous operand value.
+<p><b>Optional Fields</b><br>
+The presence of some data may be dependent on previous 
+      data elements. Square brackets ([ ]) will surround those data elements. 
+      The field and/or object description will indicate the dependency.</FONT><p><br>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

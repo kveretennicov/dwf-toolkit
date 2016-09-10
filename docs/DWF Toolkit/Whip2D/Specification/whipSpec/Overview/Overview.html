@@ -1,0 +1,169 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>1. Overview</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OverviewHd.html&quot;">
+<b><font face="Arial,Helvetica"><font size=+2>Overview</font></font></b>
+<br>This section provides a feature overview of WHIP! and how to use the
+guide.
+<br>
+<hr>
+<p><a NAME="Intro"></a><b><font face="Arial,Helvetica"><font size=+1>Introduction
+— What is WHIP! data? </font></font></b>
+<br>WHIP! data is the new name given to classic DWF (Design Web Format) files 
+of version 0.55 and earlier.  The DWF 6 format is described in detail in the DWF 
+Specification document accompanying this distribution.  WHIP! data was developed 
+because widely accepted 2D vector file standards did not address the needs of 
+Internet aware applications. In addition, commercial formats were too closely tied 
+to specific proprietary data structures to support the exchange of illustrations 
+among systems.
+<p>WHIP! data is a format for the standardized description of 2D, vector-based
+drawings and illustrations, intended for encapsulation within a DWF package file. 
+<b>WHIP! data files of version 6.0 and greater are not intended to be used as stand-alone
+files, but rather a data channel within a DWF package file.</b><br>
+<br>
+This specification was developed with the following in mind:
+
+<ul><b>Application independence <i>— </i></b>It provides application independence.
+Because WHIP! data specifies a generalized 2D vector format rather than using
+the data structure details of a specific application, WHIP! data has been designed
+to accommodate the pictorial output available from a wide variety of commercial
+applications that generate 2D illustrations.
+<p><b>Compatibility <i>— </i></b>WHIP! data provides a common syntax for the exchange
+of 2D illustrations between applications that generate drawings and viewing
+applications that read them, for use within the DWF package format.
+<p><b>Simplicity <i>— </i></b>WHIP! data provides simplicity through the use of
+a flexible syntax that requires minimal information for simple cases while
+allowing a graceful escalation of information required for more complex
+drawing descriptions. The format persuades WHIP! data generating applications
+to tessellate their geometry into a form that is simple for viewing applications
+to read.
+<p><b>Stability <i>— </i></b>The WHIP! data format remains relatively unchanged 
+over time because it is application independent and has extensibility built in. 
+Also, it is less likely to require changes as it addresses the requirements of
+most existing commercial systems.
+<p><b>Many Supported Features <i>— </i></b>Fully supported features include lines,
+polylines, polygons, polytriangles, markers, images, circles, arcs, ellipses,
+B&eacute;zier curves, text, visibility, Gouraud shading, texture mapping,
+31-bit data precision, layer control, view control, clip regions, variable
+transparency, and international character sets.
+<p><b>Plot Utility</b> <b>—</b> The Toolkit provides a new set of opcodes
+that enable realistic plotting from WHIP! data consumers.
+<p><b>Extensibility — </b>WHIP! data provides extensibility through the use of
+syntax extension mechanisms built into the specification and through a
+set of rules for WHIP! data reading programs that allow for unforeseen
+syntax extensions. For example, new operations can be compatibly added
+to WHIP! data that will be gracefully ignored by older WHIP! data reading
+applications.
+<p><b>Compact size <i>— </i></b>WHIP! data is designed to provide either a compact
+binary or readable ASCII representation of illustrations. Especially critical
+for Internet transmission, WHIP! data includes a compression mechanism that
+minimizes duplication of geometric information.
+<p><a NAME="EmbedMech"></a><b>Embedding mechanism <i>— </i></b>WHIP! data includes
+a mechanism for the attachment of any kind of data (with a link or an embed
+operation) to the format. One possible use for this is to allow users to
+drag and drop illustrations from a Web browser into any application. Rather
+than "dropping" WHIP! data, an embedded or linked file format native to the
+target application is dropped as instructed by the WHIP! data reader.
+<p><a NAME="URL"></a><b>URL hyperlink support <i>— </i></b>WHIP! data adds 
+World Wide Web support and features to the drawings it describes. One of these
+features is the ability to attach Internet URL (universal resource locator)
+hyperlinks to any object so that by selecting an object in a drawing, a
+user can jump to a more detailed view of the drawing, to a related drawing,
+or to any other Internet information (text, sound, video, and so forth).</ul>
+</ul>
+
+<p><br><a NAME="About"></a><b><font face="Arial,Helvetica"><font size=+1>About
+The Guide</font></font></b>
+<br>This version of the Guide also expands upon the development system
+and opcode library that originated with the <i><font face="Arial,Helvetica">Whip!</font></i>
+Toolkit. This section tells how to use the guide.
+<blockquote><a NAME="Synop"></a><b><font size=+1>Synopsis</font></b>
+<br>The guide has one primary focus:
+<blockquote>
+Technical overview of the WHIP! data specification intended for use as a channel (file resource)
+within a "Design Web Format" (DWF) — package.  WHIP! data contains information facilitating
+the transmission of 2D vector drawings. A reference of opcode definitions is included.
+</blockquote>
+The following sections are included:
+<p><b><a href="Overview.html">Overview</a> </b>— Provides a
+feature overview of WHIP! data and how to use this guide.
+<p><b><a href="../WhipData/WhipData.html">WHIP! Data
+Architecture</a></b> — A description of the WHIP! data and opcode
+structure, details and examples.
+<p><b><a href="../OpcodeRef/OpcodeRef.html">Standard Opcode Definitions
+and Reference</a></b> — An alphabetical reference of the WHIP! data 
+opcodes and operands.
+<p><b><a href="../AppendixA/AppendixA.html">Appendix A: Opcodes Listed
+by Format</a></b> — A quick reference of opcodes listed by opcode category:
+single byte, extended ASCII, and extended binary formats.
+<p><b><a href="../License/License.html">Appendix B: License Agreement</a></b>&nbsp;
+The End User License Agreement which must be acknowledged, as noted, prior
+to using the toolkit.
+<br>This guide is based on revision 06.00 of the WHIP! data specification. 
+Future versions will specify additional functions that were not included. 
+As such, some content in this revision is marked "To Be Determined" (TBD).
+<p><a NAME="Typo"></a><b><font size=+1>Typographical Conventions</font></b>
+<br>In this guide, certain typographical conventions are used to make reading
+and understanding easier.
+<p>The Courier font is used for methods, file objects and items expressed
+in code and fragments of C or C++ language code:
+<dir>
+<dir>&nbsp;</dir>
+
+<table WIDTH="60%" HEIGHT="20%" >
+<tr>
+<td WIDTH="70%" HEIGHT="30%">
+<blockquote>Methods</blockquote>
+</td>
+
+<td>
+<blockquote><font face="Courier New">process_next_object()</font></blockquote>
+</td>
+</tr>
+
+<tr>
+<td>
+<blockquote>Function names (when in code)</blockquote>
+</td>
+
+<td>
+<blockquote><font face="Courier New">establish_configuration</font></blockquote>
+</td>
+</tr>
+</table>
+
+<dir>&nbsp;</dir>
+</dir>
+A Times Roman bold font is used for opcodes and function names:
+<blockquote><b>Define Compressed Data</b>, or <b>Draw Ellipse</b>.</blockquote>
+An italic font is used for arguments, values, and also emphasis, names
+of documents, files, and directory locations supplied with the kit:
+<blockquote>a four-bit <i>literal data run length</i> value.</blockquote>
+Underlined Courier font characters indicate binary operand data:
+<blockquote><font face="Courier New">1<u>xxxxyyyyxxx</u>x</font>.</blockquote>
+In code samples or code sequences, the use of a C++ comment identifier
+followed by ellipses indicates code that has been omitted for clarity:
+<blockquote><font face="Courier New">// ...</font>.</blockquote>
+Actions, attributes and references to sections in the guide appear in the
+text as Times Roman font in double quotes:
+<blockquote>"process", "Color" and, see the "Notes" section of....</blockquote>
+</blockquote>
+<p><a NAME="Tech"></a><b><font face="Arial,Helvetica"><font size=+1>Technical
+Support, Information and Revisions</font></font></b>
+<br>The DWF and WHIP! Toolkits are provided free on an as-is basis. There is no technical
+support available. Please post questions, comments and suggestions pertaining
+to the toolkit and this guide to the internet news group at <a href="news://discussion.autodesk.com/autodesk.internet">news://discussion.autodesk.com/autodesk.internet</a>
+or the web version at&nbsp;&nbsp;&nbsp; <a href="http://discussion.autodesk.com/WebX?14@@.ee937e6">http://discussion.autodesk.com/WebX?14@@.ee937e6</a>.
+<p>It is recommend that you update your <i>WHIP! Data Specification</i>
+with each new release of <font face="Times New Roman, Times, serif">DWF</font>,
+as it is continually revised when new information becomes available.
+<br>
+<hr WIDTH="100%">
+<br>
+<hr WIDTH="100%">
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Plot Info - DEPRECATED</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Plot Info - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Define Plot Info</b> function describes the real-world plotting
+of the WHIP! data’s logical coordinates.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<center><table BORDER CELLPADDING=9 WIDTH="660" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="13%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="37%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="13%"><font face="Courier New"><font size=-2>(PlotInfo</font></font></td>
+
+<td VALIGN=TOP WIDTH="37%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;T<sub>ShowPaper</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>Rotation</sub>>&lt;ws>&lt;T<sub>Units</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;F<sub>Width</sub>>&lt;ws>&lt;F<sub>Height</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;F<sub>Left</sub>>&lt;ws>&lt;F<sub>Bottom</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;F<sub>Right</sub>>&lt;ws>&lt;F<sub>Top</sub>>&lt;ws>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>((&lt;F<sub>M00</sub>>&lt;ws>&lt;F<sub>M01</sub>>&lt;ws>&lt;F<sub>M02</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&nbsp;(&lt;F<sub>M10</sub>>&lt;ws>&lt;F<sub>M11</sub>>&lt;ws>&lt;F<sub>M12</sub>>)\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&nbsp;(&lt;F<sub>M20></sub>>&lt;ws>&lt;F<sub>M21</sub>>&lt;ws>&lt;F<sub>M22</sub>>))[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="30%"><font face="Arial"><font size=-2>Scale of logical
+coordinates</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>ShowPaper</i>&nbsp;&nbsp; ASCII text string that indicates whether
+to "show" or "hide" the plotting border when the WHIP! data is viewed on
+screen.
+<p><i>Rotation</i>&nbsp;&nbsp; integer rotation angle (i.e., 0, 90, 180, 270)
+that indicates whether the data has been pre-rotated so that it will print in 
+a "normal" (portrait, i.e., angle = 0) or "flipped" (landscape, i.e., angle = 90) 
+orientation.
+<p><i>Units</i>&nbsp;&nbsp; ASCII string label that indicates the unit
+of measure of the floating point parameters of the opcode. Legal values
+are "in" (inches) or "mm" (millimeters).
+<p><i>Width</i>&nbsp;&nbsp; The width dimension of paper in paper units
+<p><i>Height</i>&nbsp;&nbsp; The height dimension of paper in paper units
+<p><i>Left</i>&nbsp;&nbsp; The distance, in paper units, from the left
+edge of the paper to the left boundary of the printable area
+<p><i>Bottom</i>&nbsp;&nbsp; The distance, in paper units, from the bottom
+edge of the paper to the bottom boundary of the printable area
+<p><i>Right</i>&nbsp;&nbsp; The distance, in paper units, from the left
+edge of the paper to the right bounday of the printable area
+<p><i>Top</i>&nbsp;&nbsp; The distance, in paper units, from the bottom
+edge of the paper to the top boundary of the printable area
+<p><i>Mxy</i>&nbsp;&nbsp; ASCII representation of a floating-point or a
+double-precision floating point number that defines an element of the coordinate
+mapping matrix from WHIP! data coordinates to paper coordinates with the
+origin at the left bottom corner of the printable area</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Define Plot Info</b> opcode allows the illustrations contained
+in WHIP! data to be related to plotted paper dimensions. This is
+useful, for example, when you publish a scaled plot of a mechanical part.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default, no plotting scale is defined, which is equivalent to:
+<ul><font face="Courier New"><font size=-1>(PlotInfo hide 0 in 8.5 11.0
+0.0 0.0 8.5 11.0</font></font></ul>
+
+<ul><font face="Courier New"><font size=-1>&nbsp; (1.0 0.0 0.0)(0.0 1.0
+0.0)(0.0 0.0 1.0))</font></font></ul>
+</ul>
+
+<ul>The default setting for paper size is 8.5 by 11.0 inches without the
+border being shown.</ul>
+<a NAME="PltInfoExmpl"></a><font face="Arial Black"><font size=-1>Examples</font></font>
+<blockquote><b>PlotInfo from WHIP! data optimized for plotting, 400 DPI, ANSI
+full bleed A size paper</b>
+<p><tt>(PlotInfo hide 90 in 10.99999976 8.4999997597 0.031250480592 0.031249999531</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 10.96874976 8.4687498799</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+((0.0025 0 0)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(0 0.0025 0)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(0 0 1)))</tt>
+<p>Following are some notes on the preceding PlotInfo values:
+<br>&nbsp;
+<ul>
+<li>
+ShowPaper = hide</li>
+
+<li>
+AutoCAD plot rotation = 90 degrees</li>
+
+<li>
+media units = Inches</li>
+
+<li>
+Media Width, Height = 10.99999976" x 8.4999997597" (11 x 8.5")</li>
+
+<li>
+Printable area left, bottom = 0.03125, 0.03125"</li>
+
+<li>
+Printable area right, top = 10.9687..., 8.46874..."</li>
+
+<li>
+The coordinate mapping matrix says <i>X</i> scale factor = <i>Y</i> scale
+factor = <tt>0.0025</tt> (that is, 1/400 because this is 400 DPI WHIP! data),
+there is <tt>0</tt> <i>X</i> and <i>Y</i> offset, and the matrix does not
+apply any rotation.</li>
+</ul>
+
+<p><br><b>PlotInfo from the same drawing, plotted "optimized for viewing"
+on "ANSI expand A" paper</b>
+<p><tt>(PlotInfo hide 90 in 10.99999976 8.4999997597 0.42495126799 0.22810038619</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; 10.57504898 8.2718994862</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+((8.5513417464e-005 0 0)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(0 8.5513417464e-005 0)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(0 0 1)))</tt>
+<p><b>Note:</b> The printable area has gotten smaller with the change in
+media size, and the <i>X</i> and <i>Y</i> scaling factors are much smaller
+- this corresponds to 11,694.07 DPI.</blockquote>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

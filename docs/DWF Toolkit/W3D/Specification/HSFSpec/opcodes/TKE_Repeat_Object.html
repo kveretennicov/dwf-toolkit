@@ -1,0 +1,85 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Repeat_Object</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>&amp;</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>26</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>38</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Long</STRONG>&nbsp;from_index,
+	  <STRONG>Long</STRONG>&nbsp;from_variant,
+	  <STRONG>Long</STRONG>&nbsp;to_index,
+	  <STRONG>Long</STRONG>&nbsp;to_variant,
+	  <STRONG>Byte</STRONG>&nbsp;options,
+	  <STRONG>(12)xFloat</STRONG>&nbsp;matrix,
+      </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<tr>
+	<td WIDTH="131" HEIGHT="21">from_index</td>
+	<td WIDTH="390" HEIGHT="21">index of previous object to copy</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">from_variant</td>
+	<td WIDTH="390" HEIGHT="21">specific variant (level of detail) to copy</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">to_index</td>
+	<td WIDTH="390" HEIGHT="21">if -1, create new object, otherwise adding a variant to the specified object</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">to_variant</td>
+	<td WIDTH="390" HEIGHT="21">variant being created</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">options</td>
+	<td WIDTH="390" HEIGHT="21">(currently unused)</td>
+	</tr>
+<TR>
+	<td WIDTH="131" HEIGHT="21">matrix</td>
+	<td WIDTH="390" HEIGHT="21">components of the transform matrix</td>
+	</TR>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+      <font face="arial,helvetica,sans-serif">
+	  This may be used when an object is a copy of a previous object, with the exception of an
+	  affine transformation (any combination of translate, scale, shear, and rotate) applied to the points.
+	  <p>
+	  The matrix is specified in the same form as the Modelling_Matrix opcode -- the first
+	  3 elements of the 4 rows of the transform matrix.  The 4th element of each row is
+	  assumed to be 0 for the frist 3 rows, 1 for the last.</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

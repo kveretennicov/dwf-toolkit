@@ -1,0 +1,243 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Text_Font</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>F</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>46</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>70</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+      <STRONG>Byte</STRONG>&nbsp;mask,
+	  <STRONG>Byte</STRONG>&nbsp;value,
+      <STRONG>[Byte</STRONG>&nbsp;mask_high,
+      <STRONG> Byte</STRONG>&nbsp;value_high<STRONG>]</STRONG><br>
+      <STRONG>[Byte</STRONG>&nbsp;names_length<strong>]</strong>,
+      <STRONG>[(</STRONG><EM>names_length</EM><STRONG>)xByte</STRONG>&nbsp;names<strong>]</strong>,
+	  <STRONG>[Float</STRONG>&nbsp;size<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;size_units<strong>]</strong>,
+	  <STRONG>[Float</STRONG>&nbsp;size_tolerance<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;tolerance_units<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;transforms<strong>]</strong>,
+	  <STRONG>[Float</STRONG>&nbsp;rotation<strong>]</strong>,
+	  <STRONG>[Float</STRONG>&nbsp;slant<strong>]</strong>,
+	  <STRONG>[Float</STRONG>&nbsp;width_scale<strong>]</strong>,
+	  <STRONG>[Float</STRONG>&nbsp;extra_space<strong>]</strong>,
+	  <STRONG>[Byte</STRONG>&nbsp;extra_space_units<strong>]</strong>,
+	  <STRONG>[Float</STRONG>&nbsp;line_spacing<strong>]</strong>
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+    <TD height=21 width=131>mask</TD>
+    <TD height=21 width=390>bitmask of options.</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>value</TD>
+    <TD height=21 width=390>bitmask indicating which options are set <em>on</em>.</TD>
+	</TR>
+<tr>
+	<td WIDTH="131" HEIGHT="21">mask_high</td>
+	<td WIDTH="390" HEIGHT="21">if high bit is set in the first <em>mask</em> byte,
+	 this set of bits is added to <em>mask</em>.</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">value_high</td>
+	<td WIDTH="390" HEIGHT="21">if high bit is set in the first <em>mask</em> byte,
+	 this set of bits is added to <em>value</em>.</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">names_length</td>
+	<td WIDTH="390" HEIGHT="21">length of names string</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">names</td>
+	<td WIDTH="390" HEIGHT="21">one or more font names to attempt to use</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">size</td>
+	<td WIDTH="390" HEIGHT="21">desired size of text</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">size_units</td>
+	<td WIDTH="390" HEIGHT="21">enumeration describing how size is interpreted</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">size_tolerance</td>
+	<td WIDTH="390" HEIGHT="21">indicates acceptable size difference for fixed-size bitmap fonts</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">tolerance_units</td>
+	<td WIDTH="390" HEIGHT="21">enumeration describing how tolerance is interpreted</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">transforms</td>
+	<td WIDTH="390" HEIGHT="21">enumeration indicating how text string is affected by modelling matrix</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">rotation</td>
+	<td WIDTH="390" HEIGHT="21">rotation of characters relative to the horizontal (in degrees).
+							    value of -1 indicates characters are rotated to lie along the text path</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">slant</td>
+	<td WIDTH="390" HEIGHT="21">amount of slant applied to characters (in degrees)</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">width_scale</td>
+	<td WIDTH="390" HEIGHT="21">horizontal scaling applied to the entire text string</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">extra_space</td>
+	<td WIDTH="390" HEIGHT="21">additional space added between characters</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">extra_space_units</td>
+	<td WIDTH="390" HEIGHT="21">enumeration describing how extra space is interpreted</td>
+	</tr>
+<tr>
+	<td WIDTH="131" HEIGHT="21">line_spacing</td>
+	<td WIDTH="390" HEIGHT="21">distance between baseline of multi-line strings, as a multiple of the font height</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+<font face="arial,helvetica,sans-serif">  Text attributes which are set on the currently open segment.&nbsp; These attributes are applied to
+any text that lies in this part of the segment tree.<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Mask/Value bits:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0001</TD>
+		<TD height=21 width=390>Names</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0002</td>
+		<td WIDTH=390 HEIGHT=21>Size</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0004</td>
+		<td WIDTH=390 HEIGHT=21>Size Tolerance</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0008</td>
+		<td WIDTH=390 HEIGHT=21>Transforms</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0010</td>
+		<td WIDTH=390 HEIGHT=21>Rotation</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0020</td>
+		<td WIDTH=390 HEIGHT=21>Slant</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0040</td>
+		<td WIDTH=390 HEIGHT=21>Width_Scale</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0080</td>
+		<td WIDTH=390 HEIGHT=21>second byte required</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0100</td>
+		<td WIDTH=390 HEIGHT=21>Extra Space</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0200</td>
+		<td WIDTH=390 HEIGHT=21>Line Spacing</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0400</td>
+		<td WIDTH=390 HEIGHT=21>Outline preferred</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0800</td>
+		<td WIDTH=390 HEIGHT=21>Underline preferred</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1000</td>
+		<td WIDTH=390 HEIGHT=21>Strikethrough preferred</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>2000</td>
+		<td WIDTH=390 HEIGHT=21>Overline preferred</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Size Units options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0</TD>
+		<TD height=21 width=390>Object space size</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1</td>
+		<td WIDTH=390 HEIGHT=21>Screen space size</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>2</td>
+		<td WIDTH=390 HEIGHT=21>Window space size</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>3</td>
+		<td WIDTH=390 HEIGHT=21>Points</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>4</td>
+		<td WIDTH=390 HEIGHT=21>Pixels</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>5</td>
+		<td WIDTH=390 HEIGHT=21>Percentage (only used for Size Tolerance)</td>
+		</tr>
+	</table>
+	<p>
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Transform options:</strong></FONT><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0</TD>
+		<TD height=21 width=390>Only position of each character is transformed</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>1</td>
+		<td WIDTH=390 HEIGHT=21>Entire character glyphs are transformed</td>
+		</tr>
+	</table>
+
+
+</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'VariableZip' target in the 'VariableZip' project.
+//
+
+#include <Carbon/Carbon.h>

@@ -1,0 +1,91 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Group Begin - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Group Begin - DEPRECATED</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Group Begin</b> marks the beginning of a set of drawing objects
+that are treated as a group.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(GroupBegin</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font size=-2><font face="Courier New">&lt;ws></font><font face="Courier New,Courier">&lt;T</font><sub><font face="Courier New">group_name</font></sub><font face="Courier New,Courier">>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>Marks the beginning
+of a set of drawing objects that can be treated as a group.</font></font></td>
+</tr>
+</table></center>
+
+<blockquote><i>Group_name</i>&nbsp;&nbsp; A string used as an identifier
+for a group.</blockquote>
+
+<p><br><font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Some WHIP! data reading applications may need the ability to “group” drawing
+objects.&nbsp; The WHIP! data generating application can indicate this need with
+the <b>Group Begin</b> / <b>Group End</b> opcode pair:
+<ul>
+<pre><tt>(GroupBegin ‘Front bumper’)
+&nbsp;&nbsp;&nbsp; (Circle …)
+&nbsp;&nbsp;&nbsp; (Ellipse …)
+&nbsp;&nbsp;&nbsp; (…)</tt></pre>
+
+<pre><tt>(GroupEnd)</tt></pre>
+
+<pre><tt>(Circle …)&nbsp;&nbsp;&nbsp; &lt;- not in a group</tt></pre>
+
+<pre><tt>(GroupBegin ‘Rear bumper’)
+&nbsp;&nbsp;&nbsp; (Circle …)
+&nbsp;&nbsp;&nbsp; (Ellipse …)
+&nbsp;&nbsp;&nbsp; (…)
+(GroupBegin ‘Left door’)
+&nbsp;&nbsp;&nbsp; (Circle …)
+&nbsp;&nbsp;&nbsp; (Ellipse …)
+&nbsp;&nbsp;&nbsp; (…)
+(GroupBegin ‘Right door’)
+&nbsp;&nbsp;&nbsp; (Circle …)
+&nbsp;&nbsp;&nbsp; (Ellipse …)
+(GroupEnd)</tt></pre>
+</ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>1. There can be any number of groups defined within WHIP! data.
+<br>2. Group names do not have to be unique; they are attributes only.
+<br>3. Every drawing object which is read in following a <b>Group Begin</b>
+opcode should be treated as belonging to that group.
+<br>4. The <b>Group End</b> opcode is not needed to complete or finish
+a group.&nbsp; <b>Group End</b> is used to mark the end of a group if needed.&nbsp;
+See Details for an example.</ul>
+<font face="Arial Black"><font size=-1>See Also</font></font>
+<ul>For more information, see the <b><a href="GroupEnd.html">Group End</a></b>
+opcode.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<blockquote>&nbsp; None.</blockquote>
+
+<hr>
+<br>
+<hr WIDTH="100%">
+</body>
+</html>

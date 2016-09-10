@@ -1,0 +1,1 @@
+This samples shows how to use contentmanager to create a package using global content to share properties.

@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleW3DStreamProcessor", "SimpleW3DStreamProcessor_vc90.vcproj", "{9E22363E-A36B-4038-B3F2-71C177CCC77B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DWF Core Library", "..\..\..\develop\global\build\VC 9.0\DWFCore\DWFCore.vcproj", "{8BECE007-1749-4300-87D8-267B613AAE6B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DWFToolkit", "..\..\..\develop\global\build\VC 9.0\DWFToolkit\DWFToolkit.vcproj", "{2D22C637-6219-4096-8399-EEA4BBD142AA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DWF W3D Toolkit", "..\..\..\develop\global\build\VC 9.0\W3DToolkit\W3DToolkit.vcproj", "{9415DE9A-E01E-47C1-A159-EB1E1D4E518C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DWF W2D (Whip) Toolkit", "..\..\..\develop\global\build\VC 9.0\WhipToolkit\WhipToolkit.vcproj", "{681750CF-B191-4A41-B92C-0F94599B121D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Current|Win32 = Current|Win32
+		Current|x64 = Current|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E22363E-A36B-4038-B3F2-71C177CCC77B}.Current|Win32.ActiveCfg = Current|Win32
+		{9E22363E-A36B-4038-B3F2-71C177CCC77B}.Current|Win32.Build.0 = Current|Win32
+		{9E22363E-A36B-4038-B3F2-71C177CCC77B}.Current|x64.ActiveCfg = Current|x64
+		{9E22363E-A36B-4038-B3F2-71C177CCC77B}.Current|x64.Build.0 = Current|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Current|Win32.ActiveCfg = Release (Read-Write WChar DLL)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Current|Win32.Build.0 = Release (Read-Write WChar DLL)|Win32
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Current|x64.ActiveCfg = Release (Read-Write WChar DLL)|x64
+		{8BECE007-1749-4300-87D8-267B613AAE6B}.Current|x64.Build.0 = Release (Read-Write WChar DLL)|x64
+		{2D22C637-6219-4096-8399-EEA4BBD142AA}.Current|Win32.ActiveCfg = Release (Read-Write WChar DLL)|Win32
+		{2D22C637-6219-4096-8399-EEA4BBD142AA}.Current|Win32.Build.0 = Release (Read-Write WChar DLL)|Win32
+		{2D22C637-6219-4096-8399-EEA4BBD142AA}.Current|x64.ActiveCfg = Release (Read-Write WChar DLL)|x64
+		{2D22C637-6219-4096-8399-EEA4BBD142AA}.Current|x64.Build.0 = Release (Read-Write WChar DLL)|x64
+		{9415DE9A-E01E-47C1-A159-EB1E1D4E518C}.Current|Win32.ActiveCfg = Release (Read-Write WChar DLL)|Win32
+		{9415DE9A-E01E-47C1-A159-EB1E1D4E518C}.Current|Win32.Build.0 = Release (Read-Write WChar DLL)|Win32
+		{9415DE9A-E01E-47C1-A159-EB1E1D4E518C}.Current|x64.ActiveCfg = Release (Read-Write WChar DLL)|x64
+		{9415DE9A-E01E-47C1-A159-EB1E1D4E518C}.Current|x64.Build.0 = Release (Read-Write WChar DLL)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Current|Win32.ActiveCfg = Release (Read-Write WChar DLL)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Current|Win32.Build.0 = Release (Read-Write WChar DLL)|Win32
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Current|x64.ActiveCfg = Release (Read-Write WChar DLL)|x64
+		{681750CF-B191-4A41-B92C-0F94599B121D}.Current|x64.Build.0 = Release (Read-Write WChar DLL)|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

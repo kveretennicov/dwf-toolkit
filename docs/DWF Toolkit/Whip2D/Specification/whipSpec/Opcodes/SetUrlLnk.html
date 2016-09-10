@@ -1,0 +1,127 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Set URL Link</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set URL Link</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set URL Link</b> function attaches a World Wide Web URL to the
+geometric primitives that follow.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="19%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="20%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="19%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="20%"><font face="Courier New"><font size=-2>(URL</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;I<sub>Index</sub>>[&lt;ws>([&lt;ws>]&lt;T<sub>Address</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>&lt;T<sub>Name</sub>>[&lt;ws>]])]<sup>*</sup>][&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>Establishes
+URL definition associated with index and assigns (or removes) a URL to
+or from geometric primitives.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>URL</i>&nbsp;&nbsp; An ASCII text string that is to be attached
+to subsequent geometric primitives
+<p><i>Index</i>&nbsp;&nbsp; An integer to identify a URL
+<p><i>Address</i>&nbsp;&nbsp; Uniform Resource Locator
+<p><i>Name</i>&nbsp;&nbsp; A user friendly name of a URL that is displayed
+by a WHIP! data viewing application</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Any of the geometric primitives that can be drawn using WHIP! data (lines,
+markers, etc.) can also have a URL attached to them. A WHIP! data reading application
+can allow a user to click on a geometric primitive in a scene and execute
+the attached URL.
+  <p>A URL is just another WHIP! data attribute. In the same way that color is handled, 
+    so are URLs. For example, if WHIP! data has red as its current color, 
+    all primitives get drawn in red until the color is changed. The same is true 
+    for URLs. A URL is set and all primitives have that URL attached until the 
+    URL is changed. To deactivate URLs, i.e., set to no URL, the command (URL) 
+    is used. Other than the null form, a URL basically has three parts: 
+  <ul>
+<li>
+index number—used to identify the URL so that it can be reused simply by
+specifying the index number</li>
+
+<li>
+address—location of the resource</li>
+
+<li>
+name—optional friendly name</li>
+</ul>
+In the following example, the first geometric primitive is set with a specified
+URL, the next with a null URL, and the last primitive with the same URL
+(shortened version using just the index) as the first primitive.
+<p><font face="Courier New"><font size=-1>(URL (0 http://www.autodesk.com
+Autodesk))
+</font></font>The URL will be attached to subsequent geometry.
+The actual URL is http://www.autodesk.com but the user friendly name "Autodesk"
+can be displayed by a WHIP! data viewing application.
+<p><font face="Courier New"><font size=-1>(L 10,10 35,35) </font></font>A
+URL is attached to this line
+<p><font face="Courier New"><font size=-1>(URL ) </font></font>No URL will
+be attached to subsequent geometry
+<p><font face="Courier New"><font size=-1>(L 0,20 20,20) </font></font>No
+URL is attached to this line
+<p><font face="Courier New"><font size=-1>(URL 0)
+</font></font>The shortened
+URL (substitute for http://www.autodesk.com) will be attached to subsequent
+geometry
+<p><font face="Courier New"><font size=-1>(L 15,15 20,20) </font></font>A
+URL is attached to this line
+<p><font face="Courier New"><font size=-1>(URL ) </font></font>No URL will
+be attached to subsequent geometry
+<p>As with other attributes, only one URL link attribute is active at a
+time. If a URL link attribute is active in WHIP! data and a second
+URL link attribute is specified, only the later URL link attribute applies
+to subsequent geometric primitives.
+<p>Attaching multiple URLs to geometric primitives is illustrated in the
+following example:
+<ul><font face="Courier New"><font size=-1>(URL (0 http://www.autodesk.com
+Autodesk)(1 http://comsys.autodesk.com Comsys))
+</font></font>The two URLs
+will be attached to subsequent geometry. The actual URLs are http://www.autodesk.com
+and http://comsys.autodesk.com but their respective user friendly names
+"Autodesk" and "Comsys" can be displayed by a WHIP! data  viewing application.
+<p><font face="Courier New"><font size=-1>(L 20, 20 30, 30) </font></font>Two
+URLs are attached to this same line
+<p><font face="Courier New"><font size=-1>(URL ) </font></font>No URL will
+be attached to subsequent geometry</ul></ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>A geometric primitive has a maximum of one URL attached to it.
+<p>A URL may be attached to geometric primitives that are invisible (see
+the <b><a href="SetVis.html">Set Visibility</a></b> function). A WHIP! data reading
+application should allow the user to select such invisible geometry and
+execute the attached URL. This is useful, for example, when you want a
+URL executed whenever the user clicks in a general region of an image,
+but displaying the "hot" region would interfere with the illustration.</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the "URL Link" attribute is inactive (no URL is attached
+to subsequent geometry), which is equivalent to executing the opcode
+<ul><font face="Courier New"><font size=-1>(URL )</font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%"></ul>
+
+</body>
+</html>

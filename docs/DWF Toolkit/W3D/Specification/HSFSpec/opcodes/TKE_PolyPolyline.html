@@ -1,0 +1,254 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_PolyPolyline</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>unprintable</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>0x10</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>16</TD></TR></TABLE>
+		  </H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  Operands depend on suboptions.  Operands enclosed in brackets ('<STRONG>[]</STRONG>') will not be present 
+	  in all situations.  See the description of the specific operands for the rules that dictate whether 
+	  or not they appear.
+
+	  <STRONG>short</STRONG>&nbsp;suboptions,
+	  <STRONG>int</STRONG>&nbsp;point_count,
+	  <STRONG>[int</STRONG>&nbsp;primitive_count<STRONG>]</STRONG>,
+	  <STRONG>[int array</STRONG>&nbsp;lengths<STRONG>]</STRONG>,
+	  <STRONG>variable</STRONG>&nbsp;points,
+	  <STRONG>[variable</STRONG>&nbsp;leftovers<STRONG>]</STRONG>
+	  <BR>
+	  
+	  </FONT>
+      <P></P>
+
+	<FONT face="arial,helvetica,sans-serif">	  
+	  <center><table BORDER =1 WIDTH="530">
+	  	<TR>
+	    	<TD height=21 width=131>suboptions</TD>
+	    	<TD height=21 width=390>a bit field with information about the formatting.  
+			See below for more details</TD>
+	  	</TR>
+	  	<TR>
+	    	<TD height=21 width=131>point_count</TD>
+	    	<TD height=21 width=390>The total number of vertices in all of the 
+			primitives combined.</TD>
+	  	</TR>
+	  	<TR>
+	    	<TD height=21 width=131>lengths</TD>
+	    	<TD height=21 width=390>An array of integers to indicate the length (number of 
+			vertices) of each primitive.  Left implicit if there is only one primitive and the
+			TKPP_ONE_PRIMITIVE_ONLY bit is set.  (see the description of "suboptions").</TD>
+	  	</TR>
+	  	<TR>
+	    	<TD height=21 width=131>primitive_count</TD>
+	    	<TD height=21 width=390>The number of primitives that this opcode is encoding.  
+			Under most circumstances, this is left implicit
+			and inferred from "lengths" and "point_count"</TD>
+	  	</TR>
+	  	<TR>
+	    	<TD height=21 width=131>points</TD>
+	    	<TD height=21 width=390>Point data that is either compressed or uncompressed
+			depending on suboptions.  Described in detail below.  For 2d data, this operand
+			contains only the unrestricted dimensions. </TD>
+	  	</TR>
+	  	<TR>
+	    	<TD height=21 width=131>leftovers</TD>
+	    	<TD height=21 width=390>If "suboptions" contains bits which place restrictions
+			on certain dimensions, a small number of additional floats may be required 
+			to fully specify the points array.  (see the description of "suboptions").</TD>
+	  	</TR>
+	  </table>
+	  </center>
+	   <p>
+ 	</FONT>
+
+    <FONT face="arial,helvetica,sans-serif">
+	    <FONT color=#0000a0>
+	        <strong>  </strong>
+		</FONT>
+	</FONT>
+      <P><FONT face=arial,helvetica,sans-serif><FONT 
+      color=#0000a0><STRONG>Suboptions </STRONG> </FONT>
+      <P>As mentioned above, the formatting depends on the values of 
+      "suboptions" and.  The following two tables define the bits 
+      of those two flags, as well as the rules that use the values of those bits 
+      to determine by which format the polylines and/or lines is to be interpreted. 
+	  Note that some of the values contain multiple bits, requiring if statements of the
+	  form ((subop&mask)==val), instead of (subop&val).  </P>
+      <P><STRONG>Suboptions</STRONG><br>                                                         
+		<center><table BORDER =1 WIDTH="500">
+			<TR>
+				<TD height=21 width=50> 0x0001</TD>
+				<TD height=21 width=390>TKSH_COMPRESSED_POINTS -- Points are compressed</TD>
+			</TR>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0002</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_HAS_EXPLICIT_PRIMITIVE_COUNT -- the primitive 
+				count is explicitly specified.  Mutually exclusive with 
+				TKPP_ONE_PRIMITIVE_ONLY</td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0004</td>
+				<td WIDTH="390" HEIGHT="21"> TKPP_ONE_PRIMITIVE_ONLY -- this polypolyline 
+				encodes only a single primitive.  The "lengths" array is omitted, since it 
+				can be assumed to be the same as "point_count".  Mutually exclusive with 
+				TKPP_HAS_EXPLICIT_PRIMITIVE_COUNT.</td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0008</td>
+				<td WIDTH="390" HEIGHT="21"> TKPP_GLOBAL_QUANTIZATION -- Compressed vertices inherit global bounding box instead of specifying their own.</td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"></td>
+				<td WIDTH="390" HEIGHT="21"><center><i>(break in sequence)</i>.</td>
+			</tr>
+
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0100</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_ZERO_X -- all points have x == 0</td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0200</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_SAME_X -- all points have the same x value.  
+				Add 1 to the "leftovers" array. </td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0300</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_PER_PRIMITIVE_X -- within any given primitive, 
+				x values are the same.  Add primitive_count (generally implicit) to the 
+				"leftovers" array. </td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0400</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_ZERO_Y -- all points have y == 0</td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0800</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_SAME_Y -- all points have the same y value.  
+				Add 1 to the "leftovers" array. </td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x0c00</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_PER_PRIMITIVE_Y -- within any given primitive, 
+				y values are the same.  Add primitive_count (generally implicit) to the 
+				"leftovers" array. </td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x1000</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_ZERO_Z -- all points have z == 0</td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x2000</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_SAME_Z -- all points have the same z value.  
+				Add 1 to the "leftovers" array. </td>
+			</tr>
+			<tr>
+				<td WIDTH="50" HEIGHT="21"> 0x3000</td>
+				<td WIDTH="390" HEIGHT="21">TKPP_PER_PRIMITIVE_Z -- within any given primitive, 
+				z values are the same.  Add primitive_count (generally implicit) to the 
+				"leftovers" array. </td>
+			</tr>
+		</table>
+		</center>
+	
+
+<FONT face="arial,helvetica,sans-serif">
+	<H3><FONT color=#0000a0></FONT>&nbsp;</H3>
+      <H3><FONT color=#0000a0>Notes</FONT></H3>
+
+	Polylines or lines are inserted into the currently opened segment. 
+	<p>
+	<FONT color=#0000a0>
+		Points (uncompressed) <br>
+	</FONT>
+	<strong>array of floats</strong>&nbsp; uncompressed floats to specify point data for 
+	unrestricted dimensions only.  For example, fully 3d data will have the order xyzxyz...xyz, 
+	whereas 2d data with the TKPP_SAME_Y flag in suboptions might have xzxz...xzy, with the final
+	"y" coming as the "leftovers array".
+	<p>
+	<FONT color=#0000a0>
+		Points (compressed)  <br>
+	</FONT>
+    <strong>byte</strong>&nbsp;compression scheme,
+    <strong>array of floats</strong>&nbsp;bounding,
+	<strong>byte</strong>&nbsp;bits_per_sample,
+	<strong>int</strong>&nbsp;data_length,
+	<strong>variable</strong>&nbsp;array of compressed floats 
+	(see <A href="attributes.html">attributes.html</A>) 
+
+	<p>
+	Points are either compressed or uncompressed vertex data. 
+	Compression status is dictated 
+	by the TKPP_COMPRESSED_POINTS bit in the suboptions.  If compressed, 
+	it will consist of a compression scheme identifier, followed by 
+	data that is specific to that compression scheme.  The specifics of the 
+	compressed format are identical to those of polyhedron vertex attributes, 
+	described in <A href="attributes.html">attributes.html</A> in the 
+	"<A href="attributes.html#aocf">array of compressed floats</A>" section.
+	The bounding data will be 2 floats in length for every unrestricted dimension
+	(thus, 2d data would have 4 floats for its bounding).
+
+	<FONT color=#0000a0> <H4>
+		Leftovers <br>
+	</H4></FONT>
+
+	Leftovers apply to 2d data only, and are only present when the restricted dimensions
+	are specified as "SAME" or "PER_PRIMITIVE", as opposed to "ZERO".  It is always considered
+	to be a one dimensional array, that is either compressed or uncompressed, just like the
+	main points array -- with the exception that a leftovers array of length 1 is always 
+	left uncompressed.
+	<p>
+	<FONT color=#0000a0>
+		Leftovers (uncompressed) <br>
+	</FONT>
+	<strong>array of floats</strong>&nbsp; 1d array of uncompressed floats to specify point data.
+	<p>
+	<FONT color=#0000a0>
+		Leftovers (compressed) <br>
+	</FONT>
+    <strong>byte</strong>&nbsp;compression scheme,
+    <strong>2 floats</strong>&nbsp;min and max,
+	<strong>int</strong>&nbsp;data_length,
+	<strong>variable</strong>&nbsp;1d array of compressed floats 
+	(see <A href="attributes.html">attributes.html</A>) 
+
+	<p>
+	"bits_per_sample" is assumed to be the same as the value for the main points array, and 
+	therefore omitted, and the array of floats is always 1d.  In all other respects, however,
+	the leftovers array is very much similar to the main points array.
+
+
+</FONT><!---------------------------------------------------------------------------->
+<hr WIDTH="100%"></FONT>
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

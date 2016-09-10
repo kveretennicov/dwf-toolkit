@@ -1,0 +1,116 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Ellipse/Elliptical Arc/Elliptical Wedge</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw
+Ellipse/Elliptical Arc/Elliptical Wedge</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Draw Ellipse/Elliptical Arc/Elliptical Wedge</b> function draws
+either the outline of an ellipse, the interior of an ellipse, an elliptical
+arc, or an elliptical wedge based on the ellipse arguments and the "Fill
+Mode" attribute.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="643" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="27%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="30%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="27%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="27%"><font face="Arial"><font size=-2>Single-byte
+- ASCII operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>[E] ((45)</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;I<sub>Rh</sub>>,&lt;I<sub>Rv</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="27%"><font face="Arial"><font size=-2>Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="27%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>(Ellipse</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X</sub>>,&lt;I<sub>Y</sub>>&lt;ws>&lt;I<sub>Rh</sub>>,&lt;I<sub>Rv</sub>>&lt;ws>&lt;I<sub>start</sub>>,&lt;I<sub>End</sub>>&lt;ws>&lt;I<sub>Tilt</sub>>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="27%"><font face="Arial"><font size=-2>Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="27%"><font face="Arial"><font size=-2>Single-byte
+- binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>[e] ((65)</font></font></td>
+
+<td VALIGN=TOP WIDTH="30%"><b><font face="Courier New"><font size=-2>&lt;L<sub>X</sub>>&lt;L<sub>Y</sub>>&lt;UL<sub>Rh</sub>>&lt;UL<sub>Rv</sub>>&lt;US<sub>Start</sub>>&lt;US<sub>End</sub>>&lt;US<sub>Tilt</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="27%"><font face="Arial"><font size=-2>Relative coordinates.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>X,Y</i>&nbsp;&nbsp; Center point (in logical coordinates) of the
+ellipse to be drawn
+<p><i>Rh,Rv</i>&nbsp;&nbsp; The horizontal and vertical radii (in logical
+coordinates) of the ellipse from the center point, before <i>angle</i>
+has been applied
+<p><i>Start, End</i>&nbsp;&nbsp; The angles (in 360/65,536ths of a degree)
+that describe a "pie-slice" of the full ellipse to be rendered; legal values
+range from 0 to 65,535
+<p><i>Tilt</i>&nbsp;&nbsp; The angle (in 360/65,536ths of a degree) to
+tilt the aligned ellipse; legal values range from 0 to 65,535</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>When the "<a href="SetFilMod.html">Fill Mode</a>" attribute is inactive
+(the default), the <b>Draw Ellipse</b> function renders the outline of
+an ellipse based on the current line drawing attributes, which include
+"<a href="SetColr.html">Color</a>", "<a href="SetVis.html">Visibility</a>",
+"<a href="SetLinWgt.html">Line Weight</a>", "<a href="SetLinSty.html">Line
+Cap</a>", and "<a href="SetLinPat.html">Line Pattern</a>".
+<p>When the "Fill Mode" attribute is active, the <b>Draw Ellipse</b> function
+renders the interior of an ellipse in a solid color based on the Polygon
+drawing attributes, which include "Color", and "Visibility".
+<p>Some of the ellipse opcodes take Start and End arguments, which allow
+a portion of the specified ellipse to be rendered. This is shown in figure
+1. With "Fill Mode" off, <i>Start</i> and <i>End</i> define an elliptical
+arc, and with "Fill Mode" on, an elliptical wedge is rendered. The <i>Start</i>
+and <i>End</i> values are integers that represent 360/65,536ths of a degree.<a NAME="Fig11"></a>
+A wedge or arc with the same <i>Start</i> and <i>End</i> points will be
+rendered as a complete ellipse.</ul>
+
+<center><img SRC="Image54.gif" height=240 width=360>
+<p><i><font face="Arial,Helvetica">Figure 1. Portion of ellipse rendered
+by Start and End arguments</font></i></center>
+
+<ul>The <i>Tilt </i>angle is applied to the ellipse, elliptical arc, or
+elliptical wedge as a last step after all other arguments have been applied.
+The effect of <i>Tilt</i> is to rotate the ellipse counter-clockwise about
+its center point in 360/65,536ths of a degree.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>When <i>Start</i> and <i>End</i> angles are specified, there are two
+possible regions of the ellipse that could be considered. WHIP! data only renders
+the region defined by going from start to end in a counter-clockwise direction.
+<p>When the "<a href="SetFilMod.html">Fill Mode</a>" attribute is active,
+a visually apparent outlining edge of the ellipse is not rendered. The
+filled <b>Draw Ellipse</b> function may be followed by an additional unfilled
+<b>Draw
+Ellipse</b> opcode to render the desired edge on top of the filled region.
+For an example, see the "Notes" section of the <b><a href="DrwPlylnPlygon.html">Draw
+Polyline/Polygon</a></b> function.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

@@ -1,0 +1,724 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		B86FFE170F454EA400B56BCE /* whip_hatch_library.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD880F4549D800B56BCE /* whip_hatch_library.h */; };
+		B86FFE180F454EA400B56BCE /* whip_fill_library.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD890F4549D800B56BCE /* whip_fill_library.h */; };
+		B86FFE190F454EA400B56BCE /* OpcHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8A0F4549D800B56BCE /* OpcHelper.h */; };
+		B86FFE1B0F454EA400B56BCE /* test_list.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8C0F4549D800B56BCE /* test_list.h */; };
+		B86FFE1C0F454EA400B56BCE /* object_list.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8D0F4549D800B56BCE /* object_list.h */; };
+		B86FFE1D0F454EA400B56BCE /* TestFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8E0F4549D800B56BCE /* TestFramework.h */; };
+		B86FFE1E0F454EA400B56BCE /* t2embapi.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8F0F4549D800B56BCE /* t2embapi.h */; };
+		B86FFE1F0F454EA400B56BCE /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD900F4549D800B56BCE /* StdAfx.h */; };
+		B86FFE200F454EA400B56BCE /* fontsub.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD910F4549D800B56BCE /* fontsub.h */; };
+		B875FDA30F4A85C300F9134F /* W2dTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B875FDA20F4A85C300F9134F /* W2dTest.cpp */; };
+		B8BADFEC0F49694200B4EC73 /* libDWFCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BADFEA0F49694200B4EC73 /* libDWFCore.a */; };
+		B8BADFED0F49694200B4EC73 /* libDWFToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BADFEB0F49694200B4EC73 /* libDWFToolkit.a */; };
+		B8C5F0440F49104C003026EB /* WhipClassFactoryWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0270F49104C003026EB /* WhipClassFactoryWrapper.cpp */; };
+		B8C5F0460F49104C003026EB /* userdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0290F49104C003026EB /* userdata.cpp */; };
+		B8C5F0470F49104C003026EB /* user_hatch_pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02A0F49104C003026EB /* user_hatch_pattern.cpp */; };
+		B8C5F0480F49104C003026EB /* user_fill_pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02B0F49104C003026EB /* user_fill_pattern.cpp */; };
+		B8C5F0490F49104C003026EB /* text_valign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02C0F49104C003026EB /* text_valign.cpp */; };
+		B8C5F04A0F49104C003026EB /* text_halign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02D0F49104C003026EB /* text_halign.cpp */; };
+		B8C5F04B0F49104C003026EB /* text_background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02E0F49104C003026EB /* text_background.cpp */; };
+		B8C5F04C0F49104C003026EB /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02F0F49104C003026EB /* text.cpp */; };
+		B8C5F04D0F49104C003026EB /* TestFramework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0300F49104C003026EB /* TestFramework.cpp */; };
+		B8C5F04E0F49104C003026EB /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0310F49104C003026EB /* StdAfx.cpp */; };
+		B8C5F04F0F49104C003026EB /* polymarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0320F49104C003026EB /* polymarker.cpp */; };
+		B8C5F0500F49104C003026EB /* polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0330F49104C003026EB /* polyline.cpp */; };
+		B8C5F0510F49104C003026EB /* polygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0340F49104C003026EB /* polygon.cpp */; };
+		B8C5F0520F49104C003026EB /* overpost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0350F49104C003026EB /* overpost.cpp */; };
+		B8C5F0530F49104C003026EB /* OpcHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0360F49104C003026EB /* OpcHelper.cpp */; };
+		B8C5F0540F49104C003026EB /* object_node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0370F49104C003026EB /* object_node.cpp */; };
+		B8C5F0550F49104C003026EB /* obFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0380F49104C003026EB /* obFont.cpp */; };
+		B8C5F0560F49104C003026EB /* macro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0390F49104C003026EB /* macro.cpp */; };
+		B8C5F0570F49104C003026EB /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03A0F49104C003026EB /* image.cpp */; };
+		B8C5F0580F49104C003026EB /* gouraud_polytriangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03B0F49104C003026EB /* gouraud_polytriangle.cpp */; };
+		B8C5F0590F49104C003026EB /* gouraud_polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03C0F49104C003026EB /* gouraud_polyline.cpp */; };
+		B8C5F05A0F49104C003026EB /* FontSubset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03D0F49104C003026EB /* FontSubset.cpp */; };
+		B8C5F05B0F49104C003026EB /* embedded_font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03E0F49104C003026EB /* embedded_font.cpp */; };
+		B8C5F05C0F49104C003026EB /* drawing_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03F0F49104C003026EB /* drawing_info.cpp */; };
+		B8C5F05D0F49104C003026EB /* delineate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0400F49104C003026EB /* delineate.cpp */; };
+		B8C5F05E0F49104C003026EB /* dash_patterns.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0410F49104C003026EB /* dash_patterns.cpp */; };
+		B8C5F05F0F49104C003026EB /* contour_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0420F49104C003026EB /* contour_set.cpp */; };
+		B8C5F0600F49104C003026EB /* color_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0430F49104C003026EB /* color_map.cpp */; };
+		BB215A0313E12986004CF889 /* whip_hatch_library.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD880F4549D800B56BCE /* whip_hatch_library.h */; };
+		BB215A0413E12986004CF889 /* whip_fill_library.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD890F4549D800B56BCE /* whip_fill_library.h */; };
+		BB215A0513E12986004CF889 /* OpcHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8A0F4549D800B56BCE /* OpcHelper.h */; };
+		BB215A0613E12986004CF889 /* test_list.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8C0F4549D800B56BCE /* test_list.h */; };
+		BB215A0713E12986004CF889 /* object_list.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8D0F4549D800B56BCE /* object_list.h */; };
+		BB215A0813E12986004CF889 /* TestFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8E0F4549D800B56BCE /* TestFramework.h */; };
+		BB215A0913E12986004CF889 /* t2embapi.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD8F0F4549D800B56BCE /* t2embapi.h */; };
+		BB215A0A13E12986004CF889 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD900F4549D800B56BCE /* StdAfx.h */; };
+		BB215A0B13E12986004CF889 /* fontsub.h in Headers */ = {isa = PBXBuildFile; fileRef = B86FFD910F4549D800B56BCE /* fontsub.h */; };
+		BB215A0D13E12986004CF889 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */; };
+		BB215A0F13E12986004CF889 /* WhipClassFactoryWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0270F49104C003026EB /* WhipClassFactoryWrapper.cpp */; };
+		BB215A1013E12986004CF889 /* userdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0290F49104C003026EB /* userdata.cpp */; };
+		BB215A1113E12986004CF889 /* user_hatch_pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02A0F49104C003026EB /* user_hatch_pattern.cpp */; };
+		BB215A1213E12986004CF889 /* user_fill_pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02B0F49104C003026EB /* user_fill_pattern.cpp */; };
+		BB215A1313E12986004CF889 /* text_valign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02C0F49104C003026EB /* text_valign.cpp */; };
+		BB215A1413E12986004CF889 /* text_halign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02D0F49104C003026EB /* text_halign.cpp */; };
+		BB215A1513E12986004CF889 /* text_background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02E0F49104C003026EB /* text_background.cpp */; };
+		BB215A1613E12986004CF889 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F02F0F49104C003026EB /* text.cpp */; };
+		BB215A1713E12986004CF889 /* TestFramework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0300F49104C003026EB /* TestFramework.cpp */; };
+		BB215A1813E12986004CF889 /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0310F49104C003026EB /* StdAfx.cpp */; };
+		BB215A1913E12986004CF889 /* polymarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0320F49104C003026EB /* polymarker.cpp */; };
+		BB215A1A13E12986004CF889 /* polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0330F49104C003026EB /* polyline.cpp */; };
+		BB215A1B13E12986004CF889 /* polygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0340F49104C003026EB /* polygon.cpp */; };
+		BB215A1C13E12986004CF889 /* overpost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0350F49104C003026EB /* overpost.cpp */; };
+		BB215A1D13E12986004CF889 /* OpcHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0360F49104C003026EB /* OpcHelper.cpp */; };
+		BB215A1E13E12986004CF889 /* object_node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0370F49104C003026EB /* object_node.cpp */; };
+		BB215A1F13E12986004CF889 /* obFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0380F49104C003026EB /* obFont.cpp */; };
+		BB215A2013E12986004CF889 /* macro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0390F49104C003026EB /* macro.cpp */; };
+		BB215A2113E12986004CF889 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03A0F49104C003026EB /* image.cpp */; };
+		BB215A2213E12986004CF889 /* gouraud_polytriangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03B0F49104C003026EB /* gouraud_polytriangle.cpp */; };
+		BB215A2313E12986004CF889 /* gouraud_polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03C0F49104C003026EB /* gouraud_polyline.cpp */; };
+		BB215A2413E12986004CF889 /* FontSubset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03D0F49104C003026EB /* FontSubset.cpp */; };
+		BB215A2513E12986004CF889 /* embedded_font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03E0F49104C003026EB /* embedded_font.cpp */; };
+		BB215A2613E12986004CF889 /* drawing_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F03F0F49104C003026EB /* drawing_info.cpp */; };
+		BB215A2713E12986004CF889 /* delineate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0400F49104C003026EB /* delineate.cpp */; };
+		BB215A2813E12986004CF889 /* dash_patterns.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0410F49104C003026EB /* dash_patterns.cpp */; };
+		BB215A2913E12986004CF889 /* contour_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0420F49104C003026EB /* contour_set.cpp */; };
+		BB215A2A13E12986004CF889 /* color_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B8C5F0430F49104C003026EB /* color_map.cpp */; };
+		BB215A2B13E12986004CF889 /* W2dTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B875FDA20F4A85C300F9134F /* W2dTest.cpp */; };
+		BB215A2D13E12986004CF889 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
+		BB215A3813E12A18004CF889 /* DWFCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB215A3613E12A18004CF889 /* DWFCore.framework */; };
+		BB215A3913E12A18004CF889 /* DWFToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB215A3713E12A18004CF889 /* DWFToolkit.framework */; };
+		BB215A3B13E12A22004CF889 /* DWFCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB215A3613E12A18004CF889 /* DWFCore.framework */; };
+		BB215A3C13E12A22004CF889 /* DWFToolkit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BB215A3713E12A18004CF889 /* DWFToolkit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB215A3A13E12A1B004CF889 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB215A3B13E12A22004CF889 /* DWFCore.framework in CopyFiles */,
+				BB215A3C13E12A22004CF889 /* DWFToolkit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0867D6ABFE840B52C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		32DBCF6D0370B57F00C91783 /* W2dTest_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2dTest_Prefix.pch; sourceTree = "<group>"; };
+		8D0C4E960486CD37000505A6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D0C4E970486CD37000505A6 /* W2dTest static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "W2dTest static.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B86FFD880F4549D800B56BCE /* whip_hatch_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = whip_hatch_library.h; sourceTree = "<group>"; };
+		B86FFD890F4549D800B56BCE /* whip_fill_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = whip_fill_library.h; sourceTree = "<group>"; };
+		B86FFD8A0F4549D800B56BCE /* OpcHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpcHelper.h; sourceTree = "<group>"; };
+		B86FFD8C0F4549D800B56BCE /* test_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_list.h; sourceTree = "<group>"; };
+		B86FFD8D0F4549D800B56BCE /* object_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object_list.h; sourceTree = "<group>"; };
+		B86FFD8E0F4549D800B56BCE /* TestFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFramework.h; sourceTree = "<group>"; };
+		B86FFD8F0F4549D800B56BCE /* t2embapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t2embapi.h; sourceTree = "<group>"; };
+		B86FFD900F4549D800B56BCE /* StdAfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdAfx.h; sourceTree = "<group>"; };
+		B86FFD910F4549D800B56BCE /* fontsub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fontsub.h; sourceTree = "<group>"; };
+		B875FDA20F4A85C300F9134F /* W2dTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = W2dTest.cpp; sourceTree = "<group>"; };
+		B8BADFEA0F49694200B4EC73 /* libDWFCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFCore.a; path = ../../../develop/global/lib/release/libDWFCore.a; sourceTree = SOURCE_ROOT; };
+		B8BADFEB0F49694200B4EC73 /* libDWFToolkit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDWFToolkit.a; path = ../../../develop/global/lib/release/libDWFToolkit.a; sourceTree = SOURCE_ROOT; };
+		B8C5F0270F49104C003026EB /* WhipClassFactoryWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WhipClassFactoryWrapper.cpp; sourceTree = "<group>"; };
+		B8C5F0290F49104C003026EB /* userdata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = userdata.cpp; sourceTree = "<group>"; };
+		B8C5F02A0F49104C003026EB /* user_hatch_pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_hatch_pattern.cpp; sourceTree = "<group>"; };
+		B8C5F02B0F49104C003026EB /* user_fill_pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_fill_pattern.cpp; sourceTree = "<group>"; };
+		B8C5F02C0F49104C003026EB /* text_valign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = text_valign.cpp; sourceTree = "<group>"; };
+		B8C5F02D0F49104C003026EB /* text_halign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = text_halign.cpp; sourceTree = "<group>"; };
+		B8C5F02E0F49104C003026EB /* text_background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = text_background.cpp; sourceTree = "<group>"; };
+		B8C5F02F0F49104C003026EB /* text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = text.cpp; sourceTree = "<group>"; };
+		B8C5F0300F49104C003026EB /* TestFramework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestFramework.cpp; sourceTree = "<group>"; };
+		B8C5F0310F49104C003026EB /* StdAfx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StdAfx.cpp; sourceTree = "<group>"; };
+		B8C5F0320F49104C003026EB /* polymarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polymarker.cpp; sourceTree = "<group>"; };
+		B8C5F0330F49104C003026EB /* polyline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polyline.cpp; sourceTree = "<group>"; };
+		B8C5F0340F49104C003026EB /* polygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polygon.cpp; sourceTree = "<group>"; };
+		B8C5F0350F49104C003026EB /* overpost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = overpost.cpp; sourceTree = "<group>"; };
+		B8C5F0360F49104C003026EB /* OpcHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpcHelper.cpp; sourceTree = "<group>"; };
+		B8C5F0370F49104C003026EB /* object_node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object_node.cpp; sourceTree = "<group>"; };
+		B8C5F0380F49104C003026EB /* obFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = obFont.cpp; sourceTree = "<group>"; };
+		B8C5F0390F49104C003026EB /* macro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = macro.cpp; sourceTree = "<group>"; };
+		B8C5F03A0F49104C003026EB /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
+		B8C5F03B0F49104C003026EB /* gouraud_polytriangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gouraud_polytriangle.cpp; sourceTree = "<group>"; };
+		B8C5F03C0F49104C003026EB /* gouraud_polyline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gouraud_polyline.cpp; sourceTree = "<group>"; };
+		B8C5F03D0F49104C003026EB /* FontSubset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FontSubset.cpp; sourceTree = "<group>"; };
+		B8C5F03E0F49104C003026EB /* embedded_font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = embedded_font.cpp; sourceTree = "<group>"; };
+		B8C5F03F0F49104C003026EB /* drawing_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing_info.cpp; sourceTree = "<group>"; };
+		B8C5F0400F49104C003026EB /* delineate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = delineate.cpp; sourceTree = "<group>"; };
+		B8C5F0410F49104C003026EB /* dash_patterns.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dash_patterns.cpp; sourceTree = "<group>"; };
+		B8C5F0420F49104C003026EB /* contour_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = contour_set.cpp; sourceTree = "<group>"; };
+		B8C5F0430F49104C003026EB /* color_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = color_map.cpp; sourceTree = "<group>"; };
+		BB215A3413E12986004CF889 /* W2dTest share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "W2dTest share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB215A3613E12A18004CF889 /* DWFCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFCore.framework; path = ../../../develop/global/lib/release/DWFCore.framework; sourceTree = "<group>"; };
+		BB215A3713E12A18004CF889 /* DWFToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DWFToolkit.framework; path = ../../../develop/global/lib/release/DWFToolkit.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D0C4E910486CD37000505A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E920486CD37000505A6 /* Carbon.framework in Frameworks */,
+				B8BADFEC0F49694200B4EC73 /* libDWFCore.a in Frameworks */,
+				B8BADFED0F49694200B4EC73 /* libDWFToolkit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB215A2C13E12986004CF889 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB215A3813E12A18004CF889 /* DWFCore.framework in Frameworks */,
+				BB215A3913E12A18004CF889 /* DWFToolkit.framework in Frameworks */,
+				BB215A2D13E12986004CF889 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		195DF8CFFE9D517E11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E970486CD37000505A6 /* W2dTest static.app */,
+				BB215A3413E12986004CF889 /* W2dTest share.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20286C29FDCF999611CA2CEA /* W2dTest */ = {
+			isa = PBXGroup;
+			children = (
+				BB215A3613E12A18004CF889 /* DWFCore.framework */,
+				BB215A3713E12A18004CF889 /* DWFToolkit.framework */,
+				20286C2AFDCF999611CA2CEA /* Sources */,
+				20286C2CFDCF999611CA2CEA /* Resources */,
+				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
+				195DF8CFFE9D517E11CA2CBB /* Products */,
+			);
+			name = W2dTest;
+			sourceTree = "<group>";
+		};
+		20286C2AFDCF999611CA2CEA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B86FFD880F4549D800B56BCE /* whip_hatch_library.h */,
+				B86FFD890F4549D800B56BCE /* whip_fill_library.h */,
+				B86FFD8A0F4549D800B56BCE /* OpcHelper.h */,
+				B86FFD8C0F4549D800B56BCE /* test_list.h */,
+				B86FFD8D0F4549D800B56BCE /* object_list.h */,
+				B86FFD8E0F4549D800B56BCE /* TestFramework.h */,
+				B86FFD8F0F4549D800B56BCE /* t2embapi.h */,
+				B86FFD900F4549D800B56BCE /* StdAfx.h */,
+				B86FFD910F4549D800B56BCE /* fontsub.h */,
+				B8C5F0270F49104C003026EB /* WhipClassFactoryWrapper.cpp */,
+				B8C5F0290F49104C003026EB /* userdata.cpp */,
+				B8C5F02A0F49104C003026EB /* user_hatch_pattern.cpp */,
+				B8C5F02B0F49104C003026EB /* user_fill_pattern.cpp */,
+				B8C5F02C0F49104C003026EB /* text_valign.cpp */,
+				B8C5F02D0F49104C003026EB /* text_halign.cpp */,
+				B8C5F02E0F49104C003026EB /* text_background.cpp */,
+				B8C5F02F0F49104C003026EB /* text.cpp */,
+				B8C5F0300F49104C003026EB /* TestFramework.cpp */,
+				B8C5F0310F49104C003026EB /* StdAfx.cpp */,
+				B8C5F0320F49104C003026EB /* polymarker.cpp */,
+				B8C5F0330F49104C003026EB /* polyline.cpp */,
+				B8C5F0340F49104C003026EB /* polygon.cpp */,
+				B8C5F0350F49104C003026EB /* overpost.cpp */,
+				B8C5F0360F49104C003026EB /* OpcHelper.cpp */,
+				B8C5F0370F49104C003026EB /* object_node.cpp */,
+				B8C5F0380F49104C003026EB /* obFont.cpp */,
+				B8C5F0390F49104C003026EB /* macro.cpp */,
+				B8C5F03A0F49104C003026EB /* image.cpp */,
+				B8C5F03B0F49104C003026EB /* gouraud_polytriangle.cpp */,
+				B8C5F03C0F49104C003026EB /* gouraud_polyline.cpp */,
+				B8C5F03D0F49104C003026EB /* FontSubset.cpp */,
+				B8C5F03E0F49104C003026EB /* embedded_font.cpp */,
+				B8C5F03F0F49104C003026EB /* drawing_info.cpp */,
+				B8C5F0400F49104C003026EB /* delineate.cpp */,
+				B8C5F0410F49104C003026EB /* dash_patterns.cpp */,
+				B8C5F0420F49104C003026EB /* contour_set.cpp */,
+				B8C5F0430F49104C003026EB /* color_map.cpp */,
+				32DBCF6D0370B57F00C91783 /* W2dTest_Prefix.pch */,
+				B875FDA20F4A85C300F9134F /* W2dTest.cpp */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		20286C2CFDCF999611CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D0C4E960486CD37000505A6 /* Info.plist */,
+				0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B8BADFEA0F49694200B4EC73 /* libDWFCore.a */,
+				B8BADFEB0F49694200B4EC73 /* libDWFToolkit.a */,
+				20286C33FDCF999611CA2CEA /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B86FFE100F454E7900B56BCE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B86FFE170F454EA400B56BCE /* whip_hatch_library.h in Headers */,
+				B86FFE180F454EA400B56BCE /* whip_fill_library.h in Headers */,
+				B86FFE190F454EA400B56BCE /* OpcHelper.h in Headers */,
+				B86FFE1B0F454EA400B56BCE /* test_list.h in Headers */,
+				B86FFE1C0F454EA400B56BCE /* object_list.h in Headers */,
+				B86FFE1D0F454EA400B56BCE /* TestFramework.h in Headers */,
+				B86FFE1E0F454EA400B56BCE /* t2embapi.h in Headers */,
+				B86FFE1F0F454EA400B56BCE /* StdAfx.h in Headers */,
+				B86FFE200F454EA400B56BCE /* fontsub.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB215A0213E12986004CF889 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB215A0313E12986004CF889 /* whip_hatch_library.h in Headers */,
+				BB215A0413E12986004CF889 /* whip_fill_library.h in Headers */,
+				BB215A0513E12986004CF889 /* OpcHelper.h in Headers */,
+				BB215A0613E12986004CF889 /* test_list.h in Headers */,
+				BB215A0713E12986004CF889 /* object_list.h in Headers */,
+				BB215A0813E12986004CF889 /* TestFramework.h in Headers */,
+				BB215A0913E12986004CF889 /* t2embapi.h in Headers */,
+				BB215A0A13E12986004CF889 /* StdAfx.h in Headers */,
+				BB215A0B13E12986004CF889 /* fontsub.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D0C4E890486CD37000505A6 /* W2dTest static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "W2dTest static" */;
+			buildPhases = (
+				B86FFE100F454E7900B56BCE /* Headers */,
+				8D0C4E8C0486CD37000505A6 /* Resources */,
+				8D0C4E8F0486CD37000505A6 /* Sources */,
+				8D0C4E910486CD37000505A6 /* Frameworks */,
+				B8A64FEC0F68C45F0098D810 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "W2dTest static";
+			productInstallPath = "$(HOME)/Applications";
+			productName = W2dTest;
+			productReference = 8D0C4E970486CD37000505A6 /* W2dTest static.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB215A0113E12986004CF889 /* W2dTest share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB215A3113E12986004CF889 /* Build configuration list for PBXNativeTarget "W2dTest share" */;
+			buildPhases = (
+				BB215A0213E12986004CF889 /* Headers */,
+				BB215A0C13E12986004CF889 /* Resources */,
+				BB215A0E13E12986004CF889 /* Sources */,
+				BB215A2C13E12986004CF889 /* Frameworks */,
+				BB215A3013E12986004CF889 /* ShellScript */,
+				BB215A3A13E12A1B004CF889 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "W2dTest share";
+			productInstallPath = "$(HOME)/Applications";
+			productName = W2dTest;
+			productReference = BB215A3413E12986004CF889 /* W2dTest share.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20286C28FDCF999611CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
+			buildConfigurationList = C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "W2dTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20286C29FDCF999611CA2CEA /* W2dTest */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D0C4E890486CD37000505A6 /* W2dTest static */,
+				BB215A0113E12986004CF889 /* W2dTest share */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D0C4E8C0486CD37000505A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D0C4E8D0486CD37000505A6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB215A0C13E12986004CF889 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB215A0D13E12986004CF889 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B8A64FEC0F68C45F0098D810 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"copy image files\"\ncd ..\nsudo chmod 777 W2dTest\ncd W2dTest\ncp city24.jpg city8.jpg colors32.png colors24.png colors8.png g4_instrument.tif bitonal.png jeff.rgb jeff.rgba pete.256 ../W2dTest_Mac_Linux\ncd ../W2dTest_Mac_Linux\necho \"successed copy files\"";
+		};
+		BB215A3013E12986004CF889 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"copy image files\"\ncd ..\nsudo chmod 777 W2dTest\ncd W2dTest\ncp city24.jpg city8.jpg colors32.png colors24.png colors8.png g4_instrument.tif bitonal.png jeff.rgb jeff.rgba pete.256 ../W2dTest_Mac_Linux\ncd ../W2dTest_Mac_Linux\necho \"successed copy files\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D0C4E8F0486CD37000505A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8C5F0440F49104C003026EB /* WhipClassFactoryWrapper.cpp in Sources */,
+				B8C5F0460F49104C003026EB /* userdata.cpp in Sources */,
+				B8C5F0470F49104C003026EB /* user_hatch_pattern.cpp in Sources */,
+				B8C5F0480F49104C003026EB /* user_fill_pattern.cpp in Sources */,
+				B8C5F0490F49104C003026EB /* text_valign.cpp in Sources */,
+				B8C5F04A0F49104C003026EB /* text_halign.cpp in Sources */,
+				B8C5F04B0F49104C003026EB /* text_background.cpp in Sources */,
+				B8C5F04C0F49104C003026EB /* text.cpp in Sources */,
+				B8C5F04D0F49104C003026EB /* TestFramework.cpp in Sources */,
+				B8C5F04E0F49104C003026EB /* StdAfx.cpp in Sources */,
+				B8C5F04F0F49104C003026EB /* polymarker.cpp in Sources */,
+				B8C5F0500F49104C003026EB /* polyline.cpp in Sources */,
+				B8C5F0510F49104C003026EB /* polygon.cpp in Sources */,
+				B8C5F0520F49104C003026EB /* overpost.cpp in Sources */,
+				B8C5F0530F49104C003026EB /* OpcHelper.cpp in Sources */,
+				B8C5F0540F49104C003026EB /* object_node.cpp in Sources */,
+				B8C5F0550F49104C003026EB /* obFont.cpp in Sources */,
+				B8C5F0560F49104C003026EB /* macro.cpp in Sources */,
+				B8C5F0570F49104C003026EB /* image.cpp in Sources */,
+				B8C5F0580F49104C003026EB /* gouraud_polytriangle.cpp in Sources */,
+				B8C5F0590F49104C003026EB /* gouraud_polyline.cpp in Sources */,
+				B8C5F05A0F49104C003026EB /* FontSubset.cpp in Sources */,
+				B8C5F05B0F49104C003026EB /* embedded_font.cpp in Sources */,
+				B8C5F05C0F49104C003026EB /* drawing_info.cpp in Sources */,
+				B8C5F05D0F49104C003026EB /* delineate.cpp in Sources */,
+				B8C5F05E0F49104C003026EB /* dash_patterns.cpp in Sources */,
+				B8C5F05F0F49104C003026EB /* contour_set.cpp in Sources */,
+				B8C5F0600F49104C003026EB /* color_map.cpp in Sources */,
+				B875FDA30F4A85C300F9134F /* W2dTest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB215A0E13E12986004CF889 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB215A0F13E12986004CF889 /* WhipClassFactoryWrapper.cpp in Sources */,
+				BB215A1013E12986004CF889 /* userdata.cpp in Sources */,
+				BB215A1113E12986004CF889 /* user_hatch_pattern.cpp in Sources */,
+				BB215A1213E12986004CF889 /* user_fill_pattern.cpp in Sources */,
+				BB215A1313E12986004CF889 /* text_valign.cpp in Sources */,
+				BB215A1413E12986004CF889 /* text_halign.cpp in Sources */,
+				BB215A1513E12986004CF889 /* text_background.cpp in Sources */,
+				BB215A1613E12986004CF889 /* text.cpp in Sources */,
+				BB215A1713E12986004CF889 /* TestFramework.cpp in Sources */,
+				BB215A1813E12986004CF889 /* StdAfx.cpp in Sources */,
+				BB215A1913E12986004CF889 /* polymarker.cpp in Sources */,
+				BB215A1A13E12986004CF889 /* polyline.cpp in Sources */,
+				BB215A1B13E12986004CF889 /* polygon.cpp in Sources */,
+				BB215A1C13E12986004CF889 /* overpost.cpp in Sources */,
+				BB215A1D13E12986004CF889 /* OpcHelper.cpp in Sources */,
+				BB215A1E13E12986004CF889 /* object_node.cpp in Sources */,
+				BB215A1F13E12986004CF889 /* obFont.cpp in Sources */,
+				BB215A2013E12986004CF889 /* macro.cpp in Sources */,
+				BB215A2113E12986004CF889 /* image.cpp in Sources */,
+				BB215A2213E12986004CF889 /* gouraud_polytriangle.cpp in Sources */,
+				BB215A2313E12986004CF889 /* gouraud_polyline.cpp in Sources */,
+				BB215A2413E12986004CF889 /* FontSubset.cpp in Sources */,
+				BB215A2513E12986004CF889 /* embedded_font.cpp in Sources */,
+				BB215A2613E12986004CF889 /* drawing_info.cpp in Sources */,
+				BB215A2713E12986004CF889 /* delineate.cpp in Sources */,
+				BB215A2813E12986004CF889 /* dash_patterns.cpp in Sources */,
+				BB215A2913E12986004CF889 /* contour_set.cpp in Sources */,
+				BB215A2A13E12986004CF889 /* color_map.cpp in Sources */,
+				BB215A2B13E12986004CF889 /* W2dTest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0867D6AAFE840B52C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0867D6ABFE840B52C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB215A3213E12986004CF889 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = W2dTest_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					W2DTEST_APP,
+					DWFCORE_BUILD_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					WHIP_USE_WCHAR_STRINGS,
+					DWFTK_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = (
+					../../../develop/global/src,
+					../../../develop/global/src/dwf,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "W2dTest share";
+				WARNING_CFLAGS = "";
+			};
+			name = Debug;
+		};
+		BB215A3313E12986004CF889 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/release\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = W2dTest_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					W2DTEST_APP,
+					DWFCORE_BUILD_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					WHIP_USE_WCHAR_STRINGS,
+					DWFTK_BUILD_EXPAT,
+					DWFCORE_EXPORT_API,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = (
+					../../../develop/global/src,
+					../../../develop/global/src/dwf,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "W2dTest share";
+				WARNING_CFLAGS = "";
+			};
+			name = Release;
+		};
+		C0E91AC608A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = .;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = W2dTest_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					W2DTEST_APP,
+					DWFCORE_BUILD_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					WHIP_USE_WCHAR_STRINGS,
+					DWFTK_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = (
+					../../../develop/global/src,
+					../../../develop/global/src/dwf,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "W2dTest static";
+			};
+			name = Debug;
+		};
+		C0E91AC708A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = .;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = W2dTest_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					W2DTEST_APP,
+					DWFCORE_BUILD_ZLIB,
+					DWFCORE_BUILD_EXPAT,
+					WHIP_USE_WCHAR_STRINGS,
+					DWFTK_BUILD_EXPAT,
+					DWFCORE_STATIC,
+					DWFTK_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.2;
+				HEADER_SEARCH_PATHS = (
+					../../../develop/global/src,
+					../../../develop/global/src/dwf,
+				);
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../develop/global/lib/$(CONFIGURATION)\"",
+				);
+				PRODUCT_NAME = "W2dTest static";
+			};
+			name = Release;
+		};
+		C0E91ACA08A95435008D54AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C0E91ACB08A95435008D54AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB215A3113E12986004CF889 /* Build configuration list for PBXNativeTarget "W2dTest share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB215A3213E12986004CF889 /* Debug */,
+				BB215A3313E12986004CF889 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC508A95435008D54AB /* Build configuration list for PBXNativeTarget "W2dTest static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91AC608A95435008D54AB /* Debug */,
+				C0E91AC708A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E91AC908A95435008D54AB /* Build configuration list for PBXProject "W2dTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E91ACA08A95435008D54AB /* Debug */,
+				C0E91ACB08A95435008D54AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20286C28FDCF999611CA2CEA /* Project object */;
+}

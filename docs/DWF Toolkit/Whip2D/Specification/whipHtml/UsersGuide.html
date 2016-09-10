@@ -1,0 +1,499 @@
+/** \page WHIPusersGuidePage WHIP! Toolkit Users Guide
+
+<p><a NAME="Overview"></a><b><font face="Arial"><font size=+1>Introduction</font></font></b>
+
+<p>What is WHIP! data? WHIP! data is the new name given to classic DWF (Design Web Format) 
+files of version 0.55 and earlier.  WHIP! data was developed because widely accepted 2D vector 
+file standards did not address the needs of Internet aware applications. In addition, commercial 
+formats were too closely tied to specific proprietary data structures to support the exchange of 
+illustrations among systems.  
+<p>WHIP! data is a format for the standardized description of 2D, vector-based drawings and 
+illustrations, intended for encapsulation within a DWF package file. <b>WHIP! data files of version 
+6.0 and greater are not intended to be used as stand-alone files, but rather a data channel within 
+a DWF package file.</b> The DWF 6 format is described in detail in the <b>DWF Specification</b> 
+document accompanying this distribution. See also the <b>DWF Toolkit</b> document.
+<p>The WHIP! toolkit is a set of C++ classes that accept drawing calls from
+an application and convert, "<a NAME="serialize"></a>serialize," them into
+a WHIP! data stream. The toolkit also performs the inverse operation of reading
+a WHIP! data stream and converting, "<a NAME="materializing"></a>materializing,"
+it back into a set of objects suitable for hooking up to drawing calls in a rendering
+application.  WHIP! data is described in detail in the <b>WHIP! Data Specification</b>
+document accompanying this distribution. 
+<p>By abstraction, the toolkit is not dependent upon any particular operating 
+system or graphics API and instead requires the application to supply low-level 
+"<a NAME="glue"></a>glue" code for input/output functionality and graphics handling.
+<p>This guide does not fully describe all of the classes and functions of the WHIP! Toolkit. 
+Instead, this is intended only to be a basic orientation and overview of the toolkit. 
+<p><a NAME="Toolc"></a><b><font size=+1>Toolkit Conventions</font></b>
+<p>There are some basic toolkit conventions:
+<ol>
+    <li>
+    All toolkit class names and type definitions begin with the identifier
+    WT_...(originally, for <u>W</u>HIP! <u>T</u>oolkit) to prevent name collisions with other applications.
+    <li>
+    All toolkit definitions and constants begin with the identifier <font face="Courier New">WD_</font>...
+    (originally, for <u>W</u>HIP! <u>D</u>efinition)to prevent name collisions.
+    <li>
+    The most common type definitions are contained in the header file <i>%whipcore.h</i>.
+    <li>
+    Any application file that uses the toolkit should include the header file
+    <i>whip_toolkit.h</i>.
+</ol>
+
+
+<a NAME="SettingUp"></a><b><font face="Arial"><font size=+1>Setting up to use the WHIP! Toolkit</font></font></b>
+
+<P>The WHIP! toolkit is distributed in source code form.  You have to build the libraries yourself.
+The two primary usage scenarios are static libraries and dynamic link libraries (DLLs).  (Note, 
+we primarily use static libraries in-house to minimize the deployment footprint of products using 
+the toolkit, and to avoid DLL conflicts.)</P>
+
+<ol>
+    <li>
+    <b>Static Libraries</b>
+    <p>For VC7, open the whiptool.sln solution file. For VC6, open the whiptool_vc6.dsw workspace.
+    Build the configuration you desire.  Several different configuration types have been 
+    provided for you in VC7, such as a full blown read/write library, a static runtime or
+    a DLL runtime, or a reader-only library.  Only full-blown read/write library configurations
+    have been provided in VC6.
+    <p>You can control "how much" goes into the WHIP! library through the CODE_NOT_WANTED 
+    preprocessor macro.  You can "turn off" the writing code so that it's not built into the 
+    library.  <i>Note, the toolkit has not been instrumented to remove reading code.</i>  See 
+    %whipcore.h for the exact values, but as an example, if you set CODE_NOT_WANTED=0x20000000 
+    in your configuration, the WHIP! output code would not be built into the library.
+    <p>Regardless of the configuration you choose, there are some things you need to setup in your
+    application project in order to link to the WHIP! toolkit:
+    <UL>
+        <LI>Code generation (runtime): Static Library or MultiThreaded DLL (debug and release respectively,)
+            depending on the configuration selected.
+        <LI>Preprocessor settings: add the constant WHIP_STATIC_LIB
+        <LI>Include path: add "global\\inc"  
+        <LI>Linker, input: add WhipTk.lib and zlib.lib
+        <LI>Linker, input: You may need to also ignore the LIBCMT / LIBCMTD library as well.
+        <LI>Linker, path: add "global\\lib\\debug" and "global\\lib\\release" to your debug and 
+        release targets, respectively.
+        <LI>Source code.  Include "whip_toolkit.h" in your precompiled header or at the top of 
+        your source files.
+    </UL>
+
+    <br>
+
+    <li>
+    <b>Dynamic Link Libraries (DLLs)</b>
+    <p>For VC7 and VC6, the whiptool.sln and whiptool_vc6.sln solution/workspace (respectively)
+    also contain configuratinos / projects for building the WHIP! toolkit as a DLL.  Build the 
+    configuration you desire.  Only debug and release configurations have been created in the 
+    solution and workspace.  These are full-blown read/write configurations.
+    <p>You can control "how much" goes into the WHIP! library through the CODE_NOT_WANTED 
+    preprocessor macro.  You can "turn off" the writing code so that it's not built into the 
+    library.  <i>Note, the toolkit has not been instrumented to remove reading code.</i>  See 
+    %whipcore.h for the exact values, but as an example, if you set CODE_NOT_WANTED=0x20000000 
+    in your configuration, the WHIP! output code would not be built into the library.
+    <p>Regardless of the configuration you choose, there are some things you need to setup in your
+    application project in order to link to the WHIP! toolkit:
+    <UL>
+        <LI>Code generation (runtime): MultiThreaded DLL (debug and release respectively.)
+        <LI>Include path: add "global\\inc"
+        <LI>Linker, input: whiptkDll.lib, zlibDll.lib.
+        <LI>Linker, input: You may need to also ignore the LIBCMT / LIBCMTD library as well.
+        <LI>Linker, path: add "global\\bin\\debug" and "global\\bin\\release" to your debug and 
+        release targets, respectively.  (Note the difference with respect to the static library 
+        paths - when built, the DLL import libraries live alongside their DLLs.)
+        <LI>Source code.  Include "whip_toolkit.h" in your precompiled header or at the top
+        of your source files.
+    </UL>
+</ol>
+
+<a NAME="Writ"></a><b><font face="Arial"><font size=+1>Writing WHIP! data</font></font></b>
+<p>Of the many classes and methods in the WHIP! Toolkit, you only need to
+understand a small set in order to generate WHIP! data. For
+simplicity the toolkit is designed such that almost every option and setting
+has a usable default value.
+<p>The process for writing a WHIP! data includes these steps:
+<ol>
+    <li>
+    Creating an instance of the <tt><a href="#WT_File"> WT_File </a></tt> class.
+
+    <li>
+    Optionally providing the created <tt>WT_File</tt> object with a set of
+    application supplied input and output handler routines, called "action"
+    routines. 
+
+        <blockquote>
+        If no action routines are supplied by the application, the <tt>WT_File</tt>
+        object uses a default set of C++ standard file input/output routines (<tt>fopen</tt>,
+        <tt>fwrite</tt>,
+        <tt>fclose</tt>,
+        and so forth). An need for areplacing these I/O functions would be when
+        an application seeks input from a stream (i.e. an IStream from an Internet session)
+        rather than from a file.
+        <p>The phrase "<a NAME="ActionRoutine"></a>action routine" is defined
+        as any application replaceable toolkit function, but more typically refers to those
+        routines which perform file I/O and object/drawable/attribute processing. Every action 
+        routine has a default action, a procedure, that is inside the toolkit. An application
+        can override this default action by passing the toolkit a pointer to an
+        application-specific procedure that should be called instead.
+        </blockquote>
+
+    <li>
+    Optionally specifying heuristics to the <tt>WT_File</tt> object to instruct
+    it in what style the WHIP! data should be written.
+
+        <blockquote>
+        Example heuristics that can be specified include: whether the toolkit
+        should perform data compression of the WHIP! data, whether the toolkit should
+        output a readable ASCII WHIP! data or more compact binary WHIP! data, 
+        or whether the toolkit should transform the vertices of objects before
+        recording them to the WHIP! data.
+        <p>If no heuristics are specified, a default set of heuristics is used.
+        These defaults are documented individually under each opcode in the WHIP!
+        Specification document included with this distribution.
+        </blockquote>
+
+    <li>
+    Setting the drawing attributes (drawable color, line weight, visibility,
+    and so forth) to the state desired for the next drawable (a geometric primitive
+    such as a line, a triangle, a circle, and so forth) that is about to be
+    recorded to the file.
+
+        <blockquote>The state of these drawing attributes is contained in the grouping
+        class <tt>WT_Rendition. </tt>The <tt>WT_File</tt> object contains two instances
+        of this <tt>WT_Rendition</tt> class: one instance that holds the <i>desired</i>
+        attribute state for the next drawable, and one instance for the <i>actual</i>
+        state of the attributes as has been previously written to the file. When
+        the <tt>WT_File</tt> object is initially created, both the desired rendition
+        and the actual rendition hold the default values for each attribute. 
+        <p>The application using the toolkit only modifies the attribute settings
+        contained in the <i>desired</i> rendition. When a drawable is written to
+        the file, the toolkit automatically updates the <i>actual</i> rendition,
+        as well as the file contents, with only those attributes that have changed
+        and those that the drawable cares about. For example, triangles don't care
+        about the "<a NAME="marker size"></a>marker size" attribute. The overall
+        effect is to minimize the WHIP! data size by only storing attribute
+        changes that are absolutely necessary.
+        <p>Generally, WHIP! data writers interact only with the <i>desired</i> rendition,
+        whereas WHIP! data readers interact only with the <i>actual</i> rendition.
+        </blockquote>
+
+    <li>
+    Recording "<a NAME="drawables"></a>drawables" (geometric primitives) to
+    the file.
+
+        <blockquote>To do this an application tessellates the objects in its own private
+        database and converts them into geometric primitives that the toolkit understands.
+        The application does this by creating instances of toolkit drawables 
+        (see \ref groupDrawable "Drawable objects"), such as the <tt>WT_Polyline</tt>, 
+        <tt>WT_Polymarker</tt>, and the <tt>WT_Polytriangle</tt> classes. Each of these 
+        objects has its own "<tt>serialize</tt>" method which records any needed 
+        attributes and the drawable itself into the WHIP! data. The process of setting 
+        the desired attribute state and of serializing drawables repeats for each 
+        geometric primitive that the application wishes to record.
+        </blockquote>
+
+    <li>
+    When all drawables have been serialized, the "<tt>close</tt>" method of
+    the <tt>WT_File</tt> object is called, after which the <tt>WT_File</tt>
+    object may be deleted (or allowed to go out of scope.)
+
+
+    <a NAME="Validation"></a><b><font size=+1>Validation</font></b>
+    <p>The WHIP! Toolkit does not validate return values from the underlying
+    code operations. It is the responsibly of each developer to perform all
+    necessary validation for their application.
+    <p><a NAME="Simp"></a><b><font size=+1>A Simple Example of a WHIP! Data Writing
+    Application</font></b>
+
+    <p>To demonstrate the simplicity of using the toolkit, the following program
+    and notes are included on storing a single line into WHIP! data:
+
+    \ex SingleLine.cpp
+
+    <a NAME="Notes:"></a><b>Notes:</b>
+    <ul>
+        <li>
+        Line 0 defines all of the WHIP! Toolkit classes and constants for use by
+        the application.
+
+        <li>
+        Line 8 creates the main <tt>WT_File</tt> object instance that is used by
+        almost every other toolkit function.
+
+        <li>
+        Line 10 tells the file object what filename should be used when creating
+        the new WHIP! data file, which will be passed in turn to the low-level
+        input/output routines.
+
+        <li>
+        Line 11 tells the file object that the application will be writing to the
+        named file.
+
+        <li>
+        Line 12 indirectly instructs the low-level input/output routines to open
+        and ready the file for output. Since we have not defined any action routines,
+        the built-in default I/O action routines will be used. Note that these
+        default action routines utilize <tt>fopen</tt>, which only handles ASCII
+        file names. For file names with wide characters, substitute the following
+        for Line 12:
+
+        <blockquote><code>
+        FILE *my_whip_file_pointer=NULL;<br>
+        my_whip_file_pointer = (FILE*)_wfopen(myfile.filename(),<br>
+        myfile.set_stream_user_data(my_whip_file_pointer);
+        </code>
+        </blockquote>
+
+        <li>
+        Lines 15 and 16 overrides the default color and sets the color so that
+        the subsequent drawables will be drawn in red. Mapped colors are used in the 
+        example; however RGB and RGBA colors are also supported.
+
+        <li>
+        Line 17 and 18 create an instance of a toolkit line (a <tt>WT_Polyline</tt>).
+
+        <li>
+        Line 19 causes the line to be added to the file.
+
+        <li>
+        Line 21 completes the process by closing the WHIP! data file.
+    </ul>
+</ol>
+
+<a NAME="Read"></a><b><font face="Arial"><font size=+1>Reading WHIP! Data</font></font></b>
+<p>The process for reading a WHIP! data file includes these steps:
+<ol>
+    <li>
+    Creating an instance of the <tt><a href="#WT_File"> WT_File </a></tt> class.
+
+    <li>
+    Optionally providing the created <tt>WT_File</tt> object with a set of
+    application supplied input handler routines.
+
+        <blockquote>If none are supplied by the application, the <tt>WT_File</tt> object
+        uses a default set of C++ standard file input routines (<tt>fopen</tt>,
+        <tt>fread</tt>, <tt>fclose</tt>, and so forth). An example of the application 
+        replacing these I/O functions occurs when the application wants to get input 
+        from the Internet rather than from a file.
+        </blockquote>
+
+    <li>
+    Optionally specifying heuristics to the <tt>WT_File</tt> object to instruct
+    it how the WHIP! data should be read in.
+
+        <blockquote>For example, an heuristic that could be specified includes whether
+        the toolkit should transform the vertices of objects as they are read from
+        the WHIP! data. If no heuristics are specified, a default set of heuristics
+        is used. 
+        </blockquote>
+
+    <li>
+    Replacing the desired&nbsp;<a NAME="action"></a>action routines of those
+    toolkit objects that the application cares about.
+
+        <blockquote>Each object in the toolkit (either a drawable object or an attribute
+        object) has a&nbsp;<a NAME="materialize"></a><tt>materialize</tt> method
+        and a&nbsp;<a NAME="process"></a><tt>process</tt> method. Normally when
+        WHIP! data is read, each object in the file is first materialized
+        (parsed) and then its <tt>process</tt> method is called. The default "process"
+        action for attribute objects is to update their value in the <tt>WT_File</tt>
+        object's current rendition. The default process action for drawables is
+        to do nothing.
+        <p>Normally an application using the toolkit does not change the "process"
+        action routines for attribute objects, but&nbsp; specifies process routines
+        for those drawable objects it cares about. When the toolkit reads, decodes,
+        materializes, and processes a drawable, the application's action routine
+        is called with the object at which time the application could convert and
+        store the drawable into its own private database <b><i>—</i></b> such as
+        a display list.
+        </blockquote>
+
+    <li>
+    Calling the <tt>WT_File</tt> object's; <tt>process_next_object()</tt>
+    method repeatedly until the end of the WHIP! data is reached. This
+    method reads the next opcode from the WHIP! data, creates an object
+    instance, materializes the object, and calls the appropriate action routine
+    to process the object.
+
+    <li>
+    When all drawables have been materialized and processed, the <tt>close</tt>
+    method of the <tt>WT_File</tt> object is called, after which the <tt>WT_File</tt>
+    object may be deleted.
+
+    <li>
+    <a href="#Validation">Validation</a> is the responsibility of each developer.
+
+    <p><a NAME="Xdwf"></a><b><font size=+1>Example WHIP! Data Reading Application</font></b>
+    <p>The following program and notes show the basic structure of a WHIP! data reading
+    application:
+
+    \ex DataReading.cpp
+
+    <b>Notes:</b>
+    <ul>
+        <li>
+        Lines 2 through 8 are forward declarations of some action routines that
+        will replace the default actions of the toolkit.
+
+        <li>
+        Line 11 creates the main instance of the <tt>WT_File</tt> class.
+
+        <li>
+        Lines 14 through 17 replace the Toolkit's default file input/output action
+        routines with application supplied ones.
+
+        <li>
+        Lines 19 through 21 open the file to be read. Note that these default action
+        routines use <tt>fopen</tt>, which only handles ASCII file names. For file
+        names with wide characters, substitute the following for Line 21:
+
+        <blockquote>
+        <code>FILE *my_whip_file_pointer=NULL;<br>
+        my_whip_file_pointer = (FILE*)_wfopen(myfile.filename(),<br>
+        myfile.set_stream_user_data(my_whip_file_pointer);</br>
+        </code></blockquote>
+
+        <li>
+        For more information, see <a href="#Notes:">Notes</a> (Line 12) in the
+        section, "A Simple Example of a WHIP! Data Writing Application".
+
+        <li>
+        Line 23 stores an application specific pointer that the toolkit will non-intrusively
+        pass on to any object action routine.
+
+        <li>
+        Line 24 replaces the default action routine that gets called whenever a
+        polyline is read from the file.
+
+        <li>
+        Lines 25 through 27 are the main loop that processes every opcode in the
+        WHIP! data (both attributes and drawables) until the end of the file is reached.
+        The processes next object call first reads an opcode, then generates an
+        object from the opcode, materializes the opcode by parsing the operand
+        data from the file, and finally calls the object's process routine.
+
+        <li>
+        Lines 32 through 74 are the application specific file input action routines
+        that implement all of the low level file input.
+
+        <li>
+        Line 76 is the definition of the polyline action routine, which is called
+        whenever a polyline opcode is read from the WHIP! data.
+
+        <li>
+        Line 78 receives the pointer that is passed through from the application
+        at line 19.
+
+        <li>
+        Line 79 gets the polyline's color from the&nbsp; <tt>WT_File's</tt> current
+        rendition. Note that, even though this program did not specify a "process"
+        action routine for the "color" attribute, the Toolkit's default action
+        for all attributes is to keep the <tt>WT_File's</tt> rendition current.
+    </ul>
+</ol>
+
+<p>
+<table border=0 cellpadding=0 cellspacing=0 width=100%>
+<tr><td bgcolor=#DDDDDD>
+<hr><!---------------------------------------------------------------------------->
+<B>NOTE, THE FOLLOWING BLOCKREF FUNTIONALITY HAS BEEN DEPRECATED IN VERSION 6.0 AND 
+IS MENTIONED HERE ONLY FOR LEGACY COMPATABILITY.</B>
+<hr><!---------------------------------------------------------------------------->
+
+<p><a NAME="WT_FileBlcks"></a><b><font face="Arial,Helvetica"><font size=+1>%WT_File
+&amp; Blocks - <i>DEPRECATED</i></font></font></b>
+<p>The <tt><a href="#WT_File"> WT_File </a></tt> WHIP! Toolkit class for writing
+and reading WHIP! data provides three additional modes for opening
+WHIP! data with version 0.55.&nbsp; Version 0.50 or lesser
+toolkit releases were originally supporting reading and writing WHIP! data content
+as opcodes. Version 0.55 supports reading and writing
+WHIP! data contents not only as opcodes but also as blocks.
+<p>Basically, a group of opcodes represents a block. There are 14 different
+types of blocks that are possible in WHIP! data. For more detailed
+information on blocks, see the WHIP! Specification's description of the <b>BlockRef</b>
+opcode (implemented via WT_BlockRef). Each block will be preceded by a <b>BlockRef</b> which 
+holds some meta-data pertaining to the kind of block it represents or references.
+The following 3 fragments of code illustrate the block mode of writing,
+reading, and appending WHIP! data contents.
+
+<blockquote>
+    <p><a NAME="WritgDWFContBlks"></a><b><font size=+1>Writing WHIP! Data
+    Content as Blocks - <i>DEPRECATED</i></font></b>
+    <p>To write WHIP! data content as blocks, open WHIP! data in <tt>Block_Write</tt>
+    mode and invoke the <tt>write_block</tt> api after setting the appropriate
+    <tt>WT_BlockRef</tt> rendition attribute to signal the beginning of a new block.
+    <p>This first example shows the writing of WHIP! data content as blocks. Assume
+    in this example that the WHIP! data files <i>c:\\test1.dwf</i> and
+    <i>c:\\test2.dwf</i> already exist. Also, suppose that we want to merge those 
+    files to WHIP! data files as different blocks in a single WHIP! data file with 
+    <i>c:\\test.dwf</i>, the first file, as an embedded font block and the second 
+    file as an overlay block. The following fragment of code illustrates how this 
+    is done:
+
+    \ex WriteBlocks.cpp
+
+    <p>The following code fragment explains how to write a blocked file containing
+    only redline information:
+
+    \ex WriteRedline.cpp
+
+</blockquote>
+
+
+<blockquote>
+    <p><a NAME="ReadDWFContBlks"></a><b><font size=+1>Reading through WHIP! Data Content
+    as Blocks - <i>DEPRECATED</i></font></b>
+    <p>To read through WHIP! data content as blocks, open the WHIP! data file in
+    <tt>Block_Read</tt>
+    mode and loop through all the <b>BlockRefs</b> (contained as part of directory);
+    then, invoke the <tt>read_block</tt> api passing in <b>BlockRefs</b> one
+    by one.
+    <p>The second code example attempts to read the WHIP! data contents as blocks
+    using the
+    <tt>Block_Read</tt> file mode. Assume that <i>c:\\test.dwf</i>
+    already exists and it is a WHIP! data file versioned 0.55. Also
+    assume that <i>c:\\test.dwf</i> has its contents grouped as blocks with
+    a valid block directory towards the end. Then the following code fragment
+    attempts to open the WHIP! data file in <tt>Block_Read</tt> mode and extracts
+    two blocks in to two different WHIP! data file — <i>c:\\test1.dwf</i> contains
+    the first block and <i>c:\\test2.dwf</i> contains the second block.
+
+    \ex ReadTwoBlocks.cpp
+
+    This additional code fragment will output individual blocks into separate WHIP! 
+    data files, given an input WHIP! data file which has its contents organized in 
+    individual blocks:
+
+    \ex OutputBlocks.cpp
+</blockquote>
+
+
+<blockquote>
+    <p><a NAME="OpnDWFBlock_Append"></a><b><font size=+1>Opening WHIP! Data in Block_Append Mode - <i>DEPRECATED</i></font></b>
+    <p>To append overlay blocks to existing WHIP! data, open the WHIP! data 
+    in <tt>Block_Append</tt> mode and invoke the <tt>write_block</tt>
+    api after setting the appropriate <tt>WT_BlockRef</tt> rendition attribute to
+    signal the beginning of the new overlay block.
+    <p>The third fragment of code, following, best illustrates the usage of
+    opening WHIP! data in <tt>Block_Append</tt> mode. The new information
+    is appended to existing WHIP! data by opening the <tt>WT_File</tt>
+    object in <tt>Block_Append</tt>. Assuming that <i>c:\\test1.dwf</i> and
+    <i>c:\\test2.dwf</i> already exist and are valid WHIP! data files and 
+    version == 0.55, the following code attempts to append the contents of 
+    <i>c:\\test2.dwf</i> to <i>c:\\test1.dwf</i> as a new overlay block.
+
+    \ex AppendBlocks.cpp
+
+    <p><a NAME="DirectryBlocks"></a><b><font face="Arial,Helvetica">The Directory Opcode &amp; Blocks - <i>DEPRECATED</i></font></b>
+    <p>Directory information is written automatically by the WHIP! Toolkit for version 0.55 data.
+    As the <tt>WT_BlockRef</tt> rendition attribute changes, <b>BlockRefs</b> are serialized in WHIP! data 
+    and are automatically accumulated in the toolkit as part of the <tt>m_directory</tt>
+    member variable of the <tt><a href="#WT_File"> WT_File </a></tt> toolkit
+    object. Towards the end, when the WHIP! data closes, directory information
+    is serialized with proper file offset and block size information for all
+    <b>BlockRefs</b>.
+</blockquote>
+
+</tr></td></table>
+
+<br><br><br><br>
+
+*/

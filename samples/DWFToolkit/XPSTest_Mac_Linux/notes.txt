@@ -1,0 +1,1 @@
+This samples is an extension of W2dTest_Mac_Linux. It tell users how to create a DWFx package by creating kinds of resources by W2DTest. This sample is a little different from XPSTest. There is no code to show how to process Font resource.

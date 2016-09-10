@@ -1,0 +1,1067 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4b7caf79-c822-45df-bd43-8bd5e0cb0bad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package">
+      <UniqueIdentifier>{79d2d9cd-7051-46e8-9c1b-4ffcde21f735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\reader">
+      <UniqueIdentifier>{bd0c0035-7a04-481d-bcac-695f11f633ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\writer">
+      <UniqueIdentifier>{ca60b6c8-e64a-4b28-97ea-4be26c6e3034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\writer\extensions">
+      <UniqueIdentifier>{4dd05c63-f2ff-4b50-b741-84b34639c064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\writer\extensions\6.01">
+      <UniqueIdentifier>{026c4aed-8570-4b21-ad19-be9a41eb0399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\writer\extensions\6.0">
+      <UniqueIdentifier>{f74dbabd-b0c0-4c19-bffe-b2ad9b161559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\writer\extensions\6.11">
+      <UniqueIdentifier>{f72bd082-96ce-401b-ada6-e92412714e41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\writer\extensions\6.20">
+      <UniqueIdentifier>{699a3e67-9815-49c9-bac6-053187e47b77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\writer\extensions\7.10x">
+      <UniqueIdentifier>{ce370931-484e-41a6-8332-120f5ad9a642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\package\utility">
+      <UniqueIdentifier>{8c387bf9-c8c4-43af-8d99-20c0b32d44ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\publisher">
+      <UniqueIdentifier>{ea4be653-bbcc-467b-a0cb-0c5d5f71b14a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\publisher\impl">
+      <UniqueIdentifier>{c6679763-aa83-4215-91c0-a7149e124e4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\publisher\model">
+      <UniqueIdentifier>{f9be8833-facb-422f-acff-c7d8c3ae71fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\publisher\win32">
+      <UniqueIdentifier>{4ccfebe0-63b7-4455-86e4-cbd6132ed3d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\publisher\plot">
+      <UniqueIdentifier>{b385decb-f09e-4908-8990-b6a106735664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\publisher\data">
+      <UniqueIdentifier>{40d3d92d-561e-42b0-9bce-684978849aa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\presentation">
+      <UniqueIdentifier>{83d9db5f-ec2d-4e75-a6b1-1c80d5e76d2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\presentation\utility">
+      <UniqueIdentifier>{6bd5aa2b-db02-4c2f-b278-9d2d5152e43f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\presentation\reader">
+      <UniqueIdentifier>{8fddf869-1804-455f-a260-9aa4f29719e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\opc">
+      <UniqueIdentifier>{3c387120-5084-4faa-a113-5a728f476ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\opc\reader">
+      <UniqueIdentifier>{98a6b2f5-8ad9-488c-a915-a28fe94ba9ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xps">
+      <UniqueIdentifier>{71032899-573e-47f3-bf78-f687a0b6147b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dwfx">
+      <UniqueIdentifier>{34751ba1-2e37-4f3b-a8b0-355e64da7361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\dwfx\reader">
+      <UniqueIdentifier>{aff958a9-22c4-4a95-801e-21e32b5a401f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{da5f0fac-e670-4cbe-876f-c81c42dad4d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package">
+      <UniqueIdentifier>{5a5559fa-700f-4c3c-9f00-726ca3b6fd20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\reader">
+      <UniqueIdentifier>{22bc43b5-627c-42c1-b088-4cd88b7aa2f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\writer">
+      <UniqueIdentifier>{3e517176-2f2f-475d-8fda-e30a0cea2a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\writer\extensions">
+      <UniqueIdentifier>{9b96b31d-1393-4487-8ef9-2754debaf077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\writer\extensions\6.01">
+      <UniqueIdentifier>{8d4ccd50-6ced-4a6f-bc56-8fbd81c00f9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\writer\extensions\6.0">
+      <UniqueIdentifier>{76a96db8-a855-4f45-8d15-ed771883275e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\writer\extensions\6.11">
+      <UniqueIdentifier>{67b06221-dc72-4b63-82c1-361dc83181e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\writer\extensions\6.20">
+      <UniqueIdentifier>{34622542-0005-4858-a43f-c71123bb7d91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\package\utility">
+      <UniqueIdentifier>{cc9a61d1-1e1b-4409-a5a2-db60b7a6918a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\publisher">
+      <UniqueIdentifier>{832ae7f7-f96c-4ec0-9ee7-104a65954067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\publisher\impl">
+      <UniqueIdentifier>{0d56dead-52f5-430c-b59e-1fc3af4f4bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\publisher\model">
+      <UniqueIdentifier>{55606671-5407-494e-ac25-d2089b148c84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\publisher\win32">
+      <UniqueIdentifier>{9a3d91d8-b9a7-4ea3-8879-3ffeacce8856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\publisher\plot">
+      <UniqueIdentifier>{dd2fffcc-3f1f-42ec-92bb-8aefc2bb0c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\publisher\data">
+      <UniqueIdentifier>{3078b617-0157-4765-9e38-b9564362b9f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\presentation">
+      <UniqueIdentifier>{c9304b49-fdcc-4f95-b580-279709ae0b7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\presentation\utility">
+      <UniqueIdentifier>{cca7d0df-5714-47df-b18c-98f466c894d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\presentation\reader">
+      <UniqueIdentifier>{6c9f1cf0-60c3-4030-aaee-e4bb35b28671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\opc">
+      <UniqueIdentifier>{82d75d45-7573-495e-94d0-9d9ec6f6f4c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\opc\reader">
+      <UniqueIdentifier>{eebdb472-e038-4bf6-9137-adc56864e5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\xps">
+      <UniqueIdentifier>{a219499a-5015-42c4-ae18-affbd62cf4fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dwfx">
+      <UniqueIdentifier>{3cd948d4-aea1-4c6d-bd42-5150f8a5d19c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dwfx\reader">
+      <UniqueIdentifier>{450e0acf-e4cc-4cd7-a4fd-c4d6d99b9263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e3011b52-e85f-49f6-b407-34419ee21f5d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\dwf\Toolkit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Bookmark.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Class.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Constants.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Content.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\ContentElement.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\ContentManager.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\CoordinateSystem.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\CustomSection.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\DataSection.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\DefinedObject.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\DwfResult.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\EModelSection.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Entity.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\EPlotSection.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Feature.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\FontResource.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\GlobalSection.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\GraphicResource.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Group.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Instance.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Interface.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Manifest.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Object.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\ObjectDefinition.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\ObjectDefinitionResource.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Paper.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Property.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\PropertySet.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Resource.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Section.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\SectionBuilder.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\SectionContentResource.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Signature.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\SignatureRequest.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\SignatureResource.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\SignatureSection.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Source.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\Units.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\X509.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\XML.cpp">
+      <Filter>Source Files\package</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\ContentReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\ContentResourceReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\DataSectionDescriptorReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\DuplicateAttributeFilter.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\EModelSectionDescriptorReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\EPlotSectionDescriptorReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\GlobalSectionDescriptorReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\ObjectDefinitionReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\PackageManifestReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\PackageReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\SectionDescriptorReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\SignatureReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\reader\SignatureSectionDescriptorReader.cpp">
+      <Filter>Source Files\package\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\writer\DWF6PackageWriter.cpp">
+      <Filter>Source Files\package\writer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\writer\DWFXPackageWriter.cpp">
+      <Filter>Source Files\package\writer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\writer\PackageWriter.cpp">
+      <Filter>Source Files\package\writer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\writer\extensions\6.01\PackageVersionExtension.cpp">
+      <Filter>Source Files\package\writer\extensions\6.01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\writer\extensions\6.0\PackageVersionExtension.cpp">
+      <Filter>Source Files\package\writer\extensions\6.0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\writer\extensions\6.11\PackageVersionExtension.cpp">
+      <Filter>Source Files\package\writer\extensions\6.11</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\writer\extensions\6.20\PackageVersionExtension.cpp">
+      <Filter>Source Files\package\writer\extensions\6.20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\utility\DefinedObjectContainer.cpp">
+      <Filter>Source Files\package\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\utility\DWFPackageFileDescriptor.cpp">
+      <Filter>Source Files\package\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\utility\PropertyContainer.cpp">
+      <Filter>Source Files\package\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\package\utility\ResourceContainer.cpp">
+      <Filter>Source Files\package\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\EmbeddedFont.cpp">
+      <Filter>Source Files\publisher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\PublishedObject.cpp">
+      <Filter>Source Files\publisher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\impl\ContentElementPropertyVisitor.cpp">
+      <Filter>Source Files\publisher\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\impl\DefinedObjectPropertyVisitor.cpp">
+      <Filter>Source Files\publisher\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\impl\DWF6PackagePublisher.cpp">
+      <Filter>Source Files\publisher\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\impl\DWFPackagePublisher.cpp">
+      <Filter>Source Files\publisher\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\impl\DWFXPackagePublisher.cpp">
+      <Filter>Source Files\publisher\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\impl\PublishedContentElement.cpp">
+      <Filter>Source Files\publisher\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\impl\PublishedDefinedObject.cpp">
+      <Filter>Source Files\publisher\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\model\IncludeSegment.cpp">
+      <Filter>Source Files\publisher\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\model\Model.cpp">
+      <Filter>Source Files\publisher\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\model\Segment.cpp">
+      <Filter>Source Files\publisher\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\model\StyleSegment.cpp">
+      <Filter>Source Files\publisher\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\win32\EmbeddedFontImpl.cpp">
+      <Filter>Source Files\publisher\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\plot\Plot.cpp">
+      <Filter>Source Files\publisher\plot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\publisher\data\Data.cpp">
+      <Filter>Source Files\publisher\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ContentPresentation.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ContentPresentationDocument.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ContentPresentationModelViewNode.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ContentPresentationNode.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ContentPresentationReferenceNode.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ContentPresentationResource.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ContentPresentationView.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\DWF3DCamera.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\ModelScene.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\PackageContentPresentations.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\PropertyReference.cpp">
+      <Filter>Source Files\presentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\utility\ContentPresentationContainer.cpp">
+      <Filter>Source Files\presentation\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\utility\ContentPresentationNodeContainer.cpp">
+      <Filter>Source Files\presentation\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\utility\ContentPresentationViewContainer.cpp">
+      <Filter>Source Files\presentation\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\utility\DWF3DCameraContainer.cpp">
+      <Filter>Source Files\presentation\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\utility\PropertyReferenceContainer.cpp">
+      <Filter>Source Files\presentation\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\presentation\reader\ContentPresentationReader.cpp">
+      <Filter>Source Files\presentation\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\Constants.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\ContentTypes.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\CoreProperties.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\Package.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\Part.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\PartContainer.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\PhysicalLayerReader.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\PhysicalLayerWriter.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\Relationship.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\RelationshipContainer.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\XMLPart.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\ZipFileReader.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\ZipWriter.cpp">
+      <Filter>Source Files\opc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\reader\CorePropertiesReader.cpp">
+      <Filter>Source Files\opc\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\opc\reader\RelationshipContainerReader.cpp">
+      <Filter>Source Files\opc\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\Constants.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\FixedDocument.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\FixedDocumentSequence.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\FixedPage.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\Package.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\XPSDocRefResourceExtractor.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\XPSFixedDocumentResourceExtractor.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\XPSFixedPageResourceExtractor.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\xps\XPSFontResourceExtractor.cpp">
+      <Filter>Source Files\xps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\Constants.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\ContentPart.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\CustomProperties.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\DocumentPresentationsPart.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\DWFDocument.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\DWFDocumentSequence.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\DWFProperties.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\DWFSection.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\FixedDocument.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\FixedDocumentSequence.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\FixedPage.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\Package.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\ResourcePart.cpp">
+      <Filter>Source Files\dwfx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\reader\CustomPropertiesReader.cpp">
+      <Filter>Source Files\dwfx\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\reader\DWFDocumentSequenceReader.cpp">
+      <Filter>Source Files\dwfx\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\reader\DWFPropertiesReader.cpp">
+      <Filter>Source Files\dwfx\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\dwfx\reader\FixedPageResourceExtractor.cpp">
+      <Filter>Source Files\dwfx\reader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\DWFXPackageVersionExtension.h">
+      <Filter>Source Files\package\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\extensions\7.10x\PackageVersionExtension.h">
+      <Filter>Source Files\package\writer\extensions\7.10x</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\Toolkit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\Version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Bookmark.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Class.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Constants.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Content.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\ContentElement.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\ContentManager.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\CoordinateSystem.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\CustomSection.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\DataSection.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\DefinedObject.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Dependency.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\DwfResult.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\EModelSection.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Entity.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\EPlotSection.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Feature.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\FontResource.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\GlobalSection.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\GraphicResource.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Group.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Instance.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Interface.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Manifest.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Object.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\ObjectDefinition.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\ObjectDefinitionResource.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Paper.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Property.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\PropertySet.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Renderable.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Resource.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Section.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\SectionBuilder.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\SectionContentResource.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Signature.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\SignatureRequest.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\SignatureResource.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\SignatureSection.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Source.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\Units.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\X509.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\XML.h">
+      <Filter>Header Files\package</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\ContentReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\ContentResourceReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\DataSectionDescriptorReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\DuplicateAttributeFilter.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\EModelSectionDescriptorReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\EPlotSectionDescriptorReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\GlobalSectionDescriptorReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\ObjectDefinitionReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\PackageManifestReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\PackageReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\SectionDescriptorReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\SignatureReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\reader\SignatureSectionDescriptorReader.h">
+      <Filter>Header Files\package\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\DWF6PackageVersionExtension.h">
+      <Filter>Header Files\package\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\DWF6PackageWriter.h">
+      <Filter>Header Files\package\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\DWFXPackageWriter.h">
+      <Filter>Header Files\package\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\PackageWriter.h">
+      <Filter>Header Files\package\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\extensions\6.01\PackageVersionExtension.h">
+      <Filter>Header Files\package\writer\extensions\6.01</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\extensions\6.0\PackageVersionExtension.h">
+      <Filter>Header Files\package\writer\extensions\6.0</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\extensions\6.11\PackageVersionExtension.h">
+      <Filter>Header Files\package\writer\extensions\6.11</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\writer\extensions\6.20\PackageVersionExtension.h">
+      <Filter>Header Files\package\writer\extensions\6.20</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\utility\DefinedObjectContainer.h">
+      <Filter>Header Files\package\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\utility\DWFPackageFileDescriptor.h">
+      <Filter>Header Files\package\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\utility\PropertyContainer.h">
+      <Filter>Header Files\package\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\package\utility\ResourceContainer.h">
+      <Filter>Header Files\package\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\EmbeddedFont.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\EmbeddedFontVisitor.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\Image.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\PropertyVisitor.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\Publishable.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\PublishableResource.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\PublishableSection.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\PublishedObject.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\Publisher.h">
+      <Filter>Header Files\publisher</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\ContentElementPropertyVisitor.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\DefinedObjectPropertyVisitor.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\DWF6PackagePublisher.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\DWFPackagePublisher.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\DWFResourceVisitor.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\DWFXPackagePublisher.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\PublishedContentElement.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\PublishedContentElementListener.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\impl\PublishedDefinedObject.h">
+      <Filter>Header Files\publisher\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\AttributeHandlerBuilder.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\FeatureHandlerBuilder.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\GeometryHandlerBuilder.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\IncludeSegment.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\Model.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\Segment.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\SegmentHandlerBuilder.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\model\StyleSegment.h">
+      <Filter>Header Files\publisher\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\win32\EmbeddedFontImpl.h">
+      <Filter>Header Files\publisher\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\win32\t2embapi.h">
+      <Filter>Header Files\publisher\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\plot\Plot.h">
+      <Filter>Header Files\publisher\plot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\publisher\data\Data.h">
+      <Filter>Header Files\publisher\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ContentPresentation.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ContentPresentationDocument.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ContentPresentationModelViewNode.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ContentPresentationNode.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ContentPresentationReferenceNode.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ContentPresentationResource.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ContentPresentationView.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\DWF3DCamera.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\ModelScene.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\PackageContentPresentations.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\PropertyReference.h">
+      <Filter>Header Files\presentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\utility\ContentPresentationContainer.h">
+      <Filter>Header Files\presentation\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\utility\ContentPresentationNodeContainer.h">
+      <Filter>Header Files\presentation\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\utility\ContentPresentationViewContainer.h">
+      <Filter>Header Files\presentation\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\utility\DWF3DCameraContainer.h">
+      <Filter>Header Files\presentation\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\utility\PropertyReferenceContainer.h">
+      <Filter>Header Files\presentation\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\presentation\reader\ContentPresentationReader.h">
+      <Filter>Header Files\presentation\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\Constants.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\ContentTypes.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\CoreProperties.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\Package.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\Part.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\PartContainer.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\PhysicalLayerReader.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\PhysicalLayerWriter.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\Relationship.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\RelationshipContainer.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\RelationshipContainerInterface.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\XMLPart.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\ZipFileReader.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\ZipWriter.h">
+      <Filter>Header Files\opc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\reader\CorePropertiesReader.h">
+      <Filter>Header Files\opc\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\reader\RelationshipContainerReader.h">
+      <Filter>Header Files\opc\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\opc\reader\XMLElementBuilder.h">
+      <Filter>Header Files\opc\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\Constants.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\FixedDocument.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\FixedDocumentSequence.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\FixedPage.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\Package.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\XPSDocRefResourceExtractor.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\XPSFixedDocumentResourceExtractor.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\XPSFixedPageResourceExtractor.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\xps\XPSFontResourceExtractor.h">
+      <Filter>Header Files\xps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\Constants.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\ContentPart.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\CustomProperties.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\DocumentPresentationsPart.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\DWFDocument.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\DWFDocumentSequence.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\DWFProperties.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\DWFSection.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\FixedDocument.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\FixedDocumentSequence.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\FixedPage.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\Package.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\ResourcePart.h">
+      <Filter>Header Files\dwfx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\reader\CustomPropertiesReader.h">
+      <Filter>Header Files\dwfx\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\reader\DWFDocumentSequenceReader.h">
+      <Filter>Header Files\dwfx\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\reader\DWFPropertiesReader.h">
+      <Filter>Header Files\dwfx\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\dwfx\reader\FixedPageResourceExtractor.h">
+      <Filter>Header Files\dwfx\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\rc\dwf\DWFToolkit.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

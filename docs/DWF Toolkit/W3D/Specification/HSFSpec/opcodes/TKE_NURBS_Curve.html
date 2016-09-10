@@ -1,0 +1,124 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_NURBS_Curve</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>N</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>4E</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>78</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Byte</STRONG>&nbsp;options,
+	  <STRONG>Byte</STRONG>&nbsp;degree,
+	  <STRONG>Long</STRONG>&nbsp;control_count,
+      <STRONG>(</STRONG><EM>control_count</EM><STRONG>)xPoint</STRONG>&nbsp;control_points,
+      <STRONG>[(</STRONG><EM>control_count</EM><STRONG>)xFloat</STRONG>&nbsp;weights<STRONG>]</STRONG>,<br>
+      <STRONG>[(</STRONG><EM>control_count+degree+1</EM><STRONG>)xFloat</STRONG>&nbsp;knots<STRONG>]</STRONG>,<br>
+	  <STRONG>[Float</STRONG>&nbsp;start<STRONG>]</STRONG>,
+	  <STRONG>[Float</STRONG>&nbsp;end<STRONG>]</STRONG>
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+    <TD height=21 width=131>options</TD>
+    <TD height=21 width=390>bitmask indicating which options are present</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>degree</TD>
+    <TD height=21 width=390>degree of the curve</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>control_count</TD>
+    <TD height=21 width=390>number of control points in the curve</TD>
+	</TR>
+<tr>
+	<td WIDTH=131 HEIGHT=21>control_points</td>
+	<td WIDTH=390 HEIGHT=21><EM>control_count</EM> triplets of x, y, z data</td>
+	</tr>
+<tr>
+	<td WIDTH=131 HEIGHT=21>weights</td>
+	<td WIDTH=390 HEIGHT=21><EM>control_count</EM> weight factors</td>
+	</tr>
+<tr>
+	<td WIDTH=131 HEIGHT=21>knots</td>
+	<td WIDTH=390 HEIGHT=21><EM>control_count + degree + 1</EM> knot values</td>
+	</tr>
+<tr>
+	<td WIDTH=131 HEIGHT=21>start</td>
+	<td WIDTH=390 HEIGHT=21>parametric start point (0-1, default 0)</td>
+	</tr>
+<tr>
+	<td WIDTH=131 HEIGHT=21>end</td>
+	<td WIDTH=390 HEIGHT=21>parametric end point (0-1, default 1)</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+      
+<font face="arial,helvetica,sans-serif">
+    <P>Standard NURBS curve definition. Curve is inserted into the currently opened 
+    segment. 
+
+    <p>The parametric start and end points are defined to range from zero to one, which is different
+    from some solid modelers.  Solid modelling kernels typically parameterize their curves
+    with respect to the given knot vector.
+
+    <p>Any fields that can be left unspecified have default values: 0 for <em>start</em>, 1 for <em>end</em>,
+    linearly increasing values for <em>knot</em>  (i.e. [0,1,2,3,4,5,6,7...]) and uniform <em>weights</em> 
+    (i.e. [1,1,1,1,1...]).
+
+</font></P>
+      <P><FONT face=arial,helvetica,sans-serif>            
+
+	<FONT color=#0000a0 face="arial,helvetica,sans-serif"><strong>Option flags:</strong></FONT></P><p>
+	<table BORDER =1 WIDTH="500">
+	<TR>
+		<TD height=21 width=50>0001</TD>
+		<TD height=21 width=390>Weights are specified</TD>
+		</TR>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0002</td>
+		<td WIDTH=390 HEIGHT=21>Knots are specified</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0004</td>
+		<td WIDTH=390 HEIGHT=21>Start is specified</td>
+		</tr>
+	<tr>
+		<td WIDTH=50 HEIGHT=21>0008</td>
+		<td WIDTH=390 HEIGHT=21>End is specified</td>
+		</tr>
+	</table>
+	<p></FONT>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

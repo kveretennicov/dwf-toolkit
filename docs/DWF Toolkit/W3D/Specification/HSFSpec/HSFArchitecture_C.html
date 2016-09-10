@@ -1,0 +1,246 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="keywords" content="Tech Soft America Hoops3D Hoops 3D Graphics System">
+   <meta name="copyright" content="Copyright 1998 Tech Soft America">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (WinNT; U) [Netscape]">
+   <title>HOOPS/MFC Programming Guide</title>
+<link rel="stylesheet" href="../tsa_docs.css">
+</head>
+<body bgcolor="#FFFFFF">
+<center>
+  <div align="left">
+  <h2><b><a href="#file organization">1. File Organization&nbsp;</a></b> </h2>
+	<blockquote> 
+	  <h3><a href="#file id header">1.1 File Identification Header<br>
+	    </a> <a href="#file data block">1.2 File Data Block<br>
+	    </a> <a href="#binary">1.3 Binary Data Format<br>
+	    </a> <a href="#file termination">1.4 File Termination Trailer</a> <br>
+	    <a href="#dictionary">1.5 File Dictionary<br>
+	    </a> </h3>
+	</blockquote>
+	<h2><b><a href="#stream compression">2. Stream Compression</a></b> </h2>
+      </div>
+  <h2 align="left"><b><a href="#object tagging">3. Object Tagging</a></b> </h2>
+  <h2 align="left"><b><a href="#file information opcode">4. File Information Opcode</a></b> 
+      </h2>
+      <p align="left"> 
+
+
+  <hr align="left" WIDTH="100%">
+  <h2 align="left"><a NAME="file organization"></a><b>1. File Organization</b> 
+      </h2>
+      <h5 align="left"><i>.hsf</i>&nbsp; files are organized into four main sections 
+	as shown in figure 1: </h5>
+      <div align="left"> 
+	<ul>
+	  <li>
+	    <h5> File identification header - <b>export is required</b>&nbsp;</h5>
+	  </li>
+	  <li>
+	    <h5> File data block&nbsp;</h5>
+	  </li>
+	  <li>
+	    <h5> File termination trailer -<b> export is required</b></h5>
+	  </li>
+	</ul>
+      </div>
+      <p align="center"><br>
+	<img src="file_arch.gif" NOSAVE height=236 width=196> 
+      <h6 align="center">Figure 1. HSF file organization </h6>
+      <h3 align="left"><br>
+	<a NAME="file id header"></a><b>1.1 File Identification Header&nbsp;</b> </h3>
+      <h5 align="left">An .hsf file must contain a file identification header at the 
+	beginning of the file.&nbsp; The file header has two basic functions: </h5>
+      <div align="left"> 
+	<ul>
+	  <li>
+	    <h5> To allow for proper identification of <i>.hsf</i> files by human 
+	      or machine.&nbsp;</h5>
+	  </li>
+	  <li>
+	    <h5> To identify which version of the HSF specification was used to encode 
+	      the file.</h5>
+	  </li>
+	</ul>
+	<h5> The header is a <a href=opcodes/TKE_Comment.html>TKE_Comment</a> opcode with specific contents; for example, 
+	  "HSF V5.01". The first 5 bytes are the constant "HSF V" which identify this 
+	  as an .<i>hsf</i> file. Note that these are in upper case.&nbsp; This constant 
+	  is followed by a version number consisting of:&nbsp; </h5>
+      </div>
+      <h5 align="left">1.&nbsp; one or <i>more</i> digits describing the major version 
+	<br>
+	2.&nbsp; a decimal point <br>
+	3.&nbsp; 2 digits describing the minor version </h5>
+      <h5 align="left">Readers can simply try to interpret the revision number as 
+	a floating point value. Figure 2 gives an example of the <a href=opcodes/TKE_Comment.html>TKE_Comment</a> contents 
+	for a file encoded with HSF specification version 5.01 <br>
+	&nbsp; <br>
+	&nbsp; </h5>
+      <div align="left"> 
+	<table WIDTH="500" BORDER align="center" CELLPADDING=9 BORDERCOLOR="#000000" >
+	  <tr> 
+	    <td VALIGN=TOP WIDTH="50" BGCOLOR="#0099FF">Byte</td>
+	    <td VALIGN=TOP WIDTH="50">0</td>
+	    <td VALIGN=TOP WIDTH="50">1</td>
+	    <td VALIGN=TOP WIDTH="50">2</td>
+	    <td VALIGN=TOP WIDTH="50">3</td>
+	    <td VALIGN=TOP WIDTH="50">4</td>
+	    <td VALIGN=TOP WIDTH="50">5</td>
+	    <td VALIGN=TOP WIDTH="50">6</td>
+	    <td VALIGN=TOP WIDTH="50">7</td>
+	    <td VALIGN=TOP WIDTH="50">8</td>
+	  </tr>
+	  <tr> 
+	    <td VALIGN=TOP WIDTH="50" BGCOLOR="#0099FF">Character</td>
+	    <td VALIGN=TOP WIDTH="50">H</td>
+	    <td VALIGN=TOP WIDTH="50">S</td>
+	    <td VALIGN=TOP WIDTH="50">F</td>
+	    <td VALIGN=TOP WIDTH="50">(space)&nbsp;</td>
+	    <td VALIGN=TOP WIDTH="50">V</td>
+	    <td VALIGN=TOP WIDTH="50">5</td>
+	    <td VALIGN=TOP WIDTH="50">.</td>
+	    <td VALIGN=TOP WIDTH="50">0</td>
+	    <td VALIGN=TOP WIDTH="50">1</td>
+	  </tr>
+	</table>
+      </div>
+      <div align="center"></div>
+      <div align="center"></div>
+      <h6 align="center"> <a NAME="Tabl3a"></a>Figure 2. File header </h6>
+      <h5 align="left">The application generating an .hsf&nbsp; file must specify 
+	the revision number that reflects the version of the HSF specification used 
+	to encode the file.&nbsp; (If the HOOPS/Stream Toolkit is used to export the 
+	file, the version information will automatically be exported.) </h5>
+      <h5 align="left">A reader application should not attempt to read a file with 
+	a higher revision value than what it was designed for, since there is no completely 
+	reliable way to do so.&nbsp;&nbsp; </h5>
+      <h5 align="left">Refer to the <a href="opcodes/File_Version.html">File Version 
+	Information</a> in the opcode definition documentation to determine what version 
+	information should be exported. <br>
+	&nbsp; </h5>
+      <h5 align="left">Optionally, the <a href=opcodes/TKE_File_Info.html>TKE_File_Info</a>
+	opcode may also be exported in 
+	the File Identification Header section. This will help the reader applications 
+	in knowing the flags used while generating the .hsf. HOOPS/Stream Toolkit 
+	automatically exports this information. &nbsp; <br>
+	&nbsp; </h5>
+      <h3 align="left"><a NAME="file data block"></a><b>1.2 File Data Block</b> </h3>
+      <h5 align="left">Data in the file data block is delimited by operation codes 
+	(opcodes) and argument data used by the opcodes (operands) as in Figure 3: 
+	<br>
+	&nbsp; </h5>
+      <div align="left"> 
+	<table WIDTH="480" BORDER align="center" CELLPADDING=9 BORDERCOLOR="#000000" >
+	  <tr> 
+	    <td VALIGN=TOP WIDTH="80">&lt;opcode></td>
+	    <td VALIGN=TOP WIDTH="80">&lt;operand></td>
+	    <td VALIGN=TOP WIDTH="80">&lt;opcode></td>
+	    <td VALIGN=TOP WIDTH="80">&lt;operand></td>
+	    <td VALIGN=TOP WIDTH="80">&lt;opcode></td>
+	    <td VALIGN=TOP WIDTH="80">&lt;operand></td>
+	  </tr>
+	</table>
+      </div>
+      <h6 align="center"><a NAME="Tabl5"></a>Figure 3. Opcode/operand pairs </h6>
+      <h5 align="left">All HSF opcode-operand pairs are in coded binary form. An application 
+	reading an <i>.hsf</i> file must be able to recongnize and read through all 
+	opcode-operand pairs, even if it is not interested in the particular data 
+	for a subset of opcodes.&nbsp; If an opcode is unrecognized by a HSF reading 
+	application, the rest of the file cannot be read. <br>
+	&nbsp; </h5>
+      <h3 align="left"><a NAME="binary"></a><b>1.3 Binary Data Format</b> </h3>
+      <h5 align="left">The binary data is stored in little-endian format. On systems 
+	with big-endian processors, such as Sun, and Hewlett Packard-based systems, 
+	byte swapping must be performed before writing or reading the .hsf file. </h5>
+      <h5 align="left">Floating point numbers are stored as 4 bytes, using IEEE single-precision 
+	format. <br>
+	&nbsp; </h5>
+      <h3 align="left"><a NAME="file termination"></a><b>1.4 File Termination Trailer</b> 
+      </h3>
+      <h5 align="left">An HSF file is terminated with a 
+	<a href=opcodes/TKE_Termination.html>TKE_Termination</a> opcode which 
+	indicates the end of the HSF data file. This termination opcode is required. 
+	<br>
+	&nbsp; </h5>
+      <h3 align="left"><a NAME="dictionary"></a><b>1.5 File Dictionary</b></h3>
+      <h5 align="left"><a href=opcodes/TKE_Dictionary.html>TKE_Dictionary</a> is an optional opcode that can be exported. 
+	A .hsf file dictionary is a lookup table, providing the file offsets, bounding 
+	information etc. to specified items and their variations. With this information 
+	available, a reader application could randomly access .hsf file to implement 
+	on-demand or view-dependent streaming. <br>
+      </h5>
+      <p align="center"><br>
+	<img src="file_arch_dict.gif" NOSAVE height=300 width=225> 
+      <h5 align="center">Figure 4. HSF file organization with Dictionary </h5>
+      <h5 align="left"> The dictionary must be written out just prior to the 
+      <a href=opcodes/TKE_Termination.html>TKE_Termination</a> 
+	opcode. Also, the last 4 bytes of the dictionary opcode should indicate the 
+	file offset where the dictionary opcode begins. This is provided for the reader 
+	application to be able to access the dictionary location and read it directly.<br>
+	<br>
+	For a more detailed information on exact format of this opcode, please refer 
+	to <a href="opcodes/TKE_Dictionary.html">TKE_Dictionary</a> Opcode. HOOPS/Stream 
+	Toolkit exports the dictionary opcode if <i>TK_Generate_Dictionary</i> flag 
+	is set. </h5>
+  <div align="left">&nbsp; </div>
+  <h2 align="left"><a NAME="stream compression"></a><b>2. Stream Compression</b> </h2>
+      <h5 align="left">Individual opcodes may define their own methods for compressing 
+	their data.&nbsp; However, HSF also supports general stream compression of 
+	one or more objects.&nbsp; HSF uses the freeware <b>zlib</b> compression library, 
+	available at <a href="http://www.gzip.org/zlib/">http://www.gzip.org/zlib/</a>&nbsp;&nbsp; 
+	The <b>zlib</b> library provides for piecemeal compression and decompression 
+	of the data.&nbsp; It also will indicate where it left off during decompression, 
+	so that reading of uncompressed data can be resumed.&nbsp; </h5>
+      <h5 align="left">The <a href=opcodes/TKE_Start_Compression.html>TKE_Start_Compression</a> opcode, 
+	'Z',&nbsp; indicates that 
+	data immediately following is <b>zlib</b> compressed.&nbsp; The last piece 
+	of data within the compressed stream must be the 
+	<a href=opcodes/TKE_Stop_Compression.html>TKE_Stop_Compression</a> opcode, 
+	'z', and uncompressed data follows. </h5>
+      <h5 align="left">Logically, a stream of data like this (without compression): 
+      </h5>
+      <h5 align="left"><blockquote>ooooooooooZooooooooooooooooooooooooozoooooooooooo</blockquote>  
+      </h5>
+      <h5 align="left">might look something like this once compression is applied 
+	to the appropriate section: </h5>
+      <h5 align="left"><blockquote>ooooooooooZxxxxxxoooooooooooo</blockquote>  
+      </h5>
+      <h5 align="left">where the 'xxxx' section indicates compressed data. </h5>
+      <h5 align="left">More specifically, let's say we have the following chunk of 
+	data that we want to compress: </h5>
+      <h5 align="left"><blockquote>oooo</blockquote>  </h5>
+      <h5 align="left">We would write the 
+	<a href=opcodes/TKE_Start_Compression.html>TKE_Start_Compression</a> opcode, 'Z', to the 
+	file, and then pass 'ooooz' to zlib, where the 'z' denotes the 
+	<a href=opcodes/TKE_Stop_Compression.html>TKE_Stop_Compression</a>
+	opcode. (This must be included at the end of the compressed stream that is 
+	sent to zlib).&nbsp; If zlib returns 'xx' to represent the resulting compressed 
+	data, then we would write the following to the file: </h5>
+      <h5 align="left"><blockquote>Zxx</blockquote> </h5>
+  <h2 align="left"><a NAME="object tagging"></a><b>3. Object Tagging</b> </h2>
+      <h5 align="left">Some objects require the ability to re-accessed after they 
+	are first encountered, such as reopening a segment to add more geometry, or 
+	adding a level-of-detail representation of a previous shell. This is done 
+	by tagging the object, which marks the object as 'interesting'. </h5>
+      <h5 align="left">After an object is written, a Tag opcode, 'q', is written to 
+	the stream and the next sequential index (zero-based) should be associated 
+	with the object by the HSF writing application.&nbsp; Any later objects than 
+	need to refer to the object then use the index. </h5>
+      <h5 align="left">When a tag is read from the stream, an index (again zero-based) 
+	should be assigned to the preceeding object by the HSF reading application, 
+	and any later objects that are associated with that index can find the matching 
+	item. </h5><br>
+  <h2 align="left"><a NAME="file information opcode"></a><b>4. File Information Opcode</b> </h2>
+      <h5 align="left">An .hsf file can optionally contain the 
+	<a href=opcodes/TKE_File_Info.html>TKE_File_Info</a> opcode, 
+	which is meant to store information about how the file was written.&nbsp; 
+	If the TK_Generate_Dictionary bit (0x400) is set in the contents of the 
+	<a href=opcodes/TKE_File_Info.html>TKE_File_Info</a> opcode , then the file must contain a 
+	<a href=opcodes/TKE_Dictionary.html>TKE_Dictionary </a> opcode.&nbsp; </h5>
+  <hr width="100%">
+</center>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+This sample tells users the steps and necessary resources to create a 2D package. If users want to write their own 2D graphics but not copy an existing one, they shall create w2d file by themselves like in sample W2DTest.

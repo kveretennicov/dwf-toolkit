@@ -1,0 +1,77 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Define Drawing Background - DEPRECATED</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Drawing Background - DEPRECATED</font></i></b>
+<center>
+<p>
+<hr></center>
+
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>The <b>Define Drawing Background</b> function specifies how the WHIP! data
+reading application should render the background behind the geometric primitives
+to be drawn.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="772" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="37%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>(Background</font></font></td>
+
+<td VALIGN=TOP WIDTH="37%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>R</sub>>,&lt;I<sub>G</sub>>,&lt;I<sub>B</sub>>,&lt;I<sub>A</sub>>[&lt;ws>])</font></font></b>
+<p><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>I</sub>>[&lt;ws>])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>The background
+color for the drawing.</font></font>
+<p><font face="Arial"><font size=-2>The background color index for the
+drawing.</font></font></td>
+</tr>
+</table></center>
+
+<dir><i>R, G, B, A</i> Defines a color by the red, green, blue, and alpha
+intensity components
+<p><i>I</i> Defines a color by an index into the current color map</dir>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>Before a WHIP! data reading application starts drawing geometric primitives
+to the viewing window, the window should normally be cleared. The Define
+Background operation specifies the color to which the viewing window is
+cleared before drawing begins.
+<p>The legal range for the intensity integers is from 0, indicating zero
+intensity, to 255, indicating full intensity. In some cases, it may be
+desired to overlay a WHIP! data image on top of an already existing screen image.
+Consequently, clearing the background is <i>not</i> desired. A zero intensity
+alpha indicates that the background color is totally transparent, and the
+window is not cleared. A full intensity alpha (255) indicates that the
+background color is completely opaque, and the color fully overwrites (clears)
+its background. Alpha values between 0 and 255 indicate that, when the
+background is drawn, it is blended to a varying degree with the background
+image.</dir>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<dir>WHIP! data should contain a maximum of one occurrence of the
+background opcode, which by convention should be nested inside a <b><a href="DefDwgInfoBlk.html">Define
+Drawing Information Block</a></b> opcode.</dir>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<dir>By default the drawing background is fully transparent:
+<dir><font face="Courier New"><font size=-1>(Background 0,0,0,0)</font></font></dir>
+</dir>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

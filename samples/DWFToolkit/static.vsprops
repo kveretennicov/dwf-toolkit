@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="static"
+	InheritedPropertySheets="..\Configure.vsprops;..\$(DebugOrRelease).vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="DWFCORE_STATIC;DWFTK_STATIC"
+	/>
+</VisualStudioPropertySheet>

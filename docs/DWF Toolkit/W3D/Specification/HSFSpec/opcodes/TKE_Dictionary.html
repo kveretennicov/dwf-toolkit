@@ -1,0 +1,125 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+ 
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_Dictionary</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>D</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>44</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>68</TD></TR></TABLE></H3>
+      <P> </P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+        <STRONG>Byte</STRONG> format<br>
+        <STRONG>[</STRONG><STRONG>Word</STRONG> pause_count<STRONG>]</STRONG>,<br>
+        <STRONG>[(</STRONG><EM>pause_count</EM><STRONG>)xLong</STRONG> pause_offsets<STRONG>]</STRONG><br>
+        <STRONG>Long</STRONG> count,<br>
+        <STRONG>(</STRONG><EM>count</EM><STRONG>)x{</strong><br>
+        &nbsp;&nbsp;<strong>Long</STRONG> index,<br>
+        &nbsp;&nbsp;<STRONG>Byte</STRONG> presence,<br>
+        &nbsp;&nbsp;<STRONG>(</STRONG>number of bits set in <EM>presence</EM><STRONG>)xLong</STRONG> item_offset,<br>
+        &nbsp;&nbsp;<STRONG>[Byte</STRONG> item_options<STRONG>]</STRONG>,<br>
+        &nbsp;&nbsp;<STRONG>[Point</STRONG> bounds_min, <STRONG>Point</STRONG> bounds_max<STRONG>]</STRONG>
+        <br><STRONG>}</STRONG><br>
+        <STRONG>[Long</STRONG> first_pause_offset<STRONG>]</STRONG><br>
+        <STRONG>Long</STRONG> dictionary_offset
+        </FONT></P>
+
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+    <TD height=21 width=131>format</TD>
+    <TD height=21 width=390>indicates type of dictionary, currently supported values are 0, 1, and 2.</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>pause_count</TD>
+    <TD height=21 width=390>number of entries in pause offset table, present if format is 2.</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>pause_offsets</TD>
+    <TD height=21 width=390>file offsets of all recorded pause opcodes, present if format is 2.</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>count</TD>
+    <TD height=21 width=390>number of index-value sets</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>index</TD>
+    <TD height=21 width=390>index associated with an object and the corresponding offsets</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>presence</TD>
+    <TD height=21 width=390>bitmask indicating which variations of an object have recorded offsets,
+							low bit represents the full objects, successive bits for
+							increasingly reduced detail versions.</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>item_offset</TD>
+    <TD height=21 width=390>file offset for a specific variation of an object, one per bit in <em>presence</em></TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>item_options</TD>
+    <TD height=21 width=390>flags indicating any additional enties for this item, present if format is 1 or greater.</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>bounds_min</TD>
+    <TD height=21 width=390>minimum corner of the bounding volume of this item,
+							present if the low bit set in <em>item_options</em></TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>bounds_max</TD>
+    <TD height=21 width=390>maximum corner of the bounding volume of this item,
+							present if the low bit set in <em>item_options</em></TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>first_pause_offset</TD>
+    <TD height=21 width=390>file offset of a single recorded pause (0 if none recorded), present if format is 1</TD>
+	</TR>
+<TR>
+    <TD height=21 width=131>dictionary_offset</TD>
+    <TD height=21 width=390>file offset of the start of the dictionary</TD>
+	</TR>
+</table>
+ <P> </P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+<font face="arial,helvetica,sans-serif">
+A <em>dictionary</em> is a lookup table, providing the file offsets to specified items and their variations.<p>
+An application might, for instance, only read the first part of an appropriated created HSF file to get the basic
+layout and coarse representations of the scene (low level of detail representations).  It could then use the
+dictionary to locate and read specific items to "sweeten" them on demand.<p>
+The dictionary will commonly be placed at the end of the file, so that by stepping back from the end the location
+of the dictionary can be found.
+	  
+
+
+</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

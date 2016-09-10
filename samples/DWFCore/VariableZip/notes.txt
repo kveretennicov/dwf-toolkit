@@ -1,0 +1,1 @@
+This sample shows how create and read a zip file. The compression method can be changed while adding different files into zip package.

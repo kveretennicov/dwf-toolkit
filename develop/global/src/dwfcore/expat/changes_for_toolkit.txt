@@ -1,0 +1,19 @@
+4/18/2006 Basu Chaudhuri:
+
+The function checkCharRefNumber(int result) was modified to transcode badly encoded data, instead of returning an error code. The badly encoded files were generated in an older version of the toolkit, and had missing data.
+
+The modification allows the loading of the file to continue. The erroneous unicode is replaced with a Basic Latin question mark.
+
+For this to work, in the toolkit expat is compiled with _DWFTK_TRANSCODE_ERRONEOUS_SURROGATE_PAIR defined in Toolkit.h.
+
+
+
+4/19/2006 Basu Chaudhuri
+
+The macro       _DWFTK_TRANSCODE_ERRONEOUS_SURROGATE_PAIR
+was changed to  _DWFTK_TRANSCODE_ERRONEOUS_SURROGATE.
+
+Also it was removed from Toolkit.h and directly declared in xmltoc.h
+
+
+

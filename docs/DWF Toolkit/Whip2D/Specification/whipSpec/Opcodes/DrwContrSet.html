@@ -1,0 +1,101 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Polyline/Polygon</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw Contour Set</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Draw Contour Set</b> function draws a set of complex polygonal
+shaded regions.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="50%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="17%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="21%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="36%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="21%"><font face="Courier New"><font size=-2>(Contour</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%"><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>CS-count</sub>>[&lt;ws>&lt;I<sub>P-counti</sub>>]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2><sup>+</sup>&lt;ws>&lt;I<sub>xl</sub>>,&lt;I<sub>yl</sub>>[&lt;ws>&lt;I<sub>xj</sub>>,&lt;I<sub>yj</sub>>]<sup>+</sup>)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="36%"><font face="Arial"><font size=-2>Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="17%"><font face="Arial"><font size=-2>Single-byte,
+binary operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="21%"><font face="Courier New"><font size=-2>[k] (6B)</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%"><b><font face="Courier New"><font size=-2>&lt;B<sub>CS-count</sub>>[&lt;US<sub>CS-Ecount</sub>>][&lt;B<sub>P-counti</sub>>[US<sub>P-Ecounti</sub>>]]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2><sup>+</sup>&lt;L<sub>x1</sub>>&lt;L<sub>y1</sub>>[&lt;L<sub>xj</sub>>&lt;L<sub>yj</sub>>]<sup>+</sup></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="36%"><font face="Arial"><font size=-2>Relative coordinates,
+32 bit.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font size=-2><font face="Courier New">[</font><font face="Arial">Ctrl-</font><font face="Courier New">k](0B)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;B<sub>CS-count</sub>>[&lt;US<sub>CS-Ecount</sub>>][&lt;B<sub>P-counti</sub>>[US<sub>P-Ecounti</sub>>]]\</font></font></b>
+<br><b><font face="Courier New"><font size=-2><sup>+</sup>&lt;S<sub>x1</sub>>&lt;S<sub>y1</sub>>[&lt;S<sub>xj</sub>>&lt;S<sub>yj</sub>>]<sup>+</sup></font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Relative coordinates, 16-bit.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>CS-count</i>&nbsp;&nbsp; This is the number of contours in the contour
+set and it must be greater than zero. However, in the binary operand form,
+a value of zero for <i>CS-count</i> indicates that an extended count (<i>CS-Ecount</i>)
+will follow (as an unsigned short).
+<p><i>CS-Ecount&nbsp;&nbsp; </i>When <i>CS-count</i> is zero, a 2-byte
+extended count follows allowing for values from 256 through 65,791 which
+are encoded as an integer (0 to 65,535).</ul>
+
+<dir><i>P-count<sub>i</sub>&nbsp;&nbsp; </i>The number of points in the
+<i>i</i><sup>th</sup>
+contour. Must be 2 or greater. In the binary operand form, a value of zero
+for <i>P-count</i> indicates that an extended count (<i>P-Ecount</i>) will
+follow
+<p><i>P-Ecount&nbsp;&nbsp; </i>When <i>P-count</i> is zero, a 2-byte extended
+count follows allowing for values from 256 through 65,791 which are encoded
+as an integer (0 to 65,535).
+<p><i>X<sub>1</sub>,Y<sub>1</sub></i>&nbsp;&nbsp; The first point (in logical
+coordinates) in the first contour.
+<p>X<sub>j</sub>,Y<sub>j</sub>&nbsp;&nbsp; The <i>j</i><sup>th</sup> point
+(in logical coordinates) in the <i>n</i><sup>th</sup> contour.</dir>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>Figure 1 shows a contour set example, representing the letter "A",
+that could be used for transmitting text. In the figure, CS-count=2, 
+P-count<sub>1</sub>=8 and P-count<sub>2</sub>=3.  Negative spaces, such as the
+"hole" in the top of the letter "A" below, should be specified by counter-clockwise 
+wound points.  Whereas the positive (filled) regions should be specified by clockwise 
+wound points.
+<a NAME="Fig20"></a></ul>
+
+<center><img SRC="Image71.png">
+<p><i><font face="Arial,Helvetica">Figure 1. Contour set</font></i></center>
+
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

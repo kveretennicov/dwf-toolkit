@@ -1,0 +1,83 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Define Trusted Font List - DEPRECATED</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Define Trusted Font List - DEPRECATED</font></i></b>
+<br>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir><b>Define Trusted Font List</b> is a wrapper-extended ASCII opcode
+intended to list all "trusted" non-standard fonts. In WHIP! version 0.55, 
+WHIP! data creators were given the flexibility of embedding subsetted
+information on fonts used in the current WHIP! data document or on the target
+system,&nbsp; assuming the presence of certain fonts — "trusted fonts."&nbsp;
+WHIP! data creators can use the <b><a href="DefWT_Embedded_Font.html">Define Embedded Font</a></b>
+opcode for embedding subsetted information on certain fonts that they wish
+to embed; and, they can use the <b>Define Trusted Font List</b> opcode for 
+other fonts that they specify to be "trusted" as present in the target system.
+<br>&nbsp;</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="654" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>(NonStdFontList</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font face="Courier New"><font size=-2>&lt;'fontname0''fontname1''fontname2'......
+)</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Fontname0</i>
+<br><i>Fontname1, 2, ...</i></ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<dir>True type text is currently handled in WHIP! data by putting
+the name of the font into the file along with text position, size and the
+text string. If the user viewing the WHIP! data doesn't have the same
+font used by the creator of the WHIP! data, unpredictable output could
+be the result. In order to make WHIP! data truly "plot ready," that
+is, to display and plot text with the intended font, it is necessary to
+embed information about the non-standard (standard fonts are the fonts
+which are installed by either Autocad or Windows) fonts in WHIP! data.
+Non-standard fonts are categorized into fonts that are "trusted" to be
+present on the target system (non-standard-non-embedded font) and fonts
+whose information is captured in WHIP! data either by embedding or
+by tessellation.
+<p>Sample:
+<dir>
+<pre><tt>(NonStdFontList ‘Aabced’ ‘AaronBold’ ‘Abadi MT Condensed Light’)</tt></pre>
+The sample opcode assumes the presence of the mentioned 3 nonstandard fonts
+to be present in the target system.
+<br><tt></tt>&nbsp;</dir>
+</dir>
+<font face="Arial Black"><font size=-1>See Also</font></font>
+<dir>For more information, see <b>Blockref</b>, <a href="BlockRef.html#EmbddFntBlkRef">Embedded
+Font</a> and <b><a href="DefWT_Embedded_Font.html">Embedded Font</a></b>.</dir>
+
+<p><br>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

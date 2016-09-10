@@ -1,0 +1,1 @@
+Users can learn how to publish a simple 2D DWFx package by this sample.

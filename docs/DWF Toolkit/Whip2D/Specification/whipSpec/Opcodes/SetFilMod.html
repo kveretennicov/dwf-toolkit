@@ -1,0 +1,114 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+   <title>Fill Mode</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Set Fill Mode</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Set Fill Mode</b> function changes the way subsequent drawing
+operations are rendered, either by coloring in the interiors of regions
+or by rendering only the outline of regions.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="585" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="22%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="21%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="31%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="22%"><font face="Arial"><font size=-2>Single-byte,
+readable operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="21%"><font face="Courier New"><font size=-2>[F] (46)</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%"><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td VALIGN=TOP WIDTH="31%"><font face="Arial"><font size=-2>Turn Fill Mode
+ON.</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>[f] (66)</font></font></td>
+
+<td><b><i><font face="Courier New"><font size=-2>None</font></font></i></b></td>
+
+<td><font face="Arial"><font size=-2>Turn Fill Mode OFF.</font></font></td>
+</tr>
+</table></center>
+
+<p><font face="Arial Black"><font size=-1>Description</font></font>
+<ul>Certain drawing opcodes (such as <b><a href="DrwPlylnPlygon.html">Draw
+Polyline/Polygon</a></b>, <b><a href="DrwCircArcWdg.html">Draw Circle/Circular
+Arc/Circular Wedge</a></b>, and <b><a href="DrwElpsArcWdg.html">Draw Ellipse/Elliptical
+Arc/Elliptical Wedge</a></b>) define 2D regions. The "Set Fill Mode" attribute
+changes the way these regions are rendered. With Fill mode activated, the
+interiors of subsequent regions are rendered in the current color. With
+"Fill Mode" inactive, the outlining edges of subsequent regions are rendered
+using the polyline attributes.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>When filling self-intersecting regions, the WHIP! data reading application
+should follow the even-odd rule as shown in figure 1.<a NAME="Fig18"></a></ul>
+
+<center><img SRC="Image68.gif" height=396 width=428>
+<p><i><font face="Arial,Helvetica">Figure 1. The even-odd rule applied
+to regions</font></i></center>
+
+<ul>Using the even-odd rule an infinitely long horizontal ray is passed
+through the object (from left to right) and the number of intersections
+made with region edges is counted. For regions where the edge intersection
+count is an odd number, the region is colored. Even edge counts indicate
+regions that are not rendered.
+<p>It is not possible to render both the interior of a region, and a visibly
+different edge of the region in the same drawing operation. To accomplish
+this effect, a series of drawing and attribute opcodes must be used. For
+example, to draw a red triangle with a black outlining edge, you can use
+the following WHIP! data codes:
+<ul><font face="Courier New"><font size=-1>(Color 255,0,0,255) </font></font>Set
+the color to red
+<br>Turn on Fill mode
+<ul>
+<pre><font face="Courier New">F</font></pre>
+</ul>
+Draw a triangle
+<ul>
+<pre><font face="Courier New">P 3 0,0 10,0 5,5</font></pre>
+</ul>
+Set the color to black
+<ul>
+<pre><font face="Courier New">(Color 0,0,0,255)</font></pre>
+</ul>
+Turn off Fill mode
+<ul>
+<pre><font face="Courier New">f</font></pre>
+</ul>
+Four points specifies three line segments
+<ul>
+<pre><font face="Courier New">P 4 0,0 10,0 5,5 0,0</font></pre>
+</ul>
+</ul>
+</ul>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<ul>By default the "Fill Mode" attribute is off, which is the equivalent
+of executing the following opcode:
+<ul><font face="Courier New"><font size=-1>f</font></font></ul>
+</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

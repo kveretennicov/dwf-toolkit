@@ -1,0 +1,220 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Richard Weiss">
+   <title>Directory - DEPRECATED</title>
+
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Directory - DEPRECATED</font></i></b>
+<p>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<dir>In WHIP! version 0.55, it was possible to
+store WHIP! data as blocks. In WHIP! data that has block structure,
+the <b>Directory</b> opcode serves as a directory of blocks contained in
+WHIP! data. The <b>Directory</b> opcode contains a list of serialized
+block-reference opcodes enabling quick and easy access to WHIP! data blocks.</dir>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<center><table BORDER CELLPADDING=9 WIDTH="654" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Arial"><font size=-2>Extended
+ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="18%" HEIGHT="26"><font face="Courier New"><font size=-2>(Directory</font></font></td>
+
+<td VALIGN=TOP WIDTH="26%" HEIGHT="26"><b><font size=-2><font face="Courier New">&lt;L</font><sub><font face="Courier New,Courier">total_number_of_blocks</font></sub><font face="Courier New">>(&lt;BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)\</font></font></b>
+<br><b><font size=-2><font face="Courier New">(&lt;BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)&lt;more
+blockrefs>\</font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">directory_beginning_file_offset</font></sub><font face="Courier New">>)\</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="38%" HEIGHT="26"><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial"><font size=-2>Extended Binary</font></font></td>
+
+<td><font face="Courier New"><font size=-2>0x0160</font></font></td>
+
+<td><b><font size=-2><font face="Courier New">&lt;L</font><sub><font face="Courier New,Courier">total_number_of_blocks</font></sub><font face="Courier New">>(&lt;BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)</font></font></b>
+<br><b><font size=-2><font face="Courier New">(&lt;BlockRef</font><sub><font face="Courier New,Courier">blockref</font></sub><font face="Courier New">>)&lt;more
+blockrefs></font></font></b>
+<br><b><font size=-2><font face="Courier New">&lt;UL</font><sub><font face="Courier New,Courier">directory_beginning_file_offset</font></sub><font face="Courier New">>)+}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>-</font></font></td>
+</tr>
+</table></center>
+
+<blockquote><i>Total Number of blocks&nbsp;&nbsp;</i> Represents the number
+of blockref items that the directory holds.</blockquote>
+
+<blockquote><i>Blockrefs</i>&nbsp; List of serialized <b><a href="BlockRef.html">BlockRef</a></b>
+opcodes. There will be as many <b>BlockRef</b> opcode instances serialized
+as there are number of blocks present in WHIP! data.</blockquote>
+
+<blockquote><i>File_offset</i>&nbsp; The beginning data offset of the <b>Directory</b>
+opcode. 
+
+<p><br><font face="Arial Black"><font size=-1>Notes</font></font>
+<blockquote>Using the <b>Directory</b> opcode, applications can readily
+access WHIP! data blocks by jumping to and reading WHIP! data blocks using the file
+offset and block size information maintained as part of <b>Directory,</b>
+and they can subsequently edit and update block attributes — <b><a href="BlockRef.html">Blockrefs</a></b>.
+Additionally, parent applications can also add new WHIP! data blocks at the
+end by over-writing the directory and re-writing the updated directory
+information at the end again.
+<p><b>Note:</b> There can be only one instance of the <b>Directory</b>
+opcode serialized in any WHIP! data. The <b>Directory</b> opcode is
+always serialized in uncompressed format in order to enable <b>BlockRef</b>
+opcode edits.
+<br>&nbsp;</blockquote>
+<font face="Arial Black"><font size=-1>Examples</font></font>
+<dir><b>Example 1</b>
+<br>&nbsp;
+<dir><tt>(Directory 1</tt>
+<br><tt>(BlockRef 'Null' 00000000012 00000604213 1 1 ) 604225)</tt></dir>
+
+<p><br>The above sample directory demonstrates the case where there is
+only one block in the WHIP! data.
+<p><a NAME="Tbl1DirX"></a>
+<center><i><font face="Arial,Helvetica">Table 1. Directory example values
+and fields</font></i></center>
+
+<center><table BORDER CELLPADDING=6 WIDTH="44%" >
+<tr>
+<td WIDTH="50%" HEIGHT="64" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Values</font></font></font></b></td>
+
+<td WIDTH="50%" HEIGHT="64%" BGCOLOR="#000099"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=-1>Fields</font></font></font></b></td>
+</tr>
+
+<tr>
+<td><font face="Arial,Helvetica"><font size=-1>‘Null’&nbsp;</font></font></td>
+
+<td><font face="Arial,Helvetica"><font size=-1>Blockref format of the one
+and only block contained in the WHIP! data.</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial,Helvetica"><font size=-1>12</font></font></td>
+
+<td><font face="Arial,Helvetica"><font size=-1>Beginning file offset of
+the first and only block.</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial,Helvetica"><font size=-1>6042313</font></font></td>
+
+<td><font face="Arial,Helvetica"><font size=-1>Null block length in bytes</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial,Helvetica"><font size=-1>1</font></font></td>
+
+<td><font face="Arial,Helvetica"><font size=-1>Null block’s Block validity</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial,Helvetica"><font size=-1>1</font></font></td>
+
+<td><font face="Arial,Helvetica"><font size=-1>Null block’s visibility
+flag</font></font></td>
+</tr>
+
+<tr>
+<td><font face="Arial,Helvetica"><font size=-1>604225</font></font></td>
+
+<td><font face="Arial,Helvetica"><font size=-1>Beginning file offset of
+the directory information.</font></font></td>
+</tr>
+</table></center>
+
+<p><b>Example 2</b>
+<br>&nbsp;
+<dir><tt>(Directory 00000000005</tt>
+<br><tt>(BlockRef 'Thumbnail' 00000001042 00000005166</tt>
+<br><tt>&nbsp;&nbsp; (Guid 4034564648 47116 20327</tt>
+<br><tt>&nbsp;9D5CB332EF905251 )</tt>
+<br><tt>&nbsp;&nbsp; (Time 00993754886 00000000000)</tt>
+<br><tt>&nbsp;&nbsp; (Time 00993754886 00000000000)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1</tt>
+<br><tt>&nbsp;&nbsp; (Guid 3106285833 18307 18612</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A7D73D9646C3C714 ) 00000000000
+00000000170 00000000219 00000000256</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((00000000001
+00000000000 00000000000 00000000000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000
+00000000001 00000000000 00000000000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000
+00000000000 00000000001 00000000000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(00000000000 00000000000 00000000000 00000000001)) )</tt>
+<br><tt>(BlockRef 'Graphics' 00000006208 00000001628</tt>
+<br><tt>&nbsp;&nbsp; (Guid 3106285833 18307 18612</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A7D73D9646C3C714 )</tt>
+<br><tt>&nbsp;&nbsp; (Time 00993754886 00000000000)</tt>
+<br><tt>&nbsp;&nbsp; (Time 00993754886 00000000000) 1 )</tt>
+<br><tt>(BlockRef 'Preview' 00000007836 00000009601</tt>
+<br><tt>&nbsp;&nbsp; (Guid 1910297973 33267 17182</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 93C07773644F3B8C )</tt>
+<br><tt>&nbsp;&nbsp; (Time 00993754886 00000000000)</tt>
+<br><tt>&nbsp;&nbsp; (Time 00993754886 00000000000)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1</tt>
+<br><tt>&nbsp;&nbsp; (Guid 3106285833 18307 18612</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A7D73D9646C3C714 ) 00000000000
+00000000438 00000000566 00000000256</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((00000000001
+00000000000 00000000000 00000000000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000
+00000000001 00000000000 00000000000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000
+00000000000 00000000001 00000000000)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (00000000000
+00000000000 00000000000 00000000001)) )</tt>
+<br><tt>(BlockRef 'Redline_Hdr' 00000017437 00000000530</tt>
+<br><tt>&nbsp;&nbsp; (Guid 3470372517 35997 17586</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 95993C98BE337DD8 )</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Encryption 'None&nbsp;&nbsp;&nbsp;&nbsp; ') 1 1</tt>
+<br><tt>&nbsp;&nbsp; (Guid 2365419389 1115 17309</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AB885866DE02CBA5 ) 00000000000
+0 0 0 000000.0025</tt>
+<br><tt>&nbsp;&nbsp; (Orientation 'Always_In_Sync&nbsp; ')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</tt>
+<br><tt>&nbsp;&nbsp; (Alignment 'Align_None&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+') 00000000765 00000000055&nbsp;&nbsp;&nbsp; 399 000.0312505 00000.03125
+02147479958,00000003088</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2147480723,00000003143</tt>
+<br><tt>&nbsp;&nbsp; (Psswd '(&igrave;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+') )</tt>
+<br><tt>(BlockRef 'Redline' 00000017967 00000000438</tt>
+<br><tt>&nbsp;&nbsp; (Guid 2365419389 1115 17309</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AB885866DE02CBA5 )</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669)</tt>
+<br><tt>&nbsp;&nbsp; (Time 01616921476 00029425669) 1 ) 00000018405)</tt></dir>
+
+<p><br>The above directory represents 5 blocks.
+<br>&nbsp;</dir>
+<font face="Arial Black"><font size=-1>Default</font></font>
+<dir>For example, an ASCII default directory of WHIP! data having no blocks
+(Directory 00000000000&nbsp; 00000602468).</dir>
+
+<p><br>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

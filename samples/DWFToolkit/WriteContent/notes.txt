@@ -1,0 +1,1 @@
+This samples calculates the costed time on reading a XML file.

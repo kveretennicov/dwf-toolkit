@@ -1,0 +1,1 @@
+This sample shows how to read content definition out which shows some structure information and metadata of objects in scene. 

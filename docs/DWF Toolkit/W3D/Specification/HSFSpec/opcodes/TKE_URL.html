@@ -1,0 +1,67 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>HSF Opcode Definition</title>
+</head>
+<body bgcolor="#ffffff">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="580" >
+<tr>
+<td>
+      <H2><FONT color=#0000a0 face="arial,helvetica,sans-serif">TKE_URL</FONT></H2>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Opcode</FONT><STRONG><FONT face="arial,helvetica,sans-serif">
+      <TABLE border=0 height=90 width=530>   
+        <TR>
+          <TD height=12 width=131>ASCII</TD>
+          <TD height=12 width=390>^U</TD></TR>
+        <TR>
+          <TD height=12 width=131>Hexadecimal</TD>
+          <TD height=12 width=390>15</TD></TR>
+        <TR>
+          <TD height=12 width=131>Decimal</TD>
+          <TD height=12 width=390>21</TD></TR></TABLE></H3>
+      <P>&nbsp;</P></FONT></STRONG>
+      <H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Operands </FONT></H3>
+      <P><FONT face="Courier New,Courier,typewriter">
+	  <STRONG>Variable</STRONG>&nbsp;length,
+      <STRONG>(</STRONG><EM>length</EM><STRONG>)xByte</STRONG>&nbsp;url
+	  </FONT></P>
+
+<FONT face="arial,helvetica,sans-serif">	  
+<table BORDER =1 WIDTH="530">
+<TR>
+    <TD height=21 width=131>length</TD>
+    <TD height=21 width=390>length of the URL string. Value is a <strong>Byte</strong>, but if the value is 254,
+	the real length follows as an additional <strong>Short</strong>, or if 255 as an additional <strong>Long</strong>.</TD>
+	</TR>
+<tr>
+	<td WIDTH="131" HEIGHT="21">url</td>
+	<td WIDTH="390" HEIGHT="21">URL string</td>
+	</tr>
+</table>
+ <P>&nbsp;</P></FONT>
+
+<H3><FONT color=#0000a0 face="arial,helvetica,sans-serif">Notes</FONT></H3>
+<font face="arial,helvetica,sans-serif">URL allows for the insertion of an <em>informational</em> string in the
+data stream which may be skipped or used by the application.  Normally, this would be used to provide a link to
+additional information about an object, such as specifications or a company web page.<p>
+
+See <a href="TKE_External_Reference.html">TKE_External_Reference</a> for information on including one HSF file from another.<p>
+
+This opcode was added in HSF format 8.05.
+</font>
+<hr WIDTH="100%">
+</td>
+</tr>
+</table></center>
+<script language="JavaScript">
+<!--
+
+	function doClick (name) {
+		top.frames["logo"].loadByName(name);
+	}
+
+//-->
+</script>
+</body>
+</html>

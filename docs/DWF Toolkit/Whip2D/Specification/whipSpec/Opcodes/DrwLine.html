@@ -1,0 +1,91 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Line</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw Line</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>The <b>Draw Line </b>function draws a simple line segment between two
+points.</ul>
+<font face="Arial Black"><font size=-1>Syntax</font></font>
+<br>&nbsp;
+<center><table BORDER CELLPADDING=9 WIDTH="60%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="20%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="16%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font>
+<p><font face="Arial"><font color="#FFFFFF"><font size=-2>[ASCII] (Hex)</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="36%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="28%" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>Single-byte,readable
+operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>[L] (4C)</font></font></td>
+
+<td VALIGN=TOP WIDTH="36%"><b><font face="Courier New"><font size=-2>[&lt;ws>]&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="28%"><font face="Arial"><font size=-2>Absolute coordinates.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%"><font face="Arial"><font size=-2>Single-byte,binary
+operand</font></font></td>
+
+<td VALIGN=TOP WIDTH="16%"><font face="Courier New"><font size=-2>[l] (6C)</font></font></td>
+
+<td VALIGN=TOP WIDTH="36%"><b><font face="Courier New"><font size=-2>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>></font></font></b></td>
+
+<td VALIGN=TOP WIDTH="28%"><font face="Arial"><font size=-2>Relative coordinates</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font size=-2><font face="Courier New">[</font><font face="Arial">Ctrl-</font><font face="Courier New">L]
+(0c</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;S<sub>X1</sub>>&lt;S<sub>Y1</sub>>&lt;S<sub>X2</sub>>&lt;S<sub>Y2</sub>></font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Relative coordinates</font></font></td>
+</tr>
+
+<tr>
+<td>-</td>
+
+<td><font face="Courier New"><font size=-2>(8c)</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;B<sub>Count</sub>>[&lt;S<sub>X1</sub>>&lt;S<sub>Y1</sub>>&lt;S<sub>X2</sub>>&lt;S<sub>Y2</sub>>]<sup>+</sup></font></font></b></td>
+
+<td><font face="Arial"><font size=-2>Multiline, relative coordinates</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>X1, Y1</i>&nbsp;&nbsp; Logical point the line segment is drawn from
+<p><i>X2, Y2</i>&nbsp;&nbsp; Logical point the line segment is drawn to
+<p><i>Count</i>&nbsp;&nbsp; Number of line segments that follow; count
+must be at least 1 and less than 256.</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>The <b>Draw Line Function</b> is the basic opcode for drawing a line
+segment. The line is rendered using the current "<a href="SetLinWgt.html">Line
+Weight</a>", "<a href="SetLinSty.html">Line Cap</a>", "<a href="SetLinPat.html">Line
+Pattern</a>", and "<a href="SetVis.html">Visibility</a>" attributes.</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>This function is generally only used when the line segments are not
+connected to each other. The
+<b><a href="DrwPlylnPlygon.html">Polyline</a></b> function
+should be used to draw a series of connected line segments, .</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Draw Group4 PNG Image</title>
+</head>
+<body ONLOAD="if(parent.frames[&quot;&quot;])location=&quot;#nowhere&quot;; if(parent.frames[&quot;frm5&quot;])parent.frames[&quot;frm5&quot;].location=&quot;OpcodesHd.html&quot;">
+<b><i><font face="Arial">Draw Group4 PNG Image</font></i></b>
+<hr>
+<p><font face="Arial Black"><font size=-1>Purpose</font></font>
+<ul>T<font color="#000000">he <b>Draw Group4 PNG Image </b>function draws
+PNG or Group4 formatted images either in a one- or two-dimensional array
+of pixels. Additionally, the "Group4X_Mapped" image format extends the
+Group4 PNG Image opcode to indicate whether the background pixels of a
+G4 raster are transparent.</font></ul>
+<font face="Arial Black"><font color="#000000"><font size=-1>Syntax</font></font></font>
+<center><table BORDER CELLPADDING=9 WIDTH="55%" BORDERCOLOR="#000000" >
+<tr>
+<td VALIGN=TOP WIDTH="21%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode
+format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="12%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Opcode</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="44%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Operand
+Format</font></font></font></td>
+
+<td VALIGN=TOP WIDTH="23%" HEIGHT="26" BGCOLOR="#000080"><font face="Arial"><font color="#FFFFFF"><font size=-2>Comments</font></font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>Extended ASCII</font></font></td>
+
+<td VALIGN=TOP WIDTH="12%"><font face="Courier New"><font size=-2>(Group4PNGImage</font></font></td>
+
+<td VALIGN=TOP WIDTH="44%"><b><font face="Courier New"><font size=-2>&lt;ws>"&lt;T<sub>Format</sub>&lt;I<sub>Id</sub>>"&lt;ws>>[&lt;ws>&lt;I<sub>Col</sub>>,&lt;I<sub>Row</sub>>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;ws>&lt;I<sub>X1</sub>>,&lt;I<sub>Y1</sub>>&lt;ws>&lt;I<sub>X2</sub>>,&lt;I<sub>Y2</sub>>&lt;I<sub>ColorMapSize</sub>></font></font></b>
+<p><b><font face="Courier New"><font size=-2>[(Colormap &lt;ws>&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Ri</sub>>,&lt;I<sub>Gi</sub>>,&lt;I<sub>Bi</sub>>,&lt;I<sub>Ai</sub>>]<sup>+</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>])]][(&lt;ws>&lt;I<sub>DSize</sub>>&lt;ws>[&lt;H<sub>Data</sub>>]<sup>+</sup>)])</font></font></b></td>
+
+<td VALIGN=TOP WIDTH="23%"><font face="Arial"><font size=-2>Draws an PNG
+or Group4 Bitonal image</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>Extended Binary</font></font></td>
+
+<td><font face="Courier New"><font size=-2>0x0009</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>A Group4 bitonal Image.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>Extended Binary</font></font></td>
+
+<td><font face="Courier New"><font size=-2>0x000C</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;L>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>&lt;L<sub>DSize</sub>>[&lt;B<sub>Data</sub>>]<sup>+</sup>}</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>A PNG Image.</font></font></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="21%"><font face="Arial"><font size=-2>Extended Binary</font></font></td>
+
+<td><font face="Courier New"><font size=-2>0x000D</font></font></td>
+
+<td><b><font face="Courier New"><font size=-2>&lt;US<sub>Col</sub>>&lt;US<sub>Row</sub>>&lt;L<sub>X1</sub>>&lt;L<sub>Y1</sub>>&lt;L<sub>X2</sub>>&lt;L<sub>Y2</sub>>&lt;L<sub>Id</sub>>&lt;I<sub>ColorMapSize</sub>></font></font></b>
+<p><b><font face="Courier New"><font size=-2>[(Colormap &lt;ws>&lt;I<sub>Count</sub>>[&lt;ws>&lt;I<sub>Ri</sub>>,&lt;I<sub>Gi</sub>>,&lt;I<sub>Bi</sub>>,&lt;I<sub>Ai</sub>>]<sup>+</sup>\</font></font></b>
+<br><b><font face="Courier New"><font size=-2>[&lt;ws>])]][(&lt;ws>&lt;I<sub>DSize</sub>>&lt;ws>[&lt;H<sub>Data</sub>>]<sup>+</sup>)])</font></font></b></td>
+
+<td><font face="Arial"><font size=-2>A Group4 bitonal transparent Image.</font></font></td>
+</tr>
+</table></center>
+
+<ul><i>Col</i>&nbsp;&nbsp; The number of columns in the pixel array
+<p><i>Row</i>&nbsp;&nbsp; The number of rows in the pixel array
+<p><i>X1,Y1</i>&nbsp;&nbsp; A logical coordinate indicating the lower-left
+corner of the image to be drawn
+<p><i>X2,Y2</i>&nbsp;&nbsp; A logical coordinate indicating the upper-right
+corner of the image to be drawn
+<p><i>Id</i>&nbsp;&nbsp; An integer identifier that may be used by other
+opcodes to refer to this image (as with texture mapping). A value of zero
+may be used for images that will not be referred to.
+<p><i>Colormap</i>&nbsp;&nbsp; An integer denoting the color map size.
+Typically it is 0.
+<p><i>Count</i>&nbsp;&nbsp; The number of colors to be defined in this
+Color Map. Legal values range from 1 to 256, when using the ASCII version,
+or 0 to 255 when using the binary form—with zero indicating a colormap
+of size 256.
+<p><i>Ri, Gi, Bi, Ai</i>&nbsp;&nbsp; The definition of the <i>ith </i>color
+(the red, green, blue, and alpha components) in the Color Map.
+<p><i>Format</i>&nbsp;&nbsp; A description of how data in the Data array
+is to be interpreted.
+<p><i>DSize</i>&nbsp;&nbsp; The length (in bytes) of the <i>Data </i>sequence
+that follows
+<p><i>Data</i>&nbsp;&nbsp; A sequence of encoded data that represents the
+colors of the image pixels, see below for encoding details.
+<p><i>GIndex</i>&nbsp;&nbsp; An index into the global colormap (as defined
+by <b><a href="SetColrMap.html">Set Color Map</a></b>) that defines the
+color of the n<i>th</i> pixel.
+<p><i>LIndex</i>&nbsp;&nbsp; An index into the local colormap (as defined
+by the <i>Ri, Gi, Bi, Ai</i> parameters) that defines the color of the
+n<i>th</i> pixel.
+<p><i>Rn, Gn, Bn, An</i>&nbsp;&nbsp; The color definition of the n<i>th
+</i>pixel
+(the red, green, blue, and alpha components).</ul>
+<font face="Arial Black"><font size=-1>Details</font></font>
+<ul>Regardless of the format used, the data that defines the pixel colors
+within the image is ordered so that the top-left most pixel comes first,
+followed by the remaining pixels on the top-most row (in left to right
+order), followed by the subsequent rows (in top-to-bottom order).
+<p>For the extended binary opcode versions of Draw Group4 PNG Image the
+image data format is specified by the opcode itself. For the extended ASCII
+opcode form of Draw Image, the <i>Format </i>qualifier may be one of the
+following:
+<ul>
+<li>
+"PNG"</li>
+
+<li>
+"Group4"</li>
+
+<li>
+<font color="#000000">"Group4X_Mapped"</font></li>
+</ul>
+The color of pixels in the various formats are encoded as follows:
+<p><b>Group4</b>
+<ul>The pixels of the image are encoded as a CCITT Group4 compression (TIFF
+Group4 file format) data file and stored in the WHIP! data. CCITT Group4 compression
+of bitonal images normally produces 50% smaller files than Group3 1D compression.
+The Group4 TIFF file format specification can be found at <a href="ftp://ftp.sgi.com:/graphics/tiff">ftp://ftp.sgi.com:/graphics/tiff</a></ul>
+
+<p><br><b>PNG</b>
+<ul>The pixels of the image are encoded as a PNG (a PNG format) data file
+and stored in the WHIP! data. PNG (Portable Network Graphics) is a&nbsp;<a NAME="lossless"></a>lossless
+compressed raster file format. The current PNG specification and library
+can be found at <a href="ftp://ftp.freesoftware.com/pub/png">ftp://ftp.freesoftware.com/pub/png</a>.
+The current PNG specification is version 1.2.</ul>
+
+<p><br><b>Group4X_Mapped</b>
+<ul><font color="#000000">The "Group4X_Mapped" image format extends the
+<b>DrawGroup4
+PNG Image</b> opcode by overriding the colors specified in the TIFF file
+with the colormap provided. "Group4X_Mapped" comes with
+a two entry color map. The ePlot driver wraps the G4 TIFF image into the
+<b>Draw</b>
+<b>Group4 PNG Image</b> opcode shell, specifying the "Group4X_Mapped" format
+with two full 32-bit RGBA colors and the Alpha channel set with the desired
+transparency. Then, the opcode's two entry color map overrides any map
+found in the TIFF file. The viewers are intelligent enough to override
+the colormap of the TIFF file with the colormap that comes with the opcode,
+to achieve bitonal transparency.</font></ul>
+</ul>
+<font face="Arial Black"><font size=-1>Notes</font></font>
+<ul>The array of pixels that define an image (Col x Row) need not have
+a one-to-one mapping to the logical coordinates that are specified (<i>X1,Y1</i>
+to <i>X2,Y2</i>) to position and size the image, as the image is scaled
+accordingly when displayed.</ul>
+<hr>
+<hr WIDTH="100%">
+</body>
+</html>
