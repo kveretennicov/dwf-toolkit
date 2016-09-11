@@ -301,6 +301,11 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\Common.props" />
   </ImportGroup>
+  <PropertyGroup>
+    <!-- Override Common.props -->
+    <VCVersion>vc11.0</VCVersion>
+    <OutputDir>VC 11.0</OutputDir>
+  </PropertyGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
