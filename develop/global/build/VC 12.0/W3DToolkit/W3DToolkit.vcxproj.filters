@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{fad20703-7916-48ba-a146-b1bf36caff8d}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\jpeg">
+      <UniqueIdentifier>{8518ba80-721b-4509-b5ab-6ea2968e438f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utility">
+      <UniqueIdentifier>{f436e207-675c-46ee-8d34-27a94a2d3ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\hoops">
+      <UniqueIdentifier>{3960ba50-6b85-4802-a666-eb39407eeaa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{2df9f4b8-5d39-46f2-9cba-0a1da0271367}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Header Files\utility">
+      <UniqueIdentifier>{79bef9f0-30c2-42d0-a2e0-d77327cefcbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\hoops">
+      <UniqueIdentifier>{69f93c62-6e17-4051-a253-2a7c561ac3e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jpeg">
+      <UniqueIdentifier>{cc125ac8-cde0-4679-918f-c1af8f625e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{6f892325-8ef0-42bf-ba1c-194248aa2b56}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BAscii.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BCompress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BCompressData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BEdgeBreakerCommon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BEdgeBreakerCompress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BEdgeBreakerDecompress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BOpcodeHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BOpcodeShell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BOpcodeShellAscii.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BPointCloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BPolyhedron.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BPolyhedronAscii.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BPolyPoly.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\BStreamFileToolkit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\W3DCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\W3DStreamWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcapimin.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcapistd.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jccoefct.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jccolor.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcdctmgr.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jchuff.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcinit.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcmainct.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcmarker.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcmaster.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcomapi.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcparam.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcphuff.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcprepct.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jcsample.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jctrans.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdapimin.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdapistd.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdatadst.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdatasrc.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdcoefct.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdcolor.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jddctmgr.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdhuff.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdinput.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdmainct.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdmarker.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdmaster.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdmerge.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdphuff.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdpostct.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdsample.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jdtrans.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jerror.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jfdctflt.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jfdctfst.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jfdctint.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jidctflt.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jidctfst.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jidctint.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jidctred.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jmemmgr.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jmemnobs.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jquant1.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jquant2.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\jpeg\jutils.c">
+      <Filter>Source Files\jpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\cache_memory_object.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\huffman.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\tempfile_utils.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\utf_utils.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\vconf.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\vdlist.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\vhash.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\vlist.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\utility\vlogfile.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\fastlod.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\mxmain.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\mxmath.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\mxmetric.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\mxmodel.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\mxqslim.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\mxtype.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\shellopt.cpp">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dwf\w3dtk\hoops\trialate.c">
+      <Filter>Source Files\hoops</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BByteStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BCompress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BEdgeBreaker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BInternal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BOpcodeHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BOpcodeShell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BPointCloud.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BPolyhedron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BPolyPoly.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\BStreamFileToolkit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\rc\dwf\w3dtk\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\Version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\W3DCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\W3DOpcodeHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\W3DStreamWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\cache_memory_object.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\hqsort.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\huffman.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\tempfile_utils.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\utf_utils.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\varray.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\vbsp.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\vconf.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\vdlist.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\vhash.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\vheap.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\vlist.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\utility\vlogfile.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\hoops\hoops_tools.h">
+      <Filter>Header Files\hoops</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\hoops\lod.h">
+      <Filter>Header Files\hoops</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jchuff.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jconfig.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jdct.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jdhuff.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jerror.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jinclude.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jmemsys.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jmorecfg.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jpegint.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jpeglib.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\dwf\w3dtk\jpeg\jversion.h">
+      <Filter>Header Files\jpeg</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\rc\dwf\w3dtk\W3DToolkit.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
