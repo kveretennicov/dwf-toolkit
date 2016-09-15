@@ -66,12 +66,21 @@ _DWFCORE_API
 bool
 DWFCore::IsWindows9x()
 { 
+#if _MSC_VER >= 1500
+	// From https://msdn.microsoft.com/en-us/library/6sehtctf(v=vs.90).aspx:
+	// "Beginning with Visual C++ 2008, Visual C++ does not support targeting
+	//  Windows 95, Windows 98, Windows ME".
+	// So starting with Visual C++ 2008 we cannot possibly run on a platform
+	// where this function could have returned "true".
+	return false;
+#else
     OSVERSIONINFO tInfo;
     tInfo.dwOSVersionInfoSize = sizeof( OSVERSIONINFO );
     
     ::GetVersionEx( &tInfo );
 
     return (tInfo.dwPlatformId & VER_PLATFORM_WIN32_WINDOWS);
+#endif
 }
 #endif
 
