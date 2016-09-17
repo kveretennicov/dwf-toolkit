@@ -303,8 +303,8 @@
   </ImportGroup>
   <PropertyGroup>
     <!-- Override Common.props -->
-    <VCVersion>vc12.0</VCVersion>
-    <OutputDir>VC 12.0</OutputDir>
+    <VCVersion>vc14.0</VCVersion>
+    <OutputDir>VC 14.0</OutputDir>
   </PropertyGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
