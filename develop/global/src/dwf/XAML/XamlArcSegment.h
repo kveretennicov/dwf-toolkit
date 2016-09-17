@@ -29,7 +29,7 @@ class WT_Ellipse;
 class XamlArcSegment : public XamlGraphicsObject
 {
 public:
-    typedef enum teSweepDirection
+    enum teSweepDirection
     {
         Clockwise,
         Counterclockwise

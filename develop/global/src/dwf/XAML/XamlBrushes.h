@@ -29,7 +29,7 @@ class WT_XAML_File;
 
 namespace XamlBrush
 {
-    typedef enum eType
+    enum eType
     {
         kSolidColor,
         kImage,

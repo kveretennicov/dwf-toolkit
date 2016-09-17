@@ -97,9 +97,9 @@ inline WT_Boolean WD_fits_in_short(long x)
 // Note: use macro instead of inline since we need to return from the caller, not just the check.
 //       macro is considered "safe" for side effects as its argument is only referenced once.
 #define WD_CHECK(x) do {                                    \
-                        WT_Result       result = (x);       \
-                        if (result != WT_Result::Success)   \
-                            return result;                  \
+                        WT_Result       result00 = (x);     \
+                        if (result00 != WT_Result::Success) \
+                            return result00;                \
                     } while (0)                            //
 
 

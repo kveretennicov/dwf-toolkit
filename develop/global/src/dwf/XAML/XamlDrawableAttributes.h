@@ -458,7 +458,7 @@ namespace XamlDrawableAttributes
         virtual bool validAsAttribute( void ) const;
 
     public:
-        typedef enum eCapStyle
+        enum eCapStyle
         {
             Flat,
             Square,
@@ -535,7 +535,7 @@ namespace XamlDrawableAttributes
         virtual bool validAsAttribute( void ) const;
 
     public:
-        typedef enum eCapStyle
+        enum eCapStyle
         {
             Flat,
             Square,
@@ -578,7 +578,7 @@ namespace XamlDrawableAttributes
         virtual bool validAsAttribute( void ) const;
 
     public:
-        typedef enum eCapStyle
+        enum eCapStyle
         {
             Flat,
             Square,
@@ -621,7 +621,7 @@ namespace XamlDrawableAttributes
         virtual bool validAsAttribute( void ) const;
 
     public:
-        typedef enum eJoinStyle
+        enum eJoinStyle
         {
             None,
             Miter,
@@ -1143,7 +1143,7 @@ namespace XamlDrawableAttributes
         virtual bool validAsAttribute( void ) const;
 
     public:
-        typedef enum eSimulationStyle
+        enum eSimulationStyle
         {
             None,
             Italic,

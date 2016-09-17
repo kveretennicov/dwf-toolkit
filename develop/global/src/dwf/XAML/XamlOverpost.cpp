@@ -366,10 +366,10 @@ WT_Result WT_XAML_Overpost::parseCData(int nLen,const char* pCData)
 
                 while ( pMacro->get_next() && result == WT_Result::Success )
                 {
-                    const WT_Object* pObject = pMacro->object();
-                    if ( pObject != NULL )
+                    const WT_Object* pInnerObject = pMacro->object();
+                    if ( pInnerObject != NULL )
                     {
-                        result = addObject( pObject );
+                        result = addObject( pInnerObject );
                     }
                 }
 

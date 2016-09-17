@@ -172,10 +172,10 @@ WT_Result WT_XAML_User_Hatch_Pattern::serialize(
                        pW2XSerializer->addAttribute(XamlXML::kpzData_Size_Attribute,(int)size);
                        //data
                        DWFString zData;               
-                       for(int i=0;i<(int)size;i++)
+                       for(int j=0;j<(int)size;j++)
                        {
                             wchar_t pBuf[128];
-                            _DWFCORE_SWPRINTF(pBuf,128,L"%ls ",(const wchar_t*)DWFString::DoubleToString((hatch_pattern->data()[i]),10));
+                            _DWFCORE_SWPRINTF(pBuf,128,L"%ls ",(const wchar_t*)DWFString::DoubleToString((hatch_pattern->data()[j]),10));
                             zData.append(pBuf);
                        }
                        pW2XSerializer->addAttribute(XamlXML::kpzData_Attribute,zData);

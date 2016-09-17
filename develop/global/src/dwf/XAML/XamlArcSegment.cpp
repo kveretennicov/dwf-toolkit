@@ -156,7 +156,7 @@ WT_Result XamlArcSegment::serializeAttributeValue( WT_XAML_File &rFile, tMemoryB
     WT_Point2D currPoint;
     currPoint = rFile.de_update_current_point(currPoint); // this effectively gives back the current coordinates
 
-    WT_Point2D centerPt, startPt, endPt; 
+    WT_Point2D startPt, endPt; 
 
     if (_bIsFilled && !_bIsClosed)
     {
