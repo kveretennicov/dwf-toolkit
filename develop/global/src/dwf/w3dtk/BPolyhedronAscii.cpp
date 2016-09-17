@@ -8957,12 +8957,11 @@ TK_Status TK_Polyhedron::read_collection_ascii (BStreamFileToolkit & tk) alter {
 	   char				temp_opcode[512];	
 //	   unsigned int		sequence;
 	   unsigned char	opcode_word = '\0';
-     int				i;
 
     if (mp_num_collection_parts == 0) {
         mp_num_collection_parts = 10;
         mp_collection_parts = new BBaseOpcodeHandler *[mp_num_collection_parts];
-        for (i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
             mp_collection_parts[i] = null;
     }
 
@@ -8972,9 +8971,9 @@ TK_Status TK_Polyhedron::read_collection_ascii (BStreamFileToolkit & tk) alter {
             int used = mp_num_collection_parts;
             mp_num_collection_parts *= 2;
             temp = new BBaseOpcodeHandler *[mp_num_collection_parts];
-            for (i = 0; i < used; i++)
+            for (int i = 0; i < used; i++)
                 temp[i] = mp_collection_parts[i];
-            for (i = used; i < mp_num_collection_parts; i++)
+            for (int i = used; i < mp_num_collection_parts; i++)
                 temp[i] = null;
             delete [] mp_collection_parts;
             mp_collection_parts = temp;
