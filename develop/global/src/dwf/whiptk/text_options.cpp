@@ -165,12 +165,12 @@ WT_Result   WT_Text_Option_Scoring::materialize(WT_Object &, WT_Optioncode const
 
             // No break
         case Getting_Count:
-            WT_Integer32 tmp;
-            WD_CHECK (file.read_count (tmp));
-            if (--tmp > 65535)
+            WT_Integer32 tmp_count;
+            WD_CHECK (file.read_count (tmp_count));
+            if (--tmp_count > 65535)
                 return WT_Result::Corrupt_File_Error;
 
-            m_count = static_cast<WT_Unsigned_Integer16>(tmp);
+            m_count = static_cast<WT_Unsigned_Integer16>(tmp_count);
 
             delete []m_positions;
             m_positions = WD_Null;
@@ -247,9 +247,9 @@ WT_Result   WT_Text_Option_Scoring::materialize(WT_Object &, WT_Optioncode const
                 if (m_materialization_counter < m_count)
                 {
                     // Eat the comma
-                    WT_Byte a_byte;
-                    WD_CHECK (file.read(a_byte));
-                    if (a_byte != ',')
+                    WT_Byte comma_byte;
+                    WD_CHECK (file.read(comma_byte));
+                    if (comma_byte != ',')
                         return WT_Result::Corrupt_File_Error;
                 }
             }
@@ -627,12 +627,12 @@ WT_Result WT_Text_Option_Reserved::materialize(WT_Object &, WT_Optioncode const 
 
             // No break
         case Getting_Count:
-            WT_Integer32 tmp;
-            WD_CHECK (file.read_count (tmp));
-            if (--tmp > 65535)
+            WT_Integer32 tmp_count;
+            WD_CHECK (file.read_count (tmp_count));
+            if (--tmp_count > 65535)
                 return WT_Result::Corrupt_File_Error;
 
-            m_count = static_cast<WT_Unsigned_Integer16>(tmp);
+            m_count = static_cast<WT_Unsigned_Integer16>(tmp_count);
 
             delete []m_values;
             m_values = WD_Null;

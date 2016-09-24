@@ -73,8 +73,8 @@ static bool BLOCK_VARIABLE_RELATION[36][17] =
 
 #define WRITEARRAYBINARY(VARIABLETYPE, VARIABLENAME, ARRAYLENGTH)                           \
     if(Verify(VARIABLENAME, ((WT_BlockRef *) this)->get_format()))        {                 \
-        for(int zz=0; zz < ARRAYLENGTH; zz++)                            {                  \
-            WD_CHECK (file.write((VARIABLETYPE) m_##VARIABLENAME[zz]));}}                   //
+        for(int zz00=0; zz00 < ARRAYLENGTH; zz00++)                      {                  \
+            WD_CHECK (file.write((VARIABLETYPE) m_##VARIABLENAME[zz00]));}}                 //
 
 #define WRITEASCII(VARIABLETYPE, VARIABLENAME)                                              \
     if(Verify(VARIABLENAME, ((WT_BlockRef *) this)->get_format()))         {                \
@@ -83,8 +83,8 @@ static bool BLOCK_VARIABLE_RELATION[36][17] =
 
 #define WRITEARRAYASCII(VARIABLETYPE, VARIABLENAME, ARRAYLENGTH)                            \
     if(Verify(VARIABLENAME, ((WT_BlockRef *) this)->get_format()))   {                      \
-        for(int zz=0; zz < ARRAYLENGTH; zz++)                      {                        \
-            WD_CHECK (file.write_padded_ascii((VARIABLETYPE) m_##VARIABLENAME[zz]));        \
+        for(int zz00=0; zz00 < ARRAYLENGTH; zz00++)                {                        \
+            WD_CHECK (file.write_padded_ascii((VARIABLETYPE) m_##VARIABLENAME[zz00]));      \
             WD_CHECK (file.write((WT_Byte) ' '));                   }}                      //
 
 #define SERIALIZE(VARIABLETYPE, VARIABLENAME)                                               \
@@ -227,9 +227,9 @@ static bool BLOCK_VARIABLE_RELATION[36][17] =
         case STAGE:                                                                         \
         if(Verify(VARIABLENAME, ((WT_BlockRef *) this)->get_format()))  {                   \
             WD_CHECK(file.read_ascii(m_##VARIABLENAME[0]));                                 \
-            WT_Byte a_byte;                                                                 \
-            WD_CHECK(file.read((WT_Byte&) a_byte));                                          \
-            if (a_byte != ' ')                                                              \
+            WT_Byte a_byte00;                                                               \
+            WD_CHECK(file.read((WT_Byte&) a_byte00));                                       \
+            if (a_byte00 != ' ')                                                            \
                 return WT_Result::Corrupt_File_Error;                                       \
             WD_CHECK(file.read_ascii(m_##VARIABLENAME[1]));                 }               //
 
@@ -890,9 +890,9 @@ WT_Result WT_BlockRef::materialize(WT_Opcode const & opcode, WT_File & file, WT_
         case Getting_Clipping_Rectangle:
         if(Verify(clip_rectangle, ((WT_BlockRef *) this)->get_format()))  {
             WD_CHECK(file.read_ascii(m_clip_rectangle[0]));
-            WT_Byte a_byte;
-            WD_CHECK(file.read((WT_Byte&) a_byte));
-            if (a_byte != ' ')
+            WT_Byte space_byte;
+            WD_CHECK(file.read((WT_Byte&) space_byte));
+            if (space_byte != ' ')
                 return WT_Result::Corrupt_File_Error;
             WD_CHECK(file.read_ascii(m_clip_rectangle[1]));
         }

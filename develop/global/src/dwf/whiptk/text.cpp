@@ -534,9 +534,6 @@ WT_Result WT_Text::materialize_obsolete_form(WT_Opcode const & opcode, WT_File &
 
     case 0x18:
         {
-            WT_Integer32    tmp_int32;
-            WT_Integer16    tmp_int16;
-
             switch (m_stage)
             {
             case Getting_Started:
