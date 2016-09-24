@@ -481,17 +481,17 @@ throw( DWFException )
 
             if (piCSs && piCSs->valid())
             {
-                DWFString zNamespace;
+                DWFString zNamespaceCS;
 
                     //
                     // namespace dictated by document and section type 
                     //
                 if (nFlags & DWFPackageWriter::eDescriptor)
                 {
-                    zNamespace.assign( namespaceXML(nFlags) );
+                    zNamespaceCS.assign( namespaceXML(nFlags) );
                 }
 
-                rSerializer.startElement( DWFXML::kzElement_CoordinateSystems, zNamespace );
+                rSerializer.startElement( DWFXML::kzElement_CoordinateSystems, zNamespaceCS );
                 {
                     for (; piCSs->valid(); piCSs->next())
                     {
@@ -811,17 +811,17 @@ throw( DWFException )
 
         if (piCSs && piCSs->valid())
         {
-            DWFString zNamespace;
+            DWFString zNamespaceCS;
 
                 //
                 // namespace dictated by document and section type 
                 //
             if (nFlags & DWFPackageWriter::eDescriptor)
             {
-                zNamespace.assign( namespaceXML(nFlags) );
+                zNamespaceCS.assign( namespaceXML(nFlags) );
             }
 
-            rSerializer.startElement( DWFXML::kzElement_CoordinateSystems, zNamespace );
+            rSerializer.startElement( DWFXML::kzElement_CoordinateSystems, zNamespaceCS );
             {
                 for (; piCSs->valid(); piCSs->next())
                 {

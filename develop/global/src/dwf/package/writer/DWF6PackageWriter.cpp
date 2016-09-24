@@ -1591,8 +1591,8 @@ throw( DWFException )
                 DWFSignatureRequest::SignatureRequestReference* pSigReqRef = dynamic_cast<DWFSignatureRequest::SignatureRequestReference*>(pForwardRef);
                 if(pSigReqRef != NULL)
                 {
-                    const DWFSignatureRequest* pRequest = pSigReqRef->signatureRequest();
-                    _addToItemReferenceMap( (void*)pRequest, pSigReqRef);
+                    const DWFSignatureRequest* pSigReq = pSigReqRef->signatureRequest();
+                    _addToItemReferenceMap( (void*)pSigReq, pSigReqRef);
                     continue;
                 }
 

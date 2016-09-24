@@ -2864,20 +2864,20 @@ throw( DWFException )
                 //
                 //  Copy over child entity references.
                 //
-                DWFEntity::tSortedList::ConstIterator* piEntity = pEntity->getChildren();
-                if (piEntity)
+                DWFEntity::tSortedList::ConstIterator* piChildEntity = pEntity->getChildren();
+                if (piChildEntity)
                 {
-                    for (; piEntity->valid(); piEntity->next())
+                    for (; piChildEntity->valid(); piChildEntity->next())
                     {
-                        DWFEntity* pEntity = piEntity->get();
-                        _tSetToSet::iterator iEntity = _oMapFromSetToSet.find( pEntity );
+                        DWFEntity* pChildEntity = piChildEntity->get();
+                        _tSetToSet::iterator iEntity = _oMapFromSetToSet.find( pChildEntity );
                         if (iEntity != _oMapFromSetToSet.end())
                         {
                             DWFEntity* pLocalChild = (DWFEntity*)(iEntity->second);
                             addChildEntity( pLocalEntity, pLocalChild );
                         }
                     }
-                    DWFCORE_FREE_OBJECT( piEntity );
+                    DWFCORE_FREE_OBJECT( piChildEntity );
                 }
 
                 //

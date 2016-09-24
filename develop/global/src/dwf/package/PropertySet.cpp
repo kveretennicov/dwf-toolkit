@@ -450,7 +450,7 @@ throw()
     //
     if (pMatchedSet == NULL)
     {
-        DWFPropertyContainer::tList::const_iterator iSet = _oReferences.begin();
+        iSet = _oReferences.begin();
         for (; iSet != _oReferences.end(); ++iSet)
         {
             DWFPropertySet* pSet = dynamic_cast<DWFPropertySet*>(*iSet);
@@ -537,10 +537,10 @@ throw()
 
         while (iBegin != iEnd)
         {
-            DWFPropertySet::tList::iterator iContainer = iBegin;
-            for (; iContainer != iEnd; ++iContainer)
+            DWFPropertySet::tList::iterator iSet = iBegin;
+            for (; iSet != iEnd; ++iSet)
             {
-                DWFPropertySet* pSet = dynamic_cast<DWFPropertySet*>(*iContainer);
+                DWFPropertySet* pSet = dynamic_cast<DWFPropertySet*>(*iSet);
                 if (bReturnClosedSets || !(pSet->isClosed()))
                 {
                     DWFPropertyContainer::tList::iterator iSubset = pSet->_oContainers.begin();

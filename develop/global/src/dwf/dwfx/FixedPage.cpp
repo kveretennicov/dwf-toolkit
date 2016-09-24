@@ -379,8 +379,7 @@ throw( DWFException )
 
     if (pResource)
     {
-        DWFString zRole( pResource->role() );
-        _tRolePartListMap::iterator itList = _oRoleToPartListMap.find( zRole );
+        _tRolePartListMap::iterator itList = _oRoleToPartListMap.find( pResource->role() );
         if (itList != _oRoleToPartListMap.end())
         {
             DWFXResourcePart::tList* pList = itList->second;

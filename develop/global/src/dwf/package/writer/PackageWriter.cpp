@@ -482,7 +482,7 @@ throw( DWFException )
     //
     if (_eMergeType == eNoMerge)
     {
-        _tSectionToContentManager::iterator iMap = _oSectionToContentManager.begin();
+        iMap = _oSectionToContentManager.begin();
         for (; iMap != _oSectionToContentManager.end(); ++iMap)
         {
             DWFSection* pSection = iMap->first;
@@ -552,7 +552,7 @@ throw( DWFException )
         //
         //  Skip this if the section has no corresponding content manager
         //
-        _tSectionToContentManager::iterator iMap = _oSectionToContentManager.find( pSection );
+        iMap = _oSectionToContentManager.find( pSection );
         if (iMap == _oSectionToContentManager.end() || 
             iMap->second == NULL)
         {

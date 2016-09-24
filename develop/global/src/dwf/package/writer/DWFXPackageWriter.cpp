@@ -601,13 +601,12 @@ void DWFXPackageWriter::addProxyPage( const DWFString& zProxyPageXPSPath )
 			//DWFXFixedPageResourceExtractor
 			off_t iOffset = zFPageURI.findLast( /*NOXLATE*/L'/' );
 
-			DWFString fileName;
 			DWFString fRelsURI;
 			if (iOffset != -1 &&
 				size_t(iOffset+1) != zFPageURI.chars())
 			{
 				size_t iExtLen = zFPageURI.chars()-(iOffset+1);
-				fileName = zFPageURI.substring( iOffset+1, iExtLen);
+				DWFString fileName = zFPageURI.substring( iOffset+1, iExtLen);
 			
 				fRelsURI = zFPageURI.substring(0, iOffset + 1);
 				fRelsURI.append(/*NOXLATE*/L"_rels/");
@@ -634,7 +633,7 @@ void DWFXPackageWriter::addProxyPage( const DWFString& zProxyPageXPSPath )
 
 			    pArchiveStream = pPackageDescriptor->unzip(zFontURI);
 
-				off_t iOffset = zFontURI.findLast( '/' );
+				iOffset = zFontURI.findLast( '/' );
 
 				DWFString fileName;
 				if (iOffset != -1 &&

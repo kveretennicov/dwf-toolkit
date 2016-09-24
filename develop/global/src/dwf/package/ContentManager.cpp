@@ -294,10 +294,10 @@ throw( DWFException )
 
             if (zNewPrimaryID.chars()>0)
             {
-                DWFContent** ppContent = _oContent.find( zNewPrimaryID );
-                if (ppContent)
+                DWFContent** ppNewContent = _oContent.find( zNewPrimaryID );
+                if (ppNewContent)
                 {
-                    _pPrimaryContent = *ppContent;
+                    _pPrimaryContent = *ppNewContent;
                 }
                 else
                 {

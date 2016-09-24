@@ -1128,10 +1128,10 @@ throw()
                     //
                     if (_pCurrentNode)
                     {
-                        DWFContentPresentationModelViewNode* pModelViewNode = dynamic_cast<DWFContentPresentationModelViewNode*>(_pCurrentNode);
-                        if (pModelViewNode)
+                        DWFContentPresentationModelViewNode* pNewModelViewNode = dynamic_cast<DWFContentPresentationModelViewNode*>(_pCurrentNode);
+                        if (pNewModelViewNode)
                         {
-                            _pCurrentNode = _provideModelViewNode( pModelViewNode );
+                            _pCurrentNode = _provideModelViewNode( pNewModelViewNode );
                         }
                         
                         _pCurrentNodeContainer->addNode(_pCurrentNode);
@@ -1218,8 +1218,7 @@ throw()
             else
             if (DWFCORE_COMPARE_ASCII_STRINGS(zName, DWFXML::kzElement_CuttingPlane) == 0)
             {
-                DWFContentPresentationModelViewNode *pModelViewNode = dynamic_cast<DWFContentPresentationModelViewNode *>(_pCurrentNode);
-                if(pModelViewNode != NULL)
+                if(dynamic_cast<DWFContentPresentationModelViewNode *>(_pCurrentNode))
                 {
                     if (_pCurrentHandler)
                     {

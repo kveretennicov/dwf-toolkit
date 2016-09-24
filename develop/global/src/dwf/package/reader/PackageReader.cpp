@@ -234,7 +234,7 @@ throw( DWFException )
 
         DWFString zRetVal;
         // Look for the signature extension ".psdsxs"
-        DWFString zMSXPS(OPCPackage::kzURI_PackageDigitalSignatureExt);
+        DWFString zPSDSXS(OPCPackage::kzURI_PackageDigitalSignatureExt);
         off_t nPosLastSlash( zSourcePath.findLast(/* NOXLATE */'/') );
         off_t nPosLastDot( zSourcePath.findLast(/* NOXLATE */'.') );
 
@@ -244,7 +244,7 @@ throw( DWFException )
             zRetVal = zSourcePath.substring(nPosLastDot);
         }
         // If it is the signature resource, check it out
-        if (zRetVal == zMSXPS)
+        if (zRetVal == zPSDSXS)
         {
             // Get a stream to the resource
             DWFPointer<DWFInputStream> spInstream ( this->extract( zSourcePath, false ), false );

@@ -169,7 +169,7 @@ throw( DWFException )
         //
         // create a buffered input stream for reading
         //
-        DWFInputStream* pInputStream = DWFCORE_ALLOC_OBJECT( DWFBufferInputStream(_pBuffer, nBufferBytes) );
+        pInputStream = DWFCORE_ALLOC_OBJECT( DWFBufferInputStream(_pBuffer, nBufferBytes) );
 
         if (pInputStream == NULL)
         {
