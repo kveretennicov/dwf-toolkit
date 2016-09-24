@@ -89,7 +89,7 @@ public:
     ///         This enum defines the attributes that this class will not resolve when
     ///         parsing attributes for the reader.
     ///
-    typedef enum teUnresolvedAttributes
+    enum teUnresolvedAttributes
     {
         //
         ePropertySetReferences  = DWFPropertySet::ePropertySetReferences,
