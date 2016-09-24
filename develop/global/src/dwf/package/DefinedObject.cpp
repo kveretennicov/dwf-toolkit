@@ -16,6 +16,14 @@
 //  Data and Computer Software), as applicable.
 //
 
+#ifdef _MSC_VER
+// Earlier MSC compilers did not have <cstdint>.
+#include <stddef.h>
+typedef intptr_t std_intptr_t;
+#else
+#include <cstdint>
+typedef std::intptr_t std_intptr_t;
+#endif
 
 #include "dwfcore/Timer.h"
 using namespace DWFCore;
@@ -490,7 +498,9 @@ throw( DWFException )
         //
         // convert the instance pointer address as a string, and set to the instance id.
         //
-        long nId = (long)(this);
+        // Note: on 64-bit MSC++ (and any other 64-bit compilers with 32-bit longs)
+        // this truncates the pointer value to 32 bit.
+        long nId = static_cast<long>(reinterpret_cast<std_intptr_t>(this));
         int nBufferSize = 32;
         DWFPointer<wchar_t> zBuffer( DWFCORE_ALLOC_MEMORY(wchar_t, nBufferSize), true );
         int nBytes = sizeof(wchar_t) * _DWFCORE_SWPRINTF( zBuffer, nBufferSize, L"%d", nId );
