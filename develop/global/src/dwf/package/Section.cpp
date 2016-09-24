@@ -463,11 +463,11 @@ DWFSection::getContentDefinition( DWFContentResourceReader& rReader,
         {
             if (iResource->second->role() == DWFXML::kzRole_ContentDefinition)
             {
-                DWFResource* pResource = iResource->second;
+                DWFResource* pContentDefinitionResource = iResource->second;
 
-                if (pResource)
+                if (pContentDefinitionResource)
                 {
-                    rReader.setResourceObjectID( pResource->objectID() );
+                    rReader.setResourceObjectID( pContentDefinitionResource->objectID() );
 
                     //
                     // acquire the data feed from the resource directly and don't cache since hopefully the document is 
