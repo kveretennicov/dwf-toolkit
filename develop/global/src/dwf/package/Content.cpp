@@ -621,11 +621,9 @@ _DWFTK_API
 DWFIterator<DWFString>* DWFContent::findResourceIDsByRenderable( DWFRenderable* pRenderable )
 throw()
 {
-    typedef DWFCachingIterator<DWFString> _tStringIterator;
-
     if (_oResourceRenderableToInstance.size() > 0)
     {
-        _tStringIterator* piResourceID = DWFCORE_ALLOC_OBJECT( _tStringIterator );
+        DWFCachingIterator<DWFString>* piResourceID = DWFCORE_ALLOC_OBJECT( DWFCachingIterator<DWFString> );
 
         _tResourceRIMapConstIterator iResource = _oResourceRenderableToInstance.begin();
         for (; iResource != _oResourceRenderableToInstance.end(); ++iResource)

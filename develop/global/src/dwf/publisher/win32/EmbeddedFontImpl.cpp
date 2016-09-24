@@ -27,7 +27,10 @@ using namespace DWFToolkit;
 #ifdef  _DWFCORE_WIN32_SYSTEM
 
 
+#pragma warning(push)
+#pragma warning(disable: 4458) // "declaration of 'x' hides class member"
 #include <gdiplus.h>
+#pragma warning(pop)
 
 
 HINSTANCE               DWFEmbeddedFontImpl_Win32::_khLib                   = NULL;
